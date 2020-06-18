@@ -68,9 +68,32 @@ If you see null as the type, that indicates there is a blank node.  For instance
 Object
 ======
 
+If you see object as the type, that indicates that your associated value is complex and includes multiple attributes or
+other nodes.  For instance `metadata.mods.language`:
+
+.. code-block:: xml
+    :caption: XML that would result in an Object Type
+    :name: XML that would result in an Object Type
+
+    <language>
+        <languageTerm type="code" authority="iso639-2b">eng</languageTerm>
+    </language>
+
 =====
 Array
 =====
+
+If you see an array as a type, that simply indicates you have more than one of something in a document. For instance,
+`metadata.mods.identifier`:
+
+.. code-block:: xml
+    :caption: XML that would result in an Array Type
+    :name:  XML that would result in an Array Type
+
+    <identifier type="local">0012_003299_001380_0001</identifier>
+    <identifier type="local">daniel_Taxes-Economy_0083</identifier>
+    <identifier type="filename">0012_003299_001380_0001.tif</identifier>
+    <identifier>https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1178</identifier>
 
 Occurences in MODS
 ------------------
