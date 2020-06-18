@@ -53,6 +53,17 @@ In the table, if you see `metadata.mods.titleInfo.XX.@supplied` with a type of s
 null
 ====
 
+If you see null as the type, that indicates there is a blank node.  For instance, `metadata.mods.titleInfo.title`:
+
+.. code-block:: xml
+    :caption: A blank node
+    :name: A blank node
+    :emphasize-lines: 2
+
+    <mods:titleInfo>
+        <mods:title/>
+    </mods:titleInfo>
+
 ======
 Object
 ======
