@@ -7,13 +7,15 @@ About
 The data below is based on all metadata returned from the `Islandora OAI <https://digital.lib.utk.edu/collections/oai2?verb=ListRecords&metadataPrefix=mods&until=2020-06-17>`_
 provider on June 17, 2020.  It should be recognized that there are some elements that are added by the XSLT stylesheet
 associated with the OAI provider that are not in our actual MODS datastreams and thus would not be migrated if we were
-to use our MODS as the source of our migration.
+to use our MODS from Fedora as the source of our migration.
+
+The data is the result of a schema analyzer ran against an instance of `dltn_metadata_qa <https://github.com/markpbaggett/dltn_metadata_QA>`_.
 
 Understanding the table below
 -----------------------------
 
-The table below shows how often an element and attribute appears in the associated MODS from our OAI provider. This
-section attempts to bring meaning to the types column found in the associated table:
+The table below shows how often an element, attribute, or node appears in the associated MODS records available from our
+OAI provider. This section attempts to bring meaning to the types column found in the associated table:
 
 ======
 String
@@ -68,8 +70,8 @@ If you see null as the type, that indicates there is a blank node.  For instance
 Object
 ======
 
-If you see object as the type, that indicates that your associated value is complex and includes multiple attributes or
-other nodes.  For instance `metadata.mods.language`:
+If you see object as the type, that indicates that your associated value is complex and is a group of elements or
+attributes.  For instance `metadata.mods.language`:
 
 .. code-block:: xml
     :caption: XML that would result in an Object Type
@@ -78,6 +80,9 @@ other nodes.  For instance `metadata.mods.language`:
     <language>
         <languageTerm type="code" authority="iso639-2b">eng</languageTerm>
     </language>
+
+The language node is made up of an element `languageTerm` which has a `type` attribute, an `authority` attribute, and a
+text node.
 
 =====
 Array
