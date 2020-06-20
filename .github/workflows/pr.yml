@@ -10,5 +10,5 @@ jobs:
       - uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "docs/"
-          pre-build-command: "pip install pipenv && echo $(which pipenv) && pipenv shell"
+          pre-build-command: "pip install pipenv && echo $(ls -la) && pipenv shell"
           build-command: "make html"
