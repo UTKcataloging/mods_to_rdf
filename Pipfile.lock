@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "227d6b0398653420a173b5faa1d410adfba8f01b8f2b5eae294052d07c95f59b"
+            "sha256": "03235c24ccf4274992082905991bf506451e0ef8762404ccf88012248b9a8528"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,10 +32,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:5ad7e9a056d25ffa5082862e36f119f7f7cec6457fa07ee2f8c339814b80c9b1",
-                "sha256:9cd41137dc19af6a5e03b630eefe7d1f458d964d406342dd3edf625839b944cc"
+                "sha256:5930595817496dd21bb8dc35dad090f1c2cd0adfaf21204bf6732ca5d8ee34d3",
+                "sha256:8fc0819f1f30ba15bdb34cceffb9ef04d99f420f68eb75d901e9560b8749fc41"
             ],
-            "version": "==2020.4.5.2"
+            "version": "==2020.6.20"
         },
         "chardet": {
             "hashes": [
@@ -259,13 +259,6 @@
                 "sha256:f242a81d423f59617a8e5cf16f5d4d74e28ee9a66f9e5b637a18082991db5a9a"
             ],
             "version": "==1.1.4"
-        },
-        "sphinxemoji": {
-            "hashes": [
-                "sha256:8ee797752745024a62cab00676138cb0ca56ed4656d744c3198fb9992c445ce8"
-            ],
-            "index": "pypi",
-            "version": "==0.1.6"
         },
         "urllib3": {
             "hashes": [
