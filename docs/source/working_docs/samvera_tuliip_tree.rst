@@ -71,6 +71,7 @@ If we followed the minted objects mapping, our sample metadata may look somethin
         bf:Note <utknotes:1> ;
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> ;
         pcdm:memberOf <fedoraObject:jk/88/99/adklasd908ads> ;
+        dcmitype:Collection <utkphysicalcollections:1>;
         relators:rps <http://id.loc.gov/authorities/names/no2014027633> ;
         bf:physicalLocation <utknames:3> ;
         edm:rights <http://rightsstatements.org/vocab/CNE/1.0/> .
@@ -469,6 +470,8 @@ Since there is a direct match in option one, I'm using it.
     <typeOfResource>still image</typeOfResource>
 
 .. code-block:: turtle
+    :caption: RDF for typeOfResource
+    :name: RDF for typeOfResource
 
     @prefix fedoraObject: <http://[LocalFedoraRepository]/> .
     @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -476,3 +479,72 @@ Since there is a direct match in option one, I'm using it.
     <fedoraObject:tq/57/nr/06/tq57nr067>
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
 
+===========
+relatedItem
+===========
+
+The Samvera docs have a minted objects section for this that:
+
+    focus(es) on use cases where <mods:relatedItem> is used to describe parent
+    collections, series, and subseries; parent works that the work being described forms some part of; and
+    constituent works that represent some part of the item being described. Relationships for digital
+    collection membership are also described. These mappings were informed by a survey distributed to
+    the wider community in January 2017. Survey results can be found
+    ​`here​ <https://docs.google.com/spreadsheets/d/18JnrxIhIM5F17FWZ_i-JUckFDNHLENi0hRBMUJoNllc/edit#gid=170260270>`_.
+
+In our sample, we have two stanzas (physical and digital):
+
+.. code-block:: xml
+    :caption: relatedItem Stanzas
+    :name: relatedItem Stanzas
+
+    <relatedItem displayLabel="Project" type="host">
+      <titleInfo>
+         <title>Knoxville Garden Slides</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+         <title>Knoxville Gardens Slides</title>
+      </titleInfo>
+      <identifier>MS.1324</identifier>
+      <location>
+         <url>https://n2t.net/ark:/87290/v88w3bgf</url>
+      </location>
+    </relatedItem>
+
+Our turtle would look something like this:
+
+.. code-block:: turtle
+    :caption: RDF for relatedItems
+    :name: RDF for relatedItems
+
+    @prefix fedoraObject: <http://[LocalFedoraRepository]/> .
+    @prefix utkphysicalcollections: <http://[address-to-triplestore]/physicalcollections/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+    @prefix owl: <https://www.w3.org/2002/07/owl#> .
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+
+    <fedoraObject:tq/57/nr/06/tq57nr067>
+        pcdm:memberOf <fedoraObject:jk/88/99/adklasd908ads> ;
+        dcmitype:Collection <utkphysicalcollections:1>;
+
+    <utkphysicalcollections:1>
+        a dcmitype:Collection ;
+        rdfs:label "Knoxville Gardens Slides" ;
+        owl:sameAs <https://n2t.net/ark:/87290/v88w3bgf> .
+
+Note that the value of `pcdm:memberOf` should be the URI to it's new location and not a minted object.
+
+========
+location
+========
+
+==========
+recordInfo
+==========
+
+===============
+accessCondition
+===============
