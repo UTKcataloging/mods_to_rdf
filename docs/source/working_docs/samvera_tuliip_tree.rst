@@ -146,6 +146,14 @@ If we followed the minted objects mapping, our sample metadata may look somethin
         bf:derivedFrom "human prepared" ;
         bf:descriptionLanguage <http://id.loc.gov/vocabulary/iso639-2/eng> .
 
+You can see a visualization of this here (but you'll need to zoom in by clicking the object to understand):
+
+.. figure:: ../images/mintedobj.png
+    :alt: Visualization of Our Minted Object
+
+    Click to Zoom In
+
+
 =========
 titleInfo
 =========
