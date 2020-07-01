@@ -61,6 +61,12 @@ If we followed the direct objects mapping, our RDF would be much simpler but we'
         edm:provider <http://id.loc.gov/authorities/names/n87808088> ;
         edm:rights <http://rightsstatements.org/vocab/CNE/1.0/> .
 
+Here is a visualization of this data:
+
+.. figure::  ../images/directobj.png
+
+    Click the Image to Zoom In.
+
 ==========
 identifier
 ==========
