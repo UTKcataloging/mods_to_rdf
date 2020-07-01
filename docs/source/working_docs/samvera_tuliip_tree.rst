@@ -72,7 +72,7 @@ If we followed the minted objects mapping, our sample metadata may look somethin
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> ;
         pcdm:memberOf <fedoraObject:jk/88/99/adklasd908ads> ;
         dcmitype:Collection <utkphysicalcollections:1>;
-        relators:rps <http://id.loc.gov/authorities/names/no2014027633> ;
+        relators:rps <utknames:2> ;
         bf:physicalLocation <utknames:3> ;
         edm:rights <http://rightsstatements.org/vocab/CNE/1.0/> .
 
@@ -442,7 +442,7 @@ According to Samvera docs:
     @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 
     <fedoraObject:tq/57/nr/06/tq57nr067>
-        bf:Note <utknotes:1> ;
+        bf:Note <utknotes:1> .
 
     <utknotes:1>
         a bf:Note ;
@@ -528,7 +528,7 @@ Our turtle would look something like this:
 
     <fedoraObject:tq/57/nr/06/tq57nr067>
         pcdm:memberOf <fedoraObject:jk/88/99/adklasd908ads> ;
-        dcmitype:Collection <utkphysicalcollections:1>;
+        dcmitype:Collection <utkphysicalcollections:1>.
 
     <utkphysicalcollections:1>
         a dcmitype:Collection ;
@@ -540,6 +540,43 @@ Note that the value of `pcdm:memberOf` should be the URI to it's new location an
 ========
 location
 ========
+
+The Samvera minted objects docs state:
+
+    In some cases, it may be preferable to create an Organization object to capture data about the holding
+    location (if there is no existing URI, for example). Examples using this pattern are shown below. These
+    mappings were informed by a survey distributed to the wider community in August 2016. Survey results
+    can be found ​ here​ with the options listed ​ here​ .
+
+.. code-block:: xml
+    :caption: XML Stanza for Location
+    :name: XML Stanza for Location
+
+    <location>
+      <physicalLocation valueURI="http://id.loc.gov/authorities/names/no2014027633">University of Tennessee, Knoxville. Special Collections</physicalLocation>
+    </location>
+
+Since we have a URI for this, maybe we wouldn't mint this location, but I'm doing it regardless for the purposes of
+demonstration:
+
+.. code-block:: turtle
+    :caption: RDF for Location
+    :name: RDF for Location
+
+    @prefix fedoraObject: <http://[LocalFedoraRepository]/> .
+    @prefix owl: <https://www.w3.org/2002/07/owl#> .
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix utknames: <http://[address-to-triplestore]/names/> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+    <fedoraObject:tq/57/nr/06/tq57nr067>
+        relators:rps <utknames:2> .
+
+    <utknames:2>
+        a foaf:Organization ;
+        rdfs:label "University of Tennessee, Knoxville. Special Collections" ;
+        owl:sameAs <http://id.loc.gov/authorities/names/no2014027633> .
 
 ==========
 recordInfo
