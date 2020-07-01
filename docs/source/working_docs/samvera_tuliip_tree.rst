@@ -74,6 +74,8 @@ If we followed the minted objects mapping, our sample metadata may look somethin
         dcmitype:Collection <utkphysicalcollections:1>;
         relators:rps <utknames:2> ;
         bf:physicalLocation <utknames:3> ;
+        bf:AdminMetadata <utkadminmetadata:1> ;
+        edm:dataProvider <http://id.loc.gov/authorities/names/n87808088> ;
         edm:rights <http://rightsstatements.org/vocab/CNE/1.0/> .
 
     <utktitles:1>
@@ -582,6 +584,74 @@ demonstration:
 recordInfo
 ==========
 
+According to the Samvera docs:
+
+    The minted object mapping involves creating a new object to represent the metadata itself, and allows
+    for creating objects to represent an institution, department, or other named entity that is responsible for
+    the creation or publication of the metadata record. This may be needed in cases where there is no
+    existing URI for the entity.
+
+Our stanza for recordInfo looks like this:
+
+.. code-block:: xml
+    :caption: XML Stanza for recordInfo
+    :name: XML Stanza for recordInfo
+
+    <recordInfo>
+      <recordContentSource valueURI="http://id.loc.gov/authorities/names/n87808088">University of Tennessee, Knoxville. Libraries</recordContentSource>
+      <languageOfCataloging>
+         <languageTerm type="text" authority="iso639-2b">English</languageTerm>
+      </languageOfCataloging>
+    </recordInfo>
+
+Normally, this stanza would only represent who created the metadata, but we also use this to describe where a digital
+object originated. Since I know this, I'm adding something here that doesn't come from the Samvera docs.
+
+
+.. code-block:: turtle
+    :caption: RDF for recordInfo
+    :name: RDF for recordInfo
+    :linenos:
+    :emphasize-lines: 8
+
+    @prefix fedoraObject: <http://[LocalFedoraRepository]/> .
+    @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+    @prefix utkadminmetadata: <http://[address-to-triplestore]/utkadminmetadata/> .
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <fedoraObject:tq/57/nr/06/tq57nr067>
+        bf:AdminMetadata <utkadminmetadata:1> ;
+        edm:dataProvider <http://id.loc.gov/authorities/names/n87808088> .
+
+    <utkadminmetadata:1>
+        a bf:AdminMetadata ;
+        edm:provider <utknames:2> ;
+        bf:derivedFrom "human prepared" ;
+        bf:descriptionLanguage <http://id.loc.gov/vocabulary/iso639-2/eng> .
+
+Note that the range of edm:dataProvider is edm:Agent so what I'm doing here isn't allowed exactly. I'm adding it just
+so we can start thinking about it.
+
 ===============
 accessCondition
 ===============
+
+AccessCondition does not have a minted objects mapping. Since we have a rightsstatements.org URI, we should use
+`edm:rights`.
+
+.. code-block:: xml
+    :caption: XML Stanza for Access Condition
+    :name: XML Stanza for Access Condition
+
+    <accessCondition type="use and reproduction"
+                    xlink:href="http://rightsstatements.org/vocab/CNE/1.0/">
+        Copyright Not Evaluated
+    </accessCondition>
+
+.. code-block:: turtle
+
+    @prefix fedoraObject: <http://[LocalFedoraRepository]/> .
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <fedoraObject:tq/57/nr/06/tq57nr067>
+        edm:rights <http://rightsstatements.org/vocab/CNE/1.0/> .
