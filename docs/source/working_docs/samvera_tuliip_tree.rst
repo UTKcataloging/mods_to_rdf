@@ -64,6 +64,8 @@ If we followed the direct objects mapping, our RDF would be much simpler but we'
 Here is a visualization of this data:
 
 .. figure::  ../images/directobj.png
+    :alt: Direct Object Mapping Visualization
+    :width: 1200px
 
     Click the Image to Zoom In.
 
@@ -523,6 +525,7 @@ You can see a visualization of this here (but you'll need to zoom in by clicking
 
 .. figure:: ../images/mintedobj.png
     :alt: Visualization of Our Minted Object
+    :width: 1200px
 
     Click to Zoom In
 
