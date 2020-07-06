@@ -11,11 +11,23 @@ This portal includes documentation about the UTK MODS to RDF Working Group.
 Contents
 --------
 
+This section contains materials for our final report.
+
 .. toctree::
    :maxdepth: 1
    :glob:
 
    contents/*
 
+Working Documents
+-----------------
+
+This section contains materials related to working group exercises.
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   working_docs/*
 
 * :ref:`search`
