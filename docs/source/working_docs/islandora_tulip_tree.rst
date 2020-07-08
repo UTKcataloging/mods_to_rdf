@@ -1,5 +1,5 @@
 Modelling a UTK MODS File Based on the Islandora MODS to RDF Recommendations
-==========================================================================
+============================================================================
 
 The Samvera MODS to RDF Working Group's `MODS to RDF Mapping Recommendations <https://docs.google.com/document/d/1m14BxPglWNWeJykx5Pv9s4UCI1jgWCXMiy1wQpsL4S4/edit>`_
 shares a direct mapping and a style guide.  This document illustrates how one of our XML files may look if we followed these mappings out-of-the-box.
@@ -7,7 +7,7 @@ For the purposes of this exercise, our group decided to use the MODS file for `k
 
 
 Default Islandora Mapping
---------------
+-------------------------
 
 .. code-block:: turtle
     :linenos:
