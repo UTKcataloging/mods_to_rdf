@@ -53,6 +53,13 @@ Some records have a note with a "Grade Level" displayLabel,`arrowmont:9 <https:/
 
 Some records have a note with a "Intermediate Provider" displayLabel, `cdf:6186 <https://digital.lib.utk.edu/collections/islandora/object/cdf:6186/datastream/MODS>`_:
 
+**Note**: DPLA maps intermediate providers to http://dp.la/about/map/intermediateProvider. That property has a range of
+edm:Agent.  They define this property as:
+
+    An intermediate organization that selects, collates, or curates data from a Data Provider that is then aggregated by a Provider
+    from which DPLA harvests. The organization must be distinct from both the Data Provider and the Provider in the data supply
+    chain. Ref.
+
 .. code-block:: xml
 
     <recordInfo>
@@ -68,6 +75,13 @@ Some records have a note with a "Intermediate Provider" displayLabel, `cdf:6186 
 -------------------------------------
 
 Some records have a note with a "Intermediate provider" displayLabel, `thompson:515 <https://digital.lib.utk.edu/collections/islandora/object/thompson:515/datastream/MODS>`_:
+
+**Note**: DPLA maps intermediate providers to http://dp.la/about/map/intermediateProvider. That property has a range of
+edm:Agent.  They define this property as:
+
+    An intermediate organization that selects, collates, or curates data from a Data Provider that is then aggregated by a Provider
+    from which DPLA harvests. The organization must be distinct from both the Data Provider and the Provider in the data supply
+    chain. Ref.
 
 .. code-block:: xml
 
@@ -132,12 +146,14 @@ Some records have a note with a "Transcribed from Original Collection" displayLa
 
 .. code-block:: xml
 
-<titleInfo>
-    <title>Inside of Old Mill up Kalance Fork Greenbrier (Negative 251)</title>
-</titleInfo>
-<note displayLabel="Transcribed from Original Collection">
-    Inside of Old Mill up Kalance Fork Greenbrier (Negative 251)
-</note>
+    <titleInfo>
+        <title>
+            Inside of Old Mill up Kalance Fork Greenbrier (Negative 251)
+        </title>
+    </titleInfo>
+    <note displayLabel="Transcribed from Original Collection">
+        Inside of Old Mill up Kalance Fork Greenbrier (Negative 251)
+    </note>
 
 @displayLabel="dpn"
 -------------------
