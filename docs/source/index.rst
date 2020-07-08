@@ -19,6 +19,17 @@ This section contains materials for our final report.
 
    contents/*
 
+Top Level Elements
+------------------
+
+This section contains notes about each MODS top level element.
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   top_level_elements/*
+
 Working Documents
 -----------------
 
