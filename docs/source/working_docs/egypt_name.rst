@@ -43,10 +43,8 @@ RDF as turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
     @prefix ulan: <http://vocab.getty.edu/ulan> .
-    @prefix foaf: <http://xmlns.com/foaf/spec/> .
 
-    <https://example.org/objects/1> relators:pht <ulan:500057278> ;
-        a foaf:Organization .
+    <https://example.org/objects/1> relators:pht <ulan:500057278> .
 
 .. code-block:: turtle
     :linenos:
