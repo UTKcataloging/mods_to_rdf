@@ -27,6 +27,8 @@ RDF as turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
     @prefix ulan: <http://vocab.getty.edu/ulan> .
+    @prefix schema: <https://schema.org/> .
+    @prefix foaf: <http://xmlns.com/foaf/spec/> .
 
     <https://example.org/objects/1> relators:pht <https://example.org/names/1> .
 
@@ -41,6 +43,7 @@ RDF as turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
     @prefix ulan: <http://vocab.getty.edu/ulan> .
+    @prefix foaf: <http://xmlns.com/foaf/spec/> .
 
     <https://example.org/objects/1> relators:pht <ulan:500057278> ;
         a foaf:Organization .
@@ -52,6 +55,8 @@ RDF as turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
     @prefix ulan: <http://vocab.getty.edu/ulan> .
+    @prefix schema: <https://schema.org/> .
+    @prefix foaf: <http://xmlns.com/foaf/spec/> .
 
     <https://example.org/objects/1> relators:pht <https://example.org/name/1> .
 
