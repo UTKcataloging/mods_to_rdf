@@ -27,7 +27,7 @@ according to the guide’s specifications. The elements are listed in the order 
 Simple Example
 --------------
 
-`Example Record <https://digital.lib.utk.edu/collections/islandora/object/knoxgardens%3A115/datastream/MODS>`_.
+`Example record - knoxgardens:115 <https://digital.lib.utk.edu/collections/islandora/object/knoxgardens%3A115/datastream/MODS>`_.
 
 .. code-block:: xml
 
@@ -174,7 +174,7 @@ mods:accessCondition[@type="restriction on access"]
 
 **Decision**
 
-`Example record <https://digital.lib.utk.edu/collections/islandora/object/bakerav%3A10/datastream/MODS/view>`_
+`Example record - bakerav:10 <https://digital.lib.utk.edu/collections/islandora/object/bakerav%3A10/datastream/MODS/view>`_
 
 .. code-block:: xml
 
