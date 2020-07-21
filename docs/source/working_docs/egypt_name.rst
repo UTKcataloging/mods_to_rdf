@@ -53,11 +53,11 @@ RDF as turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
     @prefix ulan: <http://vocab.getty.edu/ulan> .
-    @prefix schema: <https://schema.org/> .
+    @prefix owl: <http://www.w3.org/2002/07/owl#> .
     @prefix foaf: <http://xmlns.com/foaf/spec/> .
 
     <https://example.org/objects/1> relators:pht <https://example.org/name/1> .
 
     <https://example.org/name/1> a foaf:Organization ;
-        schema:sameAs <ulan:500057278> ;
+        owl:sameAs <ulan:500057278> ;
         foaf:name "Bonfils Family"@en .
