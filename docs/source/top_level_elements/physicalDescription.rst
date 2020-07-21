@@ -25,7 +25,7 @@ Here's `arrsimple:105 <https://digital.lib.utk.edu/collections/islandora/object/
     <physicalDescription/>
 
 physicalDescription.extent - Null values
---------------------------------------
+----------------------------------------
 
 There are two records in the University of Tennessee Sheet Music Collection that have empty <extent> nodes. These will be
 addressed quickly via `DIGITAL-759 <https://jirautk.atlassian.net/browse/DIGITAL-759>`_.
