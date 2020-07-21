@@ -19,6 +19,12 @@ https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MO
         <title>Norris Dam</title>
     </titleInfo>
 
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:title "Norris Dam (Envelope 246) (12 of 12)" .
+
 **Case 2: titleInfo has partName sub-element**
 
 https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream/MODS/view
@@ -30,6 +36,12 @@ https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream
         <partName>Sheet 56</partName>
     </titleInfo>
 
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:title "Knoxville -- 1917 Sheet 56" .
+
 **Case 3: titleInfo has nonSort sub-element**
 
 https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastream/MODS/view
@@ -40,6 +52,12 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastre
         <nonSort>The </nonSort>
         <title>Guard at the Mountain Branch of the National Home for Disabled Volunteer Soldiers</title>
     </titleInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:title "The Guard at the Mountain Branch of the National Home for Disabled Volunteer Soldiers" .
 
 **Case 4: Multiple titleInfo elements with one having a partName sub-element, and a type of alternative**
 
@@ -54,6 +72,12 @@ https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastre
         <title>Souvenir of Great Smoky Mountains National Park</title>
         <partName>Postcard 1</partName>
     </titleInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:title "Knoxville -- 1917 Sheet 56" .
 
 **Case 5: Multiple titleInfo elements with one having a partName sub-element, and a displayLabel**
 
