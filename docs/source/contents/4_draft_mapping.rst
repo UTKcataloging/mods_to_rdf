@@ -72,6 +72,28 @@ physicalDescription
 note
 ====
 
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| Predicate                         | Value Type     | Range (if needed) | Usage Notes                                                             |
++===================================+================+===================+=========================================================================+
+| bf:IntendedAudience               | Literal or URI |                   | Use for information that identifies the specific audience or            |
+|                                   |                |                   | intellectual level for which the content of the resource is considered  |
+|                                   |                |                   | appropriate.                                                            |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| dce:subject                       | Literal or URI |                   | Use for name, topical subjects, and uncontrolled keywords.              |
+|                                   |                |                   | Use of a URI from a controlled subject vocabulary is preferred          |
+|                                   |                |                   | over a literal value                                                    |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| opaque:sheetmusic_instrumentation | Literal or URI |                   | Use for sheet music, a listing of the performing forces                 |
+|                                   |                |                   | called for by a particular piece of sheet music, including              |
+|                                   |                |                   | both voices and external instruments.                                   |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| opaque:sheetmusic_firstLine       | Literal or URI |                   | Use for sheet music, entering a direct transcription of the             |
+|                                   |                |                   | first line of lyrics appearing in the song.                             |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| skos:note                         | Literal        |                   | Use for the note value.                                                 |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+
+
 note - Just a note
 ------------------
 
