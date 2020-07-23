@@ -26,7 +26,7 @@ Some identifiers have a `@type="Work ID"` like `archivision:1955 <https://digita
 identifier[@type="acquisition"]
 -------------------------------
 
-Some identifiers have a `@type="acquisition"` like `egypt:8 <https://digital.lib.utk.edu/collections/islandora/object/egypt:8/datastream/MODS>`_
+Some identifiers have a `@type="acquisition"` like `egypt:8 <https://digital.lib.utk.edu/collections/islandora/object/egypt:8/datastream/MODS>`__
 
 .. code-block:: xml
 
@@ -35,7 +35,7 @@ Some identifiers have a `@type="acquisition"` like `egypt:8 <https://digital.lib
 identifier[@type="archival number"]
 -----------------------------------
 
-Some identifiers have a `@type="archival number"` like `egypt:8 <https://digital.lib.utk.edu/collections/islandora/object/webster:1277/datastream/MODS>`_
+Some identifiers have a `@type="archival number"` like `egypt:8 <https://digital.lib.utk.edu/collections/islandora/object/webster:1277/datastream/MODS>`__
 
 .. code-block:: xml
 
