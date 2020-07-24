@@ -100,6 +100,25 @@ https://digital.lib.utk.edu/collections/islandora/object/womenbball:653/datastre
     <https://example.org/objects/1> dcterms:title "Tennessee Lady Volunteers basketball media guide, 1984-1985"  ;
         dcterms:alternative "Tennessee Lady Vols 1984-85: reaching for the Summitt of women's basketball" .
 
+
+https://digital.lib.utk.edu/collections/islandora/object/colloquy:202/datastream/MODS/view
+
+.. code-block:: xml
+
+    <titleInfo>
+        <title>Great Smoky Mountains Colloquy: Volume 18, Number 2</title>
+    </titleInfo>
+    <titleInfo type="alternative" displayLabel="Also known as">
+        <title>Colloquy</title>
+    </titleInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:title "Great Smoky Mountains Colloquy: Volume 18, Number 2"  ;
+        dcterms:alternative "Colloquy" .
+
 **Multiple titleInfo elements with one having a supplied attribute of yes**
 
 https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/view
