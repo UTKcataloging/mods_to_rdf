@@ -45,17 +45,22 @@ Attributes on dateCreated
 -------------------------
 
 dateCreated[@encoding]
----------
+----------------------
 
-dateCreated[@encoding] has two distinct values:
+dateCreated[@encoding] has two distinct values: "edtf" and "w3cdtf". "w3cdtf" appears in a smaller number of records; e.g. `arrowmont:698 <https://digital.lib.utk.edu/collections/islandora/object/arrowmont%3A698/datastream/MODS>`_:
 
 .. code-block:: xml
 
-    <dateCreated encoding="edtf"/>
-    <dateCreated encoding="w3cdtf"/>
+    <originInfo>
+        <dateCreated encoding="edtf" keyDate="yes" point="start">1910</dateCreated>
+    </originInfo>
+    <originInfo>
+        <dateCreated encoding="w3cdtf" keyDate="yes" point="start">1941</dateCreated>
+    </originInfo>
 
-@keyDate
---------
+
+dateCreated[@keyDate]
+---------------------
 
 The keyDate attribute is always "yes".
 
@@ -64,4 +69,5 @@ The keyDate attribute is always "yes".
     @keyDate = "yes"
 
 
-
+dateCreated[@qualifier]
+-----------------------
