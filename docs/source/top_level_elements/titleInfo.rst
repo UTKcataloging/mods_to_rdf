@@ -5,27 +5,7 @@ About
 _____
 This section describes all the different types of titleInfo elements that we have in our Islandora repository right now.
 
-**Case 1: Multiple titleInfo elements with one having a supplied attribute of yes**
-
-https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/view
-
-.. code-block:: xml
-
-    <titleInfo>
-        <title>Norris Dam (Envelope 246) (12 of 12)</title>
-    </titleInfo>
-    [...]
-    <titleInfo supplied="yes">
-        <title>Norris Dam</title>
-    </titleInfo>
-
-.. code-block:: turtle
-
-    @prefix dcterms: <http://purl.org/dc/terms/>
-
-    <https://example.org/objects/1> dcterms:title "Norris Dam (Envelope 246) (12 of 12)" .
-
-**Case 2: titleInfo has partName sub-element**
+**titleInfo has partName sub-element**
 
 https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream/MODS/view
 
@@ -40,9 +20,9 @@ https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:title "Knoxville -- 1917 Sheet 56" .
+    <https://example.org/objects/1> dcterms:title "Knoxville -- 1917. Sheet 56" .
 
-**Case 3: titleInfo has nonSort sub-element**
+**titleInfo has nonSort sub-element**
 
 https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastream/MODS/view
 
@@ -59,7 +39,27 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastre
 
     <https://example.org/objects/1> dcterms:title "The Guard at the Mountain Branch of the National Home for Disabled Volunteer Soldiers" .
 
-**Case 4: Multiple titleInfo elements with one having a partName sub-element, and a type of alternative**
+**Multiple titleInfo elements with one having a type of alternative**
+
+https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastream/MODS/view
+
+.. code-block:: xml
+
+    <titleInfo>
+        <title>Prussian heroes march</title>
+    </titleInfo>
+    <titleInfo type="alternative">
+        <title>Prussian heroes: Prussen helden march</title>
+    </titleInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:title "Prussian heroes march" ;
+        dcterms:alternative "Prussian heroes: Prussen helden march" .
+
+**  Multiple titleInfo elements with one having a partName sub-element, and a type of alternative**
 
 https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastream/MODS/view
 
@@ -77,9 +77,10 @@ https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastre
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:title "Knoxville -- 1917 Sheet 56" .
+    <https://example.org/objects/1> dcterms:title "Souvenir of Great Smoky Mountains National Park"  ;
+        dcterms:alternative "Souvenir of Great Smoky Mountains National Park. Postcard 1" .
 
-**Case 5: Multiple titleInfo elements with one having a partName sub-element, and a displayLabel**
+**Multiple titleInfo elements with one having a partName sub-element, and a displayLabel**
 
 https://digital.lib.utk.edu/collections/islandora/object/womenbball:653/datastream/MODS/view
 
@@ -91,3 +92,40 @@ https://digital.lib.utk.edu/collections/islandora/object/womenbball:653/datastre
     <titleInfo type="alternative" displayLabel="Cover Title">
         <title>Tennessee Lady Vols 1984-85: reaching for the Summitt of women's basketball</title>
     </titleInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:title "Tennessee Lady Volunteers basketball media guide, 1984-1985"  ;
+        dcterms:alternative "Tennessee Lady Vols 1984-85: reaching for the Summitt of women's basketball" .
+
+**Multiple titleInfo elements with one having a supplied attribute of yes**
+
+https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/view
+
+.. code-block:: xml
+
+    <titleInfo>
+        <title>Norris Dam (Envelope 246) (12 of 12)</title>
+    </titleInfo>
+    [...]
+    <titleInfo supplied="yes">
+        <title>Norris Dam</title>
+    </titleInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/>
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#>
+
+    <https://example.org/objects/1> dcterms:title <https://example.org/titles/1> ;
+        dcterms:title  <https://example.org/titles/2> .
+
+    <https://example.org/titles/1>
+        rdfs:label "Norris Dam (Envelope 246) (12 of 12)" .
+
+    <https://example.org/titles/1>
+        rdfs:label "Norris Dam" ;
+        skos:note "supplied" .
