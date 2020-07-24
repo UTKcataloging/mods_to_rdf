@@ -71,3 +71,23 @@ The keyDate attribute is always "yes".
 
 dateCreated[@qualifier]
 -----------------------
+
+The qualifier attribute has three distinct values: "inferred", "approximate", and "questionable". It usually appears with other attributes but not always; e.g. `ekcd:95 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:95/datastream/MODS>`_:
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateCreated qualifier="inferred">1955</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes">1955</dateCreated>
+    </originInfo>
+    <originInfo>
+        <dateCreated>Undated</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="inferred">1910</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="end" qualifier="inferred">1955</dateCreated>
+    </originInfo>
+
+
+dateCreated[@point]
+-------------------
+
+The point attribute has two distinct values: "start" and "end". They are not evenly paired.
