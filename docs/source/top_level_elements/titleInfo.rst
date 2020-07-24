@@ -5,7 +5,10 @@ About
 _____
 This section describes all the different types of titleInfo elements that we have in our Islandora repository right now.
 
-**titleInfo has partName sub-element**
+|
+
+titleInfo has partName sub-element
+----------------------------------
 
 https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream/MODS/view
 
@@ -22,7 +25,10 @@ https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream
 
     <https://example.org/objects/1> dcterms:title "Knoxville -- 1917. Sheet 56" .
 
-**titleInfo has nonSort sub-element**
+|
+
+titleInfo has nonSort sub-element
+---------------------------------
 
 https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastream/MODS/view
 
@@ -39,7 +45,10 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastre
 
     <https://example.org/objects/1> dcterms:title "The Guard at the Mountain Branch of the National Home for Disabled Volunteer Soldiers" .
 
-**Multiple titleInfo elements with one having a type of alternative**
+|
+
+Multiple titleInfo elements with one having a type of alternative
+-----------------------------------------------------------------
 
 https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastream/MODS/view
 
@@ -59,7 +68,10 @@ https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastre
     <https://example.org/objects/1> dcterms:title "Prussian heroes march" ;
         dcterms:alternative "Prussian heroes: Prussen helden march" .
 
-**  Multiple titleInfo elements with one having a partName sub-element, and a type of alternative**
+|
+
+Multiple titleInfo elements with one having a partName sub-element, and a type of alternative
+---------------------------------------------------------------------------------------------
 
 https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastream/MODS/view
 
@@ -80,7 +92,10 @@ https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastre
     <https://example.org/objects/1> dcterms:title "Souvenir of Great Smoky Mountains National Park"  ;
         dcterms:alternative "Souvenir of Great Smoky Mountains National Park. Postcard 1" .
 
-**Multiple titleInfo elements with one having a partName sub-element, and a displayLabel**
+|
+
+Multiple titleInfo elements with one having a partName sub-element, and a displayLabel
+--------------------------------------------------------------------------------------
 
 https://digital.lib.utk.edu/collections/islandora/object/womenbball:653/datastream/MODS/view
 
@@ -119,7 +134,10 @@ https://digital.lib.utk.edu/collections/islandora/object/colloquy:202/datastream
     <https://example.org/objects/1> dcterms:title "Great Smoky Mountains Colloquy: Volume 18, Number 2"  ;
         dcterms:alternative "Colloquy" .
 
-**Multiple titleInfo elements with one having a supplied attribute of yes**
+|
+
+Multiple titleInfo elements with one having a supplied attribute of yes
+-----------------------------------------------------------------------
 
 https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/view
 
