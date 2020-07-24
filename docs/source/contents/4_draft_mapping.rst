@@ -1,9 +1,10 @@
-===============================
+###############################
 UTK MODS to RDF Mapping - Draft
-===============================
+###############################
 
+***********
 Style Guide
-===========
+***********
 
 This document aims to provide all of the information a member of Digital Initiatives needs to transform UTK’s existing
 MODS XML to RDF, regardless of the platform chosen. In order to achieve this goal in a consistent and accessible manner,
@@ -25,7 +26,7 @@ according to the guide’s specifications. The elements are listed in the order 
 <https://dltn-technical-docs.readthedocs.io/en/latest/style/xsl.html>`_.
 
 Simple Example
---------------
+==============
 
 `Example record - knoxgardens:115 <https://digital.lib.utk.edu/collections/islandora/object/knoxgardens%3A115/datastream/MODS>`_.
 
@@ -39,12 +40,27 @@ Simple Example
 
         <https://example.org/objects/1> dcterms:abstract "Photograph slide of the Tennessee state tree, the tulip tree" .
 
+**********
 Namespaces
-==========
+**********
 
-=======
++------------------+----------------------------------------+
+| Predicate Prefix | Namespace                              |
++==================+========================================+
+| bf               | http://id.loc.gov/ontologies/bibframe/ |
++------------------+----------------------------------------+
+| dce              | http://purl.org/dc/elements/1.1/       |
++------------------+----------------------------------------+
+| edm              | http://www.europeana.eu/schemas/edm/   |
++------------------+----------------------------------------+
+| opaque           | http://opaquenamespace.org/ns/         |
++------------------+----------------------------------------+
+| skos             | http://www.w3.org/2004/02/skos/core#   |
++------------------+----------------------------------------+
+
+*******
 Mapping
-=======
+*******
 
 identifier
 ==========
@@ -69,6 +85,279 @@ physicalDescription
 
 note
 ====
+
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| Predicate                         | Value Type     | Range (if needed) | Usage Notes                                                             |
++===================================+================+===================+=========================================================================+
+| bf:IntendedAudience               | Literal or URI |                   | Use for information that identifies the specific audience or            |
+|                                   |                |                   | intellectual level for which the content of the resource is considered  |
+|                                   |                |                   | appropriate.                                                            |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| dce:subject                       | Literal or URI |                   | Use for name, topical subjects, and uncontrolled keywords.              |
+|                                   |                |                   | Use of a URI from a controlled subject vocabulary is preferred          |
+|                                   |                |                   | over a literal value                                                    |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| opaque:sheetmusic_instrumentation | Literal or URI |                   | Use for sheet music, a listing of the performing forces                 |
+|                                   |                |                   | called for by a particular piece of sheet music, including              |
+|                                   |                |                   | both voices and external instruments.                                   |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| opaque:sheetmusic_firstLine       | Literal or URI |                   | Use for sheet music, entering a direct transcription of the             |
+|                                   |                |                   | first line of lyrics appearing in the song.                             |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| skos:note                         | Literal        |                   | Use for the note value.                                                 |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+
+
+note - Just a note
+------------------
+
+Use Case
+^^^^^^^^
+
+Usually, a note is just a note.  The xpath section below lists when this is the case. In the case that an xpath has a
+specific attribute and value, prepend the value to the text node.
+
+Justification
+^^^^^^^^^^^^^
+
+The Samvera community attempts to keep some of the granularity of MODS by prepending the text value of the attribute
+to the text node when one exists.  When one doesn't, simply take the text node.
+
+In Bibframe, there was no attempt to convert the 562 MARC field.  For this reason, "handwritten" documents are just
+regular notes.
+
+Xpath
+^^^^^
+
+`mods:note` OR `mods:note[@type="handwritten"]` OR `mods:note[@type="provenance"]`
+
+Decision
+^^^^^^^^
+
+`Example record from bakerav:291 <https://digital.lib.utk.edu/collections/islandora/object/bakerav:291/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <note>
+        A_0:51:21 / B_0:59:44
+    </note>
+    <note>
+        (Original, for: Mrs. Dirksen, Compliments: Tony Janak)
+    </note>
+    <note>
+        No issues.
+    </note>
+
+.. code-block:: turtle
+
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+    <https://example.org/objects/1>
+        skos:note "A_0:51:21 / B_0:59:44", "(Original, for: Mrs. Dirksen, Compliments: Tony Janak)", "No issues." .
+
+
+note - Instrumentation
+----------------------
+
+Use Case
+^^^^^^^^
+
+When a note has a `@type = "Instrumenation"`, it is not a general note. Instead, this element is a listing of the
+performing forces called for by a particular piece of music.
+
+Justification
+^^^^^^^^^^^^^
+
+We reviewed several bibliographic and music ontologies including the Music Ontology, the Internet of Music Thingz, and
+MusicBrainz, but none seemed to have a predicate to represent this idea. We did notice that Opaque Namespace by
+Oregon Digital did have a matching predicate.  In the Samvera community, not only is this ontology used, but occasionally
+the community has suggested new predicates to be created within Opaque Namespaces.
+
+Xpath
+^^^^^
+
+`mods:note[@type="Instrumentation"]`
+
+Decision
+^^^^^^^^
+
+`Example record from vanvactor:15773 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:15773/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <note type="instrumentation">
+        For soprano, mezzo-soprano, contralto, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons, 2 horns, 2 trumpets, timpani, 2 violins, viola, cello, and double bass.
+    </note>
+
+
+.. code-block:: turtle
+
+    @prefix opaque: <http://opaquenamespace.org/​ns/> .
+
+    <https://example.org/objects/1>
+        opaque:sheetmusic_instrumentation "For soprano, mezzo-soprano, contralto, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons, 2 horns, 2 trumpets, timpani, 2 violins, viola, cello, and double bass." .
+
+
+note - First Line
+-----------------
+
+Use Case
+^^^^^^^^
+
+When a note has a `@type = "First line"` or `@type = "first line"`, it is not a general note. Instead, this element is
+a direct transcription of the first line of lyrics appearing in a song.
+
+Justification
+^^^^^^^^^^^^^
+
+We reviewed several bibliographic and music ontologies including the Music Ontology, the Internet of Music Thingz, and
+MusicBrainz, but none seemed to have a predicate to represent this idea. We did notice that Opaque Namespace by
+Oregon Digital did have a matching predicate.  In the Samvera community, not only is this ontology used, but occasionally
+the community has suggested new predicates to be created within Opaque Namespaces.
+
+Xpath
+^^^^^
+
+`mods:note[@type="First line"]` or `mods:note[@type="first line"]`
+
+Decision
+^^^^^^^^
+
+`Example record from vanvactor:15773 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:15773/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <note type="First line">
+        Ojitos de pena carita de luna, lloraba la niña sin causa ninguna.
+    </note>
+
+
+.. code-block:: turtle
+
+    @prefix opaque: <http://opaquenamespace.org/​ns/> .
+
+    <https://example.org/objects/1>
+        opaque:sheetmusic_firstLine "Ojitos de pena carita de luna, lloraba la niña sin causa ninguna." ..
+
+
+note - Target audience
+----------------------
+
+Use Case
+^^^^^^^^
+
+If a note has a displayLabel attribute with the value of "Grade level", it refers to the target audience of the resource.
+
+Justification
+^^^^^^^^^^^^^
+
+The MARC 521 field should be mapped to the Bibframe intended audience field. The field is defined as information that
+identifies the specific audience or intellectual level for which the content of the resource is considered appropriate.
+
+Xpath
+^^^^^
+
+`mods:note[@displayLabel="Grade level"]`
+
+Decision
+^^^^^^^^
+
+`Example record from arrowmont:9 <https://digital.lib.utk.edu/collections/islandora/object/arrowmont:9/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <note displayLabel="Grade level">
+        Second Grade
+    </note>
+
+.. code-block:: turtle
+
+    @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+
+    <https://example.org/objects/1>
+        bf:IntendedAudience "Second Grade" .
+
+
+note - Uncontrolled keyword or Tag
+----------------------------------
+
+Use Case
+^^^^^^^^
+
+Some of our notes actually refer to unconrtolled keywords or tags.
+
+Justification
+^^^^^^^^^^^^^
+
+While not preferred, Samvera treats these as dcterms:subjects with a literal rather than an a URI.
+
+Xpath
+^^^^^
+
+`mods:note[@displayLabel="Tags"]`
+
+Decision
+^^^^^^^^
+
+.. code-block:: xml
+
+    <note displayLabel="Tags">
+        (1955-1962) Bowden Wyatt
+    </note>
+
+.. code-block:: turtle
+
+    @prefix dce: <http://purl.org/dc/elements/1.1/> .
+
+    <https://example.org/objects/1>
+        dce:subject "(1955 - 1962) Bowden Wyatt" .
+
+
+note - DPN Deposits and Other Things to Ignore
+----------------------------------------------
+
+Use Case
+^^^^^^^^
+
+We have several notes that we do not need to migrate.
+
+Justification
+^^^^^^^^^^^^^
+
+The data here is no longer important.
+
+Xpath
+^^^^^
+
+`mods:note[@displayLabel="DPN"]` OR `mods:note[text()=""]` OR `mods:note[@displayLabel="Intermediate provider"]` OR
+`mods:note[@displayLabel="Intermediate Provider"]`
+
+Decision
+^^^^^^^^
+
+`Example record from heilman:1000 <https://digital.lib.utk.edu/collections/islandora/object/heilman:1000/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <note displayLabel="dpn">
+        This object was added to the Digital Preservation Network in November 2016.
+    </note>
+
+**Do not migrate!**
+
+
+notes - Undecided
+-----------------
+
+xpath
+^^^^^
+
+* `mods:note[@displayLabel="use and reproduction"]`
+* `mods:note[@displayLabel="Transcribed from Original Collection"]`
+* `mods:note[@displayLabel="Project Part"]`
+* `mods:note[@displayLabel="Local Rights"]`
+* `mods:note[@displayLabel="Attribution"]`
+
 
 subject
 =======

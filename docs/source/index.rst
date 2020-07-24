@@ -14,7 +14,7 @@ Contents
 This section contains materials for our final report.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
 
    contents/*
