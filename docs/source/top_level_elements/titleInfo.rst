@@ -23,7 +23,7 @@ https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:title "Knoxville -- 1917. Sheet 56" .
+    <https://example.org/objects/1> dcterms:title "Knoxville -- 1917, Sheet 56" .
 
 |
 
@@ -90,7 +90,7 @@ https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastre
     @prefix dcterms: <http://purl.org/dc/terms/>
 
     <https://example.org/objects/1> dcterms:title "Souvenir of Great Smoky Mountains National Park"  ;
-        dcterms:alternative "Souvenir of Great Smoky Mountains National Park. Postcard 1" .
+        dcterms:alternative "Souvenir of Great Smoky Mountains National Park, Postcard 1" .
 
 |
 
@@ -112,7 +112,7 @@ https://digital.lib.utk.edu/collections/islandora/object/womenbball:653/datastre
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:title "Tennessee Lady Volunteers basketball media guide, 1984-1985"  ;
+    <https://example.org/objects/1> dcterms:title "[Tennessee Lady Volunteers basketball media guide, 1984-1985]"  ;
         dcterms:alternative "Tennessee Lady Vols 1984-85: reaching for the Summitt of women's basketball" .
 
 
@@ -154,15 +154,24 @@ https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MO
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/>
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/>
-    @prefix skos: <http://www.w3.org/2004/02/skos/core#>
 
-    <https://example.org/objects/1> dcterms:title <https://example.org/titles/1> ;
-        dcterms:title  <https://example.org/titles/2> .
+    <https://example.org/objects/1> dcterms:title "[Norris Dam]" ;
+            dcterms:alternative "Norris Dam (Envelope 246) (12 of 12)" .
 
-    <https://example.org/titles/1>
-        rdfs:label "Norris Dam (Envelope 246) (12 of 12)" .
+https://digital.lib.utk.edu/collections/islandora/object/knoxgardens%3A139/datastream/MODS/view
 
-    <https://example.org/titles/1>
-        rdfs:label "Norris Dam" ;
-        skos:note "supplied" .
+.. code-block:: xml
+
+    <titleInfo supplied="yes">
+        <title>View of Mrs. Sanford's pond</title>
+    </titleInfo>
+    <titleInfo>
+        <title>Mrs. A. F. Sanford</title>
+    </titleInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:title "[View of Mrs. Sanford's pond]" ;
+            dcterms:alternative "Mrs. A. F. Sanford" .
