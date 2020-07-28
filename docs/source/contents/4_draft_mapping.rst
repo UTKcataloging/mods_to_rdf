@@ -72,7 +72,7 @@ titleInfo
 | Predicate                         | Value Type     | Range (if needed) | Usage Notes                                                             |
 +===================================+================+===================+=========================================================================+
 | dcterms:title                     | Literal        |                   | A name given to the resource. If multiple titleInfo elements are        |
-|                                   |                |                   | present, supplied title is assumed to be real title. Using of []        |
+|                                   |                |                   | present, supplied title is assumed to the title. Using of []            |
 |                                   |                |                   | to note supplied has not been determined.                               |
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
 | dcterms:alternative               | Literal        |                   | An alternative name for the resource.                                   |
@@ -88,15 +88,16 @@ An object with a single titleInfo element.
 
 Justification
 ^^^^^^^^^^^^^
-tbd
+No dispute on what the title is.
 
 Xpath
 ^^^^^
 
-`mods:titleInfo`
+`mods:titleInfo/mods:title`
 
 Decision
 ^^^^^^^^
+The string `mods:titleInfo/mods:title` can easily translate to the dcterms:title
 
 `Example record from acwiley:280 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A280/datastream/MODS>`_
 
@@ -108,9 +109,48 @@ Decision
 
 .. code-block:: turtle
 
-     @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "Pencil drawn portrait study of woman"  .
+
+titleInfo - single titleInfo element having a supplied attribute of yes
+-----------------------------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+A single titleInfo element having an attribute of supplied="yes".
+
+Justification
+^^^^^^^^^^^^^
+
+Samvera uses brackets to wrap title strings in direct mapping examples. According to the `Aggregation Overview document <https://www.njstatelib.org/wp-content/uploads/2017/01/DPLA-Aggregation-Overview.pdf>`_
+provided by DPLA, they recommend we "not have brackets or ending periods."
+
+
+Xpath
+^^^^^
+
+`mods:titleInfo[@supplied="yes"]/mods:title`
+
+Decision
+^^^^^^^^
+
+In these cases a supplied="yes" may also be present for one titleInfo element. Supplied titles would be used as dcterms:title. Triples will not indicate supplied titles using brackets.
+
+`Example record from roth:5342 <https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/>`_
+
+.. code-block:: xml
+
+    <titleInfo supplied="yes">
+        <title>Coprinus notebook 1</title>
+    </titleInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:title "Coprinus notebook 1" .
 
 titleInfo - Multiple titleInfo elements with one having a supplied attribute of yes
 -----------------------------------------------------------------------------------
@@ -122,35 +162,38 @@ An object with a multiple titleInfo elements and one having a attribute of suppl
 
 Justification
 ^^^^^^^^^^^^^
-tbd
+
+For consistency within collections, the best title to display for users is the supplied title.
+
+See **single titleInfo element having a supplied attribute of yes** for justification regarding use of supplied in the transcribed turtle.
 
 Xpath
 ^^^^^
 
-`mods:titleInfo[supplied="yes"]`
+`mods:titleInfo[@supplied="yes"]/mods:title` AND `mods:titleInfo/mods:title`
 
 Decision
 ^^^^^^^^
-In these cases a supplied="yes" may also be present. Decision to use "[...]" to wrap string is forthcoming.
 
-`Example record from roth:5342 <https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/>`_
+In cases where supplied="yes" are present for one titleInfo element the titleInfo/title element will be used as dcterms:title.
+
+`Example record from swim:162 <https://digital.lib.utk.edu/collections/islandora/object/swim:162/datastream/MODS/>`_
 
 .. code-block:: xml
 
     <titleInfo>
-        <title>Norris Dam (Envelope 246) (12 of 12)</title>
+        <title>Swimming 1969: The University of Tennessee </title>
     </titleInfo>
-    [...]
     <titleInfo supplied="yes">
-        <title>Norris Dam</title>
+        <title>University of Tennessee Swimming-Diving media guide, 1969</title>
     </titleInfo>
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:title "[Norris Dam]" ;
-            dcterms:alternative "Norris Dam (Envelope 246) (12 of 12)" .
+    <https://example.org/objects/1> dcterms:title "University of Tennessee Swimming-Diving media guide, 1969" ;
+        dcterms:alternative "Swimming 1969: The University of Tennessee " .
 
 
 titleInfo - titleInfo has partName sub-element
@@ -163,12 +206,14 @@ An object with a single titleInfo element and sub-element of partName.
 
 Justification
 ^^^^^^^^^^^^^
-tbd
+
+Consistent with previous UT description practices, we use commas rather periods to indicate
+enumeration of an object within a string.
 
 Xpath
 ^^^^^
 
-`mods:titleInfo` AND `mods:titleInfo/mods:partName`
+`mods:titleInfo/mods:title` AND `mods:titleInfo/mods:partName`
 
 Decision
 ^^^^^^^^
@@ -186,7 +231,7 @@ character will be used as glue when concatenating the strings.
 
 .. code-block:: turtle
 
-     @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "Knoxville -- 1917, Sheet 56" .
 
@@ -202,7 +247,7 @@ An object with a single titleInfo element and sub-element of nonSort.
 
 Justification
 ^^^^^^^^^^^^^
-tbd
+We desire clean strings and will not retain nonSorts moving forward.
 
 Xpath
 ^^^^^
@@ -278,7 +323,8 @@ An object with a two titleInfo elements and one having an attribute of displayLa
 
 Justification
 ^^^^^^^^^^^^^
-tbd
+
+For cleanliness and consistency displayLabels won't be used to describe titles.
 
 Xpath
 ^^^^^
@@ -287,6 +333,8 @@ Xpath
 
 Decision
 ^^^^^^^^
+
+We will not retain data regarding displayLabel attributes moving forward.
 
 `Example record from womenbball:653 <https://digital.lib.utk.edu/collections/islandora/object/womenbball:653/datastream/MODS/>`_
 
