@@ -223,14 +223,3 @@ Some records have a note with a "instrumentation" type, `vanvactor:15773 <https:
         For soprano, mezzo-soprano, contralto, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons, 2 horns, 2 trumpets, timpani,
         2 violins, viola, cello, and double bass.
     </note>
-
-@type="provenance"
-------------------
-
-Some records have a note with a "provenance" type, `scopes:470 <https://digital.lib.utk.edu/collections/islandora/object/scopes:470/datastream/MODS>`_:
-
-.. code-block:: xml
-
-    <note type="provenance">
-        One of multiple documents from a single source in Texas.
-    </note>
