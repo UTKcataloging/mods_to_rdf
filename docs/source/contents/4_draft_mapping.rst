@@ -83,6 +83,54 @@ originInfo
 physicalDescription
 ===================
 
+extent
+------
+
+Use Case
+^^^^^^^^
+
+Justification
+^^^^^^^^^^^^^
+
+Xpath
+^^^^^
+
+Decision
+^^^^^^^^
+
+
+
+
+internetMediaType
+-----------------
+
+Use Case
+^^^^^^^^
+A total of 14,725 records have an <internetMediaType> while this element is not present in 36,602 records. It is used to indicate
+the MIME type of the access file for the digitized resource.
+
+Justification
+^^^^^^^^^^^^^
+We do not need to migrate this information from the descriptive metadata as it will be captured automatically during
+file characterization in the new system. We also do not want to move the current values over from the existing metadata
+because they often share inaccurate information. Finally, this element is currently present in only
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:internetMediaType
+
+Decision
+^^^^^^^^
+
+Do not migrate.
+
+`Example record - voloh:10 <https://digital.lib.utk.edu/collections/islandora/object/voloh%3A10/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <internetMediaType>audio/wav</internetMediaType>
+
 note
 ====
 
@@ -129,12 +177,13 @@ regular notes.
 Xpath
 ^^^^^
 
-`mods:note` OR `mods:note[@type="handwritten"]` OR `mods:note[@type="provenance"]`
+`mods:note` OR `mods:note[@type="handwritten"]` OR `mods:note[@type="provenance"]` OR `mods:note[@displayLabel="Attribution"]`
+OR `mods:note[@displayLabel="use and reproduction"]` OR `mods:note[@displayLabel="Local Rights"]`
 
 Decision
 ^^^^^^^^
 
-`Example record from bakerav:291 <https://digital.lib.utk.edu/collections/islandora/object/bakerav:291/datastream/MODS>`_
+`Example record - bakerav:291 <https://digital.lib.utk.edu/collections/islandora/object/bakerav:291/datastream/MODS>`_
 
 .. code-block:: xml
 
@@ -330,7 +379,8 @@ Xpath
 ^^^^^
 
 `mods:note[@displayLabel="DPN"]` OR `mods:note[text()=""]` OR `mods:note[@displayLabel="Intermediate provider"]` OR
-`mods:note[@displayLabel="Intermediate Provider"]`
+`mods:note[@displayLabel="Intermediate Provider"]` OR `mods:note[@displayLabel="Transcribed from Original Collection"]`
+OR `mods:note[@displayLabel="Project Part"]`
 
 Decision
 ^^^^^^^^
@@ -344,19 +394,6 @@ Decision
     </note>
 
 **Do not migrate!**
-
-
-notes - Undecided
------------------
-
-xpath
-^^^^^
-
-* `mods:note[@displayLabel="use and reproduction"]`
-* `mods:note[@displayLabel="Transcribed from Original Collection"]`
-* `mods:note[@displayLabel="Project Part"]`
-* `mods:note[@displayLabel="Local Rights"]`
-* `mods:note[@displayLabel="Attribution"]`
 
 
 subject
@@ -389,21 +426,25 @@ accessCondition
 accessCondition - Rights Statements and Creative Commons Licenses
 -----------------------------------------------------------------
 
-**Use case**
+Use Case
+^^^^^^^^
 
 When one of the twelve standardized rights statements from `https://righsstatements.org <https://righsstatements.org>`_
 or one of the CC licenses is present, the value should be mapped to edm:rights and have a value type of URI.
 
-**Justification**
+Justification
+^^^^^^^^^^^^^
 
 DPLA maps both CC licenses and Rights Statements to edm:rights. So does Samvera. Presently only the heilman collection includes
 a CC license
 
-**Xpath**
+Xpath
+^^^^^
 
 mods:accessCondition[@xlink:href]
 
-**Decision**
+Decision
+^^^^^^^^
 
 `Example record for Rights Statements <https://digital.lib.utk.edu/collections/islandora/object/knoxgardens%3A115/datastream/MODS>`_
 
@@ -441,7 +482,8 @@ mods:accessCondition[@xlink:href]
 accessCondition - Restrictions on Access
 ----------------------------------------
 
-**Use case**
+Use case
+^^^^^^^^
 
 The Howard Baker Audiovisual Collection includes 46 items that are "In Copyright" and therefore have restricted access to
 avoid any potential copyright conflicts. Only on campus access is provided to the actual recordings, though the metadata
@@ -451,17 +493,20 @@ digitized as a preservation measure. Having digitized copies also made providing
 sure that users are aware of the on campus only restriction, a note needed to be added to the metadata. When off campus
 users visit the metadata, this note makes it clear why they cannot access the recording.
 
-**Justification**
+Justification
+^^^^^^^^^^^^^
 
 As the value present in the current accessCondition node is not associated with a controlled vocabulary and simply needs to
 be displayed to the user within the record, there is no reason to connect it with other accessCondition values. A note is
 sufficient for this use case.
 
-**Xpath**
+Xpath
+^^^^^
 
 mods:accessCondition[@type="restriction on access"]
 
-**Decision**
+Decision
+^^^^^^^^
 
 `Example record - bakerav:10 <https://digital.lib.utk.edu/collections/islandora/object/bakerav%3A10/datastream/MODS/view>`_
 
