@@ -284,7 +284,7 @@ An object with a two titleInfo elements and one having an attribute of type="alt
 
 Justification
 ^^^^^^^^^^^^^
-tbd
+Keeping direct mapping simple.
 
 Xpath
 ^^^^^
@@ -293,6 +293,8 @@ Xpath
 
 Decision
 ^^^^^^^^
+
+titleInfo elements with @type="alternative" will defined as dcterms:alternative
 
 `Example record from pcard00:100233 <https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastream/MODS/>`_
 
