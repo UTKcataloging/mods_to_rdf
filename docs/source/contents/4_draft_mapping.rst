@@ -83,6 +83,42 @@ originInfo
 physicalDescription
 ===================
 
+digitalOrigin
+-------------
+
+Use Case
+^^^^^^^^
+
+Currently there are 28,137 records that have a digitalOrigin value. This value is absent from 23,190 records. While present
+in the MODS record, these values (we have "born digital", "digitized other analog", and "reformatted digital" in our collections)
+are not publicly displayed anywhere. These values communicate the "method by which a resource achieved digital form."
+
+Justification
+^^^^^^^^^^^^^
+
+We have decided for a number of reasons that migrating our digitalOrigin values does is not beneficial. As mentioned above,
+these values are not currently viewable by users. Arguably, these values will also already be apparent from the technical
+metadata and do not need to be captured in the descriptive metadata. In addition, we are unaware of any backend technical
+use case for this data at present. While knowing if something is "born digital" might be useful, all of the content within
+Digital Collections is curated and meets our technical expectations. A "born digital" label would be more actionable for
+resources gathered outside of the Digital Collections creation process. These born digital resources from "the wild" would
+likely not be on the same platform as Digital Collections resources.
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:digitalOrigin
+
+Decision
+^^^^^^^^
+
+We have decided to not migrate these values as is justified above. Here's an `example record - voloh:10 <https://digital.lib.utk.edu/collections/islandora/object/voloh%3A10/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <digitalOrigin>born digital</digitalOrigin>
+
+
 extent
 ------
 
@@ -98,7 +134,89 @@ Xpath
 Decision
 ^^^^^^^^
 
+form - No URI
+-------------
 
+Use Case
+^^^^^^^^
+
+At the time of analysis, there were 10,853 records that contained a form term without an associated valueURI attribute.
+Through individually assessing the values, it was determined that all of these values do indeed come from the Art and
+Architecture Thesaurus (AAT), but without additional remediation the relationship of these values to the controlled
+vocabulary is not actionable. In the coming months, work will be done to add the appropriate valueURIs to these records,
+but we want to make sure that this work is not a blocker to migration. In order to leverage the capabilities of Linked
+Data, we plan to remediate as many of these records as possible while choosing a mapping that allows flexibility in the
+value type. Anything values that are not remediated to include URIs before migration can be addressed via SPARQL queries
+afterwards.
+
+Justification
+^^^^^^^^^^^^^
+
+Form values are important access points that provide more specific information than is provided in higher-level elements
+like <typeOfResource>. While these form values do not currently contain valueURI attributes, the strings themselves
+are controlled terms that are clean and consistent so we want to bring them over.
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:form
+
+Decision
+^^^^^^^^
+
+We will use edm:hasType instead of dcterms:format in order to accommodate form values without a URI. We need to move all
+of the form values over, so using edm:hasType will make sure that we bring every form term regardless of whether it is
+defined as a URI or a literal.
+
+Here's an `example record - gamble:1 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A1/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+<form>cartoons (humorous images)</form>
+
+.. code-block:: turtle
+
+prefix edm: <http://www.europeana.eu/schemas/edm/>
+
+<https://example.org/objects/1>
+        edm:hasType "cartoons (humorous images)" .
+
+form - Has URI
+--------------
+
+Use Case
+^^^^^^^^
+
+The majority of UTK's form values include a valueURI from the Art and Architecture Thesaurus (AAT). These values provide
+important access to users by providing physical information about the original resource. Form values are not currently
+displayed in DPLA's interface, but `DPLA's MAP 5 <https://drive.google.com/file/d/1fJEWhnYy5Ch7_ef_-V48-FAViA72OieG/view>`_
+lists preferred from subtype values that will eventually be implemented. Work has been done to align as many of our form
+terms as possible with this preferred list.
+
+Justification
+^^^^^^^^^^^^^
+
+Form values are important access points that provide more specific information than is provided in higher-level elements
+like <typeOfResource>
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:form[@valueURI]
+
+Decision
+^^^^^^^^
+
+.. code-block:: xml
+
+<form authority="http://vocab.getty.edu/aat/300046300">photographs</form>
+
+.. code-block:: turtle
+
+prefix edm: <http://www.europeana.eu/schemas/edm/>
+
+<https://example.org/objects/1>
+        edm:hasType <http://vocab.getty.edu/aat/300046300>
 
 
 internetMediaType
