@@ -207,16 +207,18 @@ mods:physicalDescription/mods:form[@valueURI]
 Decision
 ^^^^^^^^
 
+Here's an `example record - ruskin:108 <https://digital.lib.utk.edu/collections/islandora/object/ruskin%3A108/datastream/MODS/view>`_
+
 .. code-block:: xml
 
-<form authority="http://vocab.getty.edu/aat/300046300">photographs</form>
+    <form authority="http://vocab.getty.edu/aat/300046300">photographs</form>
 
 .. code-block:: turtle
 
 prefix edm: <http://www.europeana.eu/schemas/edm/>
 
-<https://example.org/objects/1>
-        edm:hasType <http://vocab.getty.edu/aat/300046300>
+    <https://example.org/objects/1>
+        edm:hasType <http://vocab.getty.edu/aat/300046300> .
 
 
 internetMediaType
