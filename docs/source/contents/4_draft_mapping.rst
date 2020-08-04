@@ -83,6 +83,174 @@ originInfo
 physicalDescription
 ===================
 
+digitalOrigin
+-------------
+
+Use Case
+^^^^^^^^
+
+Currently there are 28,137 records that have a digitalOrigin value. This value is absent from 23,190 records. While present
+in the MODS record, these values (we have "born digital", "digitized other analog", and "reformatted digital" in our collections)
+are not publicly displayed anywhere. These values communicate the "method by which a resource achieved digital form."
+
+Justification
+^^^^^^^^^^^^^
+
+We have decided for a number of reasons that migrating our digitalOrigin values does is not beneficial. As mentioned above,
+these values are not currently viewable by users. Arguably, these values will also already be apparent from the technical
+metadata and do not need to be captured in the descriptive metadata. In addition, we are unaware of any backend technical
+use case for this data at present. While knowing if something is "born digital" might be useful, all of the content within
+Digital Collections is curated and meets our technical expectations. A "born digital" label would be more actionable for
+resources gathered outside of the Digital Collections creation process. These born digital resources from "the wild" would
+likely not be on the same platform as Digital Collections resources.
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:digitalOrigin
+
+Decision
+^^^^^^^^
+
+We have decided to not migrate these values as is justified above. Here's an `example record - voloh:10 <https://digital.lib.utk.edu/collections/islandora/object/voloh%3A10/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <digitalOrigin>born digital</digitalOrigin>
+
+
+extent
+------
+
+Use Case
+^^^^^^^^
+
+Justification
+^^^^^^^^^^^^^
+
+Xpath
+^^^^^
+
+Decision
+^^^^^^^^
+
+form - No URI
+-------------
+
+Use Case
+^^^^^^^^
+
+At the time of analysis, there were 10,853 records that contained a form term without an associated valueURI attribute.
+Through individually assessing the values, it was determined that all of these values do indeed come from the Art and
+Architecture Thesaurus (AAT), but without additional remediation the relationship of these values to the controlled
+vocabulary is not actionable. In the coming months, work will be done to add the appropriate valueURIs to these records,
+but we want to make sure that this work is not a blocker to migration. In order to leverage the capabilities of Linked
+Data, we plan to remediate as many of these records as possible while choosing a mapping that allows flexibility in the
+value type. Anything values that are not remediated to include URIs before migration can be addressed via SPARQL queries
+afterwards.
+
+Justification
+^^^^^^^^^^^^^
+
+Form values are important access points that provide more specific information than is provided in higher-level elements
+like <typeOfResource>. While these form values do not currently contain valueURI attributes, the strings themselves
+are controlled terms that are clean and consistent so we want to bring them over.
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:form
+
+Decision
+^^^^^^^^
+
+We will use edm:hasType instead of dcterms:format in order to accommodate form values without a URI. We need to move all
+of the form values over, so using edm:hasType will make sure that we bring every form term regardless of whether it is
+defined as a URI or a literal.
+
+Here's an `example record - gamble:1 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A1/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+<form>cartoons (humorous images)</form>
+
+.. code-block:: turtle
+
+prefix edm: <http://www.europeana.eu/schemas/edm/>
+
+<https://example.org/objects/1>
+        edm:hasType "cartoons (humorous images)" .
+
+form - Has URI
+--------------
+
+Use Case
+^^^^^^^^
+
+The majority of UTK's form values include a valueURI from the Art and Architecture Thesaurus (AAT). These values provide
+important access to users by providing physical information about the original resource. Form values are not currently
+displayed in DPLA's interface, but `DPLA's MAP 5 <https://drive.google.com/file/d/1fJEWhnYy5Ch7_ef_-V48-FAViA72OieG/view>`_
+lists preferred from subtype values that will eventually be implemented. Work has been done to align as many of our form
+terms as possible with this preferred list.
+
+Justification
+^^^^^^^^^^^^^
+
+Form values are important access points that provide more specific information than is provided in higher-level elements
+like <typeOfResource>
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:form[@valueURI]
+
+Decision
+^^^^^^^^
+
+Here's an `example record - ruskin:108 <https://digital.lib.utk.edu/collections/islandora/object/ruskin%3A108/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <form authority="http://vocab.getty.edu/aat/300046300">photographs</form>
+
+.. code-block:: turtle
+
+prefix edm: <http://www.europeana.eu/schemas/edm/>
+
+    <https://example.org/objects/1>
+        edm:hasType <http://vocab.getty.edu/aat/300046300> .
+
+
+internetMediaType
+-----------------
+
+Use Case
+^^^^^^^^
+A total of 14,725 records have an <internetMediaType> while this element is not present in 36,602 records. It is used to indicate
+the MIME type of the access file for the digitized resource.
+
+Justification
+^^^^^^^^^^^^^
+We do not need to migrate this information from the descriptive metadata as it will be captured automatically during
+file characterization in the new system. We also do not want to move the current values over from the existing metadata
+because they often share inaccurate information. Finally, this element is currently present in only
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:internetMediaType
+
+Decision
+^^^^^^^^
+
+Do not migrate.
+
+`Example record - voloh:10 <https://digital.lib.utk.edu/collections/islandora/object/voloh%3A10/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <internetMediaType>audio/wav</internetMediaType>
+
 note
 ====
 
@@ -129,12 +297,13 @@ regular notes.
 Xpath
 ^^^^^
 
-`mods:note` OR `mods:note[@type="handwritten"]` OR `mods:note[@type="provenance"]`
+`mods:note` OR `mods:note[@type="handwritten"]` OR `mods:note[@type="provenance"]` OR `mods:note[@displayLabel="Attribution"]`
+OR `mods:note[@displayLabel="use and reproduction"]` OR `mods:note[@displayLabel="Local Rights"]`
 
 Decision
 ^^^^^^^^
 
-`Example record from bakerav:291 <https://digital.lib.utk.edu/collections/islandora/object/bakerav:291/datastream/MODS>`_
+`Example record - bakerav:291 <https://digital.lib.utk.edu/collections/islandora/object/bakerav:291/datastream/MODS>`_
 
 .. code-block:: xml
 
@@ -330,7 +499,8 @@ Xpath
 ^^^^^
 
 `mods:note[@displayLabel="DPN"]` OR `mods:note[text()=""]` OR `mods:note[@displayLabel="Intermediate provider"]` OR
-`mods:note[@displayLabel="Intermediate Provider"]`
+`mods:note[@displayLabel="Intermediate Provider"]` OR `mods:note[@displayLabel="Transcribed from Original Collection"]`
+OR `mods:note[@displayLabel="Project Part"]`
 
 Decision
 ^^^^^^^^
@@ -344,19 +514,6 @@ Decision
     </note>
 
 **Do not migrate!**
-
-
-notes - Undecided
------------------
-
-xpath
-^^^^^
-
-* `mods:note[@displayLabel="use and reproduction"]`
-* `mods:note[@displayLabel="Transcribed from Original Collection"]`
-* `mods:note[@displayLabel="Project Part"]`
-* `mods:note[@displayLabel="Local Rights"]`
-* `mods:note[@displayLabel="Attribution"]`
 
 
 subject
@@ -389,21 +546,25 @@ accessCondition
 accessCondition - Rights Statements and Creative Commons Licenses
 -----------------------------------------------------------------
 
-**Use case**
+Use Case
+^^^^^^^^
 
 When one of the twelve standardized rights statements from `https://righsstatements.org <https://righsstatements.org>`_
 or one of the CC licenses is present, the value should be mapped to edm:rights and have a value type of URI.
 
-**Justification**
+Justification
+^^^^^^^^^^^^^
 
 DPLA maps both CC licenses and Rights Statements to edm:rights. So does Samvera. Presently only the heilman collection includes
 a CC license
 
-**Xpath**
+Xpath
+^^^^^
 
 mods:accessCondition[@xlink:href]
 
-**Decision**
+Decision
+^^^^^^^^
 
 `Example record for Rights Statements <https://digital.lib.utk.edu/collections/islandora/object/knoxgardens%3A115/datastream/MODS>`_
 
@@ -441,7 +602,8 @@ mods:accessCondition[@xlink:href]
 accessCondition - Restrictions on Access
 ----------------------------------------
 
-**Use case**
+Use case
+^^^^^^^^
 
 The Howard Baker Audiovisual Collection includes 46 items that are "In Copyright" and therefore have restricted access to
 avoid any potential copyright conflicts. Only on campus access is provided to the actual recordings, though the metadata
@@ -451,17 +613,20 @@ digitized as a preservation measure. Having digitized copies also made providing
 sure that users are aware of the on campus only restriction, a note needed to be added to the metadata. When off campus
 users visit the metadata, this note makes it clear why they cannot access the recording.
 
-**Justification**
+Justification
+^^^^^^^^^^^^^
 
 As the value present in the current accessCondition node is not associated with a controlled vocabulary and simply needs to
 be displayed to the user within the record, there is no reason to connect it with other accessCondition values. A note is
 sufficient for this use case.
 
-**Xpath**
+Xpath
+^^^^^
 
 mods:accessCondition[@type="restriction on access"]
 
-**Decision**
+Decision
+^^^^^^^^
 
 `Example record - bakerav:10 <https://digital.lib.utk.edu/collections/islandora/object/bakerav%3A10/datastream/MODS/view>`_
 
