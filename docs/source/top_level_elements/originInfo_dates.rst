@@ -152,6 +152,61 @@ dateIssued
 dateIssued[@encoding][@keyDate][@point][@qualifier]
 ---------------------------------------------------
 
+.. code-block:: xml
+
+    <originInfo>
+        <dateIssued>1934</dateIssued>
+        <dateIssued encoding="edtf" keyDate="yes">1934</dateIssued>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:issued "1934" .
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateIssued>1989</dateIssued>
+        <dateIssued encoding="edtf">1989-23</dateIssued>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:issued "1989-23" . # display as 'Spring, 1989'
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateIssued qualifier="approximate">1954</dateIssued>
+        <dateIssued encoding="edtf" keyDate="yes" qualifier="approximate">1954</dateIssued>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:issued "1954~" .
+
+An example of multiple date elements, `volvoices:2993 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2993>`:_
+
+.. code-block:: xml
+
+    <originInfo>
+      <dateCreated>1948-01</dateCreated>
+      <dateCreated encoding="edtf" keyDate="yes">1948-01</dateCreated>
+      <dateIssued encoding="edtf" keyDate="yes" qualifier="approximate">1948</dateIssued>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1948-01" ;
+        dcterms:issued "1948~" .
 
 dateOther
 ---------
