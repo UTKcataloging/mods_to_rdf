@@ -27,6 +27,11 @@ dateCreated[@encoding][@keyDate][@point]
       <dateCreated encoding="edtf" keyDate="yes" point="end">1913</dateCreated>
     </originInfo>
 
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1870/1913" .
 
 
 dateCreated[@encoding][@keyDate][@point][@qualifier]
@@ -39,6 +44,12 @@ dateCreated[@encoding][@keyDate][@point][@qualifier]
       <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="approximate">1900</dateCreated>
       <dateCreated encoding="edtf" keyDate="yes" point="end">1940</dateCreated>
     </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1900~/1940" .
 
 
 Attributes on dateCreated
@@ -57,6 +68,12 @@ dateCreated[@encoding] has two distinct values: "edtf" and "w3cdtf". "w3cdtf" ap
     <originInfo>
         <dateCreated encoding="w3cdtf" keyDate="yes" point="start">1941</dateCreated>
     </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1910/" .
 
 
 dateCreated[@keyDate]
@@ -86,6 +103,12 @@ The qualifier attribute has three distinct values: "inferred", "approximate", an
         <dateCreated encoding="edtf" keyDate="yes" point="end" qualifier="inferred">1955</dateCreated>
     </originInfo>
 
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1910~/1955~" .
+
 
 dateCreated[@point]
 -------------------
@@ -93,6 +116,7 @@ dateCreated[@point]
 The point attribute has two distinct values: "start" and "end". They are frequently, but not consistently paired; e.g. `volvoices:2152 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2152/datastream/MODS>`_: and `volvoices:3849 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A3849/datastream/MODS>`_:
 
 ..code-block:: xml
+
     <originInfo>
         <dateCreated>1915</dateCreated>
         <dateCreated encoding="edtf" keyDate="yes" point="start">1915</dateCreated>
@@ -102,3 +126,9 @@ The point attribute has two distinct values: "start" and "end". They are frequen
         <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="approximate">1940</dateCreated>
         <dateCreated encoding="edtf" keyDate="yes" point="end">1950</dateCreated>
     </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1870/1913" .
