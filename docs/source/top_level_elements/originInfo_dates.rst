@@ -227,6 +227,8 @@ An example where converting the string value would be necessary: `kintner:56 <ht
 
     <https://example.org/objects/1> dcterms:date "1974-12-10" .
 
+The Archivision collection uses `dateOther` to indicate dates of remodeling or architectural changes.
+
 .. code-block:: xml
 
     <originInfo>
