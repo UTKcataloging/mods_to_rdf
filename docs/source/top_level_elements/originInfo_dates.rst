@@ -143,3 +143,35 @@ The point attribute has two distinct values: "start" and "end". They are frequen
     @prefix dcterms: <http://purl.org/dc/terms/>
 
     <https://example.org/objects/1> dcterms:created "1940~/1950" .
+
+dateIssued
+----------
+
+`dateIssued`'s attributes and possible values follow the examples in `dateCreated` very closely. The primary difference between the two is that `dateIssued` is used in records describing serials.
+
+dateIssued[@encoding][@keyDate][@point][@qualifier]
+---------------------------------------------------
+
+
+dateOther
+---------
+
+
+copyrightDate
+-------------
+
+This value appears once in our MODS, in `calahan:1 <https://digital.lib.utk.edu/collections/islandora/object/calahan%3A1>`_:
+
+..code-block:: xml
+
+    <originInfo>
+        <dateCreated>undated</dateCreated>
+        <copyrightDate>1941</copyrightDate>
+    </originInfo>
+
+..code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "undated" ;
+        dcterms:dateCopyrighted "1941" .
