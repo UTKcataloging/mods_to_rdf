@@ -107,8 +107,13 @@ The qualifier attribute has three distinct values: "inferred", "approximate", an
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:created "1910~/1955~" .
+    <https://example.org/objects/1> dcterms:created "1955~" .
 
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1910~/1955~" .
 
 dateCreated[@point]
 -------------------
@@ -131,4 +136,10 @@ The point attribute has two distinct values: "start" and "end". They are frequen
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:created "1870/1913" .
+    <https://example.org/objects/1> dcterms:created "1915/" .
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1940~/1950" .
