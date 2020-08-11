@@ -120,7 +120,7 @@ dateCreated[@point]
 
 The point attribute has two distinct values: "start" and "end". They are frequently, but not consistently paired; e.g. `volvoices:2152 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2152/datastream/MODS>`_: and `volvoices:3849 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A3849/datastream/MODS>`_:
 
-..code-block:: xml
+.. code-block:: xml
 
     <originInfo>
         <dateCreated>1915</dateCreated>
@@ -162,14 +162,14 @@ copyrightDate
 
 This value appears once in our MODS, in `calahan:1 <https://digital.lib.utk.edu/collections/islandora/object/calahan%3A1>`_:
 
-..code-block:: xml
+.. code-block:: xml
 
     <originInfo>
         <dateCreated>undated</dateCreated>
         <copyrightDate>1941</copyrightDate>
     </originInfo>
 
-..code-block:: turtle
+.. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
