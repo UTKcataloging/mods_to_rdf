@@ -65,6 +65,9 @@ dateCreated[@encoding] has two distinct values: "edtf" and "w3cdtf". "w3cdtf" ap
     <originInfo>
         <dateCreated encoding="edtf" keyDate="yes" point="start">1910</dateCreated>
     </originInfo>
+
+.. code-block:: xml
+
     <originInfo>
         <dateCreated encoding="w3cdtf" keyDate="yes" point="start">1941</dateCreated>
     </originInfo>
@@ -73,7 +76,13 @@ dateCreated[@encoding] has two distinct values: "edtf" and "w3cdtf". "w3cdtf" ap
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:created "1910/" .
+    <https://example.org/objects/1> dcterms:created "1910" .
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1941" .
 
 
 dateCreated[@keyDate]
@@ -97,6 +106,9 @@ The qualifier attribute has three distinct values: "inferred", "approximate", an
         <dateCreated qualifier="inferred">1955</dateCreated>
         <dateCreated encoding="edtf" keyDate="yes">1955</dateCreated>
     </originInfo>
+
+.. code-block:: xml
+
     <originInfo>
         <dateCreated>Undated</dateCreated>
         <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="inferred">1910</dateCreated>
