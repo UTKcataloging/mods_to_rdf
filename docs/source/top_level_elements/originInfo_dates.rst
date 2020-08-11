@@ -211,6 +211,39 @@ An example of multiple date elements, `volvoices:2993 <https://digital.lib.utk.e
 dateOther
 ---------
 
+dateOther is rarely used (it appears in ~2700 records).
+
+An example where converting the string value would be necessary: `kintner:56 <https://digital.lib.utk.edu/collections/islandora/object/kintner%3A56>`_:
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateOther>1974 December 10</dateOther>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:date "1974-12-10" .
+
+.. code-block:: xml
+
+    <originInfo>
+        <publisher>Archivision, Inc.</publisher>
+        <dateCreated>founded 314; rebuilt and remodelled between 440-1885</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes">314</dateCreated>
+        <dateOther encoding="edtf" point="start">440</dateOther>
+        <dateOther encoding="edtf" point="end">1885</dateOther>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "314" ;
+        dcterms:date "440/1885" .
+
 
 copyrightDate
 -------------
