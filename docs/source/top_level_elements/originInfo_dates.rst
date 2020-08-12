@@ -31,7 +31,7 @@ dateCreated[@encoding][@keyDate][@point]
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:created "1870/1913" .
+    <https://example.org/objects/1> dcterms:created "1870-1913", "1870/1913" .
 
 
 dateCreated[@encoding][@keyDate][@point][@qualifier]
@@ -49,7 +49,7 @@ dateCreated[@encoding][@keyDate][@point][@qualifier]
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:created "1900~/1940" .
+    <https://example.org/objects/1> dcterms:created "approximately between 1900 and 1940", "1900~/1940" .
 
 
 Attributes on dateCreated
@@ -66,17 +66,17 @@ dateCreated[@encoding] has two distinct values: "edtf" and "w3cdtf". "w3cdtf" ap
         <dateCreated encoding="edtf" keyDate="yes" point="start">1910</dateCreated>
     </originInfo>
 
-.. code-block:: xml
-
-    <originInfo>
-        <dateCreated encoding="w3cdtf" keyDate="yes" point="start">1941</dateCreated>
-    </originInfo>
-
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
     <https://example.org/objects/1> dcterms:created "1910" .
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateCreated encoding="w3cdtf" keyDate="yes" point="start">1941</dateCreated>
+    </originInfo>
 
 .. code-block:: turtle
 
@@ -107,6 +107,12 @@ The qualifier attribute has three distinct values: "inferred", "approximate", an
         <dateCreated encoding="edtf" keyDate="yes">1955</dateCreated>
     </originInfo>
 
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1955", "1955~" .
+
 .. code-block:: xml
 
     <originInfo>
@@ -119,13 +125,7 @@ The qualifier attribute has three distinct values: "inferred", "approximate", an
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:created "1955~" .
-
-.. code-block:: turtle
-
-    @prefix dcterms: <http://purl.org/dc/terms/>
-
-    <https://example.org/objects/1> dcterms:created "1910~/1955~" .
+    <https://example.org/objects/1> dcterms:created "Undated", "1910~/1955~" .
 
 dateCreated[@point]
 -------------------
@@ -138,6 +138,15 @@ The point attribute has two distinct values: "start" and "end". They are frequen
         <dateCreated>1915</dateCreated>
         <dateCreated encoding="edtf" keyDate="yes" point="start">1915</dateCreated>
     </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/>
+
+    <https://example.org/objects/1> dcterms:created "1915", "1915/" .
+
+.. code-block:: xml
+
     <originInfo>
         <dateCreated>approximately between 1940 and 1950</dateCreated>
         <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="approximate">1940</dateCreated>
@@ -148,13 +157,7 @@ The point attribute has two distinct values: "start" and "end". They are frequen
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:created "1915/" .
-
-.. code-block:: turtle
-
-    @prefix dcterms: <http://purl.org/dc/terms/>
-
-    <https://example.org/objects/1> dcterms:created "1940~/1950" .
+    <https://example.org/objects/1> dcterms:created "approximately between 1940 and 1950", "1940~/1950" .
 
 dateIssued
 ----------
@@ -175,7 +178,7 @@ dateIssued[@encoding][@keyDate][@point][@qualifier]
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:issued "1934" .
+    <https://example.org/objects/1> dcterms:issued "1934", "1934" .
 
 .. code-block:: xml
 
@@ -188,7 +191,7 @@ dateIssued[@encoding][@keyDate][@point][@qualifier]
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:issued "1989-23" . # display as 'Spring, 1989'
+    <https://example.org/objects/1> dcterms:issued "1989", "1989-23" . # display as 'Spring, 1989'
 
 .. code-block:: xml
 
@@ -201,7 +204,7 @@ dateIssued[@encoding][@keyDate][@point][@qualifier]
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:issued "1954~" .
+    <https://example.org/objects/1> dcterms:issued "1954", "1954~" .
 
 An example of multiple date elements, `volvoices:2993 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2993>`:_
 
@@ -217,7 +220,7 @@ An example of multiple date elements, `volvoices:2993 <https://digital.lib.utk.e
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:created "1948-01" ;
+    <https://example.org/objects/1> dcterms:created "1948-01", "1948-01" ;
         dcterms:issued "1948~" .
 
 dateOther
@@ -237,7 +240,7 @@ An example where converting the string value would be necessary: `kintner:56 <ht
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:date "1974-12-10" .
+    <https://example.org/objects/1> dcterms:date "1974-12-10", "1974 December 10" . # keep the original value; possibly preprocess the data to normalized format.
 
 The Archivision collection uses `dateOther` to indicate dates of remodeling or architectural changes.
 
