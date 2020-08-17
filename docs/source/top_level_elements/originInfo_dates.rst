@@ -9,7 +9,7 @@ This section describes all of the different subelements of originInfo in our MOD
 Dates
 -----
 
-We have three different date-related subelements: dateCreated, dateIssued, and dateOther.
+We have four different date-related subelements: dateCreated, dateIssued, dateOther, and copyrightDate.
 
 dateCreated
 -----------
