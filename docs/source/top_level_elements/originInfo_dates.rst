@@ -162,7 +162,7 @@ The point attribute has two distinct values: "start" and "end". They are frequen
 dateIssued
 ----------
 
-`dateIssued`'s attributes and possible values follow the examples in `dateCreated` very closely. The primary difference between the two is that `dateIssued` is used in records describing serials.
+`dateIssued`'s attributes and possible values follow the examples in `dateCreated` very closely. `dateIssued` is broadly used to describe published materials: serials, sheet music, and others.
 
 dateIssued[@encoding][@keyDate][@point][@qualifier]
 ---------------------------------------------------
