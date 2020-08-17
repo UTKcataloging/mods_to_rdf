@@ -41,7 +41,7 @@ An example, `utsmc:13759 <https://digital.lib.utk.edu/collections/islandora/obje
     @prefix dcterms: <http://purl.org/dc/terms/>
 
     <https://example.org/objects/1> relators:pbl "Archivision, Inc." ;
-        dcterms:created "1665/" .
+        dcterms:created "begun 1665", "1665" .
 
 place
 -----
