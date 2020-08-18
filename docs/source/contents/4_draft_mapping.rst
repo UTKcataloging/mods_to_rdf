@@ -65,6 +65,246 @@ Mapping
 identifier
 ==========
 
+Local Identifiers
+-----------------
+
+Use Case
+^^^^^^^^
+
+This is the catch-all category for identifiers that is important to keep but that do not need to be separated into individual
+categories for discovery. UTK's adminDB values as well as a range of different locally created identifiers are present.
+A great deal of the values were initially created by Special Collections in finding aids - for instance identifiers with a
+type attribute of "slide number", "archival number", "cw", and "film number". If an identifier type attribute of "opac" is
+present, this means that the resource also has a full MARC record present in the Alma catalog. The strings values for opac
+identifiers are fourteen to sixteen digits, with the last five digits always being ‘02311.' The PID value is the main
+identifier within the Islandora7 platform and is present in the records of collections that have undergone remediation.
+Collections that were migrated from Omeka to Islandora7 often include identifiers with a type of "spc." These collections
+include the Anna Catherine Wiley Sketches, Images of East Tennessee, and Photographs of the Ruskin Cooperative Association.
+
+Justification
+^^^^^^^^^^^^^
+
+These values are being kept because they may be helpful to users in finding specific materials. For instance, while @type="pid"
+identifiers will no longer be the primary identifiers on UTK's next digital collections platform, they could be used to
+identify cited resources that have broken links. Many of the identifiers associated with Special Collections allow users
+to see how the same resource might be referenced within finding aids. Have @type="opac" identifiers helps staff at UTK
+know immediately whether a resource has a MARC record, which could prove useful if descriptive metadata is needed in this
+form. Overall, little effort needs to be exerted to keep all of these values and they all have the potential to be helpful
+in the future.
+
+Xpath
+^^^^^
+
+mods:identifer[@type="Vendor ID"] OR
+mods:identifier[@type="archival number"] OR
+mods:identifier[@type="catalog"] OR
+mods:identifier[@type="circular"] OR
+mods:identifier[@type="cw"] OR
+mods:identifier[@type="document ID"] OR
+mods:identifier[@type="documentID"] OR
+mods:identifier[@type="filename"] OR
+mods:identifier[@type="film number"] OR
+mods:identifier[@type="legacy"] OR
+mods:identifier[@type="local"] OR
+mods:identifier[@type="original ID"] OR
+mods:identifier[@type="photograph number"] OR
+mods:identifier[@type="slide number"] OR
+mods:identifier[@type=”pid”] OR
+mods:identifier[@type=”opac”] OR
+mods:identifier[@type="spc"]
+
+Decision
+^^^^^^^^
+
+`Example of a record with a PID identifier - egypt:8 <https://digital.lib.utk.edu/collections/islandora/object/egypt:8/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <identifier type="pid">egypt:8</identifier>
+
+.. code-block:: turtle
+
+    prefix opaque: <http://id.loc.gov/vocabulary/identifiers>
+        identifiers:local "egypt:8" .
+
+`Exception that requires pre-pending a string - agrutesc: <https://digital.lib.utk.edu/collections/islandora/object/agrutesc:2130/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <identifier type="circular">79</identifier>
+
+.. code-block:: turtle
+
+    prefix opaque: <http://id.loc.gov/vocabulary/identifiers>
+        identifiers:local "Circular 79" .
+
+Acquisition Identifier
+----------------------
+
+Use Case
+
+^^^^^^^^
+Several of UTK's collections come from institutions outside the library and include identifiers assigned by those
+institutions. The McClung Museum of Natural History and Culture on campus is one of these institutions. In the `Nineteenth
+and Early Twentieth Century Images of Egypt collection <https://digital.lib.utk.edu/collections/islandora/object/collections%3Aegypt>`_ shared by McClung, traditional museum acquisition numbers
+consisting of the year three numbers separated by periods (year.acquisition group.item) are present.
+
+Justification
+^^^^^^^^^^^^^
+
+Both OpaqueNamespace and `CIDOC-CRM <http://www.cidoc-crm.org/>`_ properties were considered for mapping these values.
+Both `opaque:accessionNumber <http://opaquenamespace.org/ns/cco_accessionNumber>`_ and `crm:E8 (Acquisition) <http://www.cidoc-crm.org/cidoc-crm/E8_Acquisition>`_ were defined
+appropriately for UTK's use cases. Because CIDOC-CRM is particularly used in a museum context, we decided to use
+opaque:accessionNumber as it is arguably more flexible. This allows us to use the same property for accession numbers
+from a wide variety of institutions. Both properties supported content negotiation.
+
+Xpath
+^^^^^
+
+mods:identifier[@type="acquisition"]
+
+Decision
+^^^^^^^^
+
+The property opaque:accessionNumber was selected.
+
+`Example record - egypt:10 <https://digital.lib.utk.edu/collections/islandora/object/egypt%3A10/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+<identifier type="acquisition">1996.10.1</identifier>
+
+.. code-block:: turtle
+
+prefix opaque: <http://opaquenamespace.org/ns/>
+
+<https://example.org/objects/1>
+        opaque:accessionNumber "1996.10.1" .
+
+OCLC numbers
+------------
+
+Use Case
+^^^^^^^^
+
+Records from the Tennessee Documentary History collection include OCLC identifiers. These values can be used to identify
+corresponding records in Worldcat.
+
+Justification
+^^^^^^^^^^^^^
+
+OCLC identifiers could be useful if these materials are ever shared with HathiTrust, as this value is a requirement for
+submission. Only one property, dbpedia:oclc, was identified to use and it aligns with our philosophy guidelines.
+
+Xpath
+^^^^^
+
+mods:identifier[@type="oclc"]
+
+Decision
+^^^^^^^^
+
+`Example record - tdh:989 <https://digital.lib.utk.edu/collections/islandora/object/tdh:989/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <identifier type="oclc">44394278</identifier>
+
+.. code-block:: turtle
+
+    prefix dbpedia: <http://dbpedia.org/ontology/>
+
+    <https://example.org/objects/1>
+        dbpedia:oclc "44394278" .
+
+ISSNs
+-----
+
+Use Case
+^^^^^^^^
+Approximately 10% of our records describe periodicals. Effort has been invested in establishing official e-ISSNs for several
+titles through the Library of Congress. These titles include:
+
+1. Agricultural & Home Economics News
+2. Agricultural & Home Economics Packet
+3. Agricultural News
+4. Alumnus
+5. Circular
+6. Farm News
+7. Phoenix
+8. Special Circular
+9. Tennessee Farm and Home News
+10. Tennessee Farm and Home Science
+11. Tennessee Farm News
+12. Torchbearer
+
+* Note: Some resources within the Children's Defense Fund collection have both a ISSN and a ISBN.
+
+More information on assigning an e-ISSN can be found here - https://www.loc.gov/issn/basics/basics-brochure-eserials.html.
+
+As these identifiers have meaning outside of the context of UTK and might be used by patrons
+in a search to find these materials, it is important that we continue to support a unique field for these values. In addition,
+having a persistent link for resources with a particular ISSN is essential to the Libraries' HathiTrust submission
+records. A title-level MARC XML record with a link to all issues with the same ISSN is shared for this purpose.
+
+Justification
+^^^^^^^^^^^^^
+Properties for ISSN values are established in DBpedia and the Standard Identifiers Scheme. Both follow our philosophy
+guidelines and could be used to accurately represent the ISSN values. Ultimately we decided to use DBpedia because it is
+a widely used core ontology whereas the Standard Identifiers Scheme is more library specific.
+
+Xpath
+^^^^^
+mods:identifier[@type="issn"]
+
+Decision
+^^^^^^^^
+`Example record - agrutesc:2130 <https://digital.lib.utk.edu/collections/islandora/object/agrutesc:2130/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <identifier type="issn">2687-7325</identifier>
+
+.. code-block:: turtle
+
+    prefix dbpedia: <http://dbpedia.org/ontology/>
+
+    <https://example.org/objects/1>
+        dbpedia:issn "2687-7325" .
+
+ISBNs
+-----
+
+Use Case
+^^^^^^^^
+International Standard Book Numbers are present as identifier values in the Children's Defense Fund collection. As these
+identifiers have meaning outside of the context of UTK and might be used by patrons in a search to find these materials,
+it is important that we continue to support a unique field for these values.
+
+Justification
+^^^^^^^^^^^^^
+Properties for ISBN values are established in DBpedia and the Standard Identifiers Scheme. Because we give preference to
+core ontologies rather than library specific ones, we selected dbpedia:issn.
+
+Xpath
+^^^^^
+mods:identifier[@type="isbn"]
+
+Decision
+^^^^^^^^
+`Example record - cdf:6909 <https://digital.lib.utk.edu/collections/islandora/object/cdf:6909/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <identifier type="isbn">0938008501</identifier>
+
+.. code-block:: turtle
+
+    prefix dbpedia: <http://dbpedia.org/ontology/>
+
+    <https://example.org/objects/1>
+        dbpedia:issn "0938008501" .
+
 titleInfo
 =========
 
@@ -531,8 +771,24 @@ typeOfResource
 classification
 ==============
 
-relateItem
+relatedItem
 ==========
+
+Hierarchical Sheet Music Identifier
+-----------------------------------
+
+Use Case
+^^^^^^^^
+
+Justification
+^^^^^^^^^^^^^
+
+Xpath
+^^^^^
+mods: relatedItem[@type="otherVersion"]/mods:identifier[@type="catalog"]
+Decision
+^^^^^^^^
+opaque:hostItem
 
 location
 ========
