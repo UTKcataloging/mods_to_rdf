@@ -175,7 +175,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-In cases where supplied="yes" are present for one titleInfo element the titleInfo/title element will be used as dcterms:title.
+In cases where supplied="yes" are present for one titleInfo element the mods:titleInfo[@supplied]/mods:title value will be used as dcterms:title.In cases where supplied="yes" are present for one titleInfo element the mods:titleInfo[@supplied]/mods:title value will be used as dcterms:title.
 
 `Example record from swim:162 <https://digital.lib.utk.edu/collections/islandora/object/swim:162/datastream/MODS/>`_
 
@@ -256,7 +256,7 @@ Xpath
 
 Decision
 ^^^^^^^^
-The string contained nonSort will be prepended to the <title>.
+The string contained within the nonSort element will be prepended to the title value.
 
 `Example record from volvoices:2890 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastream/MODS/>`_
 
@@ -280,7 +280,7 @@ titleInfo - Multiple titleInfo elements with one having a type of alternative
 Use Case
 ^^^^^^^^
 
-An object with a two titleInfo elements and one having an attribute of type="alternative".
+An object with two titleInfo elements and one having an attribute of type="alternative".
 
 Justification
 ^^^^^^^^^^^^^
@@ -315,7 +315,7 @@ titleInfo elements with @type="alternative" will defined as dcterms:alternative
         dcterms:alternative "Prussian heroes: Prussen helden march" .
 
 
-titleInfo - Multiple titleInfo elements with one having a type of alternative
+titleInfo - Multiple titleInfo elements with one having a displayLabel attribute
 -----------------------------------------------------------------------------
 
 Use Case
