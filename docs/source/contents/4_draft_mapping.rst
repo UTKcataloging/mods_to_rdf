@@ -316,7 +316,7 @@ titleInfo elements with @type="alternative" will defined as dcterms:alternative
 
 
 titleInfo - Multiple titleInfo elements with one having a displayLabel attribute
------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 Use Case
 ^^^^^^^^
