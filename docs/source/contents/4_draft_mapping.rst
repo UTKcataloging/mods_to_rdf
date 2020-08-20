@@ -213,10 +213,10 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix rdau: <http://rdaregistry.info/Elements/u/#> .
+    @prefix rdau: <http://rdaregistry.info/Elements/u/> .
 
     <https://example.org/objects/1>
-        http://rdaregistry.info/Elements/u/P60550 "3 1/4 x 5 inches" .
+        rdau:P60550 "3 1/4 x 5 inches" .
 
 extent - @unit
 --------------
