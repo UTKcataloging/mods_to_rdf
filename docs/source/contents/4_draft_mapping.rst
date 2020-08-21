@@ -175,7 +175,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-In cases where supplied="yes" are present for one titleInfo element the mods:titleInfo[@supplied]/mods:title value will be used as dcterms:title.In cases where supplied="yes" are present for one titleInfo element the mods:titleInfo[@supplied]/mods:title value will be used as dcterms:title.
+In cases where supplied="yes" are present for one titleInfo element the mods:titleInfo[@supplied]/mods:title value will be used as dcterms:title.
 
 `Example record from swim:162 <https://digital.lib.utk.edu/collections/islandora/object/swim:162/datastream/MODS/>`_
 
