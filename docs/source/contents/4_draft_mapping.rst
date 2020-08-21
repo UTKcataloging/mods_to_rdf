@@ -250,10 +250,10 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix rdau: <http://rdaregistry.info/Elements/u/#> .
+    @prefix rdau: <http://rdaregistry.info/Elements/u/> .
 
     <https://example.org/objects/1>
-        rdau:extent.en "4 pages" .
+        rdau:P60550 "4 pages" .
 
 form - No URI
 -------------
