@@ -42,8 +42,8 @@ specifically enable a user to agnostically request RDF from a URI and return RDF
 knowledge about a particular vocabulary or technical implementation. In other words, a user or application should not
 have to concatenate a string to the end of a URI in order to get back RDF.
 
-Principle Three: Adhere to rdfs:domain and rdfs:range Properties
-================================================================
+Principle Three: Adhere to "rdfs:domain" and "rdfs:range" Properties
+====================================================================
 
 When choosing RDF properties, the working group recognizes that the property in question may have rules for the subjects
 and objects that relate to it.  These rules are expressed in the property’s properties and can come from a variety of
