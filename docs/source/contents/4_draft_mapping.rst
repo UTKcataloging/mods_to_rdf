@@ -407,21 +407,142 @@ We have decided to not migrate these values as is justified above. Here's an `ex
 
     <digitalOrigin>born digital</digitalOrigin>
 
+note
+----
+
+Use Case
+^^^^^^^^
+Two collections, the Botanical Photography of Alan S. Heilman and the William Derris Film Collection, include <note> elements
+within <physicalDescription>. These values are of two types. The majority of the values communicate camera settings for the
+Heilman collection, while a smaller number of values share the "Film type" that was used to produce the print that was
+digitized. Below is a small sample of these values:
+
+1. Camera setting: 7@50 on 25; with filter
+2. 0.18x magnification, 100 Velvia
+3. Film type: Kodachrome Transparency
+4. zoomA -> 70 [A], Auto f16E100s
+5. Film type: GEMounts
+
+These values are somewhat problematic because they do not describe the digitized resource, but instead provide information about
+the process that created these resources. This is useful information to know, but isn't tied directly to the resource, making
+the inclusion of the values within physicalDescription inaccurate.
+
+Justification
+^^^^^^^^^^^^^
+Since we do not use mods:physicalDescription/mods:note regularly, it would streamline our data if these values could be
+appropriately placed elsewhere. I attempted to match film type values ("GEMounts" and "Kodachrome Transparency") with AAT
+terms, but wasn't able to find anything appropriate for "GEMounts." The accuracy of some of this information is questionable
+(for instance, GEMounts are likely a brand instead of a film type), but without access to the actual materials during the quarantine, it's
+impossible to make an informed judgement on what should be changed. To retain this contextual information that might
+prove useful to researchers interested in photographic processes and techniques, it seems best to simply put these values
+in a generic note field. If additional attention can be given to these two collections in the future, we can remediate
+the metadata following migration with the benefit of having access to the physical materials.
+
+Xpath
+^^^^^
+mods:physicalDescription/mods:note
+
+Decision
+^^^^^^^^
+All values will be moved to a generic note field.
+
+`Example record - derris:879 <https://digital.lib.utk.edu/collections/islandora/object/derris%3A879/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <physicalDescription>
+        <form authority="aat" valueURI="http://vocab.getty.edu/aat/300127478">transparencies</form>
+        <digitalOrigin>digitized other analog</digitalOrigin>
+        <note>Film type: GEMounts</note>
+        <note>Camera setting: 10@50 at 4ft</note>
+    </physicalDescription>
+
+.. code-block:: turtle
+
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+    <https://example.org/objects/1>
+        skos:note "Film type: GEMounts", "Camera setting: 10@50 at 4ft" .
 
 extent
 ------
 
 Use Case
 ^^^^^^^^
+The element includes values that indicate time and physical dimensions. Time is consistently shared in hours, minutes
+and seconds. Physical dimensions are most consistently represented in inches and feet, but cm are also used for smaller
+items that might benefit from a more granular measurement. While this kind of information has historically been included
+in MARC records to ensure that books are not larger than the shelf height, extent values can also provide important
+contextual information that is relevant to better understanding resources in a digital environment. Particularly in the
+case of photography, the dimensions can be used to help determine the type of film.
 
 Justification
 ^^^^^^^^^^^^^
+The working group's shared philosophies were influential in decided on the best property to use for <extent> values. The
+Islandora Metadata Interest Group's default mapping suggests using dcterms:extent and using a blank node with a literal as
+a RDF value. This group is against using blank nodes when at all possible because they make it more difficult for the
+user to consume content. The Samvera mapping uses rdau:extent, which is less than ideal because rdau does not support
+content negotiation. This means that the URI provided for the desired property does not allow a user to directly request
+RDF. No other more suitable properties could be found for <extent> values. Given this predicament, the working group
+decided to use rdau:extent because it is dereferenceable, which a blank node is not. Still, the inability to retrieve
+RDF directly will limit users wishing to interact with our data in this way.
 
 Xpath
 ^^^^^
 
+mods:physicalDescription/mods:extent
+
 Decision
 ^^^^^^^^
+`Example record - knoxgardens:125 <https://digital.lib.utk.edu/collections/islandora/object/knoxgardens%3A125/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <extent>3 1/4 x 5 inches</extent>
+
+.. code-block:: turtle
+
+    @prefix rdau: <http://rdaregistry.info/Elements/u/> .
+
+    <https://example.org/objects/1>
+        rdau:P60550 "3 1/4 x 5 inches" .
+
+extent - @unit
+--------------
+
+Use Case
+^^^^^^^^
+The Great Smoky Mountains Colloquy collection is the only collection that includes the unit attribute on <extent>. The
+collection consists of 34 total records.
+
+Justification
+^^^^^^^^^^^^^
+It is important for the user to know what the unit of measurement is for a value within the <extent> field. It is also
+important for us to share this information consistently. In order to retain the needed information while also conforming
+the metadata from this collection with the rest of our records, we propose that the @unit value is added to the extent
+string during migration. This would involve simply taking the existing value in <extent> and then adding ' pages' to the
+string. Note that all of the resources within the Colloquy collection have more than one page, so the plural form of the
+word will always be accurate. See the Decision section of extent above for more explanation of rdau:extent.en.
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:extent[@unit="pages"]
+
+Decision
+^^^^^^^^
+`Example record - colloquy:202 <https://digital.lib.utk.edu/collections/islandora/object/colloquy%3A202/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <extent unit="pages">4</extent>
+
+.. code-block:: turtle
+
+    @prefix rdau: <http://rdaregistry.info/Elements/u/> .
+
+    <https://example.org/objects/1>
+        rdau:P60550 "4 pages" .
 
 form - No URI
 -------------
@@ -509,6 +630,44 @@ prefix edm: <http://www.europeana.eu/schemas/edm/>
     <https://example.org/objects/1>
         edm:hasType <http://vocab.getty.edu/aat/300046300> .
 
+form - @type="material"
+-----------------------
+
+Use Case
+^^^^^^^^
+The Archivision collection has a special type attribute so that the list of materials used to create specific buildings
+can be faceted. The material types are consistently listed in the same order within the string to make this possible.
+
+Justification
+^^^^^^^^^^^^^
+In order to attempt to streamline this data to better align with UTK's existing records, all existing terms were compared
+with similar terms from the Art and Architecture Thesaurus. The hope was to split the string field on commas and find
+controlled terms for each individual value so that these could simply be presented in mods:physicalDescription/mods:form
+without the need for a unique type attribute. Analysis showed that a number of values included very specific descriptions
+of the material type in parentheses following the broader term. For instance, 'marble (white Carrara and green Prato marble).'
+This specificity made it impossible to use the AAT without losing some of the information present in the original records.
+Treating these values as part of the abstract will ensure that they display prominently, which wouldn't be the case with
+a note value necessarily. To make this read more fluidly, 'Made of ' can be added to the front of the string and an ending
+period added ('.').
+
+Xpath
+^^^^^
+
+mods:physicalDescription/mods:form[@type="material"]
+
+Decision
+^^^^^^^^
+`Example record - archvision:8477 <https://digital.lib.utk.edu/collections/islandora/object/archivision%3A8477/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <form type="material">granite, tile (pink Vermont granite, Spanish tile)</form>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+        <https://example.org/objects/1> dcterms:abstract "Made of granite, tile (pink Vermont granite, Spanish tile)." .
 
 internetMediaType
 -----------------
@@ -742,7 +901,7 @@ note - Uncontrolled keyword or Tag
 Use Case
 ^^^^^^^^
 
-Some of our notes actually refer to unconrtolled keywords or tags.
+Some of our notes actually refer to uncontrolled keywords or tags.
 
 Justification
 ^^^^^^^^^^^^^
