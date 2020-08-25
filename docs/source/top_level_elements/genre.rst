@@ -112,6 +112,19 @@ genre[@authority = 'lcmpt']
     <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026097">Excerpts</genre>
     <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/subjects/sh99001779">Scores</genre>
 
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
+        edm:hasType <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
+        edm:hasType <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
+        edm:hasType <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
+        edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014027156> ;
+        edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026956> ;
+        edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026097> ;
+        edm:hasType <http://id.loc.gov/authorities/subjects/sh99001779> .
+
 genre[@authority = 'lctgm']
 ---------------------------
 
