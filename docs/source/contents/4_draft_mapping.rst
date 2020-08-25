@@ -111,7 +111,7 @@ The string `mods:titleInfo/mods:title` can easily translate to the dcterms:title
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:title "Pencil drawn portrait study of woman"  .
+    <https://example.org/objects/1> dcterms:title "Pencil drawn portrait study of woman" .
 
 titleInfo - single titleInfo element having a supplied attribute of yes
 -----------------------------------------------------------------------
@@ -192,7 +192,8 @@ In cases where supplied="yes" are present for one titleInfo element the mods:tit
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:title "University of Tennessee Swimming-Diving media guide, 1969" ;
+    <https://example.org/objects/1>
+        dcterms:title "University of Tennessee Swimming-Diving media guide, 1969" ;
         dcterms:alternative "Swimming 1969: The University of Tennessee " .
 
 
@@ -269,7 +270,7 @@ The string contained within the nonSort element will be prepended to the title v
 
 .. code-block:: turtle
 
-     @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "The Guard at the Mountain Branch of the National Home for Disabled Volunteer Soldiers" .
 
@@ -311,7 +312,8 @@ titleInfo elements with @type="alternative" will defined as dcterms:alternative
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:title "Prussian heroes march" ;
+    <https://example.org/objects/1>
+        dcterms:title "Prussian heroes march" ;
         dcterms:alternative "Prussian heroes: Prussen helden march" .
 
 
@@ -353,7 +355,8 @@ We will not retain data regarding displayLabel attributes moving forward.
 
     @prefix dcterms: <http://purl.org/dc/terms/>
 
-    <https://example.org/objects/1> dcterms:title "Tennessee Lady Volunteers basketball media guide, 1984-1985"  ;
+    <https://example.org/objects/1>
+        dcterms:title "Tennessee Lady Volunteers basketball media guide, 1984-1985"  ;
         dcterms:alternative "Tennessee Lady Vols 1984-85: reaching for the Summitt of women's basketball" .
 
 
@@ -582,13 +585,13 @@ Here's an `example record - gamble:1 <https://digital.lib.utk.edu/collections/is
 
 .. code-block:: xml
 
-<form>cartoons (humorous images)</form>
+    <form>cartoons (humorous images)</form>
 
 .. code-block:: turtle
 
-prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix edm: <http://www.europeana.eu/schemas/edm/>
 
-<https://example.org/objects/1>
+    <https://example.org/objects/1>
         edm:hasType "cartoons (humorous images)" .
 
 form - Has URI
@@ -625,7 +628,7 @@ Here's an `example record - ruskin:108 <https://digital.lib.utk.edu/collections/
 
 .. code-block:: turtle
 
-prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix edm: <http://www.europeana.eu/schemas/edm/>
 
     <https://example.org/objects/1>
         edm:hasType <http://vocab.getty.edu/aat/300046300> .
