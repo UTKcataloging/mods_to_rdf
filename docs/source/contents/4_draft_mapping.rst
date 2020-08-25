@@ -709,6 +709,7 @@ mods:classification[@authority="lcc"] OR mods:classification
 
 Decision
 --------
+
 `Example record without authority - tenngirl:977 <https://digital.lib.utk.edu/collections/islandora/object/tenngirl:977/datastream/MODS>`_
 
 .. code-block:: xml
