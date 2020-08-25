@@ -6,8 +6,8 @@ About
 
 This section describes our use of the top level element name.
 
-Roles not from Marcrelators
----------------------------
+Keep Roles and Roleterms Simple
+-------------------------------
 
 In rdf, both the Samvera and Islandora communities recommend marcrelators to serve as the rdf property that relate names
 to the digital object record.
