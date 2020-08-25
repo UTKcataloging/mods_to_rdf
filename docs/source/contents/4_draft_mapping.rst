@@ -142,7 +142,6 @@ Acquisition Identifier
 ----------------------
 
 Use Case
-
 ^^^^^^^^
 Several of UTK's collections come from institutions outside the library and include identifiers assigned by those
 institutions. The McClung Museum of Natural History and Culture on campus is one of these institutions. In the `Nineteenth
@@ -772,7 +771,7 @@ classification
 ==============
 
 relatedItem
-==========
+===========
 
 Hierarchical Sheet Music Identifier
 -----------------------------------
@@ -785,9 +784,12 @@ Justification
 
 Xpath
 ^^^^^
+
 mods: relatedItem[@type="otherVersion"]/mods:identifier[@type="catalog"]
+
 Decision
 ^^^^^^^^
+
 opaque:hostItem
 
 location
