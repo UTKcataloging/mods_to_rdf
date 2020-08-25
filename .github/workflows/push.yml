@@ -1,0 +1,16 @@
+name: Test Builds on Push
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Install Sphinx
+        run: sudo apt-get install python3-sphinx
+      - name: Install our application with pipenv
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: install -d
+      - name: Make HTML
+        run: cd docs && make html
