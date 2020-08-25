@@ -47,6 +47,16 @@ genre[@authority = 'lcsh']
 genre[@authority = 'lcgft']
 ---------------------------
 
+.. code-block:: xml
+
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026131">Newsletters</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026131> .
+
 In 124 of the records in the VP Moore collection, with `@authority='lcgft'`, the `@authorityURI = 'http://id.loc.gov/authorities/genreForms'` is used; e.g. `vpmoore:50 <https://digital.lib.utk.edu/collections/islandora/object/vpmoore:50/datastream/MODS/view>`:_
 
 .. code-block:: xml
