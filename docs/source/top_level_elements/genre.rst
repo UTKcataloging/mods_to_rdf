@@ -44,6 +44,31 @@ genre[@authority = 'aat']
 genre[@authority = 'lcsh']
 --------------------------
 
+Used in the Archivision and Charlie Daniel collections; e.g. `cDanielCartoon:455 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:455/datastream/MODS/view>`:_
+
+.. code-block:: xml
+
+    <genre authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85040974">Editorial cartoons</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+
+and `archivision:1754 <>`:_
+
+.. code-block:: xml
+
+    <genre authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85139020">Twentieth century</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+
+
 genre[@authority = 'lcgft']
 ---------------------------
 
