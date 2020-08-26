@@ -1255,7 +1255,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix classSchemes: <http://id.loc.gov/vocabulary/classSchemes> .
+    @prefix classSchemes: <http://id.loc.gov/vocabulary/classSchemes/> .
 
         <https://example.org/objects/1> classSchemes:lcc "S1 .T43" .
 
