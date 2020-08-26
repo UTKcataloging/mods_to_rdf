@@ -723,10 +723,10 @@ Justification
 The working group's shared philosophies were influential in decided on the best property to use for <extent> values. The
 Islandora Metadata Interest Group's default mapping suggests using dcterms:extent and using a blank node with a literal as
 a RDF value. This group is against using blank nodes when at all possible because they make it more difficult for the
-user to consume content. The Samvera mapping uses rdau:extent, which is less than ideal because rdau does not support
+user to consume content. The Samvera mapping uses rdau:P60550, which is less than ideal because rdau does not support
 content negotiation. This means that the URI provided for the desired property does not allow a user to directly request
 RDF. No other more suitable properties could be found for <extent> values. Given this predicament, the working group
-decided to use rdau:extent because it is dereferenceable, which a blank node is not. Still, the inability to retrieve
+decided to use rdau:P60550 because it is dereferenceable, which a blank node is not. Still, the inability to retrieve
 RDF directly will limit users wishing to interact with our data in this way.
 
 Xpath
@@ -764,7 +764,7 @@ important for us to share this information consistently. In order to retain the 
 the metadata from this collection with the rest of our records, we propose that the @unit value is added to the extent
 string during migration. This would involve simply taking the existing value in <extent> and then adding ' pages' to the
 string. Note that all of the resources within the Colloquy collection have more than one page, so the plural form of the
-word will always be accurate. See the Decision section of extent above for more explanation of rdau:extent.en.
+word will always be accurate. See the Decision section of extent above for more explanation of rdau:P60550.
 
 Xpath
 ^^^^^
@@ -1220,6 +1220,85 @@ typeOfResource
 
 classification
 ==============
+
+Use case
+--------
+Some of our resources have already been formally cataloged and have a classification number. When these are available,
+they are included in the MODS metadata. Serials like the Alumnus and many of the Athletics media guides are good examples.
+Some collections, like the University of Tennessee Commencements collection include full shelfLocators in the classification
+field (e.g. LD5297 .U55 2013). These should be edited before migration.
+
+Justification
+-------------
+This information is helpful to include as it provides information about where the physical item is shelved (though this
+is not a complete shelfLocator) and the broad subject the materials relate to.
+
+Xpath
+-----
+
+mods:classification[@authority="lcc"] OR mods:classification
+
+Decision
+--------
+
+`Example record without authority - tenngirl:977 <https://digital.lib.utk.edu/collections/islandora/object/tenngirl:977/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <classification>LD5296 .W6</classification>
+
+`Example record with authority - agrtfhs:2275 <https://digital.lib.utk.edu/collections/islandora/object/agrtfhs:2275/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <classification authority="lcc">S1 .T43</classification>
+
+.. code-block:: turtle
+
+    @prefix classSchemes: <http://id.loc.gov/vocabulary/classSchemes/> .
+
+        <https://example.org/objects/1> classSchemes:lcc "S1 .T43" .
+
+part
+====
+
+Use Case
+--------
+
+The MODS part element is infrequently used to describe a portion of a larger resource. In UTK's metadata, <part> is used
+in two collections - Great Smoky Mountains Colloquy and Sanborn Fire Insurance Map Collection.
+
+Justification
+-------------
+
+Ultimately it was decided that this information is not important to keep because it is already present in the title field
+in both instances. With the Sanborn maps there is a difference between how the part is named - Sheet versus District-Ward,
+but it was not felt strongly that any additional remediation needed to be done.
+
+Xpath
+-----
+
+mods:part
+
+Decision
+--------
+
+Drop all values in mods:part.
+
+`Example record - sanborn:1237 <https://digital.lib.utk.edu/collections/islandora/object/sanborn:1237/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <titleInfo>
+        <title>Knoxville -- 1917</title>
+        <partName>Sheet 99</partName>
+    </titleInfo>
+    <part>
+        <detail>
+                <title>District-Ward 99</title>
+        </detail>
+    </part>
+
 
 relatedItem
 ===========
