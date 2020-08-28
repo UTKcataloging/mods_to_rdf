@@ -18,7 +18,7 @@ https://digital.lib.utk.edu/collections/islandora/object/tatum%3A188/datastream/
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> .
 
@@ -35,7 +35,7 @@ https://digital.lib.utk.edu/collections/islandora/object/ekcd:9/datastream/MODS/
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> .
 
@@ -57,7 +57,7 @@ https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MO
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1>
         dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> ;
@@ -78,7 +78,7 @@ https://digital.lib.utk.edu/collections/islandora/object/egypt:59/datastream/MOD
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1>
         dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> ;
@@ -97,7 +97,7 @@ https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> ;
 
@@ -114,7 +114,7 @@ https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> ;
 
@@ -138,7 +138,7 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:9928/datastre
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> ;
 
@@ -162,7 +162,7 @@ to migrate.
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1>
         dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> ;
