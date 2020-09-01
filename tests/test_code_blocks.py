@@ -1,9 +1,11 @@
 from rdflib import Graph
 import os
+import sys
 
 
 class TurtleTester:
     def __init__(self, filepath: str):
+        self.filename = filepath
         self.lines = self.__walk_file(filepath)
         self.code_blocks = self.__get_code_blocks()
 
@@ -26,7 +28,10 @@ class TurtleTester:
                         or self.lines[code_block_i].startswith("\t")
                         or self.lines[code_block_i].startswith(" ")
                     ):
-                        new_block += self.lines[code_block_i]
+                        if ":caption:" not in self.lines[code_block_i] and ":name:" not in self.lines[code_block_i]:
+                            new_block += self.lines[code_block_i]
+                        if self.lines[code_block_i].strip().startswith("prefix"):
+                            raise Exception(f'SPARQL syntax prefix detected in {self.filename} on line {code_block_i + 1}.')
                         code_block_i += 1
                 except IndexError:
                     pass
@@ -35,12 +40,16 @@ class TurtleTester:
 
     def test_turtle_blocks(self):
         for block in self.code_blocks:
-            Graph().parse(data=block, format="ttl")
+            try:
+                Graph().parse(data=block, format="ttl")
+            except:
+                print(f"Problem in {self.filename} with this block: {block}.\nThe problem is: {sys.exc_info()[0]}\n\n\n")
+                raise
         return
 
 
 if __name__ == "__main__":
-    directories_in_doc_source = ("contents", "top_level_elements", "working_docs")
+    directories_in_doc_source = ("contents", "top_level_elements")
     for directory in directories_in_doc_source:
         for root, dirs, files in os.walk(f'docs/source/{directory}'):
             for name in files:
