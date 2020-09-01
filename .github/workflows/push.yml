@@ -16,5 +16,5 @@ jobs:
         run: cd docs && make html
       - name: Test Turtle Code Blocks in Draft Mapping
         uses: VaultVulp/action-pipenv@v2.0.1
-          with:
-            command: run tests/test_code_blocks.py
+        with:
+          command: run tests/test_code_blocks.py
