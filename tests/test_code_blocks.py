@@ -28,10 +28,20 @@ class TurtleTester:
                         or self.lines[code_block_i].startswith("\t")
                         or self.lines[code_block_i].startswith(" ")
                     ):
-                        if ":caption:" not in self.lines[code_block_i] and ":name:" not in self.lines[code_block_i]:
+                        if (
+                            ":caption:" not in self.lines[code_block_i]
+                            and ":name:" not in self.lines[code_block_i]
+                        ):
                             new_block += self.lines[code_block_i]
-                        if self.lines[code_block_i].strip().lower().startswith("prefix"):
-                            raise Exception(f'SPARQL syntax prefix detected in {self.filename} on line {code_block_i + 1}.')
+                        if (
+                            self.lines[code_block_i]
+                            .strip()
+                            .lower()
+                            .startswith("prefix")
+                        ):
+                            raise Exception(
+                                f"SPARQL syntax prefix detected in {self.filename} on line {code_block_i + 1}."
+                            )
                         code_block_i += 1
                 except IndexError:
                     pass
@@ -43,7 +53,10 @@ class TurtleTester:
             try:
                 Graph().parse(data=block, format="ttl")
             except:
-                print(f"Problem in {self.filename} with this block: {block}.\nThe problem is: {sys.exc_info()[0]}\n\n\n")
+                print(
+                    f"Problem in {self.filename} with this block:\n\n {block}\n"
+                    f"The problem as reported by rdflib is: {sys.exc_info()[0]}\n\n\n"
+                )
                 raise
         return
 
@@ -51,8 +64,8 @@ class TurtleTester:
 if __name__ == "__main__":
     directories_in_doc_source = ("contents", "top_level_elements")
     for directory in directories_in_doc_source:
-        for root, dirs, files in os.walk(f'docs/source/{directory}'):
+        for root, dirs, files in os.walk(f"docs/source/{directory}"):
             for name in files:
-                if name.endswith('.rst'):
-                    x = TurtleTester(f'{root}/{name}')
+                if name.endswith(".rst"):
+                    x = TurtleTester(f"{root}/{name}")
                     x.test_turtle_blocks()
