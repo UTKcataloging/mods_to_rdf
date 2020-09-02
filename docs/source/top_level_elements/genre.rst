@@ -134,8 +134,4 @@ This appears on a few records in Arrowmont and on two collection-level records (
 
     <genre authority="lctgm" valueURI="http://www.loc.gov/pictures/item/tgm009266/">scrapbooks</genre>
 
-.. code-block:: turtle
-
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
-
-    <https://example.org/object/1> edm:hasType <http://id.loc.gov/pictures/item/tgm009266> . # questions about this URI - https://www.loc.gov/pictures/collection/tgm/item/tgm009266/
+We won't be migrating these values.
