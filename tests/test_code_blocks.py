@@ -62,6 +62,7 @@ class TurtleTester:
 
 
 if __name__ == "__main__":
+    print("Testing turtle code blocks.\n")
     directories_in_doc_source = ("contents", "top_level_elements")
     for directory in directories_in_doc_source:
         for root, dirs, files in os.walk(f"docs/source/{directory}"):
@@ -69,4 +70,5 @@ if __name__ == "__main__":
                 if name.endswith(".rst"):
                     x = TurtleTester(f"{root}/{name}")
                     x.test_turtle_blocks()
-    print("All turtle code blocks pass.")
+                    print(f"\tAll turtle code blocks in {x.filename} pass.")
+    print("\nTurtle code blocks in all directories have passed.")
