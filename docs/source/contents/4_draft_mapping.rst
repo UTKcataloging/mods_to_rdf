@@ -124,7 +124,8 @@ Decision
 
 .. code-block:: turtle
 
-    prefix opaque: <http://id.loc.gov/vocabulary/identifiers>
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers> .
+    <https://example.org/objects/1>
         identifiers:local "egypt:8" .
 
 `Exception that requires pre-pending a string - agrutesc: <https://digital.lib.utk.edu/collections/islandora/object/agrutesc:2130/datastream/MODS>`_
@@ -135,7 +136,9 @@ Decision
 
 .. code-block:: turtle
 
-    prefix opaque: <http://id.loc.gov/vocabulary/identifiers>
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers> .
+
+    <https://example.org/objects/1>
         identifiers:local "Circular 79" .
 
 Acquisition Identifier
@@ -175,10 +178,10 @@ The property opaque:accessionNumber was selected.
 
 .. code-block:: turtle
 
-prefix opaque: <http://opaquenamespace.org/ns/>
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
 
-<https://example.org/objects/1>
-        opaque:accessionNumber "1996.10.1" .
+    <https://example.org/objects/1>
+            opaque:accessionNumber "1996.10.1" .
 
 OCLC numbers
 ------------
@@ -211,7 +214,7 @@ Decision
 
 .. code-block:: turtle
 
-    prefix dbpedia: <http://dbpedia.org/ontology/>
+    @prefix dbpedia: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
         dbpedia:oclc "44394278" .
@@ -266,7 +269,7 @@ Decision
 
 .. code-block:: turtle
 
-    prefix dbpedia: <http://dbpedia.org/ontology/>
+    @prefix dbpedia: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
         dbpedia:issn "2687-7325" .
@@ -299,7 +302,7 @@ Decision
 
 .. code-block:: turtle
 
-    prefix dbpedia: <http://dbpedia.org/ontology/>
+    @prefix dbpedia: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
         dbpedia:issn "0938008501" .
@@ -592,7 +595,7 @@ We will not retain data regarding displayLabel attributes moving forward.
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1>
         dcterms:title "Tennessee Lady Volunteers basketball media guide, 1984-1985"  ;
@@ -828,7 +831,7 @@ Here's an `example record - gamble:1 <https://digital.lib.utk.edu/collections/is
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
     <https://example.org/objects/1>
         edm:hasType "cartoons (humorous images)" .
@@ -867,7 +870,7 @@ Here's an `example record - ruskin:108 <https://digital.lib.utk.edu/collections/
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
     <https://example.org/objects/1>
         edm:hasType <http://vocab.getty.edu/aat/300046300> .
@@ -1096,7 +1099,7 @@ Decision
     @prefix opaque: <http://opaquenamespace.org/​ns/> .
 
     <https://example.org/objects/1>
-        opaque:sheetmusic_firstLine "Ojitos de pena carita de luna, lloraba la niña sin causa ninguna." ..
+        opaque:sheetmusic_firstLine "Ojitos de pena carita de luna, lloraba la niña sin causa ninguna." .
 
 
 note - Target audience
