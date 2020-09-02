@@ -18,7 +18,7 @@ Many of the records in Volunteer Voices have multiple `genre`s; e.g. `volvoices:
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
     <https://example.org/object/1> edm:hasType ____ ; # get dct URI
         edm:hasType "letter" .
@@ -52,9 +52,9 @@ Used in the Archivision and Charlie Daniel collections; e.g. `cDanielCartoon:455
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+    <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/subjects/sh85040974> .
 
 and `archivision:1754 <>`:_
 
@@ -64,9 +64,9 @@ and `archivision:1754 <>`:_
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+    <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/subjects/sh85040974> .
 
 
 genre[@authority = 'lcgft']
@@ -80,9 +80,9 @@ Appears once in ekcd (ekcd:611), otherwise is present in Arrowmont, Van Vactor, 
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026131> .
+    <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026131> .
 
 In 124 of the records in the VP Moore collection, with `@authority='lcgft'`, the `@authorityURI = 'http://id.loc.gov/authorities/genreForms'` is used; e.g. `vpmoore:50 <https://digital.lib.utk.edu/collections/islandora/object/vpmoore:50/datastream/MODS/view>`:_
 
@@ -92,9 +92,9 @@ In 124 of the records in the VP Moore collection, with `@authority='lcgft'`, the
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026173> .
+    <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026173> .
 
 genre[@authority = 'lcmpt']
 ---------------------------
@@ -114,16 +114,16 @@ genre[@authority = 'lcmpt']
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
-        edm:hasType <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
-        edm:hasType <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
-        edm:hasType <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
-        edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014027156> ;
-        edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026956> ;
-        edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026097> ;
-        edm:hasType <http://id.loc.gov/authorities/subjects/sh99001779> .
+    <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
+        dcterms:type <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
+        dcterms:type <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
+        dcterms:type <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014027156> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026956> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026097> ;
+        dcterms:type <http://id.loc.gov/authorities/subjects/sh99001779> .
 
 genre[@authority = 'lctgm']
 ---------------------------
