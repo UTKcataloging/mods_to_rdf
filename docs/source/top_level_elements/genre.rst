@@ -9,15 +9,14 @@ This section describes the different values for `genre` that we currently have i
 genre[@authority = 'dct']
 -------------------------
 
-We will explore other options for records using `@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values to `physicalDescription/form`. Many of the records in Volunteer Voices have multiple `genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`:_
+We will explore other options for records using `@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values to `physicalDescription/form`. Many of the records in Volunteer Voices have multiple `genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
     <genre authority="dct">text</genre>
     <genre>letter</genre>
 
-
-Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`:_
+Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -28,7 +27,7 @@ Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <ht
 genre[@authority = 'aat']
 -------------------------
 
-`genre[@authority = 'aat']` appears in the Archivision collection and uses a `@valueURI` for controlled vocabulary; e.g. `archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`:_
+`genre[@authority = 'aat']` appears in the Archivision collection and uses a `@valueURI` for controlled vocabulary; e.g. `archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -37,7 +36,7 @@ genre[@authority = 'aat']
 genre[@authority = 'lcsh']
 --------------------------
 
-Used in the Archivision and Charlie Daniel collections; e.g. `cDanielCartoon:455 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:455/datastream/MODS/view>`:_
+Used in the Archivision and Charlie Daniel collections; e.g. `cDanielCartoon:455 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:455/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -49,7 +48,7 @@ Used in the Archivision and Charlie Daniel collections; e.g. `cDanielCartoon:455
 
     <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/subjects/sh85040974> .
 
-and `archivision:1754 <>`:_
+and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/archivision:1754/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -77,7 +76,7 @@ Appears once in ekcd (ekcd:611), otherwise is present in Arrowmont, Van Vactor, 
 
     <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026131> .
 
-In 124 of the records in the VP Moore collection, with `@authority='lcgft'`, the `@authorityURI = 'http://id.loc.gov/authorities/genreForms'` is used; e.g. `vpmoore:50 <https://digital.lib.utk.edu/collections/islandora/object/vpmoore:50/datastream/MODS/view>`:_
+In 124 of the records in the VP Moore collection, with `@authority='lcgft'`, the `@authorityURI = 'http://id.loc.gov/authorities/genreForms'` is used; e.g. `vpmoore:50 <https://digital.lib.utk.edu/collections/islandora/object/vpmoore:50/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -92,7 +91,7 @@ In 124 of the records in the VP Moore collection, with `@authority='lcgft'`, the
 genre[@authority = 'lcmpt']
 ---------------------------
 
-`@authority = 'lcmpt'` is used in the Van Vactor collection to express genre/performance medium instrumentation information; e.g. `vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`:_
+`@authority = 'lcmpt'` is used in the Van Vactor collection to express genre/performance medium instrumentation information; e.g. `vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -121,7 +120,7 @@ genre[@authority = 'lcmpt']
 genre[@authority = 'lctgm']
 ---------------------------
 
-This appears on a few records in Arrowmont and on two collection-level records (humbug and uarc); e.g. `arrowmont:208 <https://digital.lib.utk.edu/collections/islandora/object/arrowmont:208/datastream/MODS/view>`:_
+This appears on a few records in Arrowmont and on two collection-level records (humbug and uarc); e.g. `arrowmont:208 <https://digital.lib.utk.edu/collections/islandora/object/arrowmont:208/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
