@@ -69,3 +69,4 @@ if __name__ == "__main__":
                 if name.endswith(".rst"):
                     x = TurtleTester(f"{root}/{name}")
                     x.test_turtle_blocks()
+    print("All turtle code blocks pass.")
