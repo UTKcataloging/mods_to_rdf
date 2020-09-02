@@ -30,7 +30,7 @@ class TurtleTester:
                     ):
                         if ":caption:" not in self.lines[code_block_i] and ":name:" not in self.lines[code_block_i]:
                             new_block += self.lines[code_block_i]
-                        if self.lines[code_block_i].strip().startswith("prefix"):
+                        if self.lines[code_block_i].strip().lower().startswith("prefix"):
                             raise Exception(f'SPARQL syntax prefix detected in {self.filename} on line {code_block_i + 1}.')
                         code_block_i += 1
                 except IndexError:
