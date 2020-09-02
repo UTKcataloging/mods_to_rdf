@@ -21,7 +21,7 @@ https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "Knoxville -- 1917, Sheet 56" .
 
@@ -41,7 +41,7 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastre
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "The Guard at the Mountain Branch of the National Home for Disabled Volunteer Soldiers" .
 
@@ -63,7 +63,7 @@ https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastre
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "Prussian heroes march" ;
         dcterms:alternative "Prussian heroes: Prussen helden march" .
@@ -87,7 +87,7 @@ https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastre
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "Souvenir of Great Smoky Mountains National Park"  ;
         dcterms:alternative "Souvenir of Great Smoky Mountains National Park, Postcard 1" .
@@ -110,7 +110,7 @@ https://digital.lib.utk.edu/collections/islandora/object/womenbball:653/datastre
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "[Tennessee Lady Volunteers basketball media guide, 1984-1985]"  ;
         dcterms:alternative "Tennessee Lady Vols 1984-85: reaching for the Summitt of women's basketball" .
@@ -129,7 +129,7 @@ https://digital.lib.utk.edu/collections/islandora/object/colloquy:202/datastream
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "Great Smoky Mountains Colloquy: Volume 18, Number 2"  ;
         dcterms:alternative "Colloquy" .
@@ -153,7 +153,7 @@ https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MO
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "[Norris Dam]" ;
             dcterms:alternative "Norris Dam (Envelope 246) (12 of 12)" .
@@ -171,7 +171,7 @@ https://digital.lib.utk.edu/collections/islandora/object/knoxgardens%3A139/datas
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:title "[View of Mrs. Sanford's pond]" ;
             dcterms:alternative "Mrs. A. F. Sanford" .
