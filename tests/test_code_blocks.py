@@ -6,6 +6,7 @@ import sys
 class TurtleTester:
     def __init__(self, filepath: str):
         self.filename = filepath
+        self.exceptions = []
         self.lines = self.__walk_file(filepath)
         self.code_blocks = self.__get_code_blocks()
 
@@ -39,7 +40,7 @@ class TurtleTester:
                             .lower()
                             .startswith("prefix")
                         ):
-                            raise Exception(
+                            self.exceptions.append(
                                 f"SPARQL syntax prefix detected in {self.filename} on line {code_block_i + 1}."
                             )
                         code_block_i += 1
@@ -53,15 +54,16 @@ class TurtleTester:
             try:
                 Graph().parse(data=block, format="ttl")
             except:
-                print(
+                self.exceptions.append(
                     f"Problem in {self.filename} with this block:\n\n {block}\n"
-                    f"The problem as reported by rdflib is: {sys.exc_info()[0]}\n\n\n"
+                    f"\tThe problem as reported by rdflib is: {sys.exc_info()[0]}\n\n\n"
                 )
-                raise
         return
 
 
 if __name__ == "__main__":
+    all_exceptions = []
+    bad_files = 0
     print("Testing turtle code blocks.\n")
     directories_in_doc_source = ("contents", "top_level_elements")
     for directory in directories_in_doc_source:
@@ -70,5 +72,15 @@ if __name__ == "__main__":
                 if name.endswith(".rst"):
                     x = TurtleTester(f"{root}/{name}")
                     x.test_turtle_blocks()
-                    print(f"\tAll turtle code blocks in {x.filename} pass.")
-    print("\nTurtle code blocks in all directories have passed.")
+                    if len(x.exceptions) == 0:
+                        print(f"\tAll turtle code blocks in {x.filename} pass.")
+                    else:
+                        print(f"\tFAILURES: {len(x.exceptions)} in {x.filename}:")
+                        bad_files += 1
+                        for exception in x.exceptions:
+                            print(f"\n\t{exception}")
+                            all_exceptions.append(exception)
+    if len(all_exceptions) == 0:
+        print("\nTurtle code blocks in all directories have passed.")
+    else:
+        raise Exception(f"\n\n{len(all_exceptions)} FAILURES in {bad_files} files.")
