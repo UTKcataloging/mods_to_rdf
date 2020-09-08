@@ -180,4 +180,8 @@ In addition, the TDH collection has null values. An example is `tdh:8597 <https:
         <recordContentSource/>
     </recordInfo>
 
+Finally, there are 59 records that do not have <recordContentSource>. A few of these are starter namespaces (like baseball) that
+will be filled out once metadata for the collection is created. 55 of the records are associated with Kintner. This collection
+is currently being remediated by Andrew and this missing element will be addressed. Here's an `example record - kintner:10 <https://digital.lib.utk.edu/collections/islandora/object/kintner%3A10/datastream/MODS/view>`_.
+
 
