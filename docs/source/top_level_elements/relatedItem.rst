@@ -35,8 +35,32 @@ This XPath is typically used to indicate the digital project/digital collection 
 relatedItem[@type = "host"][@displayLabel = "Collection"]
 ---------------------------------------------------------
 
+This XPath is typically used to indicate the archival collection for a given object; e.g. `heilman:261 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_.
+
+    <relatedItem type="host" displayLabel="Project">
+      <titleInfo>
+        <title>Botanical Photography of Alan S. Heilman</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem type="host" displayLabel="Collection">
+      <titleInfo>
+        <title>Botany Department Photographs</title>
+      </titleInfo>
+      <identifier type="local">AR.0488</identifier>
+    </relatedItem>
+
 relatedItem[@type = "host"][@displayLabel = "project"]
 ------------------------------------------------------
+
+This XPath is used 798 times and only appears in the Thompson Brothers Photograph Collection; e.g. `thompson:1 <https://digital.lib.utk.edu/collections/islandora/object/thompson:1/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem type="host" displayLabel="project">
+      <titleInfo>
+        <title>Thompson Brothers Commercial Photographers</title>
+      </titleInfo>
+    </relatedItem>
 
 relatedItem[@type = "host"][@displayLabel = "Digital Collection"]
 -----------------------------------------------------------------
