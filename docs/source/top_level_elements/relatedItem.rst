@@ -153,6 +153,60 @@ This XPath is typically used to indicate an object's archival series; e.g. `roth
       </titleInfo>
     </relatedItem>
 
+relatedItem/identifier[@type]
+-----------------------------
+
+This XPath's `type` attribute has three distinct values: `local`, `catalog`, and `pid`. The `pid` attribute is used in collection-level records to distinguish featured items.
+
+`[@type = 'local']`, e.g. `heilman:261 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem type="host" displayLabel="Collection">
+      <titleInfo>
+        <title>Botany Department Photographs</title>
+      </titleInfo>
+      <identifier type="local">AR.0488</identifier>
+    </relatedItem>
+
+`[@type = 'catalog']`, e.g. `vanvactor:1 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:1/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem type="otherVersion">
+      <titleInfo>
+        <title>Gefunden</title>
+      </titleInfo>
+      <identifier type="catalog">M047</identifier>
+    </relatedItem>
+    <relatedItem displayLabel="Project" type="host">
+      <titleInfo>
+        <title>David Van Vactor Music Collection</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>David Van Vactor Papers</title>
+      </titleInfo>
+      <identifier>MS.1942</identifier>
+      <location>
+        <url>https://n2t.net/ark:/87290/v8pz5703</url>
+      </location>
+    </relatedItem>
+
+`[@type =  'pid']`, e.g. `collections:agrutesc <https://digital.lib.utk.edu/collections/islandora/object/collections:agrutesc/datastream/MODS/view>`_.
+
+    <relatedItem displayLabel="Featured Item">
+      <titleInfo>
+        <title>Barns</title>
+      </titleInfo>
+      <identifier type="pid">agrutesc:923</identifier>
+      <abstract>Special circular showcasing barn designs for housing cattle or horses and mules.</abstract>
+      <originInfo>
+        <dateIssued>1948</dateIssued>
+      </originInfo>
+    </relatedItem>
+
 Empty elements
 --------------
 
