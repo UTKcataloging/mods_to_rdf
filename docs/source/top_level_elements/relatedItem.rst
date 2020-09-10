@@ -207,6 +207,23 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
       </originInfo>
     </relatedItem>
 
+relatedItem/location[physicalLocation]
+--------------------------------------
+
+This XPath appears once, in the record for the Charles Dabny collection; i.e. `collections:dabney <https://digital.lib.utk.edu/collections/islandora/object/collections:dabney/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>University of Tennessee President's Papers, 1867-1954</title>
+      </titleInfo>
+      <identifier>AR.0001</identifier>
+      <location>
+        <physicalLocation authority="naf" valueURI="http://id.loc.gov/authorities/names/no2014027633">University of Tennessee, Knoxville. Special Collections</physicalLocation>
+      </location>
+    </relatedItem>
+
 Empty elements
 --------------
 
