@@ -32,6 +32,24 @@ This XPath is typically used to indicate the digital project/digital collection 
       </titleInfo>
     </relatedItem>
 
+relatedItem[@type = "host"][@displayLabel = "Collection"]
+---------------------------------------------------------
+
+relatedItem[@type = "host"][@displayLabel = "project"]
+------------------------------------------------------
+
+relatedItem[@type = "host"][@displayLabel = "Digital Collection"]
+-----------------------------------------------------------------
+
+relatedItem[@type = "host"][@displayLabel = "Project Part"]
+-----------------------------------------------------------
+
+relatedItem[@type = "host"][@displayLabel = "Bibliographic Citation"]
+---------------------------------------------------------------------
+
+relatedItem[@type = "host"][@displayLabel = "Is Part Of"]
+---------------------------------------------------------
+
 relatedItem[@type = "series"][@displayLabel = "Project"]
 --------------------------------------------------------
 
