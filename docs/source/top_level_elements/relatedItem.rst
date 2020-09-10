@@ -224,6 +224,11 @@ This XPath appears once, in the record for the Charles Dabny collection; i.e. `c
       </location>
     </relatedItem>
 
+relatedItem/location
+--------------------
+
+This XPath `relatedItem/location/url` is used 8516 times, but only uses 33 distinct strings;
+
 Empty elements
 --------------
 
