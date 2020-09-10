@@ -78,11 +78,56 @@ This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cd
 relatedItem[@type = "host"][@displayLabel = "Project Part"]
 -----------------------------------------------------------
 
+This XPath is used 2632 times in the Arrowmont Collection; e.g. `arrow:1 <https://digital.lib.utk.edu/collections/islandora/object/arrow:1/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem type="host" displayLabel="Project">
+      <titleInfo>
+        <title>From Pi Beta Phi to Arrowmont</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Project Part" type="host">
+      <titleInfo>
+        <title>The Arrow of Pi Beta Phi</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Bibliographic Citation" type="host">
+      <titleInfo>
+        <title>The Arrow, Volume 27, Number 1</title>
+      </titleInfo>
+    </relatedItem>
+
 relatedItem[@type = "host"][@displayLabel = "Bibliographic Citation"]
 ---------------------------------------------------------------------
 
+This XPath, closely related to the preceding `[@displayLabel = "Project Part"]`, also only appears 1264 times in the Arrowmont Collection - and only in the Arrow of Pi Beta Phi subcollection.
+
 relatedItem[@type = "host"][@displayLabel = "Is Part Of"]
 ---------------------------------------------------------
+
+This XPath is only used 449 in the Volunteer Voices collection; e.g. `volvoices:1846 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:1846/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Project" type="host">
+      <titleInfo>
+        <title>Volunteer Voices</title>
+      </titleInfo>
+      <location>
+        <url>http://digital.lib.utk.edu/collections/volvoices</url>
+      </location>
+    </relatedItem>
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>Prints Collection</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Is Part Of" type="host">
+      <titleInfo>
+        <title>Harper's Weekly</title>
+      </titleInfo>
+    </relatedItem>
 
 relatedItem[@type = "series"][@displayLabel = "Project"]
 --------------------------------------------------------
