@@ -227,7 +227,19 @@ This XPath appears once, in the record for the Charles Dabny collection; i.e. `c
 relatedItem/location
 --------------------
 
-This XPath `relatedItem/location/url` is used 8516 times, but only uses 33 distinct strings;
+This XPath `relatedItem/location/url` is used 8516 times, but only uses 33 distinct strings; e.g. `ruskin:204 <https://digital.lib.utk.edu/collections/islandora/object/ruskin:204/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>Ruskin Cooperative Association Collection</title>
+      </titleInfo>
+      <identifier>MS.0023</identifier>
+      <location>
+        <url>https://n2t.net/ark:/87290/v81g0jf1</url>
+      </location>
+    </relatedItem>
 
 Empty elements
 --------------
