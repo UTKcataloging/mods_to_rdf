@@ -38,6 +38,14 @@ This XPath is typically used to indicate the digital project/digital collection 
       </titleInfo>
     </relatedItem>
 
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:collection """Albert "Dutch" Roth Photograph Collection""" .
+
+Note: do we have a feeling about syntax for literals with quotes? `'''Albert "Dutch" Roth'''` vs `"""Albert "Dutch" Roth"""`? Does it matter?
+
 relatedItem[@type = "host"][@displayLabel = "Collection"]
 ---------------------------------------------------------
 
