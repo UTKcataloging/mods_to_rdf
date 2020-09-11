@@ -19,6 +19,12 @@ relatedItem[not(@*)]
       </titleInfo>
     </relatedItem>
 
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:collection "Digital Collection: The Growth of Democracy in Tennessee: A Grassroots Approach to Volunteer Voices" .
+
 relatedItem[@type = "host"][@displayLabel = "Project"]
 ------------------------------------------------------
 
