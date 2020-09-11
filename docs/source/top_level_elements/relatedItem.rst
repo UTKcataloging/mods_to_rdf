@@ -198,6 +198,8 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
 
 `[@type =  'pid']`, e.g. `collections:agrutesc <https://digital.lib.utk.edu/collections/islandora/object/collections:agrutesc/datastream/MODS/view>`_.
 
+.. code-block:: xml
+
     <relatedItem displayLabel="Featured Item">
       <titleInfo>
         <title>Barns</title>
