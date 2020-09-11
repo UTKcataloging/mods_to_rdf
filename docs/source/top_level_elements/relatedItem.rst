@@ -245,6 +245,244 @@ This XPath `relatedItem/location/url` is used 8516 times, but only uses 33 disti
       </location>
     </relatedItem>
 
+relatedItem/abstract
+--------------------
+
+`relatedItem/abstract` is used 865 times, across several collections; e.g. `sanborn:1196 <https://digital.lib.utk.edu/collections/islandora/object/sanborn:1196/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Project" type="host">
+      <titleInfo>
+        <title>Sanborn Fire Insurance Maps Collection</title>
+      </titleInfo>
+      <location>
+        <url>http://digital.lib.utk.edu/collections/sanbornmapcollection</url>
+      </location>
+      <abstract>The Sanborn Fire Insurance Maps are a large-scale representation of the growth and layout of American cities. The University of Tennessee Libraries' collection currently provides digital versions of the four earliest sets of Knoxville maps - 1884, 1890, 1903, and 1917.</abstract>
+    </relatedItem>
+
+relatedItem/name
+----------------
+
+`relatedItem/name` appears 131 times, only in the Bass Collection, and only in `relatedItem[@type = 'constituent']`; e.g. `bass:19644 <https://digital.lib.utk.edu/collections/islandora/object/bass:19644/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Project" type="host">
+      <titleInfo>
+        <title>The Dr. William M. Bass III Collection - The Bass Field Notes</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>Dr. William M. Bass III Collection</title>
+      </titleInfo>
+      <identifier type="local">MS.3689</identifier>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>M.B.P. weekly progress reports, Summer 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n83189337">
+        <namePart>Bass, William M., 1928-</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre || Stephenson, Robert L. (Robert Lloyd), 1919- | URI: http://id.l">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>Archeological progress report no.8, Field season of 1963, December, 1963</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>Archaeological progress report no.9, Field Season of 1964, November, 1964</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report, Party no.1 - Kansas and Nebraska surveys, Report no.1-3, May 10-24, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2004018542">
+        <namePart>Brown, Lionel A.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report Party no.3 - Sully Burial analysis, Report no.1, 3-9, June 7, 22-August 2, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n83189337">
+        <namePart>Bass, William M., 1928-</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2004018542">
+        <namePart>Brown, Lionel A.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report, Party #5 - Upper Yellowtail Reservoir, Report no.1-12, June 14-July 5-August 30, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no90027536">
+        <namePart>Husted, Wilfred M.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report Party #10 - Dewey County Party, Report no.1-12, June 14-August 30, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n82020447">
+        <namePart>Neuman, Robert W.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report Party #12 - Davis Creek Site, Report no.1-12, June 14-August 30, 1963 [Numbering of the reports is off, went by dates]</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n87856030">
+        <namePart>Bowers, Alfred W.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n85031246">
+        <namePart>Muller, Jon</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report, News from Lincoln, Report no.1-5, June 24-August 12, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n84053297">
+        <namePart>Stephenson, Robert L. (Robert Lloyd), 1919-</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>University of South Dakota, Gavins Point Project no.2, Cooperators Party B, Report no.1-7, June 21-August 2, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2001006452">
+        <namePart>Gant, Robert D.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report, Party no.6 - Historic sites (Big Bend &amp; Oahe Res. Areas), Report no.1-10, June 22-August 24, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n81119648">
+        <namePart>Smith, G. Hubert (George Hubert), 1908-1972</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report, Party no.7 - Pierre South Dakota, Report no.1-10, June 21-August 24, 1963 [numbering off, going by date]</title>
+      </titleInfo>
+      <name>
+        <namePart>Jensen, Richard E.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project Weekly Report, Parties no. 8 and 9 - La Roche and Chapelle Creek, Report no.1-11, June 21-September 3, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2004118058">
+        <namePart>Hoffman, J. J. (John Jacob), 1931-</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report, Party no.11 - Moreau Party, Report no.2-11, June 21-August 30, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2004118055">
+        <namePart>Mallory, Oscar L.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>University of Kansas Milford Reservoir Archeological Party, Cooperators Party A, Report no.3, June 28, 1963</title>
+      </titleInfo>
+      <name>
+        <namePart>Schock, Jack</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>Nebraska State Historical Society - National Science Foundation Logan Creek Project - Cooperators Party C, Report no.1, June 28, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n88243079">
+        <namePart>Kivett, Marvin F.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project Weekly report, Party no. 9 - Chapelle Creek, Report no.3-10, July 5-August 23, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n78078895">
+        <namePart>Folan, William J.</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project weekly report, Party no. 4 - Garrison Diversion, Report no.1-6, July 26-August 30, 1963</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n50038965">
+        <namePart>Johnson, Elden</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+
 Empty elements
 --------------
 
