@@ -37,12 +37,13 @@ relatedItem[@type = "host"][@displayLabel = "Collection"]
 
 This XPath is typically used to indicate the archival collection for a given object; e.g. `heilman:261 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_.
 
+.. code-block:: xml
+
     <relatedItem type="host" displayLabel="Project">
       <titleInfo>
         <title>Botanical Photography of Alan S. Heilman</title>
       </titleInfo>
     </relatedItem>
-
     <relatedItem type="host" displayLabel="Collection">
       <titleInfo>
         <title>Botany Department Photographs</title>
