@@ -65,6 +65,14 @@ This XPath is typically used to indicate the archival collection for a given obj
       <identifier type="local">AR.0488</identifier>
     </relatedItem>
 
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:collection """Albert "Dutch" Roth Photograph Collection""" ;
+        dbo:collection "Botany Department Photographs, AR.0488" .
+
+
 relatedItem[@type = "host"][@displayLabel = "project"]
 ------------------------------------------------------
 
@@ -78,6 +86,12 @@ This XPath is used 798 times and only appears in the Thompson Brothers Photograp
       </titleInfo>
     </relatedItem>
 
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:collection "Thompson Brothers Commercial Photographers" .
+
 relatedItem[@type = "host"][@displayLabel = "Digital Collection"]
 -----------------------------------------------------------------
 
@@ -90,6 +104,12 @@ This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cd
         <title>Children's Defense Fund</title>
       </titleInfo>
     </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:collection "Children's Defense Fund" .
 
 relatedItem[@type = "host"][@displayLabel = "Project Part"]
 -----------------------------------------------------------
