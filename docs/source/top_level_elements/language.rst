@@ -2,11 +2,14 @@ language
 ========
 
 About
-_____
+-----
 This section describes all the different types of language elements that we have in our Islandora repository right now.
 
+Distinct Cases
+--------------
+
 language has languageTerm subelement with an @authority of "iso639-2b" and a @type of "text"
---------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/tatum%3A188/datastream/MODS/view
 
@@ -23,7 +26,7 @@ https://digital.lib.utk.edu/collections/islandora/object/tatum%3A188/datastream/
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> .
 
 language has languageTerm subelement with an @authority of "iso639-2b" and a @type of "code"
---------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/ekcd:9/datastream/MODS/view
 
@@ -40,7 +43,7 @@ https://digital.lib.utk.edu/collections/islandora/object/ekcd:9/datastream/MODS/
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> .
 
 language has multiple elements
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Present for 11 total in utsmc
 
@@ -85,7 +88,7 @@ https://digital.lib.utk.edu/collections/islandora/object/egypt:59/datastream/MOD
         dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> .
 
 language has language subelement with an @type of #text and value of "No linguistic content"
---------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
 
@@ -99,10 +102,10 @@ https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> ;
+    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> .
 
 language has language subelement with an @type = "code" and value of "zxx"
---------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
 
@@ -116,19 +119,19 @@ https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> ;
+    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> .
 
 
 
 language has language subelement without a stated @authority and a @code value of "fra"
----------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Two questions here along with my proposed:
 
 1. How do we handle any that have no stated authority?
 2. Two volvoices objects use "fra". Is there a difference between fra and fre as codes?
 
-https://digital.lib.utk.edu/collections/islandora/object/volvoices:9928/datastream/MODS/vieww
+https://digital.lib.utk.edu/collections/islandora/object/volvoices:9928/datastream/MODS/view
 
 .. code-block:: xml
 
@@ -140,10 +143,10 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:9928/datastre
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> ;
+    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> .
 
 Special Note
-------------
+^^^^^^^^^^^^
 https://digital.lib.utk.edu/collections/islandora/object/collections:utsmc/datastream/MODS/view
 
 The collection object for utsmc has the follow language XML. While it may not matter with it being a
