@@ -65,7 +65,7 @@ This XPath is used 798 times and only appears in the Thompson Brothers Photograp
 relatedItem[@type = "host"][@displayLabel = "Digital Collection"]
 -----------------------------------------------------------------
 
-This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cdf:7850 <https://digital.lib.utk.edu/collections/islandora/object/cdf:7850/datastream/MODS/view`_. Synonymous with `@displayLabel = "Project"`.
+This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cdf:7850 <https://digital.lib.utk.edu/collections/islandora/object/cdf:7850/datastream/MODS/view>`_. Synonymous with `@displayLabel = "Project"`.
 
 .. code-block:: xml
 
