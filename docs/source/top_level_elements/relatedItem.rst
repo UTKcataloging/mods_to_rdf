@@ -42,6 +42,7 @@ This XPath is typically used to indicate the archival collection for a given obj
         <title>Botanical Photography of Alan S. Heilman</title>
       </titleInfo>
     </relatedItem>
+
     <relatedItem type="host" displayLabel="Collection">
       <titleInfo>
         <title>Botany Department Photographs</title>
