@@ -169,13 +169,30 @@ This XPath is used 2632 times in the Arrowmont Collection; e.g. `arrow:1 <https:
         rdfs:label "The Arrow of Pi Beta Phi" .
 
     <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/2> ;
-        rdau:containedIn.en "The Arrow, Volume 27, Number 1" .
+        rdau:P60101 "The Arrow, Volume 27, Number 1" .
 
 
 relatedItem[@type = "host"][@displayLabel = "Bibliographic Citation"]
 ---------------------------------------------------------------------
 
 This XPath, closely related to the preceding `[@displayLabel = "Project Part"]`, also only appears 1264 times in the Arrowmont Collection - and only in the Arrow of Pi Beta Phi subcollection.
+
+.. code-block:: turtle
+
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix rdau: <http://www.rdaregistry.info/Elements/u/#> .
+
+    <https://example.org/collections/1> a pcdm:Collection ;
+        rdfs:label "From Pi Beta Phi to Arrowmont" .
+
+    <https://example.org/collections/2> a pcdm:Collection ;
+        dcterms:isPartOf <https://example.org/collections/1> ;
+        rdfs:label "The Arrow of Pi Beta Phi" .
+
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/2> ;
+        rdau:containedIn.en "The Arrow, Volume 27, Number 1" .
 
 relatedItem[@type = "host"][@displayLabel = "Is Part Of"]
 ---------------------------------------------------------
