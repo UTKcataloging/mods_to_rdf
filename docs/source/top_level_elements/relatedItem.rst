@@ -21,9 +21,13 @@ relatedItem[not(@*)]
 
 .. code-block:: turtle
 
-    @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
 
-    <https://example.org/objects/1> dbo:collection "Digital Collection: The Growth of Democracy in Tennessee: A Grassroots Approach to Volunteer Voices" .
+    <https://example.org/collections/1> a pcdm:Collection ;
+        rdfs:label "Digital Collection: The Growth of Democracy in Tennessee: A Grassroots Approach to Volunteer Voices" .
+
+    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> .
 
 relatedItem[@type = "host"][@displayLabel = "Project"]
 ------------------------------------------------------
@@ -40,9 +44,13 @@ This XPath is typically used to indicate the digital project/digital collection 
 
 .. code-block:: turtle
 
-    @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
 
-    <https://example.org/objects/1> dbo:collection """Albert "Dutch" Roth Photograph Collection""" .
+    <https://example.org/collections/1> a pcdm:Collection ;
+        rdfs:label """Albert "Dutch" Roth Photograph Collection""" .
+
+    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> .
 
 Note: do we have a feeling about syntax for literals with quotes? `'''Albert "Dutch" Roth'''` vs `"""Albert "Dutch" Roth"""`? Does it matter?
 
@@ -67,9 +75,13 @@ This XPath is typically used to indicate the archival collection for a given obj
 
 .. code-block:: turtle
 
-    @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
 
-    <https://example.org/objects/1> dbo:collection """Albert "Dutch" Roth Photograph Collection""" ;
+    <https://example.org/collections/1> a pcdm:Collection ;
+        rdfs:label "Botanical Photography of Alan S. Heilman" .
+
+    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
         dbo:collection "Botany Department Photographs, AR.0488" .
 
 
