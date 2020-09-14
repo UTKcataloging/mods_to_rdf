@@ -1584,7 +1584,7 @@ It looks like we also have a misspelling here.
 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
-        <https://example.org/objects/1> edm:provider <University of Tennesse Knoxville. Libraries> .
+        <https://example.org/objects/1> edm:provider "University of Tennesse Knoxville. Libraries" .
 
 Sometimes when the resource comes from another institution, that institution name is placed in <recordContentSource>. For instance,
 here's an `example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
