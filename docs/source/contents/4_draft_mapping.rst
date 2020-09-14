@@ -1331,6 +1331,297 @@ location
 recordInfo
 ==========
 
+recordIdentifier
+----------------
+
+Use Case
+^^^^^^^^
+
+Unremediated records often contain identifiers for the record. These take a couple of different forms. The Heilman
+collection and Volunteer Voices collections contain this element. In Volunteer Voices the identifier is simply the adminDB
+value with 'record' appended to the beginning (`e.g. volvoices:2352 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2352/datastream/MODS/view>`_).
+
+Justification
+^^^^^^^^^^^^^
+
+As the basic root of the <recordIdentifier> value is already present in the identifier element in all cases and the
+<recordIdentifier> value is never used on its own, there is no reason to retain these values.
+
+Xpath
+^^^^^
+
+"mods:recordInfo" / "mods:recordIdentifier"
+
+Decision
+^^^^^^^^
+
+All <recordIdentifier> values should be dropped, so no RDF example is included below.
+
+Here's an `example record - heilman:1001 <https://digital.lib.utk.edu/collections/islandora/object/heilman%3A1001/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <identifier type="local">Pseudolarix_0858</identifier>
+    <recordInfo>
+        <recordIdentifier>record_Pseudolarix_0858</recordIdentifier>
+    </recordInfo>
+
+languageOfCataloging
+--------------------
+
+Use Case
+^^^^^^^^
+
+All of the recently migrated SCOUT to TEI collections (e.g. American Civil War Collection, Tennessee Documentary History, etc.)
+as well as some of UTK's less recent collections (e.g. Sanborn, mpabaker, etc.) contain the element languageOfCataloging.
+In total, it is found in approximately 6,000 records. Note that in all cases the language is English, but this information
+is represented as both a code ('eng') and a text value ('English').
+
+Justification
+^^^^^^^^^^^^^
+
+Currently <languageOfCataloging> is not publicly displayed anywhere outside of the MODS XML. The values of this element
+do have the potential to be used if UTK has materials that might warrant cataloging in another language, but currently
+this is not the case. An example of a project that includes two records, one catalogued in Spanish and one in English, is
+`UNC's New Roots / Nuevas Raíces <https://newroots.lib.unc.edu/>`_. While UTK may want to pursue a project like this in the
+future, presently it seems unlikely that it will. More importantly, if such a project became a priority, it would not be
+difficult to distinguish via code UTK's existing English records from records in another language. If we did want to create
+a project like this, information on the language of cataloging could be added across the repository with minimal effort.
+
+Xpath
+^^^^^
+
+"mods:recordInfo" / "mods:languageOfCataloging"
+
+Decision
+^^^^^^^^
+
+Since we are not currently utilizing these values in any way, these should be dropped in the mapping.
+
+Here's an `example record - sanborn:1002 <https://digital.lib.utk.edu/collections/islandora/object/sanborn%3A1002/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <languageOfCataloging>
+            <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+        </languageOfCataloging>
+    </recordInfo>
+
+recordOrigin
+------------
+
+Use Case
+^^^^^^^^
+
+The <recordOrigin> element includes information about what methods or transformations were used to prepare a record. There
+are six different distinct values in UTK's metadata.
+
+Justification
+^^^^^^^^^^^^^
+
+Because the existing values all relate to MODS XML, the string values present will no longer be applicable in a RDF-based
+platform. Discussion indicated that there might be some use for the general property of recordOrigin if a link to this
+mapping document or some other relevant resource was shared in place of the existing values. This administrative information
+could also be shared on the Digital Collections website or elsewhere rather than the record. As a convincing argument
+was not made that this information is essential, it was decided to drop these values
+
+Xpath
+^^^^^
+
+"mods:recordInfo" / "mods:recordOrigin"
+
+Decision
+^^^^^^^^
+
+Drop all values.
+
+Here's an `example record - cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1177/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordOrigin>Created and edited in general conformance to MODS Guidelines (Version 3.5).</recordOrigin>
+    </recordInfo>
+
+recordChangeDate
+----------------
+
+Use Case
+^^^^^^^^
+
+This element is used sparingly in UTK's metadata records. Currently there are five distinct values, all indicating that the
+last change to the record was made in 2015, which simply isn't sharing accurate information.
+
+Justification
+^^^^^^^^^^^^^
+
+Keeping this information is not be useful as it doesn't allow someone viewing the record to see when it was actually
+last updated. Inaccurate information is shared. In addition, in a system like Islandora it's easy enough for an internal
+staff member to view when the metadata datastream has been updated without tracking this in the record. This element can
+be dropped.
+
+Xpath
+^^^^^
+
+"mods:recordInfo" / "mods:recordChangeDate"
+
+Decision
+^^^^^^^^
+
+This element should be dropped.
+
+Here's an `example record - volvoices:3435 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A3435/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordChangeDate encoding="edtf">2015-03-23</recordChangeDate>
+        <recordChangeDate encoding="edtf">2015-03-31</recordChangeDate>
+        <recordChangeDate encoding="edtf">2015-04-01</recordChangeDate>
+    </recordInfo>
+
+recordCreationDate
+------------------
+
+Use Case
+^^^^^^^^
+
+A total of 167 values are present for <recordCreationDate>. This value shows when the record was originally created. All
+but one of these values precedes 2010. All of the recently migrated TEI SCOUT records (2,386) have a value of
+"2020-04-23-04:00". This is the only value not presented in EDTF format. Otherwise all of the values appear to come from
+Volunteer Voices.
+
+Justification
+^^^^^^^^^^^^^
+
+Unlike <recordChangeDate>, all of the values within <recordCreationDate> are at least accurate. Currently this information
+is not used or displayed for users. Given this and the fact that this element is present in a very small percentage of
+UTK records, it does not seem useful to keep this information. Again, a repository system should have a way to track
+when a metadata datastream for a particular digital object was created. Therefore keeping this information adds unnecessary
+complexity.
+
+Xpath
+^^^^^
+
+"mods:recordInfo" / "mods:recordCreationDate"
+
+Decision
+^^^^^^^^
+
+These values will be dropped.
+
+Here's an `example record - volvoices:1857 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A1857/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordCreationDate encoding="edtf">2007-10-26</recordCreationDate>
+    </recordInfo>
+
+recordContentSource
+-------------------
+
+Use Case
+^^^^^^^^
+
+The <recordContentSource> element is one of the most essential elements within <recordInfo>, as we currently use it to
+communicate the provider in DPLA. At UTK though, the information we share in this element is not consistent with the
+definition of <recordContentSource> - "The code or name of the entity (e.g. an organization and/or database) that either
+created or modified the original record." While we work with other partners, like the Children's Defense Fund and the
+McClung Museum, we are still technically the creators of the records in these situations. Despite this, we typically list
+these institutions as the record creator because we set up <recordContentSource> as the element that DPLA should map to
+for content provider. In actuality, when the content provider is not UTK, this information should be communicated in
+<physicalLocation> and our DPLA mapping should be updated. Despite these semantic issues, UTK has consistently put this
+information in an incorrect element, so the mapping is not affected. In actuality then, the mapping below is for the
+content provider or institution that would be present in <physicalLocation> if MODS was followed more closely.
+
+Justification
+^^^^^^^^^^^^^
+
+A content provider is required in DPLA. This value also provides UTK with the opportunity to attribute collections to
+the institution that provided them, which is important for maintaining respectful relationships.
+
+Xpath
+^^^^^
+
+"mods:recordInfo" / "mods:recordContentSource"
+
+Decision
+^^^^^^^^
+
+Note that the mappings below assume that DPLA will be able to handle both literals and URIs for edm:dataProvider and edm:provider,
+as is allowed by these properties. This needs to be confirmed before this mapping is used. edm:dataProvider is used instead of
+edm:provider when the institution listed is not UTK as it  is defined as "The name or identifier of the organisation who
+contributes data indirectly to an aggregation service." Because UTK acts as a service hub for DPLA and it delivers data
+directly to this aggregator, it can be considered an edm:provider. This is defined as "The name or identifier of the
+organization who delivers data directly to an aggregation service (e.g. Europeana)."
+
+When UTK physically holds the material and created the record, the metadata resembles this `example record - acwiley:284 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A284/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordContentSource valueURI="http://id.loc.gov/authorities/names/n87808088">University of Tennessee, Knoxville. Libraries</recordContentSource>
+    </recordInfo>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+        <https://example.org/objects/1> edm:provider <http://id.loc.gov/authorities/names/n87808088> .
+
+Note that items held by UTK can also appear without a URI defining the institution as with `tdh:8803 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/view>`_.
+It looks like we also have a misspelling here.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordContentSource>University of Tennesse Knoxville. Libraries</recordContentSource>
+    </recordInfo>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+        <https://example.org/objects/1> edm:provider <University of Tennesse Knoxville. Libraries> .
+
+Sometimes when the resource comes from another institution, that institution name is placed in <recordContentSource>. For instance,
+here's an `example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
+Here it is also coupled with an "Intermediate Provider" note. McClung's Egypt collection is also treated similarly.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordContentSource valueURI="http://id.loc.gov/authorities/names/no2017113530">Langston Hughes Library (Children's Defense Fund Haley Farm)</recordContentSource>
+    </recordInfo>
+    <note displayLabel="Intermediate Provider">University of Tennessee, Knoxville. Libraries</note>
+    <location>
+        <physicalLocation valueURI="http://id.loc.gov/authorities/names/no2017113530">Langston Hughes Library (Children's Defense Fund Haley Farm)</physicalLocation>
+    </location>
+
+For the purposes of DPLA, we only need the <recordContentSource> value and not also the <physicalLocation> value. Because
+these institutions are not directly contributing to DPLA, they are listed as an edm:dataProvider instead of an edm:provider.
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+        <https://example.org/objects/1> edm:dataProvider <http://id.loc.gov/authorities/names/no2017113530> .
+
+In addition, the TDH collection has null values. An example is `tdh:8597 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8597/datastream/MODS/view>`_.
+This needs to be addressed before migration so that what UTK shares with DPLA meets its requirements.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordContentSource/>
+    </recordInfo>
+
+Finally, there are 59 records that do not have <recordContentSource>. A few of these are starter namespaces (like baseball) that
+will be filled out once metadata for the collection is created. 55 of the records are associated with Kintner. This collection
+is currently being remediated by Andrew and this missing element will be addressed. Here's an `example record - kintner:10 <https://digital.lib.utk.edu/collections/islandora/object/kintner%3A10/datastream/MODS/view>`_.
+
 accessCondition
 ===============
 
