@@ -23,11 +23,12 @@ relatedItem[not(@*)]
 
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "Digital Collection: The Growth of Democracy in Tennessee: A Grassroots Approach to Volunteer Voices" .
 
-    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> .
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> .
 
 relatedItem[@type = "host"][@displayLabel = "Project"]
 ------------------------------------------------------
@@ -46,11 +47,12 @@ This XPath is typically used to indicate the digital project/digital collection 
 
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label """Albert "Dutch" Roth Photograph Collection""" .
 
-    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> .
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> .
 
 Note: do we have a feeling about syntax for literals with quotes? `'''Albert "Dutch" Roth'''` vs `"""Albert "Dutch" Roth"""`? Does it matter?
 
@@ -78,11 +80,12 @@ This XPath is typically used to indicate the archival collection for a given obj
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "Botanical Photography of Alan S. Heilman" .
 
-    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
         dbo:collection "Botany Department Photographs, AR.0488" .
 
 relatedItem[@type = "host"][@displayLabel = "project"]
@@ -102,11 +105,12 @@ This XPath is used 798 times and only appears in the Thompson Brothers Photograp
 
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "Thompson Brothers Commercial Photographers" .
 
-    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> .
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> .
 
 relatedItem[@type = "host"][@displayLabel = "Digital Collection"]
 -----------------------------------------------------------------
@@ -125,11 +129,12 @@ This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cd
 
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "Children's Defense Fund" .
 
-    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> .
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> .
 
 relatedItem[@type = "host"][@displayLabel = "Project Part"]
 -----------------------------------------------------------
@@ -224,11 +229,12 @@ This XPath is only used 449 in the Volunteer Voices collection; e.g. `volvoices:
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
     @prefix rdau: <http://www.rdaregistry.info/Elements/u/#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "Volunteer Voices" .
 
-    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
         rdau:P60101 "Harper's Weekly" .
 
 relatedItem[@type = "series"][@displayLabel = "Project"]
@@ -261,11 +267,12 @@ This XPath is typically used to indicate an object's archival series; e.g. `roth
     @prefix pcdm: <http://pcdm.org/models#> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
     @prefix opaque: <http://opaquenamespace.org/ns/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/collections/1> a pcdm:collection ;
         rdfs:label """Albert "Dutch" Roth Photograph Collection""" .
 
-    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
         dbo:collection """A. G. "Dutch" and Margaret Ann Roth Papers, MS.3334""" ;
         opaque:memberOfArchivalSeries "Series II: Margaret Ann Roth Photographs and Other Materials, 1947 March 11-2002 December 14 (bulk 1947 March 11-1955 March 20). Sub-Series A: Photographs, 1947 March 11-1955 March 139" .
 
@@ -327,7 +334,8 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "David Van Vactor Music Collection" .
 
-    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
+    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
+        dbo:collection "David Van Vactor Papers, MS.1942" ;
         dbo:isPartOf <https://n2t.net/ark:/87290/v8pz5703> ;
         opaque:sheetmusic_hostItem "Gefunden, M047" .
 
@@ -386,7 +394,8 @@ This XPath `relatedItem/location/url` is used 8516 times, but only uses 33 disti
 
     @prefix dbo: <http://dbpedia.org/ontology/> .
 
-    <https://example.org/objects/1> dbo:isPartOf <https://n2t.net/ark:/87290/v81g0jf1> .
+    <https://example.org/objects/1> dbo:isPartOf <https://n2t.net/ark:/87290/v81g0jf1> ;
+        dbo:collection "Ruskin Cooperative Association Collection, MS.0023" .
 
 relatedItem/abstract
 --------------------
@@ -635,6 +644,17 @@ relatedItem/name
         </role>
       </name>
     </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/collections/1> a pcdm:Collection ;
+
 
 Empty elements
 --------------
