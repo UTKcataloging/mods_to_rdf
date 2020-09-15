@@ -1231,12 +1231,13 @@ language
 Use Case
 ^^^^^^^^
 Single instance of languageTerm where item language is known. Many of our resources will have one instance of language with a single subelement
-of languageTerm. Type attributes for languageTerm may be either text or code.
+of languageTerm. The *type* attribute for *languageTerm* may be either **text** or **code**.
 
 Justification
 ^^^^^^^^^^^^^
-Both Samvera and Islandora handle this case very similarly, directly mapping the URI, though Islandora does offer an
-alternative with additional minting of objects required.
+Both Samvera and Islandora handle this case similarly, directly mapping the URI, though Islandora does offer an
+alternative with additional minting of objects required. We will opt to go with the cleanest possible route of direct
+mapping to the controlled vocabulary, ISO 639-2, and avoid minting new objects.
 
 Xpath
 ^^^^^
@@ -1272,7 +1273,8 @@ Turtle would map the same in both cases.
 Use Case
 ^^^^^^^^
 Multiple instances of a languageTerm present. In very few cases (13 total), multiple languages can be found for an item.
-In all cases, languages are assigned a known authority, with type as text or code.
+In all cases, languages are assigned a known authority, with *type* as **text** or **code**. Justifications from the single language
+case also apply here.
 
 Justification
 ^^^^^^^^^^^^^
@@ -1306,12 +1308,12 @@ https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MO
 
 Use Case
 ^^^^^^^^
-Non-linguistic content cases can be found across some of our resources. In these cases, a code is present with a zxx
-value or text has a value of No linguistic content.
+Non-linguistic content cases can be found across some of our resources. In these cases, a *code* is present with a **zxx**
+value or type *text* has a value of **No linguistic content**. Justifications from the single language case above also apply here.
 
 Justification
 ^^^^^^^^^^^^^
-These are handled just like other languages in ISO 639-2 Collection of Bibliographic Codes. In this case, the zxx code
+These are handled just like other languages in ISO 639-2 Collection of Bibliographic Codes. In this case, the **zxx** code
 denotes a declared absence of linguistic information.
 
 Xpath
