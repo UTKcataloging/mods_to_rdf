@@ -1225,17 +1225,18 @@ language
 |                                   |                |                   | value from a controlled vocabulary, such as ISO 639-2.                  |
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
 
-language
-------------------
+item has one language
+---------------------
 
 Use Case
 ^^^^^^^^
-Single instance of languageTerm where item language is known. Many of our resources will have one instance of language with a single subelement
-of languageTerm. The *type* attribute for *languageTerm* may be either **text** or **code**.
+Single instance of languageTerm where item language is known. Many of our resources will have one instance of a
+language element with a single subelement of languageTerm. The *type* attribute for *languageTerm* may be either
+**text** or **code**.
 
 Justification
 ^^^^^^^^^^^^^
-Both Samvera and Islandora handle this case similarly, directly mapping the URI, though Islandora does offer an
+Both Samvera and Islandora handle this case similarly, directly mapping the URI, however, Islandora does offer an
 alternative with additional minting of objects required. We will opt to go with the cleanest possible route of direct
 mapping to the controlled vocabulary, ISO 639-2, and avoid minting new objects.
 
@@ -1270,17 +1271,20 @@ Turtle would map the same in both cases.
 
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> .
 
+item has multiple languages
+---------------------------
+
 Use Case
 ^^^^^^^^
 Multiple instances of a languageTerm present. In very few cases (13 total), multiple languages can be found for an item.
-In all cases, languages are assigned a known authority, with *type* as **text** or **code**. Justifications from the single language
-case also apply here.
+In all cases, languages are assigned a known authority, with *type* as **text** or **code**.
 
 Justification
 ^^^^^^^^^^^^^
-Similar to items with one language, URIs are directly mapped in Samvera recommendations. Islandora does not have
+Similar to items with one language, URIs are directly mapped in the Samvera recommendations. Islandora does not have
 recommendations for this use case. We could separate languages onto new lines with a duplicate predicate. However,
 as style choice and to simplify in mapped turtle, multiple languages in our items will be delineated by a comma.
+Justifications from the single language case also apply here.
 
 Xpath
 ^^^^^
@@ -1304,7 +1308,10 @@ https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MO
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1>
-        dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> , <http://id.loc.gov/vocabulary/iso639-2/eng> .
+        dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> , <http://id.loc.gov/vocabulary/iso639-2/ita> .
+
+item has non-linguistic content
+-------------------------------
 
 Use Case
 ^^^^^^^^
