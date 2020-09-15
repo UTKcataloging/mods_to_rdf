@@ -1218,6 +1218,133 @@ genre
 language
 ========
 
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| Predicate                         | Value Type     | Range (if needed) | Usage Notes                                                             |
++===================================+================+===================+=========================================================================+
+| dcterms:language                  | URI            |                   | The language of the resource. Preference is to use a                    |
+|                                   |                |                   | value from a controlled vocabulary, such as ISO 639-2.                  |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+
+language
+------------------
+
+Use Case
+^^^^^^^^
+Single instance of languageTerm where item language is known. Many of our resources will have one instance of language with a single subelement
+of languageTerm. Type attributes for languageTerm may be either text or code.
+
+Justification
+^^^^^^^^^^^^^
+Both Samvera and Islandora handle this case very similarly, directly mapping the URI, though Islandora does offer an
+alternative with additional minting of objects required.
+
+Xpath
+^^^^^
+mods:language/mods:languageTerm[@type="text"] OR mods:language/mods:languageTerm[@type="code"]
+
+Decision
+^^^^^^^^
+
+https://digital.lib.utk.edu/collections/islandora/object/tatum%3A188/datastream/MODS/view
+
+.. code-block:: xml
+
+    <language>
+        <languageTerm authority="iso639-2b" type="text">English</languageTerm>
+    </language>
+
+https://digital.lib.utk.edu/collections/islandora/object/ekcd:9/datastream/MODS/view
+
+.. code-block:: xml
+
+    <language>
+        <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+    </language>
+
+Turtle would map the same in both cases.
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> .
+
+Use Case
+^^^^^^^^
+Multiple instances of a languageTerm present. In very few cases (13 total), multiple languages can be found for an item.
+In all cases, languages are assigned a known authority, with type as text or code.
+
+Justification
+^^^^^^^^^^^^^
+Similar to items with one language, URIs are directly mapped in Samvera recommendations. Islandora does not have
+recommendations for this use case. We could separate languages onto new lines with a duplicate predicate. However,
+as style choice and to simplify in mapped turtle, multiple languages in our items will be delineated by a comma.
+
+Xpath
+^^^^^
+mods:language/mods:languageTerm[@type="text"] OR mods:language/mods:languageTerm[@type="code"]
+
+Decision
+^^^^^^^^
+https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MODS/view
+
+.. code-block:: xml
+
+    <language>
+        <languageTerm authority="iso639-2b" type="text">French</languageTerm>
+    </language>
+    <language>
+        <languageTerm authority="iso639-2b" type="text">Italian</languageTerm>
+    </language>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1>
+        dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> , <http://id.loc.gov/vocabulary/iso639-2/eng> .
+
+Use Case
+^^^^^^^^
+Non-linguistic content cases can be found across some of our resources. In these cases, a code is present with a zxx
+value or text has a value of No linguistic content.
+
+Justification
+^^^^^^^^^^^^^
+These are handled just like other languages in ISO 639-2 Collection of Bibliographic Codes. In this case, the zxx code
+denotes a declared absence of linguistic information.
+
+Xpath
+^^^^^
+mods:language/mods:languageTerm[@type="text"] OR mods:language/mods:languageTerm[@type="code"]
+
+Decision
+^^^^^^^^
+
+https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
+
+.. code-block:: xml
+
+    <language>
+        <languageTerm authority="iso639-2b" type="text">No linguistic content</languageTerm>
+    </language>
+
+https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
+
+.. code-block:: xml
+
+    <language>
+        <languageTerm type="code" authority="iso639-2b">zxx</languageTerm>
+    </language>
+
+Turtle would map the same in both cases.
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> .
+
 typeOfResource
 ==============
 
