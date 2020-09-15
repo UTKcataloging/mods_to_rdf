@@ -382,6 +382,12 @@ This XPath `relatedItem/location/url` is used 8516 times, but only uses 33 disti
       </location>
     </relatedItem>
 
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:isPartOf <https://n2t.net/ark:/87290/v81g0jf1> .
+
 relatedItem/abstract
 --------------------
 
