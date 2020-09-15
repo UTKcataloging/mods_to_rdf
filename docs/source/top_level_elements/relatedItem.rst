@@ -346,6 +346,8 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
       </originInfo>
     </relatedItem>
 
+Decision: we'll ignore these and find an alternate way to express/represent featured items for a collection.
+
 relatedItem/location[physicalLocation]
 --------------------------------------
 
