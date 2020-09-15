@@ -260,6 +260,7 @@ This XPath is typically used to indicate an object's archival series; e.g. `roth
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix opaque: <http://opaquenamespace.org/> .
 
     <https://example.org/collections/1> a pcdm:collection ;
         rdfs:label """Albert "Dutch" Roth Photograph Collection""" .
