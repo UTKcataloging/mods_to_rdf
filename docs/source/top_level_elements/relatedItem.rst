@@ -405,6 +405,16 @@ relatedItem/abstract
       <abstract>The Sanborn Fire Insurance Maps are a large-scale representation of the growth and layout of American cities. The University of Tennessee Libraries' collection currently provides digital versions of the four earliest sets of Knoxville maps - 1884, 1890, 1903, and 1917.</abstract>
     </relatedItem>
 
+.. code-block:: turtle
+
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/collection/1> a pcdm:Collection ;
+      rdfs:label "Sanborn Fire Insurance Maps Collection" ;
+      dcterms:abstract "The Sanborn Fire Insurance Maps are a large-scale representation of the growth and layout of American cities. The University of Tennessee Libraries' collection currently provides digital versions of the four earliest sets of Knoxville maps - 1884, 1890, 1903, and 1917." .
+
 relatedItem/name
 ----------------
 
