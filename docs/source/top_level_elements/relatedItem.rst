@@ -77,13 +77,13 @@ This XPath is typically used to indicate the archival collection for a given obj
 
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dbo: <http://dbpedia.org/ontology/>
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "Botanical Photography of Alan S. Heilman" .
 
     <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
         dbo:collection "Botany Department Photographs, AR.0488" .
-
 
 relatedItem[@type = "host"][@displayLabel = "project"]
 ------------------------------------------------------
