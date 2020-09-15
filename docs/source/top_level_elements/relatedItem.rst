@@ -260,7 +260,7 @@ This XPath is typically used to indicate an object's archival series; e.g. `roth
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
-    @prefix opaque: <http://opaquenamespace.org/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
 
     <https://example.org/collections/1> a pcdm:collection ;
         rdfs:label """Albert "Dutch" Roth Photograph Collection""" .
@@ -284,6 +284,12 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
       </titleInfo>
       <identifier type="local">AR.0488</identifier>
     </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
 
 `[@type = 'catalog']`, e.g. `vanvactor:1 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:1/datastream/MODS/view>`_.
 
@@ -309,6 +315,21 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
         <url>https://n2t.net/ark:/87290/v8pz5703</url>
       </location>
     </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/collections/1> a pcdm:Collection ;
+        rdfs:label "David Van Vactor Music Collection" .
+
+    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
+        dbo:isPartOf <https://n2t.net/ark:/87290/v8pz5703> ;
+        opaque:sheetmusic_hostItem "Gefunden, M047" .
 
 `[@type =  'pid']`, e.g. `collections:agrutesc <https://digital.lib.utk.edu/collections/islandora/object/collections:agrutesc/datastream/MODS/view>`_.
 
