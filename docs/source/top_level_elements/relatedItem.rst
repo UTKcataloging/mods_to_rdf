@@ -171,7 +171,6 @@ This XPath is used 2632 times in the Arrowmont Collection; e.g. `arrow:1 <https:
     <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/2> ;
         rdau:P60101 "The Arrow, Volume 27, Number 1" .
 
-
 relatedItem[@type = "host"][@displayLabel = "Bibliographic Citation"]
 ---------------------------------------------------------------------
 
@@ -192,7 +191,7 @@ This XPath, closely related to the preceding `[@displayLabel = "Project Part"]`,
         rdfs:label "The Arrow of Pi Beta Phi" .
 
     <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/2> ;
-        rdau:containedIn.en "The Arrow, Volume 27, Number 1" .
+        rdau:P60101 "The Arrow, Volume 27, Number 1" .
 
 relatedItem[@type = "host"][@displayLabel = "Is Part Of"]
 ---------------------------------------------------------
@@ -219,6 +218,17 @@ This XPath is only used 449 in the Volunteer Voices collection; e.g. `volvoices:
         <title>Harper's Weekly</title>
       </titleInfo>
     </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+
+    <https://example.org/collections/1> a pcdm:Collection ;
+        rdfs:label "Volunteer Voices" .
+
+    <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
+
 
 relatedItem[@type = "series"][@displayLabel = "Project"]
 --------------------------------------------------------
