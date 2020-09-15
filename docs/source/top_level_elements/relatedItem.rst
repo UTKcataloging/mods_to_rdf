@@ -229,7 +229,7 @@ This XPath is only used 449 in the Volunteer Voices collection; e.g. `volvoices:
         rdfs:label "Volunteer Voices" .
 
     <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
-        rdau:60101 "Harper's Weekly" .
+        rdau:P60101 "Harper's Weekly" .
 
 relatedItem[@type = "series"][@displayLabel = "Project"]
 --------------------------------------------------------
