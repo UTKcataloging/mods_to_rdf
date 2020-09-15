@@ -223,12 +223,13 @@ This XPath is only used 449 in the Volunteer Voices collection; e.g. `volvoices:
 
     @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
     @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix rdau: <http://www.rdaregistry.info/Elements/u/#> .
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "Volunteer Voices" .
 
     <https://example.org/objects/1> pcdm:memberOf <https://example.org/collections/1> ;
-
+        rdau:60101 "Harper's Weekly" .
 
 relatedItem[@type = "series"][@displayLabel = "Project"]
 --------------------------------------------------------
