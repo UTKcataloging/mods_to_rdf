@@ -1350,7 +1350,7 @@ As the basic root of the <recordIdentifier> value is already present in the iden
 Xpath
 ^^^^^
 
-"mods:recordInfo" / "mods:recordIdentifier"
+`mods:recordInfo/mods:recordIdentifier`
 
 Decision
 ^^^^^^^^
@@ -1391,7 +1391,7 @@ a project like this, information on the language of cataloging could be added ac
 Xpath
 ^^^^^
 
-"mods:recordInfo" / "mods:languageOfCataloging"
+`mods:recordInfo/mods:languageOfCataloging`
 
 Decision
 ^^^^^^^^
@@ -1429,7 +1429,7 @@ was not made that this information is essential, it was decided to drop these va
 Xpath
 ^^^^^
 
-"mods:recordInfo" / "mods:recordOrigin"
+`mods:recordInfo/mods:recordOrigin`
 
 Decision
 ^^^^^^^^
@@ -1464,7 +1464,7 @@ be dropped.
 Xpath
 ^^^^^
 
-"mods:recordInfo" / "mods:recordChangeDate"
+`mods:recordInfo/mods:recordChangeDate`
 
 Decision
 ^^^^^^^^
@@ -1504,7 +1504,7 @@ complexity.
 Xpath
 ^^^^^
 
-"mods:recordInfo" / "mods:recordCreationDate"
+`mods:recordInfo/mods:recordCreationDate`
 
 Decision
 ^^^^^^^^
@@ -1519,22 +1519,23 @@ Here's an `example record - volvoices:1857 <https://digital.lib.utk.edu/collecti
         <recordCreationDate encoding="edtf">2007-10-26</recordCreationDate>
     </recordInfo>
 
-recordContentSource
--------------------
+recordContentSource - University of Tennessee, Knoxville as value
+-----------------------------------------------------------------
 
 Use Case
 ^^^^^^^^
 
 The <recordContentSource> element is one of the most essential elements within <recordInfo>, as we currently use it to
-communicate the provider in DPLA. At UTK though, the information we share in this element is not consistent with the
-definition of <recordContentSource> - "The code or name of the entity (e.g. an organization and/or database) that either
-created or modified the original record." While we work with other partners, like the Children's Defense Fund and the
-McClung Museum, we are still technically the creators of the records in these situations. Despite this, we typically list
-these institutions as the record creator because we set up <recordContentSource> as the element that DPLA should map to
-for content provider. In actuality, when the content provider is not UTK, this information should be communicated in
-<physicalLocation> and our DPLA mapping should be updated. Despite these semantic issues, UTK has consistently put this
-information in an incorrect element, so the mapping is not affected. In actuality then, the mapping below is for the
-content provider or institution that would be present in <physicalLocation> if MODS was followed more closely.
+communicate the provider in DPLA.
+
+To better understand UTK's use of this element, so background information is helpful. At UTK the information we share in
+this element is not consistent with the definition of <recordContentSource> - "The code or name of the entity (e.g. an
+organization and/or database) that either created or modified the original record." While we work with other partners,
+like the Children's Defense Fund and the McClung Museum, we are still technically the creators of the records in these
+situations. Despite this, we typically list these institutions as the record creator because we set up <recordContentSource>
+as the element that DPLA should map to for content provider. In actuality, when the content provider is not UTK, this
+information should be communicated in <physicalLocation> and our DPLA mapping should be updated. Despite these semantic
+issues, UTK has consistently put this information in an incorrect element, so the mapping is not affected.
 
 Justification
 ^^^^^^^^^^^^^
@@ -1545,17 +1546,14 @@ the institution that provided them, which is important for maintaining respectfu
 Xpath
 ^^^^^
 
-"mods:recordInfo" / "mods:recordContentSource"
+`mods:recordInfo/mods:recordContentSource`
 
 Decision
 ^^^^^^^^
 
-Note that the mappings below assume that DPLA will be able to handle both literals and URIs for edm:dataProvider and edm:provider,
-as is allowed by these properties. This needs to be confirmed before this mapping is used. edm:dataProvider is used instead of
-edm:provider when the institution listed is not UTK as it  is defined as "The name or identifier of the organisation who
-contributes data indirectly to an aggregation service." Because UTK acts as a service hub for DPLA and it delivers data
-directly to this aggregator, it can be considered an edm:provider. This is defined as "The name or identifier of the
-organization who delivers data directly to an aggregation service (e.g. Europeana)."
+Because UTK acts as a service hub for DPLA and it delivers data directly to this aggregator, it can be considered an
+edm:provider. This is defined as "The name or identifier of the organization who delivers data directly to an aggregation
+service (e.g. Europeana)."
 
 When UTK physically holds the material and created the record, the metadata resembles this `example record - acwiley:284 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A284/datastream/MODS/view>`_.
 
@@ -1586,9 +1584,33 @@ It looks like we also have a misspelling here.
 
         <https://example.org/objects/1> edm:provider "University of Tennesse Knoxville. Libraries" .
 
-Sometimes when the resource comes from another institution, that institution name is placed in <recordContentSource>. For instance,
-here's an `example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
-Here it is also coupled with an "Intermediate Provider" note. McClung's Egypt collection is also treated similarly.
+recordContentSource - not University of Tennessee, Knoxville as value
+---------------------------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+When a resource comes from a non-UTK institution, its name is placed in <recordContentSource>.
+
+Justification
+^^^^^^^^^^^^^
+
+A content provider is required in DPLA. Sharing the names of institutional partners within the Digital Library of Tennessee
+is also a great way to recognize the contributions of these libraries.
+
+Xpath
+^^^^^
+
+`mods:recordInfo/mods:recordContentSource`
+
+Decision
+^^^^^^^^
+When the institution listed as providing the information is not UTK, edm:dataProvider should be used instead of
+edm:provider. edm:dataProvider is defined as "The name or identifier of the organisation who contributes data indirectly
+to an aggregation service."
+
+Here's an `example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
+It is also coupled with an "Intermediate Provider" note, as shown below. McClung's Egypt collection is also treated similarly.
 
 .. code-block:: xml
 
@@ -1609,8 +1631,36 @@ these institutions are not directly contributing to DPLA, they are listed as an 
 
         <https://example.org/objects/1> edm:dataProvider <http://id.loc.gov/authorities/names/no2017113530> .
 
-In addition, the TDH collection has null values. An example is `tdh:8597 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8597/datastream/MODS/view>`_.
-This needs to be addressed before migration so that what UTK shares with DPLA meets its requirements.
+recordContentSource - null or missing values
+--------------------------------------------
+
+Use Case
+^^^^^^^^
+
+Two collections have null values for <recordContentSource> or are missing this element entirely. There are 59 records
+that do not have <recordContentSource>. A few of these are starter namespaces (like baseball) that
+will be filled out once metadata for the collection is created. 55 of the records are associated with Kintner. This collection
+is currently being remediated by Andrew and this missing element will be addressed. Here's an `example record - kintner:10 <https://digital.lib.utk.edu/collections/islandora/object/kintner%3A10/datastream/MODS/view>`_.
+
+Justification
+^^^^^^^^^^^^^
+
+These records need to be addressed before migration so that what UTK shares with DPLA meets its requirements.
+
+Xpath
+^^^^^
+
+`mods:recordInfo/mods:recordContentSource`
+
+Decision
+^^^^^^^^
+
+Remediation needs to be completed so that "University of Tennessee, Knoxville" is added as the recordContentSource for all
+of the associated records. Alternatively we could complete this work in migration and automatically assign "University of
+Tennessee, Knoxville. Libraries" to records missing this element if we are certain no additional instances have been
+introduced.
+
+Here's an `example record - tdh:8597 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8597/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -1618,9 +1668,11 @@ This needs to be addressed before migration so that what UTK shares with DPLA me
         <recordContentSource/>
     </recordInfo>
 
-Finally, there are 59 records that do not have <recordContentSource>. A few of these are starter namespaces (like baseball) that
-will be filled out once metadata for the collection is created. 55 of the records are associated with Kintner. This collection
-is currently being remediated by Andrew and this missing element will be addressed. Here's an `example record - kintner:10 <https://digital.lib.utk.edu/collections/islandora/object/kintner%3A10/datastream/MODS/view>`_.
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+        <https://example.org/objects/1> edm:provider "University of Tennessee, Knoxville. Libraries" .
 
 accessCondition
 ===============
