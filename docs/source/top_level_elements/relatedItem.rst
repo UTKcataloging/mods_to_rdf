@@ -677,6 +677,9 @@ relatedItem/name
         dcterms:tableOfContents "1963 Missouri Basin Project Weekly report, Party no. 9 - Chapelle Creek, Report no.3-10, July 5-August 23, 1963 -- Folan, William J." ;
         dcterms:tableOfContents "1963 Missouri Basin Project weekly report, Party no. 4 - Garrison Diversion, Report no.1-6, July 26-August 30, 1963 -- Johnson, Elden" .
 
+Note: this is an initial attempt at `relatedItem[@type='constituent']` - I expect that we'll want to refine how we're modeling this kind of metadata.
+
+
 Empty elements
 --------------
 
