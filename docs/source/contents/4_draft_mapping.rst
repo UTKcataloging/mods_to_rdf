@@ -1631,16 +1631,13 @@ these institutions are not directly contributing to DPLA, they are listed as an 
 
         <https://example.org/objects/1> edm:dataProvider <http://id.loc.gov/authorities/names/no2017113530> .
 
-recordContentSource - null or missing values
---------------------------------------------
+recordContentSource - null values
+---------------------------------
 
 Use Case
 ^^^^^^^^
 
-Two collections have null values for <recordContentSource> or are missing this element entirely. There are 59 records
-that do not have <recordContentSource>. A few of these are starter namespaces (like baseball) that
-will be filled out once metadata for the collection is created. 55 of the records are associated with Kintner. This collection
-is currently being remediated by Andrew and this missing element will be addressed. Here's an `example record - kintner:10 <https://digital.lib.utk.edu/collections/islandora/object/kintner%3A10/datastream/MODS/view>`_.
+One collection (TDH) has null values for <recordContentSource>.
 
 Justification
 ^^^^^^^^^^^^^
