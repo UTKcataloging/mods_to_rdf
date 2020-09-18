@@ -1271,6 +1271,34 @@ Turtle would map the same in both cases.
 
     <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng> .
 
+Non-linguistic content cases can be found across some of our resources. In these cases, a *code* is present with a **zxx**
+value or type *text* has a value of **No linguistic content**. Justifications from the single language case above also apply here. These are handled just like other languages in ISO 639-2 Collection of Bibliographic Codes. In this case, the **zxx** code
+denotes a declared absence of linguistic information.
+
+https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
+
+.. code-block:: xml
+
+    <language>
+        <languageTerm authority="iso639-2b" type="text">No linguistic content</languageTerm>
+    </language>
+
+https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
+
+.. code-block:: xml
+
+    <language>
+        <languageTerm type="code" authority="iso639-2b">zxx</languageTerm>
+    </language>
+
+Turtle would map the same in both cases.
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> .
+
 item has multiple languages
 ---------------------------
 
@@ -1309,50 +1337,6 @@ https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MO
 
     <https://example.org/objects/1>
         dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> , <http://id.loc.gov/vocabulary/iso639-2/ita> .
-
-item has non-linguistic content
--------------------------------
-
-Use Case
-^^^^^^^^
-Non-linguistic content cases can be found across some of our resources. In these cases, a *code* is present with a **zxx**
-value or type *text* has a value of **No linguistic content**. Justifications from the single language case above also apply here.
-
-Justification
-^^^^^^^^^^^^^
-These are handled just like other languages in ISO 639-2 Collection of Bibliographic Codes. In this case, the **zxx** code
-denotes a declared absence of linguistic information.
-
-Xpath
-^^^^^
-mods:language/mods:languageTerm[@type="text"] OR mods:language/mods:languageTerm[@type="code"]
-
-Decision
-^^^^^^^^
-
-https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
-
-.. code-block:: xml
-
-    <language>
-        <languageTerm authority="iso639-2b" type="text">No linguistic content</languageTerm>
-    </language>
-
-https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
-
-.. code-block:: xml
-
-    <language>
-        <languageTerm type="code" authority="iso639-2b">zxx</languageTerm>
-    </language>
-
-Turtle would map the same in both cases.
-
-.. code-block:: turtle
-
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-
-    <https://example.org/objects/1> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/zxx> .
 
 typeOfResource
 ==============
