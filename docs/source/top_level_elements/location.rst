@@ -9,7 +9,7 @@ Distinct Cases
 --------------
 
 physicalLocation with explicit uri
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view
 
@@ -26,7 +26,7 @@ https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MOD
     <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2017033007> .
 
 physicalLocation as string (special collections)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/roth:4245/datastream/MODS/view
 
@@ -43,7 +43,7 @@ https://digital.lib.utk.edu/collections/islandora/object/roth:4245/datastream/MO
     <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
 
 physicalLocation as string (libraries)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **The University of Tennessee Libraries, Knoxville** 574 instances
 
@@ -82,7 +82,7 @@ https://digital.lib.utk.edu/collections/islandora/object/tdh:8781/datastream/MOD
     <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/n80003889> .
 
 physicalLocation and shelfLocator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/MODS/view
 
@@ -102,7 +102,7 @@ https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/
         opaque:locationShelfLocator "Box 5, Folder 8" .
 
 physicalLocation with holdingSimple and holdingExternal
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view
 
@@ -135,7 +135,7 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastre
         opaque:locationShelfLocator "Manuscript Number 5" .
 
 physicalLocation with displayLabel="Address"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/arrow:58/datastream/MODS/view
 
@@ -160,7 +160,7 @@ https://digital.lib.utk.edu/collections/islandora/object/arrow:58/datastream/MOD
 
 
 physicalLocation with displayLabel attributes for Collection and Repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 https://digital.lib.utk.edu/collections/islandora/object/arrowmont%3A208/datastream/MODS/view
 
