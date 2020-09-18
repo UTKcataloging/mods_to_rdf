@@ -188,7 +188,7 @@ https://digital.lib.utk.edu/collections/islandora/object/arrowmont%3A208/datastr
 url with a preview
 ^^^^^^^^^^^^^^^^^^
 
-*These only occur in volvoices. Obviously, this is a case where the turtle object URIs will need to be adjusted to their new locations.*
+*These only occur in volvoices. Obviously, this is a case where the turtle object URIs will be relative to the new platform.*
 
 https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999
 
@@ -203,6 +203,6 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999
 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
-    <https://example.org/objects/1> edm:isShownAt <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999> ;
-        edm:preview <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/TN/view> ;
-        edm:object <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/OBJ/view> .
+    <https://example.org/objects/1> edm:isShownAt <https://digital.lib.utk.edu/placeholder/shownat/uri> ;
+        edm:preview <https://digital.lib.utk.edu/placeholder/preview/uri> ;
+        edm:object <https://digital.lib.utk.edu/placeholder/object/uri> .
