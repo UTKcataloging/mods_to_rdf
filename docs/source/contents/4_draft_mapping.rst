@@ -631,7 +631,7 @@ Xpath
 Decision
 --------
 
-Below are examples showing two punctuation variations present in this element's values.
+Below are examples showing the punctuation variations present in this element's values.
 
 `Example record with ";" as separators - arrow:305 <https://digital.lib.utk.edu/collections/islandora/object/arrow%3A305/datastream/MODS/view>`_.
 
@@ -648,6 +648,14 @@ Below are examples showing two punctuation variations present in this element's 
      - Pepper yields and fertility, plant spacing - Stripping vs. spindle picking of 4 cottons - Personnel changes -
      Soybean irrigation - Alfalfa crown rot - Bedding for better cotton stands - Controlling bagworms -
      Nitrogen on shade trees</tableOfContents>
+
+`Example record with " -- " as separators - vanvactor:15772 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor%3A15772/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <tableOfContents>Preface -- David Van Vactor: life and works -- David Van Vactor: catalog of manuscripts --
+    Catalog of books, scores, and manuscripts in Special Collections -- Books and scores in the George F. DeVine Music
+    Library -- Sound recordings, 1942-1979</tableOfContents>
 
 All values within <tableOfContents> will be mapped to RDF in the same way. Below is a representation of arrow:305.
 
