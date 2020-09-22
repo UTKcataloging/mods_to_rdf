@@ -609,27 +609,27 @@ tableOfContents
 ===============
 
 Use Case
-^^^^^^^^
+--------
 
 The following collections include tableOfContents - David Van Vactor Music Collection, Tennessee Farm and Home Science,
-The Arrow of Pi Beta PhiThere are a total of 455 unique values. This element contains the names of individually titled
+The Arrow of Pi Beta Phi. There are a total of 455 unique values. This element contains the names of individually titled
 parts that make up the larger resource. It is used to provide more detailed information on the content of a resource in
 a non-structured way. Note that punctuation separating part titles varies depending on the string values being separated.
 The following punctuation is present in UTK's tableOfContents elements: " -- ", " - ", and ";".
 
 Justification
-^^^^^^^^^^^^^
+-------------
 
 This information aides keyword discovery by adding more text to the record and providing users with a listing of parts
 within the larger resource.
 
 Xpath
-^^^^^
+-----
 
 `mods:tableOfContents`
 
 Decision
-^^^^^^^^
+--------
 
 Below are examples showing two punctuation variations present in this element's values.
 
@@ -649,7 +649,7 @@ Below are examples showing two punctuation variations present in this element's 
      Soybean irrigation - Alfalfa crown rot - Bedding for better cotton stands - Controlling bagworms -
      Nitrogen on shade trees</tableOfContents>
 
-All values within <tableOfContents will be mapped to RDF in the same way. Below is a representation of arrow:305.
+All values within <tableOfContents> will be mapped to RDF in the same way. Below is a representation of arrow:305.
 
 .. code-block:: turtle
 
