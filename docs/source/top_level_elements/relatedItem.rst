@@ -655,6 +655,7 @@ relatedItem/name
     @prefix dbo: <http://dbpedia.org/ontology/> .
     @prefix opaque: <http://opaquenamespace.org/ns/> .
     @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
     <https://example.org/collections/1> a pcdm:Collection ;
         rdfs:label "The Dr. William M. Bass III Collection - The Bass Field Notes" .
