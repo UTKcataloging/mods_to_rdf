@@ -449,7 +449,18 @@ relatedItem/name
       <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n83189337">
         <namePart>Bass, William M., 1928-</namePart>
         <role>
-          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre || Stephenson, Robert L. (Robert Lloyd), 1919- | URI: http://id.l">Creator</roleTerm>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+      </name>
+    </relatedItem>
+    <relatedItem type="constituent">
+      <titleInfo>
+        <title>1963 Missouri Basin Project Weekly Report, June 24</title>
+      </titleInfo>
+      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n84053297">
+        <namePart>Stephenson, Robert L. (Robert Lloyd), 1919-</namePart>
+        <role>
+          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
         </role>
       </name>
     </relatedItem>
@@ -480,14 +491,6 @@ relatedItem/name
       </titleInfo>
       <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n83189337">
         <namePart>Bass, William M., 1928-</namePart>
-        <role>
-          <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
-        </role>
-      </name>
-    </relatedItem>
-    <relatedItem type="constituent">
-      <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2004018542">
-        <namePart>Brown, Lionel A.</namePart>
         <role>
           <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
         </role>
@@ -658,24 +661,8 @@ relatedItem/name
 
     <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
         dbo:collection "Dr. William M. Bass III Collection , MS.3689" ;
-        dcterms:tableOfContents "M.B.P. weekly progress reports, Summer 1963 -- Bass, William M., 1928-" ;
-        dcterms:tableOfContents "Archeological progress report no.8, Field season of 1963, December, 1963" ;
-        dcterms:tableOfContents "Archaeological progress report no.9, Field Season of 1964, November, 1964" ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report, Party no.1 - Kansas and Nebraska surveys, Report no.1-3, May 10-24, 1963 -- Brown, Lionel A." ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report Party no.3 - Sully Burial analysis, Report no.1, 3-9, June 7, 22-August 2, 1963 -- Bass, William M., 1928-" ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report, Party #5 - Upper Yellowtail Reservoir, Report no.1-12, June 14-July 5-August 30, 1963 -- Husted, Wilfred M." ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report Party #10 - Dewey County Party, Report no.1-12, June 14-August 30, 1963 -- Neuman, Robert W." ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report Party #12 - Davis Creek Site, Report no.1-12, June 14-August 30, 1963 [Numbering of the reports is off, went by dates] -- Bowers, Alfred W." ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report, News from Lincoln, Report no.1-5, June 24-August 12, 1963 -- Stephenson, Robert L. (Robert Lloyd), 1919-" ;
-        dcterms:tableOfContents "University of South Dakota, Gavins Point Project no.2, Cooperators Party B, Report no.1-7, June 21-August 2, 1963 -- Gant, Robert D." ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report, Party no.6 - Historic sites (Big Bend & Oahe Res. Areas), Report no.1-10, June 22-August 24, 1963 -- Smith, G. Hubert (George Hubert), 1908-1972" ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report, Party no.7 - Pierre South Dakota, Report no.1-10, June 21-August 24, 1963 [numbering off, going by date] -- Jensen, Richard E." ;
-        dcterms:tableOfContents "1963 Missouri Basin Project Weekly Report, Parties no. 8 and 9 - La Roche and Chapelle Creek, Report no.1-11, June 21-September 3, 1963 -- Hoffman, J. J. (John Jacob), 1931-" ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report, Party no.11 - Moreau Party, Report no.2-11, June 21-August 30, 1963 -- Mallory, Oscar L." ;
-        dcterms:tableOfContents "University of Kansas Milford Reservoir Archeological Party, Cooperators Party A, Report no.3, June 28, 1963 -- Schock, Jack" ;
-        dcterms:tableOfContents "Nebraska State Historical Society - National Science Foundation Logan Creek Project - Cooperators Party C, Report no.1, June 28, 1963 -- Kivett, Marvin F." ;
-        dcterms:tableOfContents "1963 Missouri Basin Project Weekly report, Party no. 9 - Chapelle Creek, Report no.3-10, July 5-August 23, 1963 -- Folan, William J." ;
-        dcterms:tableOfContents "1963 Missouri Basin Project weekly report, Party no. 4 - Garrison Diversion, Report no.1-6, July 26-August 30, 1963 -- Johnson, Elden" .
+        dcterms:tableOfContents "M.B.P. weekly progress reports, Summer 1963 (Bass, William M., 1928-) -- Archeological progress report no.8, Field season of 1963, December, 1963 -- Archaeological progress report no.9, Field Season of 1964, November, 1964 -- 1963 Missouri Basin Project weekly report, Party no.1 - Kansas and Nebraska surveys, Report no.1-3, May 10-24, 1963 (Brown, Lionel A.) -- 1963 Missouri Basin Project weekly report Party no.3 - Sully Burial analysis, Report no.1, 3-9, June 7, 22-August 2, 1963 (Bass, William M., 1928-) -- 1963 Missouri Basin Project weekly report, Party #5 - Upper Yellowtail Reservoir, Report no.1-12, June 14-July 5-August 30, 1963 (Husted, Wilfred M.) -- 1963 Missouri Basin Project weekly report Party #10 - Dewey County Party, Report no.1-12, June 14-August 30, 1963 (Neuman, Robert W.) -- 1963 Missouri Basin Project weekly report Party #12 - Davis Creek Site, Report no.1-12, June 14-August 30, 1963 [Numbering of the reports is off, went by dates] (Bowers, Alfred W.) -- 1963 Missouri Basin Project weekly report, News from Lincoln, Report no.1-5, June 24-August 12, 1963 (Stephenson, Robert L. (Robert Lloyd), 1919-) -- University of South Dakota, Gavins Point Project no.2, Cooperators Party B, Report no.1-7, June 21-August 2, 1963 (Gant, Robert D.) -- 1963 Missouri Basin Project weekly report, Party no.6 - Historic sites (Big Bend & Oahe Res. Areas), Report no.1-10, June 22-August 24, 1963 (Smith, G. Hubert (George Hubert), 1908-1972) -- 1963 Missouri Basin Project weekly report, Party no.7 - Pierre South Dakota, Report no.1-10, June 21-August 24, 1963 [numbering off, going by date] (Jensen, Richard E.) -- 1963 Missouri Basin Project Weekly Report, Parties no. 8 and 9 - La Roche and Chapelle Creek, Report no.1-11, June 21-September 3, 1963 (Hoffman, J. J. (John Jacob), 1931-) -- 1963 Missouri Basin Project weekly report, Party no.11 - Moreau Party, Report no.2-11, June 21-August 30, 1963 (Mallory, Oscar L.) -- University of Kansas Milford Reservoir Archeological Party, Cooperators Party A, Report no.3, June 28, 1963 (Schock, Jack) -- Nebraska State Historical Society - National Science Foundation Logan Creek Project - Cooperators Party C, Report no.1, June 28, 1963 (Kivett, Marvin F.) -- 1963 Missouri Basin Project Weekly report, Party no. 9 - Chapelle Creek, Report no.3-10, July 5-August 23, 1963 (Folan, William J.) -- 1963 Missouri Basin Project weekly report, Party no. 4 - Garrison Diversion, Report no.1-6, July 26-August 30, 1963 (Johnson, Elden)" .
+
 
 Note: this is an initial attempt at `relatedItem[@type='constituent']` - I expect that we'll want to refine how we're modeling this kind of metadata.
 
