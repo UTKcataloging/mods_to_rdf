@@ -608,6 +608,56 @@ abstract
 tableOfContents
 ===============
 
+Use Case
+^^^^^^^^
+
+The following collections include tableOfContents - David Van Vactor Music Collection, Tennessee Farm and Home Science,
+The Arrow of Pi Beta PhiThere are a total of 455 unique values. This element contains the names of individually titled
+parts that make up the larger resource. It is used to provide more detailed information on the content of a resource in
+a non-structured way. Note that punctuation separating part titles varies depending on the string values being separated.
+The following punctuation is present in UTK's tableOfContents elements: " -- ", " - ", and ";".
+
+Justification
+^^^^^^^^^^^^^
+
+This information aides keyword discovery by adding more text to the record and providing users with a listing of parts
+within the larger resource.
+
+Xpath
+^^^^^
+
+`mods:tableOfContents`
+
+Decision
+^^^^^^^^
+
+Below are examples showing two punctuation variations present in this element's values.
+
+`Example record with ";" as separators - arrow:305 <https://digital.lib.utk.edu/collections/islandora/object/arrow%3A305/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <tableOfContents>Library Fund Honors Marian; Noted Craftsman Lauds Arrowmont; Gatlinburg Residents Enjoy Craft Courses;
+    Tennessee Gammas Honor Prof. Heard</tableOfContents>
+
+`Example record with "-" as separators - agrtfhs:2119 <https://digital.lib.utk.edu/collections/islandora/object/agrtfhs%3A2119/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <tableOfContents>Snap beans: machine vs. hand harvest - New bulletins - Protein with high silage rations -- dairy
+     - Pepper yields and fertility, plant spacing - Stripping vs. spindle picking of 4 cottons - Personnel changes -
+     Soybean irrigation - Alfalfa crown rot - Bedding for better cotton stands - Controlling bagworms -
+     Nitrogen on shade trees</tableOfContents>
+
+All values within <tableOfContents will be mapped to RDF in the same way. Below is a representation of arrow:305.
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1>
+        dcterms:tableOfContents "Library Fund Honors Marian; Noted Craftsman Lauds Arrowmont; Gatlinburg Residents Enjoy Craft Courses; Tennessee Gammas Honor Prof. Heard" .
+
 name
 ====
 
