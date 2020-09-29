@@ -102,3 +102,35 @@ We need to change roleTerm value for these problematic records:
 * "Attributed" == "Attributed name"
 * "Minute" == "Minute taker"
 * "creator" == "Creator"
+
+Name has more than one roleterm
+-------------------------------
+
+Some names have more than one roleTerm like the ones found in
+`harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
+
+.. code-block:: xml
+
+    <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
+        <namePart>Swan, W. H. (William H.)</namePart>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/cmp">
+                Composer
+            </roleTerm>
+        </role>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/com">
+                Compiler
+            </roleTerm>
+        </role>
+    </name>
+
+Because roleterms are rdf properties, names with two roleterms should be modeled like this:
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cmp <http://id.loc.gov/authorities/names/no2002022963> ;
+        relators:com <http://id.loc.gov/authorities/names/no2002022963> .
