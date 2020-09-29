@@ -12,6 +12,9 @@ This section describes our use of the top level element name.
 Names and Roleterms
 -------------------
 
+A Bit of Background
+===================
+
 In rdf, both the Samvera and Islandora communities recommend marcrelators to serve as the rdf property that relate names
 to the digital object record.
 
@@ -63,6 +66,8 @@ Suggestions
 Name Has a Marcrelator Roleterm
 -------------------------------
 
+Most records have a name with a marcrelator roleterm.
+
 If the role term is associated with a marcrelator:
 
 .. code-block:: xml
@@ -85,7 +90,13 @@ If the role term is associated with a marcrelator:
     <https://example.org/objects/1>
         relators:stg "Example name" .
 
-Other terms:
+Name Does Not have a Marcrelator Roleterm
+-----------------------------------------
+
+If the name does not have a marcrelator roleterm, **THIS IS A BLOCKER FOR MIGRATION AND MUST BE ADDRESSED BEFORE
+MIGRATION**.
+
+We need to change roleTerm value for these problematic records:
 
 * "Associated" == "Associated name"
 * "Attributed" == "Attributed name"
