@@ -170,18 +170,7 @@ This XPath is only used 449 in the Volunteer Voices collection; e.g. `volvoices:
       </titleInfo>
     </relatedItem>
 
-.. code-block:: turtle
-
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
-    @prefix rdau: <http://www.rdaregistry.info/Elements/u/#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-
-    <https://example.org/collections/1> a pcdm:Collection ;
-        rdfs:label "Volunteer Voices" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
-        rdau:P60101 "Harper's Weekly" .
+:code:`[@displayLabel='Is Part Of']` may be sufficiently captured in other parts of the MODS (e.g. :code:`abstract`). Flip-flopping backwards, we should ignore this XPath.
 
 relatedItem[@type = "series"][@displayLabel = "Project"]
 --------------------------------------------------------
