@@ -74,16 +74,7 @@ This XPath is used 798 times and only appears in the Thompson Brothers Photograp
       </titleInfo>
     </relatedItem>
 
-.. code-block:: turtle
-
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-
-    <https://example.org/collections/1> a pcdm:Collection ;
-        rdfs:label "Thompson Brothers Commercial Photographers" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> .
+The relationship expressed here is structural in nature and should be reflected by default behavior in our DAMS.
 
 relatedItem[@type = "host"][@displayLabel = "Digital Collection"]
 -----------------------------------------------------------------
