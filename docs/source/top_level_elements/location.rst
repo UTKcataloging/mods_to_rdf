@@ -149,7 +149,7 @@ https://digital.lib.utk.edu/collections/islandora/object/arrow:58/datastream/MOD
         <shelfLocator>Box 36, Folder 14</shelfLocator>
     </location>
 
-Samvera documentation does demonstrate use of Opaque Namespace **locationShelfLocator** predicate, however, this still under development. Though, we likely do not want to do this for every item in our collections, there may be special cases where we want to use opaquenamespace predicates to note box and folder number and names. If so, we can use **boxNumber**, **boxName**, **folderNumber**, and **folderName**  `opaquenamespace predicates <http://opaquenamespace.org/predicates>`_.
+Samvera documentation does demonstrate use of Opaque Namespace **locationShelfLocator** predicate, however, this may still be under development or maybe even abandoned. Though, we likely do not want to do this for every item in our collections, there may be special cases where we want to use predicates to reference box and folder number and names. If so, we can use **boxNumber**, **boxName**, **folderNumber**, and **folderName**  `opaquenamespace predicates <http://opaquenamespace.org/predicates>`_.
 
 .. code-block:: turtle
 
