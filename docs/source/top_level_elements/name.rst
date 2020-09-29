@@ -81,11 +81,8 @@ Role term matches a marc relator:
 
 Other terms:
 
-"Associated" == "Associated name"
-
-"Attributed" == "Attributed name"
-
-"Minute" == "Minute taker"
-
-"creator" == "Creator"
+* "Associated" == "Associated name"
+* "Attributed" == "Attributed name"
+* "Minute" == "Minute taker"
+* "creator" == "Creator"
 
