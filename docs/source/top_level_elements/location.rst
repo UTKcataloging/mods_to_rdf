@@ -8,8 +8,10 @@ This section describes all the different types of location elements that we have
 Distinct Cases
 --------------
 
-physicalLocation with explicit uri
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+physicalLocation with @valueURI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We have 14302 where a physicalLocation has a valueURI attribute. We will use the URI in replacement of a literal in those cases.
 
 https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view
 
@@ -26,8 +28,39 @@ https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MOD
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/no2017033007> .
 
+physicalLocation without @valueURI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If valueURI is not present, we will use the string literal.
+
+https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>Blount County Public Library</physicalLocation>
+        <holdingExternal>
+            <holding xsi:schemaLocation="info:ofi/fmt:xml:xsd:iso20775 http://www.loc.gov/standards/iso20775/N130_ISOholdings_v6_1.xsd">
+                <physicalAddress>
+                    <text>City: Maryville</text>
+                    <text>County: Blount County</text>
+                    <text>State: Tennessee</text>
+                </physicalAddress>
+            </holding>
+        </holdingExternal>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+
+    <https://example.org/objects/1>
+        relators:rps "Blount County Public Library" .
+
 physicalLocation as string (special collections)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If we do not have a valueURI for the various strings encompassing University of Tennessee Libraries Special Collections, we would map these to the appropriate URI.
 
 https://digital.lib.utk.edu/collections/islandora/object/roth:4245/datastream/MODS/view
 
@@ -46,6 +79,8 @@ https://digital.lib.utk.edu/collections/islandora/object/roth:4245/datastream/MO
 
 physicalLocation as string (libraries)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Like above, if we do not have a valueURI for the various strings encompassing University of Tennessee Libraries, we would map these to the appropriate URI.
 
 **The University of Tennessee Libraries, Knoxville** 574 instances
 
