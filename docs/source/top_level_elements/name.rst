@@ -248,3 +248,77 @@ There are 314 records with an @usage="primary" attribute.  An example is
 
 We should drop this.
 
+Namepart with @type="date"
+--------------------------
+
+There are 10,370 records with a namePart with a @type="date".  This value seems to relate to the birth and death dates of
+the person.
+
+An example is `egypt:230 <https://digital.lib.utk.edu/collections/islandora/object/egypt%3A230/datastream/MODS>`_
+
+If we need to keep this data, we need to have an external triple store and decide how to model names.
+
+Name Descriptions
+-----------------
+
+We have 10,309 records with a name with a description.  This is normally a nationality.  Here is the exhaustive list:
+
+.. code-block:: python
+
+    [None, 'American', 'Argentine', 'Austrian', 'Brazilian', 'British', 'Canadian', 'Danish', 'Dutch', 'Finnish', 'Flemish', 'French', 'German', 'Greek', 'Italian', 'Japanese', 'Norwegian', 'Spanish', 'Swiss', 'Turkish']
+
+An example is `archivision:4817 <https://digital.lib.utk.edu/collections/islandora/object/archivision%3A4817>`_.
+
+If we need to keep this data, we need to have an external triple store and decide how to model names.
+
+Name Types
+----------
+
+We have 2,297 records with a name with a type attribute equal to corporate and 12,806 records with a name with a type equal
+to personal.
+
+Here are examples of each:
+
+* `egypt:24 <https://digital.lib.utk.edu/collections/islandora/object/egypt%3A24/datastream/MODS>`_
+* `cDanielCartoon:1179 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1178/datastream/MODS>`_
+
+I don't think we need this information.
+
+Name Display Forms
+------------------
+
+We have 10,284 records with a name/displayForm.
+
+An example is `archivision:2480 <https://digital.lib.utk.edu/collections/islandora/object/archivision%3A2480/datastream/MODS>`_.
+
+.. code-block:: xml
+
+    <name type="personal" authority="ulan" valueURI="http://vocab.getty.edu/ulan/500023721">
+        <namePart>Loos, Adolf</namePart>
+        <displayForm>Adolf Loos</displayForm>
+        <namePart type="date">1870-1933</namePart>
+        <description>Austrian</description>
+        <role>
+            <roleTerm type="text" authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+    </name>
+
+Do we need this?  What are the use cases?
+
+Role Term Types
+---------------
+
+We have 23,811 role terms with a type="text".
+
+An example is `cDanielCartoon:1178 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1178/datastream/MODS>`_.
+
+.. code-block:: xml
+
+    <name type="personal">
+        <namePart>Daniel, Charles R. (Charlie), Jr., 1930-</namePart>
+        <role>
+            <roleTerm type="text" authority="marcrelator" valueURI=" http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+    </name>
+
+We don't need to keep this.
