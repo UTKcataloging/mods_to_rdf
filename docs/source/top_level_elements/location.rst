@@ -99,7 +99,6 @@ In most cases, especially those under our purview, we will likely opt to drop bo
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
-    @prefix opaque: <http://opaquenamespace.org/ns/> .
 
     <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
 
@@ -131,7 +130,6 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastre
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
-    @prefix opaque: <http://opaquenamespace.org/ns/> .
 
     <https://example.org/objects/1> relators:rps "University of Memphis. Special Collections" .
 
