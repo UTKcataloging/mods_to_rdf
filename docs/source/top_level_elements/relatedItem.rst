@@ -198,17 +198,10 @@ This XPath is typically used to indicate an object's archival series; e.g. `roth
 
 .. code-block:: turtle
 
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
     @prefix opaque: <http://opaquenamespace.org/ns/> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/collections/1> a pcdm:collection ;
-        rdfs:label """Albert "Dutch" Roth Photograph Collection""" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
-        dbo:collection """A. G. "Dutch" and Margaret Ann Roth Papers, MS.3334""" ;
+    <https://example.org/objects/1> dbo:collection """A. G. "Dutch" and Margaret Ann Roth Papers, MS.3334""" ;
         opaque:memberOfArchivalSeries "Series II: Margaret Ann Roth Photographs and Other Materials, 1947 March 11-2002 December 14 (bulk 1947 March 11-1955 March 20). Sub-Series A: Photographs, 1947 March 11-1955 March 139" .
 
 relatedItem/identifier[@type]
