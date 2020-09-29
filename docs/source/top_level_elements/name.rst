@@ -322,3 +322,29 @@ An example is `cDanielCartoon:1178 <https://digital.lib.utk.edu/collections/isla
     </name>
 
 We don't need to keep this.
+
+Role Term Authority URIs
+------------------------
+
+We have 745 role terms with authorityURIs.
+
+An example is `insurancea:163 <https://digital.lib.utk.edu/collections/islandora/object/insurancena%3A163/datastream/MODS>`_.
+
+.. code-block:: xml
+
+    <name type="personal">
+        <namePart>George Meade</namePart>
+        <role>
+            <roleTerm authority="marcrelator" authorityURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+    </name>
+
+We don't need to keep this.
+
+Other Xpaths to Trash
+---------------------
+
+There are a few other garbage that we need to trash.  Rather than talking about them in depth, here are the xpaths:
+
+* :code:`name/role/roleTerm/@authority`
+* :code:`name/@authority`
