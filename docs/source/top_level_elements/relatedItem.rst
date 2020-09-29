@@ -89,7 +89,7 @@ This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cd
       </titleInfo>
     </relatedItem>
 
-The relationship expressed here is structural in nature and should be reflected by default behavior in our DAMS.
+
 
 relatedItem[@type = "host"][@displayLabel = "Project Part"]
 -----------------------------------------------------------
@@ -114,22 +114,7 @@ This XPath is used 2632 times in the Arrowmont Collection; e.g. `arrow:1 <https:
       </titleInfo>
     </relatedItem>
 
-.. code-block:: turtle
-
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-    @prefix rdau: <http://www.rdaregistry.info/Elements/u/#> .
-
-    <https://example.org/collections/1> a pcdm:Collection ;
-        rdfs:label "From Pi Beta Phi to Arrowmont" .
-
-    <https://example.org/collections/2> a pcdm:Collection ;
-        dcterms:isPartOf <https://example.org/collections/1> ;
-        rdfs:label "The Arrow of Pi Beta Phi" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/2> ;
-        rdau:P60101 "The Arrow, Volume 27, Number 1" .
+The relationship expressed here in :code:`[@type='host'][@displayLabel='Project Part']` is structural in nature and should be reflected by default behavior in our DAMS.
 
 relatedItem[@type = "host"][@displayLabel = "Bibliographic Citation"]
 ---------------------------------------------------------------------
@@ -152,6 +137,12 @@ This XPath, closely related to the preceding `[@displayLabel = "Project Part"]`,
 
     <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/2> ;
         rdau:P60101 "The Arrow, Volume 27, Number 1" .
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:bibliographicCitation "The Arrow, Volume 27, Number 1" .
 
 relatedItem[@type = "host"][@displayLabel = "Is Part Of"]
 ---------------------------------------------------------
