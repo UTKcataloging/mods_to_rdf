@@ -12,8 +12,8 @@ This section describes our use of the top level element name.
 Names and Roleterms
 -------------------
 
-A Bit of Background
-===================
+A Bit of Background and the Importance of Derefenceable Marcrelators
+====================================================================
 
 In rdf, both the Samvera and Islandora communities recommend marcrelators to serve as the rdf property that relate names
 to the digital object record.
