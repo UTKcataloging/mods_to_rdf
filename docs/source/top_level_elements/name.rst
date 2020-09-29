@@ -1,13 +1,16 @@
+====
 name
 ====
 
+-----
 About
 -----
 
 This section describes our use of the top level element name.
 
-Keep Roles and Roleterms Simple
--------------------------------
+-------------------
+Names and Roleterms
+-------------------
 
 In rdf, both the Samvera and Islandora communities recommend marcrelators to serve as the rdf property that relate names
 to the digital object record.
@@ -55,9 +58,12 @@ Since these are not from marc relators, we need to do something with them.  We c
 only for relationship building for everything else.
 
 Suggestions
-^^^^^^^^^^^
+===========
 
-Role term matches a marc relator:
+Name Has a Marcrelator Roleterm
+-------------------------------
+
+If the role term is associated with a marcrelator:
 
 .. code-block:: xml
 
@@ -85,4 +91,3 @@ Other terms:
 * "Attributed" == "Attributed name"
 * "Minute" == "Minute taker"
 * "creator" == "Creator"
-
