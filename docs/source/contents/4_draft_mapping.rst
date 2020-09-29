@@ -626,7 +626,7 @@ within the larger resource.
 Xpath
 -----
 
-`mods:tableOfContents`
+:code:`mods:tableOfContents`
 
 Decision
 --------
