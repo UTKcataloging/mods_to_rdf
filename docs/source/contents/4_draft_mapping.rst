@@ -1350,7 +1350,7 @@ As the basic root of the <recordIdentifier> value is already present in the iden
 Xpath
 ^^^^^
 
-`mods:recordInfo/mods:recordIdentifier`
+:code:`mods:recordInfo/mods:recordIdentifier`
 
 Decision
 ^^^^^^^^
@@ -1391,7 +1391,7 @@ a project like this, information on the language of cataloging could be added ac
 Xpath
 ^^^^^
 
-`mods:recordInfo/mods:languageOfCataloging`
+:code:`mods:recordInfo/mods:languageOfCataloging`
 
 Decision
 ^^^^^^^^
@@ -1429,7 +1429,7 @@ was not made that this information is essential, it was decided to drop these va
 Xpath
 ^^^^^
 
-`mods:recordInfo/mods:recordOrigin`
+:code:`mods:recordInfo/mods:recordOrigin`
 
 Decision
 ^^^^^^^^
@@ -1464,7 +1464,7 @@ be dropped.
 Xpath
 ^^^^^
 
-`mods:recordInfo/mods:recordChangeDate`
+:code:`mods:recordInfo/mods:recordChangeDate`
 
 Decision
 ^^^^^^^^
@@ -1504,7 +1504,7 @@ complexity.
 Xpath
 ^^^^^
 
-`mods:recordInfo/mods:recordCreationDate`
+:code:`mods:recordInfo/mods:recordCreationDate`
 
 Decision
 ^^^^^^^^
@@ -1546,7 +1546,7 @@ the institution that provided them, which is important for maintaining respectfu
 Xpath
 ^^^^^
 
-`mods:recordInfo/mods:recordContentSource`
+:code:`mods:recordInfo/mods:recordContentSource`
 
 Decision
 ^^^^^^^^
@@ -1601,7 +1601,7 @@ is also a great way to recognize the contributions of these libraries.
 Xpath
 ^^^^^
 
-`mods:recordInfo/mods:recordContentSource`
+:code:`mods:recordInfo/mods:recordContentSource`
 
 Decision
 ^^^^^^^^
@@ -1647,7 +1647,7 @@ These records need to be addressed before migration so that what UTK shares with
 Xpath
 ^^^^^
 
-`mods:recordInfo/mods:recordContentSource`
+:code:`mods:recordInfo/mods:recordContentSource`
 
 Decision
 ^^^^^^^^
