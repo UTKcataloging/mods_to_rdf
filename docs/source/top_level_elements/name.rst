@@ -230,3 +230,21 @@ We would just model this as:
 
     <https://example.org/objects/1>
         relators:cre "Daniel, Charles R. (Charlie), Jr., 1930-" .
+
+Names with @usage="primary"
+---------------------------
+
+There are 314 records with an @usage="primary" attribute.  An example is
+`kefauver:150412002 <https://digital.lib.utk.edu/collections/islandora/object/kefauver%3A150412002/datastream/MODS>`_.
+
+.. code-block:: xml
+
+    <name usage="primary">
+        <namePart>unknown</namePart>
+        <role>
+            <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+    </name>
+
+We should drop this.
+
