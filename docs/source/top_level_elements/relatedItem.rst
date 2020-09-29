@@ -4,7 +4,7 @@ relatedItem
 About
 -----
 
-This section describes the usage of `relatedItem` in our MODS.
+This section describes the usage of :code:`relatedItem` in our MODS.
 
 relatedItem[not(@*)]
 --------------------
@@ -19,16 +19,7 @@ relatedItem[not(@*)]
       </titleInfo>
     </relatedItem>
 
-.. code-block:: turtle
-
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-
-    <https://example.org/collections/1> a pcdm:Collection ;
-        rdfs:label "Digital Collection: The Growth of Democracy in Tennessee: A Grassroots Approach to Volunteer Voices" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> .
+The relationship expressed here is structural in nature and should be reflected by default behavior in our DAMS.
 
 relatedItem[@type = "host"][@displayLabel = "Project"]
 ------------------------------------------------------
@@ -43,18 +34,7 @@ This XPath is typically used to indicate the digital project/digital collection 
       </titleInfo>
     </relatedItem>
 
-.. code-block:: turtle
-
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-
-    <https://example.org/collections/1> a pcdm:Collection ;
-        rdfs:label """Albert "Dutch" Roth Photograph Collection""" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> .
-
-Note: do we have a feeling about syntax for literals with quotes? `'''Albert "Dutch" Roth'''` vs `"""Albert "Dutch" Roth"""`? Does it matter?
+The relationship expressed here is structural in nature and should be reflected by default behavior in our DAMS.
 
 relatedItem[@type = "host"][@displayLabel = "Collection"]
 ---------------------------------------------------------
@@ -77,16 +57,9 @@ This XPath is typically used to indicate the archival collection for a given obj
 
 .. code-block:: turtle
 
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/collections/1> a pcdm:Collection ;
-        rdfs:label "Botanical Photography of Alan S. Heilman" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
-        dbo:collection "Botany Department Photographs, AR.0488" .
+    <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
 
 relatedItem[@type = "host"][@displayLabel = "project"]
 ------------------------------------------------------
