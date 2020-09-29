@@ -39,6 +39,7 @@ https://digital.lib.utk.edu/collections/islandora/object/roth:4245/datastream/MO
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
     <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
 
@@ -93,13 +94,14 @@ https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/
         <shelfLocator>Box 5, Folder 8</shelfLocator>
     </location>
 
+In most cases, especially those under our purview, we will likely opt to drop box and folder number references.
+
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
     @prefix opaque: <http://opaquenamespace.org/ns/> .
 
-    <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2014027633> ;
-        opaque:locationShelfLocator "Box 5, Folder 8" .
+    <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
 
 physicalLocation with holdingSimple and holdingExternal
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,8 +133,7 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastre
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
     @prefix opaque: <http://opaquenamespace.org/ns/> .
 
-    <https://example.org/objects/1> relators:rps "University of Memphis. Special Collections" ;
-        opaque:locationShelfLocator "Manuscript Number 5" .
+    <https://example.org/objects/1> relators:rps "University of Memphis. Special Collections" .
 
 physicalLocation with displayLabel="Address"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,7 +149,7 @@ https://digital.lib.utk.edu/collections/islandora/object/arrow:58/datastream/MOD
         <shelfLocator>Box 36, Folder 14</shelfLocator>
     </location>
 
-*This is one where I'm not sure where to go with.*
+Samvera documentation does demonstrate use of Opaque Namespace **locationShelfLocator** predicate, however, this still under development. Though, we likely do not want to do this for every item in our collections, there may be special cases where we want to use opaquenamespace predicates to note box and folder number and names. If so, we can use **boxNumber**, **boxName**, **folderNumber**, and **folderName**  `opaquenamespace predicates <http://opaquenamespace.org/predicates>`_.
 
 .. code-block:: turtle
 
@@ -156,8 +157,8 @@ https://digital.lib.utk.edu/collections/islandora/object/arrow:58/datastream/MOD
     @prefix opaque: <http://opaquenamespace.org/ns/> .
 
     <https://example.org/objects/1> relators:rps "Pi Beta Phi Fraternity" ;
-        opaque:locationShelfLocator "Box 36, Folder 14" .
-
+        opaque:boxNumber "36" ;
+        opaque:folderNumber "14" .
 
 physicalLocation with displayLabel attributes for Collection and Repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -188,7 +189,9 @@ https://digital.lib.utk.edu/collections/islandora/object/arrowmont%3A208/datastr
 url with a preview
 ^^^^^^^^^^^^^^^^^^
 
-*These only occur in volvoices. Obviously, this is a case where the turtle object URIs will be relative to the new platform.*
+The URIs referenced are relative to our current system and would not be migrated. Translating this to RDF would be self-referential and not descriptive metadata.
+
+**This can be dropped.**
 
 https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999
 
@@ -198,11 +201,3 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999
         <url access="object in context" usage="primary display">https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999</url>
         <url access="preview">https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/TN/view</url>
     </location>
-
-.. code-block:: turtle
-
-    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
-
-    <https://example.org/objects/1> edm:isShownAt <https://digital.lib.utk.edu/placeholder/shownat/uri> ;
-        edm:preview <https://digital.lib.utk.edu/placeholder/preview/uri> ;
-        edm:object <https://digital.lib.utk.edu/placeholder/object/uri> .
