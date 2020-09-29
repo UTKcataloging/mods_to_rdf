@@ -134,3 +134,63 @@ Because roleterms are rdf properties, names with two roleterms should be modeled
     <https://example.org/objects/1>
         relators:cmp <http://id.loc.gov/authorities/names/no2002022963> ;
         relators:com <http://id.loc.gov/authorities/names/no2002022963> .
+
+Names with URIs
+---------------
+
+We have at least 19,670 records with names with matching valueURIs.
+
+If a name has a URI, we should use it as the object like the name in
+`harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
+
+.. code-block:: xml
+
+    <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
+        <namePart>Swan, W. H. (William H.)</namePart>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/cmp">
+                Composer
+            </roleTerm>
+        </role>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/com">
+                Compiler
+            </roleTerm>
+        </role>
+    </name>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cmp <http://id.loc.gov/authorities/names/no2002022963> ;
+        relators:com <http://id.loc.gov/authorities/names/no2002022963> .
+
+
+Names without URIs
+------------------
+
+We have at least 31,618 records without names with matching valueURIs.
+
+If the name does not have a URI, we can just use the string literal of namePart as the value.
+
+An example can be found in `cDanielCartoon:1178 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1178/datastream/MODS>`_:
+
+.. code-block:: xml
+
+    <name type="personal">
+        <namePart>Daniel, Charles R. (Charlie), Jr., 1930-</namePart>
+        <role>
+            <roleTerm type="text" authority="marcrelator" valueURI=" http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+    </name>
+
+We would just model this as:
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cre "Daniel, Charles R. (Charlie), Jr., 1930-" .
