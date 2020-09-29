@@ -93,15 +93,51 @@ If the role term is associated with a marcrelator:
 Name Does Not have a Marcrelator Roleterm
 -----------------------------------------
 
-If the name does not have a marcrelator roleterm, **THIS IS A BLOCKER FOR MIGRATION AND MUST BE ADDRESSED BEFORE
-MIGRATION**.
+If the name does not have a marcrelator roleterm, we either need to fix or create a lookup table.
 
-We need to change roleTerm value for these problematic records:
+Associated Role Term
+^^^^^^^^^^^^^^^^^^^^
 
-* "Associated" == "Associated name"
-* "Attributed" == "Attributed name"
-* "Minute" == "Minute taker"
-* "creator" == "Creator"
+There are 82 records with names that have malformed URIs and "Associated" role terms that should be mapped to
+:code:`http://id.loc.gov/vocabulary/relators/asn`.
+
+Here is the list of pids:
+
+.. code-block:: python
+
+    ['tdh:8754', 'tdh:8762', 'tdh:1471', 'tdh:1492', 'tdh:1374', 'tdh:1377', 'tdh:1314', 'tdh:1319', 'tdh:1329', 'tdh:1335', 'tdh:1349', 'tdh:1352', 'tdh:1356', 'tdh:1365', 'tdh:1368', 'tdh:1371', 'tdh:197', 'tdh:202', 'tdh:131', 'tdh:6951', 'tdh:7092', 'tdh:7001', 'tdh:7171', 'tdh:9334', 'tdh:9462', 'tdh:9380', 'tdh:9383', 'tdh:9374', 'tdh:9377', 'tdh:9407', 'tdh:9409', 'tdh:9412', 'tdh:9415', 'tdh:80', 'tdh:7287', 'tdh:7328', 'tdh:7423', 'tdh:9281', 'tdh:9154', 'tdh:9157', 'tdh:9232', 'tdh:9234', 'tdh:9237', 'tdh:9240', 'tdh:9185', 'tdh:9120', 'tdh:7560', 'tdh:8829', 'tdh:8835', 'tdh:9004', 'tdh:9038', 'tdh:9051', 'tdh:9064', 'tdh:8931', 'tdh:8787', 'tdh:8800', 'tdh:8343', 'tdh:8301', 'tdh:8307', 'tdh:5548', 'tdh:418', 'tdh:426', 'tdh:5330', 'tdh:5362', 'tdh:6907', 'tdh:5888', 'tdh:432', 'tdh:434', 'tdh:6774', 'tdh:6637', 'tdh:6670', 'tdh:6779', 'tdh:5632', 'tdh:6213', 'tdh:1561', 'tdh:1651', 'tdh:1583', 'tdh:7851', 'tdh:7814', 'tdh:7881', 'tdh:802', 'tdh:804']
+
+Attributed Role Term
+^^^^^^^^^^^^^^^^^^^^
+
+There are 3 records with names that have malformed URIs and "Attributed" role terms that should be mapped to
+:code:`http://id.loc.gov/vocabulary/relators/att`.
+
+Here is the list of pids:
+
+.. code-block:: python
+
+    ['tdh:1362', 'tdh:691', 'tdh:6290']
+
+Minute Role Term
+^^^^^^^^^^^^^^^^
+
+There is 1 record with names that have malformed URIs and "Minute" role terms that should be mapped to
+:code:`http://id.loc.gov/vocabulary/relators/mtk`.
+
+It is `tdh:186 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A186/>`_
+
+creator Role Term
+^^^^^^^^^^^^^^^^^
+
+There are 86 records with names that have a "creator" role term that should be mapped to
+:code:`http://id.loc.gov/vocabulary/relators/cre`.
+
+Here is a list of the pids:
+
+.. code-block:: python
+
+    ['kintner:1', 'kintner:10', 'kintner:11', 'kintner:12', 'kintner:13', 'kintner:14', 'kintner:15', 'kintner:16', 'kintner:17', 'kintner:30', 'kintner:31', 'kintner:32', 'kintner:33', 'kintner:34', 'kintner:35', 'kintner:36', 'kintner:37', 'kintner:38', 'kintner:39', 'kintner:4', 'kintner:40', 'kintner:41', 'kintner:42', 'kintner:44', 'kintner:21', 'kintner:22', 'kintner:23', 'kintner:24', 'kintner:25', 'kintner:26', 'kintner:27', 'kintner:28', 'kintner:3', 'kintner:18', 'kintner:19', 'kintner:2', 'kintner:20', 'kintner:43', 'kintner:53', 'kintner:54', 'kintner:56', 'kintner:57', 'kintner:6', 'kintner:7', 'kintner:8', 'kintner:9', 'kintner:45', 'kintner:46', 'kintner:47', 'kintner:48', 'kintner:49', 'kintner:5', 'kintner:50', 'kintner:51', 'kintner:52', 'volvoices:11019', 'volvoices:11020', 'volvoices:11021', 'volvoices:11022', 'volvoices:11023', 'volvoices:11024', 'volvoices:11008', 'volvoices:11009', 'volvoices:11010', 'volvoices:11012', 'volvoices:11013', 'volvoices:11014', 'volvoices:11015', 'volvoices:11016', 'volvoices:11017', 'volvoices:10997', 'volvoices:10999', 'volvoices:11000', 'volvoices:11001', 'volvoices:11002', 'volvoices:11004', 'volvoices:11005', 'volvoices:11006', 'volvoices:11007', 'volvoices:10992', 'volvoices:10993', 'volvoices:10994', 'volvoices:10995', 'volvoices:10996', 'volvoices:10862', 'volvoices:10863']
 
 Name has more than one roleterm
 -------------------------------
