@@ -23,7 +23,8 @@ https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MOD
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
-    <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2017033007> .
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/no2017033007> .
 
 physicalLocation as string (special collections)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,9 +40,9 @@ https://digital.lib.utk.edu/collections/islandora/object/roth:4245/datastream/MO
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
-    <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
 
 physicalLocation as string (libraries)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -80,10 +81,13 @@ https://digital.lib.utk.edu/collections/islandora/object/tdh:8781/datastream/MOD
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
-    <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/n80003889> .
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/n80003889> .
 
 physicalLocation and shelfLocator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In cases the physical location is under the purview of University of Tennessee Libraries or University of Tennessee Libraries Special Collections, we will opt to drop shelfLocator strings.
 
 https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/MODS/view
 
@@ -94,16 +98,50 @@ https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/
         <shelfLocator>Box 5, Folder 8</shelfLocator>
     </location>
 
-In most cases, especially those under our purview, we will likely opt to drop box and folder number references.
-
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
-    <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
+
+We will translate that shelfLocator string to a skos:note if outside UT Libraries.
+
+https://digital.lib.utk.edu/collections/islandora/object/volvoices:2136/datastream/MODS/view
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>Cleveland State Community College</physicalLocation>
+        <holdingSimple>
+            <copyInformation>
+                <shelfLocator>Photograph Collection 2, People</shelfLocator>
+            </copyInformation>
+        </holdingSimple>
+        <holdingExternal>
+            <holding xsi:schemaLocation="info:ofi/fmt:xml:xsd:iso20775 http://www.loc.gov/standards/iso20775/N130_ISOholdings_v6_1.xsd">
+                <physicalAddress>
+                    <text>City: Cleveland</text>
+                    <text>County: Bradley County</text>
+                    <text>State: Tennessee</text>
+                </physicalAddress>
+            </holding>
+        </holdingExternal>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+    <https://example.org/objects/1>
+        relators:rps "Cleveland State Community College" ;
+        skos:note "Shelf locator: Photograph Collection 2, People" .
 
 physicalLocation with holdingSimple and holdingExternal
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All of extra data under the holdingExternal subelement can be dropped.
 
 https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view
 
@@ -130,16 +168,20 @@ https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastre
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-    <https://example.org/objects/1> relators:rps "University of Memphis. Special Collections" .
+    <https://example.org/objects/1>
+        relators:rps "University of Memphis. Special Collections" ;
+        skos:note "Shelf locator: Manuscript Number 5" .
 
 physicalLocation with displayLabel="Address"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+We will opt to drop physicalLocation subelements with a displayLabel of *Address*.
+
 https://digital.lib.utk.edu/collections/islandora/object/arrow:58/datastream/MODS/view
 
 .. code-block:: xml
-
 
     <location>
         <physicalLocation>Pi Beta Phi Fraternity</physicalLocation>
@@ -147,24 +189,23 @@ https://digital.lib.utk.edu/collections/islandora/object/arrow:58/datastream/MOD
         <shelfLocator>Box 36, Folder 14</shelfLocator>
     </location>
 
-Samvera documentation does demonstrate use of Opaque Namespace **locationShelfLocator** predicate, however, this may still be under development or maybe even abandoned. Though, we likely do not want to do this for every item in our collections, there may be special cases where we want to use predicates to reference box and folder number and names. If so, we can use **boxNumber**, **boxName**, **folderNumber**, and **folderName**  `opaquenamespace predicates <http://opaquenamespace.org/predicates>`_.
-
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
-    @prefix opaque: <http://opaquenamespace.org/ns/> .
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-    <https://example.org/objects/1> relators:rps "Pi Beta Phi Fraternity" ;
-        opaque:boxNumber "36" ;
-        opaque:folderNumber "14" .
+    <https://example.org/objects/1>
+        relators:rps "Pi Beta Phi Fraternity" ;
+        skos:note "Shelf locator: Box 36, Folder 14" .
 
 physicalLocation with displayLabel attributes for Collection and Repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+We have some cases *arrowmont* and *arrsimple* where a displayLabel="Collection" contains a string of **Archives Collection**. In these instances, *dbo:collection* will be used to retain that information. Other than *displayLabel="Repository"*, All other physicalLocation subelements with a displayLabel will be dropped.
+
 https://digital.lib.utk.edu/collections/islandora/object/arrowmont%3A208/datastream/MODS/view
 
 .. code-block:: xml
-
 
     <location>
         <physicalLocation displayLabel="Collection">Archives Collection</physicalLocation>
@@ -174,14 +215,13 @@ https://digital.lib.utk.edu/collections/islandora/object/arrowmont%3A208/datastr
         <physicalLocation displayLabel="State">Tennessee</physicalLocation>
     </location>
 
-*I am not sold on whether retaining the Archives Collection string is necessary. I don't think the city and state are necessary if a URI is used instead of string.*
-
 .. code-block:: turtle
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
 
-    <https://example.org/objects/1> relators:rps <http://id.loc.gov/authorities/names/no2001080757> ;
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/no2001080757> ;
         dbo:collection "Archives Collection" .
 
 url with a preview
