@@ -253,17 +253,10 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
 
 .. code-block:: turtle
 
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
     @prefix opaque: <http://opaquenamespace.org/ns/> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/collections/1> a pcdm:Collection ;
-        rdfs:label "David Van Vactor Music Collection" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/1> ;
-        dbo:collection "David Van Vactor Papers, MS.1942" ;
+    <https://example.org/objects/1> dbo:collection "David Van Vactor Papers, MS.1942" ;
         dbo:isPartOf <https://n2t.net/ark:/87290/v8pz5703> ;
         opaque:sheetmusic_hostItem "Gefunden, M047" .
 
