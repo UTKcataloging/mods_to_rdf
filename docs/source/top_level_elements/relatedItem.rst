@@ -9,7 +9,7 @@ This section describes the usage of :code:`relatedItem` in our MODS.
 relatedItem[not(@*)]
 --------------------
 
-`relatedItem`, without attributes, is used 3245 times in Volunteer Voices.
+:code:`relatedItem`, without attributes, is used 3245 times in Volunteer Voices.
 
 .. code-block:: xml
 
@@ -79,7 +79,7 @@ The relationship expressed here is structural in nature and should be reflected 
 relatedItem[@type = "host"][@displayLabel = "Digital Collection"]
 -----------------------------------------------------------------
 
-This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cdf:7850 <https://digital.lib.utk.edu/collections/islandora/object/cdf:7850/datastream/MODS/view>`_. Synonymous with `@displayLabel = "Project"`.
+This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cdf:7850 <https://digital.lib.utk.edu/collections/islandora/object/cdf:7850/datastream/MODS/view>`_. Synonymous with :code:`@displayLabel = "Project"`.
 
 .. code-block:: xml
 
@@ -119,24 +119,7 @@ The relationship expressed here in :code:`[@type='host'][@displayLabel='Project 
 relatedItem[@type = "host"][@displayLabel = "Bibliographic Citation"]
 ---------------------------------------------------------------------
 
-This XPath, closely related to the preceding `[@displayLabel = "Project Part"]`, also only appears 1264 times in the Arrowmont Collection - and only in the Arrow of Pi Beta Phi subcollection.
-
-.. code-block:: turtle
-
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-    @prefix rdau: <http://www.rdaregistry.info/Elements/u/#> .
-
-    <https://example.org/collections/1> a pcdm:Collection ;
-        rdfs:label "From Pi Beta Phi to Arrowmont" .
-
-    <https://example.org/collections/2> a pcdm:Collection ;
-        dcterms:isPartOf <https://example.org/collections/1> ;
-        rdfs:label "The Arrow of Pi Beta Phi" .
-
-    <https://example.org/objects/1> dcterms:isPartOf <https://example.org/collections/2> ;
-        rdau:P60101 "The Arrow, Volume 27, Number 1" .
+This XPath, closely related to the preceding :code:`[@displayLabel = "Project Part"]`, also only appears 1264 times in the Arrowmont Collection - and only in the Arrow of Pi Beta Phi subcollection.
 
 .. code-block:: turtle
 
@@ -207,9 +190,9 @@ This XPath is typically used to indicate an object's archival series; e.g. `roth
 relatedItem/identifier[@type]
 -----------------------------
 
-This XPath's `type` attribute has three distinct values: `local`, `catalog`, and `pid`. The `pid` attribute is used in collection-level records to distinguish featured items.
+This XPath's :code:`type` attribute has three distinct values: `local`, `catalog`, and `pid`. The `pid` attribute is used in collection-level records to distinguish featured items.
 
-`[@type = 'local']`, e.g. `heilman:261 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_.
+:code:`[@type = 'local']`, e.g. `heilman:261 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -226,7 +209,7 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
 
     <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
 
-`[@type = 'catalog']`, e.g. `vanvactor:1 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:1/datastream/MODS/view>`_.
+:code:`[@type = 'catalog']`, e.g. `vanvactor:1 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:1/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -260,7 +243,7 @@ This XPath's `type` attribute has three distinct values: `local`, `catalog`, and
         dbo:isPartOf <https://n2t.net/ark:/87290/v8pz5703> ;
         opaque:sheetmusic_hostItem "Gefunden, M047" .
 
-`[@type =  'pid']`, e.g. `collections:agrutesc <https://digital.lib.utk.edu/collections/islandora/object/collections:agrutesc/datastream/MODS/view>`_.
+:code:`[@type =  'pid']`, e.g. `collections:agrutesc <https://digital.lib.utk.edu/collections/islandora/object/collections:agrutesc/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -297,7 +280,7 @@ This XPath appears once, in the record for the Charles Dabny collection; i.e. `c
 relatedItem/location
 --------------------
 
-This XPath `relatedItem/location/url` is used 8516 times, but only uses 33 distinct strings; e.g. `ruskin:204 <https://digital.lib.utk.edu/collections/islandora/object/ruskin:204/datastream/MODS/view>`_.
+This XPath :code:`relatedItem/location/url` is used 8516 times, but only uses 33 distinct strings; e.g. `ruskin:204 <https://digital.lib.utk.edu/collections/islandora/object/ruskin:204/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -321,7 +304,7 @@ This XPath `relatedItem/location/url` is used 8516 times, but only uses 33 disti
 relatedItem/abstract
 --------------------
 
-`relatedItem/abstract` is used 865 times, across several collections; e.g. `sanborn:1196 <https://digital.lib.utk.edu/collections/islandora/object/sanborn:1196/datastream/MODS/view>`_.
+:code:`relatedItem/abstract` is used 865 times, across several collections; e.g. `sanborn:1196 <https://digital.lib.utk.edu/collections/islandora/object/sanborn:1196/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -335,20 +318,12 @@ relatedItem/abstract
       <abstract>The Sanborn Fire Insurance Maps are a large-scale representation of the growth and layout of American cities. The University of Tennessee Libraries' collection currently provides digital versions of the four earliest sets of Knoxville maps - 1884, 1890, 1903, and 1917.</abstract>
     </relatedItem>
 
-.. code-block:: turtle
-
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-
-    <https://example.org/collection/1> a pcdm:Collection ;
-      rdfs:label "Sanborn Fire Insurance Maps Collection" ;
-      dcterms:abstract "The Sanborn Fire Insurance Maps are a large-scale representation of the growth and layout of American cities. The University of Tennessee Libraries' collection currently provides digital versions of the four earliest sets of Knoxville maps - 1884, 1890, 1903, and 1917." .
+The values expressed in :code:`relatedItem/abstract` should be handled at the collection level. Do no migrate these.
 
 relatedItem/name
 ----------------
 
-`relatedItem/name` appears 131 times, only in the Bass Collection, and only in `relatedItem[@type = 'constituent']`; e.g. `bass:19644 <https://digital.lib.utk.edu/collections/islandora/object/bass:19644/datastream/MODS/view>`_.
+:code:`relatedItem/name` appears 131 times, only in the Bass Collection, and only in :code:`relatedItem[@type = 'constituent']`; e.g. `bass:19644 <https://digital.lib.utk.edu/collections/islandora/object/bass:19644/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -604,13 +579,13 @@ relatedItem/name
         relators:cre <http://id.loc.gov/authorities/names/n50038965> .
 
 
-Note: this is an initial attempt at `relatedItem[@type='constituent']` - I expect that we'll want to refine how we're modeling this kind of metadata.
+Note: this is an initial attempt at :code:`relatedItem[@type='constituent']` - I expect that we'll want to refine how we're modeling this kind of metadata.
 
 
 Empty elements
 --------------
 
-Sometimes `relatedItem` will be empty; this only seems to be a problem in the Roth collection: e.g. `roth:3066 <https://digital.lib.utk.edu/collections/islandora/object/roth:3066/datastream/MODS/view>`_.
+Sometimes :code:`relatedItem` will be empty; this only seems to be a problem in the Roth collection: e.g. `roth:3066 <https://digital.lib.utk.edu/collections/islandora/object/roth:3066/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
