@@ -4,19 +4,19 @@ genre
 About
 -----
 
-This section describes the different values for `genre` that we currently have in our Islandora repository.
+This section describes the different values for :code:`genre` that we currently have in our Islandora repository.
 
 genre[@authority = 'dct']
 -------------------------
 
-We will explore other options for records using `@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values to `physicalDescription/form`. Many of the records in Volunteer Voices have multiple `genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
+We will explore other options for records using :code:`@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values to :code:`physicalDescription/form`. Many of the records in Volunteer Voices have multiple :code:`genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
     <genre authority="dct">text</genre>
     <genre>letter</genre>
 
-Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_.
+Roughly 300 other records have more than two :code:`genre`s; e.g. `volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -27,7 +27,7 @@ Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <ht
 genre[@authority = 'aat']
 -------------------------
 
-`genre[@authority = 'aat']` appears in the Archivision collection and uses a `@valueURI` for controlled vocabulary; e.g. `archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_.
+:code:`genre[@authority = 'aat']` appears in the Archivision collection and uses a `@valueURI` for controlled vocabulary; e.g. `archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -64,7 +64,7 @@ and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/
 genre[@authority = 'lcgft']
 ---------------------------
 
-Appears once in ekcd (ekcd:611), otherwise is present in Arrowmont, Van Vactor, and VP Moore.
+Appears once in Kefauver Crime Documents (`ekcd:611 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:611/datastream/MODS/view>`), otherwise is present in Arrowmont, Van Vactor, and VP Moore.
 
 .. code-block:: xml
 
@@ -91,7 +91,7 @@ In 124 of the records in the VP Moore collection, with `@authority='lcgft'`, the
 genre[@authority = 'lcmpt']
 ---------------------------
 
-`@authority = 'lcmpt'` is used in the Van Vactor collection to express genre/performance medium instrumentation information; e.g. `vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_.
+:code:`@authority = 'lcmpt'` is used in the Van Vactor collection to express genre/performance medium instrumentation information; e.g. `vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
