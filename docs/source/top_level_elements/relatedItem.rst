@@ -89,7 +89,7 @@ This XPath is used 362 times in the Children's Defense Fund collection: e.g. `cd
       </titleInfo>
     </relatedItem>
 
-
+The relationship expressed here is structural in nature and should be reflected by default behavior in our DAMS.
 
 relatedItem[@type = "host"][@displayLabel = "Project Part"]
 -----------------------------------------------------------
