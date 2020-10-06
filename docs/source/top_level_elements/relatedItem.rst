@@ -134,6 +134,7 @@ This XPath is only used 449 in the Volunteer Voices collection; e.g. `volvoices:
 
 .. code-block:: xml
 
+    <abstract>From: Harper's Weekly, v.9, no.463, November 11, 1865. At head, left, and right margins: "Boorish tailor, drunken beast, patriot, statesman, Jackson; Beastly instincts, demagogical habits, boorish mind; 'Not one word or act of his which a national democrat would not defend.'" Caption quotations located at four corners.</abstract>
     <relatedItem displayLabel="Project" type="host">
       <titleInfo>
         <title>Volunteer Voices</title>
