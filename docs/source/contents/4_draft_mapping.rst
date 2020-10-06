@@ -1590,7 +1590,9 @@ recordContentSource - not University of Tennessee, Knoxville as value
 Use Case
 ^^^^^^^^
 
-When a resource comes from a non-UTK institution, its name is placed in <recordContentSource>.
+When a resource comes from a non-UTK institution, its name is typically placed in <recordContentSource>. An exception to
+this is Volunteer Voices, which only includes the contributing institution in mods:location/mods:physicalLocation. See
+location for more information.
 
 Justification
 ^^^^^^^^^^^^^
@@ -1630,46 +1632,6 @@ these institutions are not directly contributing to DPLA, they are listed as an 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
         <https://example.org/objects/1> edm:dataProvider <http://id.loc.gov/authorities/names/no2017113530> .
-
-recordContentSource - null values
----------------------------------
-
-Use Case
-^^^^^^^^
-
-One collection (TDH) has null values for <recordContentSource>.
-
-Justification
-^^^^^^^^^^^^^
-
-These records need to be addressed before migration so that what UTK shares with DPLA meets its requirements.
-
-Xpath
-^^^^^
-
-:code:`mods:recordInfo/mods:recordContentSource`
-
-Decision
-^^^^^^^^
-
-Remediation needs to be completed so that "University of Tennessee, Knoxville" is added as the recordContentSource for all
-of the associated records. Alternatively we could complete this work in migration and automatically assign "University of
-Tennessee, Knoxville. Libraries" to records missing this element if we are certain no additional instances have been
-introduced.
-
-Here's an `example record - tdh:8597 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8597/datastream/MODS/view>`_.
-
-.. code-block:: xml
-
-    <recordInfo>
-        <recordContentSource/>
-    </recordInfo>
-
-.. code-block:: turtle
-
-    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
-
-        <https://example.org/objects/1> edm:provider "University of Tennessee, Knoxville. Libraries" .
 
 accessCondition
 ===============
