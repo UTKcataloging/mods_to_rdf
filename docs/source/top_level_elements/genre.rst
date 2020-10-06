@@ -33,6 +33,12 @@ genre[@authority = 'aat']
 
     <genre authority="aat" valueURI="http://vocab.getty.edu/aat/300021140">Renaissance</genre>
 
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://vocab.getty.edu/aat/300021140> .
+
 genre[@authority = 'lcsh']
 --------------------------
 
