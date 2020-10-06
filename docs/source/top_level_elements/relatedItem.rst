@@ -264,7 +264,7 @@ Decision: we'll ignore these and find an alternate way to express/represent feat
 relatedItem/location[physicalLocation]
 --------------------------------------
 
-This XPath appears once, in the record for the Charles Dabny collection; i.e. `collections:dabney <https://digital.lib.utk.edu/collections/islandora/object/collections:dabney/datastream/MODS/view>`_.
+This XPath appears once, in the record for the Charles Dabney collection; i.e. `collections:dabney <https://digital.lib.utk.edu/collections/islandora/object/collections:dabney/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
