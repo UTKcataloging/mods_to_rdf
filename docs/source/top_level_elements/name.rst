@@ -227,6 +227,18 @@ We would just model this as:
     <https://example.org/objects/1>
         relators:cre "Daniel, Charles R. (Charlie), Jr., 1930-" .
 
+Names with empty URIs
+---------------------
+
+There are some records with the namePart "Bemis Bro. Bag Company".  The matches would all be apart of this set:
+
+
+.. code-block:: python
+
+    ['volvoices:2495', 'volvoices:2496', 'volvoices:2497', 'volvoices:2498', 'volvoices:2499', 'volvoices:2500', 'volvoices:2501', 'volvoices:2502', 'volvoices:2503', 'volvoices:2504', 'volvoices:2505', 'volvoices:2506', 'volvoices:2507', 'volvoices:2508', 'volvoices:2509', 'volvoices:2510', 'volvoices:2511', 'volvoices:2512', 'volvoices:2513', 'volvoices:2455', 'volvoices:2456', 'volvoices:2457', 'volvoices:2477', 'volvoices:2478', 'volvoices:2479', 'volvoices:2480', 'volvoices:2481', 'volvoices:2482', 'volvoices:2483', 'volvoices:2484', 'volvoices:2485', 'volvoices:2486', 'volvoices:2467', 'volvoices:2468', 'volvoices:2469', 'volvoices:2470', 'volvoices:2471', 'volvoices:2472', 'volvoices:2473', 'volvoices:2474', 'volvoices:2475', 'volvoices:2476', 'volvoices:2458', 'volvoices:2459', 'volvoices:2461', 'volvoices:2462', 'volvoices:2463', 'volvoices:2464', 'volvoices:2465', 'volvoices:2466', 'volvoices:2487', 'volvoices:2488', 'volvoices:2489', 'volvoices:2490', 'volvoices:2491', 'volvoices:2492', 'volvoices:2493', 'volvoices:2494']
+
+We should fix these and add the actual valueURI.
+
 Names with @usage="primary"
 ---------------------------
 
@@ -344,13 +356,6 @@ Names Missing Roleterms
 
 We have a small number of names that have no roles.  Because the role will be used to express property, it is critical that
 we address these in some way even if that were to mean giving these a generic role like dc:contributor.
-
-There are some records with the namePart "Bemis Bro. Bag Company".  The matches would all be apart of this set:
-
-
-.. code-block:: python
-
-    ['volvoices:2495', 'volvoices:2496', 'volvoices:2497', 'volvoices:2498', 'volvoices:2499', 'volvoices:2500', 'volvoices:2501', 'volvoices:2502', 'volvoices:2503', 'volvoices:2504', 'volvoices:2505', 'volvoices:2506', 'volvoices:2507', 'volvoices:2508', 'volvoices:2509', 'volvoices:2510', 'volvoices:2511', 'volvoices:2512', 'volvoices:2513', 'volvoices:2455', 'volvoices:2456', 'volvoices:2457', 'volvoices:2477', 'volvoices:2478', 'volvoices:2479', 'volvoices:2480', 'volvoices:2481', 'volvoices:2482', 'volvoices:2483', 'volvoices:2484', 'volvoices:2485', 'volvoices:2486', 'volvoices:2467', 'volvoices:2468', 'volvoices:2469', 'volvoices:2470', 'volvoices:2471', 'volvoices:2472', 'volvoices:2473', 'volvoices:2474', 'volvoices:2475', 'volvoices:2476', 'volvoices:2458', 'volvoices:2459', 'volvoices:2461', 'volvoices:2462', 'volvoices:2463', 'volvoices:2464', 'volvoices:2465', 'volvoices:2466', 'volvoices:2487', 'volvoices:2488', 'volvoices:2489', 'volvoices:2490', 'volvoices:2491', 'volvoices:2492', 'volvoices:2493', 'volvoices:2494']
 
 Here are other strings that we need to fix, but I'll create Jira tickets with precise instructions for these.
 
