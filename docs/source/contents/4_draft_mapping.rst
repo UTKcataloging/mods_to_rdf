@@ -672,6 +672,24 @@ name
 originInfo
 ==========
 
+:code:`originInfo/dateCreated`
+------------------------------
+
+Use Case
+^^^^^^^^
+
+:code:`dateCreated` captures dates and date ranges identifying or approximating when the physical object was created.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute on the values in :code:`dateCreated`.
+
+XPath
+^^^^^
+
+:code:`mods:originInfo/mods:dateCreated[@encoding]`
+
 physicalDescription
 ===================
 
