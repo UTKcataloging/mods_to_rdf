@@ -73,13 +73,9 @@ If the role term is associated with a marcrelator:
 .. code-block:: xml
 
     <mods:name>
-        <mods:namePart>
-            Example name
-        </mods:namePart>
+        <mods:namePart>Marre, Albert</mods:namePart>
         <mods:role>
-            <mods:roleTerm>
-                Stage manager
-            </mods:roleTerm>
+            <mods:roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/stm">Stage manager</mods:roleTerm>
         </mods:role>
     </mods:name>
 
@@ -88,7 +84,7 @@ If the role term is associated with a marcrelator:
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
     <https://example.org/objects/1>
-        relators:stg "Example name" .
+        relators:stm "Marre, Albert" .
 
 Name Does Not have a Marcrelator Roleterm
 -----------------------------------------
