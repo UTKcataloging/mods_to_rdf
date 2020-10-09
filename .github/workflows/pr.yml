@@ -6,9 +6,15 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ammaraskar/sphinx-action@master
+      - name: Checkout the repository
+        uses: actions/checkout@v1
+      - name: Auto insert Sphinx warnings in Pull Request Body
+        uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "docs/"
           pre-build-command: "pip install pipenv && pipenv install && pipenv shell"
           build-command: "make html"
+      - name: Auto Assign Reviewers
+        uses: kentaro-m/auto-assign-action@v1.1.2
+        with:
+          configuration-path: ".github/workflows/auto_assign.yml"
