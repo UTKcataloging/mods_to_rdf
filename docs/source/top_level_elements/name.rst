@@ -264,7 +264,25 @@ the person.
 
 An example is `egypt:230 <https://digital.lib.utk.edu/collections/islandora/object/egypt%3A230/datastream/MODS>`_
 
-If we need to keep this data, we need to have an external triple store and decide how to model names.
+.. code-block:: xml
+
+    <name type="personal" valueURI="http://vocab.getty.edu/ulan/500356123">
+        <namePart>Sébah, Jean Pascal</namePart>
+        <namePart type="date">1872-1947</namePart>
+        <description>Turkish</description>
+        <role>
+            <roleTerm type="text" authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/pht">Photographer</roleTerm>
+        </role>
+    </name>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:pht <http://vocab.getty.edu/ulan/500356123> .
+
+If we need this data, like description, we can dereference from the URI.
 
 Name Descriptions
 -----------------
@@ -277,7 +295,26 @@ We have 10,309 records with a name with a description.  This is normally a natio
 
 An example is `archivision:4817 <https://digital.lib.utk.edu/collections/islandora/object/archivision%3A4817>`_.
 
-If we need to keep this data, we need to have an external triple store and decide how to model names.
+.. code-block:: xml
+
+    <name type="personal" authority="ulan" valueURI="http://vocab.getty.edu/ulan/500026409">
+        <namePart>Andreu, Paul</namePart>
+        <displayForm>Paul Andreu</displayForm>
+        <namePart type="date">born 1938</namePart>
+        <description>French</description>
+        <role>
+            <roleTerm type="text" authority="marcrelator" valueURI="ttp://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+    </name>
+
+If we need extra data, we can dereference from the URI of the creator.
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cre <http://vocab.getty.edu/ulan/500026409> .
 
 Name Types
 ----------
