@@ -1526,9 +1526,12 @@ Use Case
 ^^^^^^^^
 
 The <recordContentSource> element is one of the most essential elements within <recordInfo>, as we currently use it to
-communicate the provider in DPLA.
+communicate the provider in DPLA. Because DPLA cannot handle URIs, the decision has been made to only deliver strings.
+We do not feel strongly that the added functionality provided by using a URI for this field warrants the effort needed
+to process URIs into strings for delivery to DPLA. We recognize that this goes against our general philosophy to use URIs
+when possible.
 
-To better understand UTK's use of this element, so background information is helpful. At UTK the information we share in
+To better understand UTK's use of this element some background information is helpful. At UTK the information we share in
 this element is not consistent with the definition of <recordContentSource> - "The code or name of the entity (e.g. an
 organization and/or database) that either created or modified the original record." While we work with other partners,
 like the Children's Defense Fund and the McClung Museum, we are still technically the creators of the records in these
@@ -1541,7 +1544,8 @@ Justification
 ^^^^^^^^^^^^^
 
 A content provider is required in DPLA. This value also provides UTK with the opportunity to attribute collections to
-the institution that provided them, which is important for maintaining respectful relationships.
+the institution that provided them, which is important for maintaining respectful relationships. Because of DPLA's
+limitations, we will provide this information as a string.
 
 Xpath
 ^^^^^
@@ -1567,22 +1571,7 @@ When UTK physically holds the material and created the record, the metadata rese
 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
-        <https://example.org/objects/1> edm:provider <http://id.loc.gov/authorities/names/n87808088> .
-
-Note that items held by UTK can also appear without a URI defining the institution as with `tdh:8803 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/view>`_.
-It looks like we also have a misspelling here.
-
-.. code-block:: xml
-
-    <recordInfo>
-        <recordContentSource>University of Tennesse Knoxville. Libraries</recordContentSource>
-    </recordInfo>
-
-.. code-block:: turtle
-
-    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
-
-        <https://example.org/objects/1> edm:provider "University of Tennesse Knoxville. Libraries" .
+        <https://example.org/objects/1> edm:provider "University of Tennessee, Knoxville. Libraries" .
 
 recordContentSource - not University of Tennessee, Knoxville as value
 ---------------------------------------------------------------------
@@ -1598,7 +1587,8 @@ Justification
 ^^^^^^^^^^^^^
 
 A content provider is required in DPLA. Sharing the names of institutional partners within the Digital Library of Tennessee
-is also a great way to recognize the contributions of these libraries.
+is also a great way to recognize the contributions of these libraries. Because of DPLA's limitations, we will provide
+this information as a string.
 
 Xpath
 ^^^^^
@@ -1631,7 +1621,7 @@ these institutions are not directly contributing to DPLA, they are listed as an 
 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
-        <https://example.org/objects/1> edm:dataProvider <http://id.loc.gov/authorities/names/no2017113530> .
+        <https://example.org/objects/1> edm:dataProvider "Langston Hughes Library (Children's Defense Fund Haley Farm)" .
 
 accessCondition
 ===============
