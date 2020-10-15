@@ -49,7 +49,7 @@ Here's an `example record - vanvactor:1 <https://digital.lib.utk.edu/collections
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms: <http://id.loc.gov/vocabulary/resourceTypes/not> .
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> .
 
 typeOfResource with @collection="yes"
 -------------------------------------
@@ -75,8 +75,8 @@ Here's a complex example that includes two <typeOfResource> values - `gsmrc:smhc
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms: <http://id.loc.gov/vocabulary/resourceTypes/col> ;
-        dcterms: <http://id.loc.gov/vocabulary/resourceTypes/txt> ;
-        dcterms: <http://id.loc.gov/vocabulary/resourceTypes/img> .
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/txt> ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
 
 Missing typeOfResource value
 ----------------------------
@@ -96,4 +96,4 @@ be added can be created. This can also be dealt with in remediation.
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms: <http://id.loc.gov/vocabulary/resourceTypes/img> .
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
