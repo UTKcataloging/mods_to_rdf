@@ -31,7 +31,7 @@ languageOfCataloging
 
 All of the recently migrated SCOUT to TEI collections (e.g. American Civil War Collection, Tennessee Documentary History, etc.)
 as well as some of UTK's less recent collections (e.g. Sanborn, mpabaker, etc.) contain the element languageOfCataloging.
-In total, it is found in approximately 6,000 records. Note that in call cases the language is English, but this information
+In total, it is found in approximately 6,000 records. Note that in all cases the language is English, but this information
 is represented as both a code ('eng') and a text value ('English'):
 
 {'languageTerm': {'@authority': 'iso639-2b', '#text': 'eng'}}
@@ -138,7 +138,7 @@ created or modified the original record." While we work with other partners, lik
 McClung Museum, we are still technically the creators of the records in these situations. Despite this, we typically list
 these institutions as the record creator because we set up <recordContentSource> as the element that DPLA should map to
 for content provider. In actuality, when the content provider is not UTK, this information should be communicated in
-<physicalLocation> and are DPLA mapping should be updated. Below are several examples showing how UTK uses this element.
+<physicalLocation> and our DPLA mapping should be updated. Below are several examples showing how UTK uses this element.
 There are 37 distinct values present in this element.
 
 When UTK physically holds the material and created the record, the metadata resembles this `example record - acwiley:284 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A284/datastream/MODS/view>`_.
