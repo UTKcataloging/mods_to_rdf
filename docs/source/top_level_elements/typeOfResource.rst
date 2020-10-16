@@ -74,7 +74,7 @@ Here's a complex example that includes two <typeOfResource> values - `gsmrc:smhc
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms: <http://id.loc.gov/vocabulary/resourceTypes/col> ;
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/col> ;
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/txt> ;
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
 
