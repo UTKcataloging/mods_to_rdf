@@ -11,8 +11,6 @@ genre[@authority = 'dct']
 
 We will explore other options for records using :code:`@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values as :code:`typeOfResource`. Many of the records in Volunteer Voices have multiple :code:`genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
 
-There are ~190 records in the Smokies Postcards collection that have empty :code:`genre` elements, and empty :code:`@valueURI` attributes; e.g. `100233:1 <https://digital.lib.utk.edu/collections/islandora/object/100233:1/datastream/MODS/view>`_.
-
 .. code-block:: xml
 
     <genre authority="dct">text</genre>
@@ -34,6 +32,9 @@ Roughly 300 other records have more than two :code:`genre`s; e.g. `volvoices:112
     <genre authority="dct">still image</genre>
     <genre>sheet music</genre>
 
+.. code-block:: turtle
+
+    @prefix
 genre[@authority = 'aat']
 -------------------------
 
@@ -145,3 +146,14 @@ This appears on a few records in Arrowmont and on two collection-level records (
     <genre authority="lctgm" valueURI="http://www.loc.gov/pictures/item/tgm009266/">scrapbooks</genre>
 
 We won't be migrating these values.
+
+genre[@valueURI = '']
+---------------------
+
+There are ~190 records in the Smokies Postcards collection that have empty :code:`genre` elements, and empty :code:`@valueURI` attributes; e.g. `100233:1 <https://digital.lib.utk.edu/collections/islandora/object/100233:1/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+   <genre valueURI=""/>
+
+We should drop these elements.
