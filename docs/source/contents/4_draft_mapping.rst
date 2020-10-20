@@ -1531,8 +1531,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-During migration we will plan to add typeOfResource on a collection basis if possible. See the chart below for decisions.
-If not, these collections will be remediated either prior to or after migration.
+During or post migration we will plan to add typeOfResource on a collection basis if possible. See the chart below for decisions.
 
 +----------------------------+---------------------------------------------------+
 | collection PID             | dcterms:type                                      |
