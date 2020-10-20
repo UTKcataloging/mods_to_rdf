@@ -29,7 +29,7 @@ dateCreated[@encoding][@keyDate][@point]
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "1870-1913", "1870/1913" .
 
@@ -47,7 +47,7 @@ dateCreated[@encoding][@keyDate][@point][@qualifier]
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "approximately between 1900 and 1940", "1900~/1940" .
 
@@ -68,7 +68,7 @@ dateCreated[@encoding] has two distinct values: "edtf" and "w3cdtf". "w3cdtf" ap
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "1910" .
 
@@ -80,7 +80,7 @@ dateCreated[@encoding] has two distinct values: "edtf" and "w3cdtf". "w3cdtf" ap
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "1941" .
 
@@ -109,7 +109,7 @@ The qualifier attribute has three distinct values: "inferred", "approximate", an
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "1955", "1955~" .
 
@@ -123,7 +123,7 @@ The qualifier attribute has three distinct values: "inferred", "approximate", an
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "Undated", "1910~/1955~" .
 
@@ -141,7 +141,7 @@ The point attribute has two distinct values: "start" and "end". They are frequen
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "1915", "1915/" .
 
@@ -155,7 +155,7 @@ The point attribute has two distinct values: "start" and "end". They are frequen
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "approximately between 1940 and 1950", "1940~/1950" .
 
@@ -176,7 +176,7 @@ dateIssued[@encoding][@keyDate][@point][@qualifier]
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:issued "1934", "1934" .
 
@@ -189,7 +189,7 @@ dateIssued[@encoding][@keyDate][@point][@qualifier]
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:issued "1989", "1989-23" . # display as 'Spring, 1989'
 
@@ -202,7 +202,7 @@ dateIssued[@encoding][@keyDate][@point][@qualifier]
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:issued "1954", "1954~" .
 
@@ -218,7 +218,7 @@ An example of multiple date elements, `volvoices:2993 <https://digital.lib.utk.e
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "1948-01", "1948-01" ;
         dcterms:issued "1948~" .
@@ -238,7 +238,7 @@ An example where converting the string value would be necessary: `kintner:56 <ht
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:date "1974-12-10", "1974 December 10" . # keep the original value; possibly preprocess the data to normalized format.
 
@@ -256,7 +256,7 @@ The Archivision collection uses `dateOther` to indicate dates of remodeling or a
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "314" ;
         dcterms:date "440/1885" .
@@ -276,7 +276,7 @@ This value appears once in our MODS, in `calahan:1 <https://digital.lib.utk.edu/
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "undated" ;
         dcterms:dateCopyrighted "1941" .

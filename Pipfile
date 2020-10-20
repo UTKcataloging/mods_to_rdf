@@ -11,6 +11,7 @@ sphinxcontrib-napoleon = "*"
 sphinx-markdown-tables = "*"
 recommonmark = "*"
 sphinx-bootstrap-theme = "*"
+rdflib = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3"

@@ -22,7 +22,7 @@ An example, `utsmc:13759 <https://digital.lib.utk.edu/collections/islandora/obje
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators>
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
     <https://example.org/objects/1> relators:pbl "Frederick D. Benteen" ;
         relators:pup <http://id.loc.gov/authorities/names/n79006530> .
@@ -37,8 +37,8 @@ An example, `utsmc:13759 <https://digital.lib.utk.edu/collections/islandora/obje
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators>
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> relators:pbl "Archivision, Inc." ;
         dcterms:created "begun 1665", "1665" .
@@ -60,8 +60,8 @@ place
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators>
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> relators:pbl "Keystone View Company" ;
         relators:pup <http://id.loc.gov/authorities/names/n79072935> ;
@@ -82,8 +82,8 @@ There are problematic uses of `place` in `collections:sanborn` (empty elements).
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators>
-    @prefix dcterms: <http://purl.org/dc/terms/>
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> relators:pbl "Sanborn Map & Publishing Co., Ltd" ;
         dcterms:created "1917", "1917" .
