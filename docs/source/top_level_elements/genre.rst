@@ -4,7 +4,7 @@ genre
 About
 -----
 
-This section describes the different values for :code:`genre` that we currently have in our Islandora repository.
+This section describes the different values for `genre` that we currently have in our Islandora repository.
 
 genre[@authority = 'dct']
 -------------------------
@@ -24,7 +24,7 @@ We will explore other options for records using `@authority = 'dct'` or uncontro
     <https://example.org/objects/1> dcterms:type "text" ;
         edm:hasType "letter" .
 
-Roughly 300 other records have more than two :code:`genre`s; e.g. `volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_.
+Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -38,7 +38,7 @@ Roughly 300 other records have more than two :code:`genre`s; e.g. `volvoices:112
 genre[@authority = 'aat']
 -------------------------
 
-:code:`genre[@authority = 'aat']` appears in the Archivision collection and uses a `@valueURI` for controlled vocabulary; e.g. `archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_.
+`genre[@authority = 'aat']` appears in the Archivision collection and uses a `@valueURI` for controlled vocabulary; e.g. `archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -108,7 +108,7 @@ In 124 of the records in the VP Moore collection, with `@authority='lcgft'`, the
 genre[@authority = 'lcmpt']
 ---------------------------
 
-:code:`@authority = 'lcmpt'` is used in the Van Vactor collection to express genre/performance medium instrumentation information; e.g. `vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_.
+`@authority = 'lcmpt'` is used in the Van Vactor collection to express genre/performance medium instrumentation information; e.g. `vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -150,7 +150,7 @@ We won't be migrating these values.
 genre[@valueURI = '']
 ---------------------
 
-There are ~190 records in the Smokies Postcards collection that have empty :code:`genre` elements, and empty :code:`@valueURI` attributes; e.g. `100233:1 <https://digital.lib.utk.edu/collections/islandora/object/100233:1/datastream/MODS/view>`_.
+There are ~190 records in the Smokies Postcards collection that have empty `genre` elements, and empty `@valueURI` attributes; e.g. `100233:1 <https://digital.lib.utk.edu/collections/islandora/object/100233:1/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
