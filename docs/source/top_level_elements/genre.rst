@@ -9,7 +9,7 @@ This section describes the different values for :code:`genre` that we currently 
 genre[@authority = 'dct']
 -------------------------
 
-We will explore other options for records using :code:`@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values as :code:`typeOfResource`. Many of the records in Volunteer Voices have multiple :code:`genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
+We will explore other options for records using `@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values as :code:`typeOfResource`. Many of the records in Volunteer Voices have multiple :code:`genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
