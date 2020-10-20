@@ -479,7 +479,6 @@ character will be used as glue when concatenating the strings.
     <https://example.org/objects/1> dcterms:title "Knoxville -- 1917, Sheet 56" .
 
 
-
 titleInfo - titleInfo has nonSort sub-element
 ---------------------------------------------
 
@@ -1398,6 +1397,163 @@ https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MO
 
 typeOfResource
 ==============
+
+typeOfResource with no attributes
+---------------------------------
+
+Use case
+^^^^^^^^
+Most records currently have a typeOfResource value with no attributes. Depending on the item being described, it is possible
+for there to be multiple typeOfResource values in a single record. The Islandora Metadata Interest Group has carefully
+created a mapping to translate MODS typeOfResource values to dcterms resource types. A selection of the mapping is
+included below that addresses all of the values UTK has within its metadata. Note that the final row, collection="yes"
+is addressed in a subsequent category.
+
++----------------------------+---------------+--------------------------------------------------+--------------------+
+|                            | RDF Predicate | RDF Value                                        | dcterms text value |
+| MODS typeOfResource        |               |                                                  |                    |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| text                       | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/txt> | Text               |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| cartographic               | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/car> | Cartographic       |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| notated music              | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/not> | Notated music      |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| sound recording-nonmusical | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/aun> | Audio non-musical  |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| sound recording            | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/aud> | Audio              |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| still image                | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | Still image        |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| moving image               | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/mov> | Moving image       |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| three dimensional object   | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/art> | Artifact           |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| collection="yes"           | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/col> | Collection         |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+
+Justification
+^^^^^^^^^^^^^
+
+Values within <typeOfResource> are used for initial faceting in search for both UTK's local digital collections website
+and for DPLA's interface. As DPLA doesn't display mods:physicalDescription/mods:form values, it is important to share this
+less granular indication of the resource type.
+
+Xpath
+^^^^^
+
+:code:`mods:typeOfResource`
+
+Decision
+^^^^^^^^
+
+Here's an `example record - vanvactor:1 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor%3A1/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <typeOfResource collection="yes">notated music</typeOfResource>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> .
+
+typeOfResource with @collection="yes"
+-------------------------------------
+
+Use case
+^^^^^^^^
+
+In MODS, an attribute can be used on typeOfResource to indicate that the record refers to an entire collection rather
+than an individual resource. This is useful because it makes it possible to distinguish between object and collection
+records in the catalog so that patrons understand more quickly how much content is associated with the record. The
+Islandora Metadata Interest Group has come up with the solution of using the dcterms resource type of "Collection." In
+this situation we will need multiple triples to preserve the information currently present - one for indicating the record is
+for a collection and one (or more) for indicating prevalent resource type(s) in the collection. In MODS typeOfResource is
+a repeatable field. Note that we will need to make sure that we do not repeat the collection resource type in cases
+where there are multiple typeOfResource[@collection="yes"] instances.
+
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| collection="yes"           | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/col> | Collection         |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+
+Justification
+^^^^^^^^^^^^^
+
+We need to be able to distinguish between an item and collection resource, so retaining this information is necessary.
+
+Xpath
+^^^^^
+
+:code:`mods:typeOfResource[@collection="yes"]`
+
+Decision
+^^^^^^^^
+
+Here's a complex example that includes two <typeOfResource> values - `gsmrc:smhc <https://digital.lib.utk.edu/collections/islandora/object/gsmrc%3Asmhc/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <typeOfResource collection="yes">text</typeOfResource>
+    <typeOfResource collection="yes">still image</typeOfResource>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/col> ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/txt> ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
+
+Missing typeOfResource value
+----------------------------
+
+Use case
+^^^^^^^^
+
+Currently 9,993 records are missing a typeOfResource value. The affected collections include Volunteer Voices (not entire
+collection), Roth, the Howard Baker Speeches and Remarks, Great Smoky Mountains Colloquy, and the Great Smoky Mountains Postcard Collection. We can consider if we would like to apply a blanket value to a collection at the time
+of migration. For monolithic collections like Roth and Baker, this would be easy to achieve (roth = "still image" and
+baker = "text" in MODS). For collections with varied formats, like Volunteer Voices, this will not be possible.
+
+Justification
+^^^^^^^^^^^^^
+
+Given that the Digital Collections home page currently uses typeOfResource to initially limit searches, it would be
+beneficial for this value to be more consistently present. It would also assist with discovery in DPLA.
+
+Xpath
+^^^^^
+
+:code:`not(mods:typeOfResource)`
+
+Decision
+^^^^^^^^
+
+During or post migration we will plan to add typeOfResource on a collection basis if possible. See the chart below for decisions.
+
++----------------------------+---------------------------------------------------+
+| collection PID             | dcterms:type                                      |
++----------------------------+---------------------------------------------------+
+| colloquy                   | <http://id.loc.gov/vocabulary/resourceTypes/txt>  |
++----------------------------+---------------------------------------------------+
+| hbs                        | <http://id.loc.gov/vocabulary/resourceTypes/txt>  |
++----------------------------+---------------------------------------------------+
+| pcard00                    | <http://id.loc.gov/vocabulary/resourceTypes/img>  |
++----------------------------+---------------------------------------------------+
+| roth                       | <http://id.loc.gov/vocabulary/resourceTypes/img>  |
++----------------------------+---------------------------------------------------+
+| volvoices                  | cannot assign blanket value                       |
++----------------------------+---------------------------------------------------+
+
+Here's an example record with no typeOfResource value - `roth:100 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A100/datastream/MODS/view>`_.
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
 
 classification
 ==============
