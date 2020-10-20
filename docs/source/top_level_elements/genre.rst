@@ -9,12 +9,22 @@ This section describes the different values for :code:`genre` that we currently 
 genre[@authority = 'dct']
 -------------------------
 
-We will explore other options for records using :code:`@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values to :code:`physicalDescription/form`. Many of the records in Volunteer Voices have multiple :code:`genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
+We will explore other options for records using :code:`@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values as :code:`typeOfResource`. Many of the records in Volunteer Voices have multiple :code:`genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
+
+There are ~190 records in the Smokies Postcards collection that have empty :code:`genre` elements, and empty :code:`@valueURI` attributes; e.g. `100233:1 <https://digital.lib.utk.edu/collections/islandora/object/100233:1/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
     <genre authority="dct">text</genre>
     <genre>letter</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:type "text" ;
+        edm:hasType "letter" .
 
 Roughly 300 other records have more than two :code:`genre`s; e.g. `volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_.
 
@@ -113,11 +123,13 @@ genre[@authority = 'lcmpt']
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix gnd: <https://d-nb.info/standards/elementset/gnd#> .
 
-    <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
-        dcterms:type <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
-        dcterms:type <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
-        dcterms:type <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
+    <https://example.org/object/1>
+        gnd:playedInstrument <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
+        gnd:playedInstrument <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
+        gnd:playedInstrument <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
+        gnd:playedInstrument <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
         dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014027156> ;
         dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026956> ;
         dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026097> ;
