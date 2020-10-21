@@ -43,7 +43,7 @@ Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <ht
 genre[@authority = 'aat']
 -------------------------
 
-`genre[@authority = 'aat']` appears in the Archivision collection and uses a `@valueURI` for controlled vocabulary; e.g. `archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_.
+`genre[@authority = 'aat']` appears in the Archivision collection and uses a `@valueURI` for controlled vocabulary; e.g. `archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_. We will map these as subjects.
 
 .. code-block:: xml
 
@@ -51,9 +51,9 @@ genre[@authority = 'aat']
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/object/1> edm:hasType <http://vocab.getty.edu/aat/300021140> .
+    <https://example.org/object/1> dcterms:subject <http://vocab.getty.edu/aat/300021140> .
 
 genre[@authority = 'lcsh']
 --------------------------
