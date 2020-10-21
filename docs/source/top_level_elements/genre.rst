@@ -66,9 +66,9 @@ Used in the Archivision and Charlie Daniel collections; e.g. `cDanielCartoon:455
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
-    <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/subjects/sh85040974> .
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
 
 and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/archivision:1754/datastream/MODS/view>`_.
 
@@ -78,9 +78,9 @@ and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
-    <https://example.org/object/1> dcterms:type <http://id.loc.gov/authorities/subjects/sh85040974> .
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
 
 
 genre[@authority = 'lcgft']
