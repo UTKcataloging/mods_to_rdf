@@ -34,7 +34,12 @@ Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <ht
 
 .. code-block:: turtle
 
-    @prefix
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> edm:hasType "notated music", "sheet music" ;
+        dcterms:type "still image" .
+
 genre[@authority = 'aat']
 -------------------------
 
