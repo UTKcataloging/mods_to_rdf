@@ -129,13 +129,12 @@ genre[@authority = 'lcmpt']
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
-    @prefix gnd: <https://d-nb.info/standards/elementset/gnd#> .
 
     <https://example.org/object/1>
-        gnd:playedInstrument <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
-        gnd:playedInstrument <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
-        gnd:playedInstrument <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
-        gnd:playedInstrument <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
         dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014027156> ;
         dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026956> ;
         dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026097> ;
