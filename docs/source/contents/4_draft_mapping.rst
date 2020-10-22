@@ -1824,7 +1824,7 @@ Because our records in MODS records may not be accurate and this information is 
 Xpath
 ^^^^^
 
-`mods:location/mods:physicalLocation`
+`mods:location/mods:shelfLocator`
 
 Decision
 ^^^^^^^^
@@ -1964,7 +1964,7 @@ Similar to the holdingExternal, we will opt drop this information to maintain si
 Xpath
 ^^^^^
 
-`mods:location/mods:physicalLocation`
+`mods:location/mods:physicalLocation[@displayLabel=Address]`
 
 Decision
 ^^^^^^^^
