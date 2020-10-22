@@ -672,23 +672,59 @@ name
 originInfo
 ==========
 
-:code:`originInfo/dateCreated`
-------------------------------
+`originInfo/dateCreated`
+------------------------
 
 Use Case
 ^^^^^^^^
 
-:code:`dateCreated` captures dates and date ranges identifying or approximating when the physical object was created.
+`dateCreated` captures dates and date ranges identifying or approximating when the physical object was created.
 
 Justification
 ^^^^^^^^^^^^^
 
-No dispute on the values in :code:`dateCreated`.
+No dispute on the values in `dateCreated`.
 
 XPath
 ^^^^^
 
-:code:`mods:originInfo/mods:dateCreated[@encoding]`
+`originInfo/dateCreated` OR
+`originInfo/dateCreated[@encoding='edtf']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+`originInfo/dateCreated[@encoding='edtf'][@point='end']` OR
+`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
+`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
+`originInfo/dateCreated[@encoding='edtf'][@point='start']` OR
+`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
+`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
+`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
+`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
+`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
+`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
+`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
+`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
+`originInfo/dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
+`originInfo/dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
+`originInfo/dateCreated[@point='end']` OR
+`originInfo/dateCreated[@qualifier='approximate']` OR
+`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+`originInfo/dateCreated[@qualifier='inferred']` OR
+`originInfo/dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+`originInfo/dateCreated[@qualifier='questionable']` OR
+`originInfo/dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
 
 physicalDescription
 ===================
