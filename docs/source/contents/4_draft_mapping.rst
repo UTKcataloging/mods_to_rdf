@@ -713,8 +713,8 @@ Decisions
 When you have a :code:`mods:name` with a :code:`valueURI` attribute like `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
 
 .. code-block:: xml
-    :caption: Example XML from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
-    :name: Example XML from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :caption: Example XML record from `harp:1 MODS <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: Example XML record from `harp:1 MODS <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
 
     <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
         <namePart>Swan, W. H. (William H.)</namePart>
@@ -728,8 +728,8 @@ When you have a :code:`mods:name` with a :code:`valueURI` attribute like `harp:1
 Leverage the valueURI and make it the object of the triple:
 
 .. code-block:: turtle
-    :caption: Resulting RDF for `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
-    :name: Resulting RDF for `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :caption: Resulting RDF `from harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: Resulting RDF `from harp:1 MODS <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
@@ -761,8 +761,8 @@ When there is no :code:`mods:name/@valueURI`, use the string literal from :code:
 If there is a :code:`mods:name/valueURI` but it's empty, use the string literal instead:
 
 .. code-block:: xml
-    :caption: Example XML from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
-    :name: Example XML from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+    :caption: Example XML from `volvoices:2495 MODS <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+    :name: Example XML from `volvoices:2495 MODS <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
 
     <name authority="naf" type="corporate" valueURI="">
         <namePart>Bemis Bro. Bag Company</namePart>
@@ -801,8 +801,8 @@ Decision
 ^^^^^^^^
 
 .. code-block:: xml
-    :caption: XML from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_ has multiple role terms
-    :name: XML from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_ has multiple role terms
+    :caption: `harp:1 XML record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_ has multiple role terms
+    :name: `harp:1 XML record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_ has multiple role terms
 
     <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
         <namePart>Swan, W. H. (William H.)</namePart>
@@ -819,8 +819,8 @@ Decision
     </name>
 
 .. code-block:: turtle
-    :caption: Resulting RDF for a name from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
-    :name: Resulting RDF for a name from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :caption: Resulting RDF for a name from `harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: Resulting RDF for a name from `harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
