@@ -668,6 +668,195 @@ All values within <tableOfContents> will be mapped to RDF in the same way. Below
 name
 ====
 
+Namespaces
+----------
+
++-----------------+-----------------------+-------------------+----------------------------------------------------------------+
+| Properties      | Value Type            | Range (if needed) | Usage Notes                                                    |
++=================+=======================+===================+================================================================+
+| relators:[term] | URI or String Literal | N/A               | Use with a role from MARC Code List of Relatorsrole terms.     |
+|                 |                       |                   | Value is either text or URI from acontrolled vocabulary (like  |
+|                 |                       |                   | Library of CongressName Authority File).                       |
++-----------------+-----------------------+-------------------+----------------------------------------------------------------+
+
+Leverage Marc Relators for RDF Property Value and Relationship to the Digital Object
+------------------------------------------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+For all instances of :code:`mods:name`, leverage the marcrelator value found in its :code:`mods:role/mods:roleTerm` for
+associating the name with the digital object.
+
+A lookup table is included as an appendix to help with this.
+
+If the :code:`mods:name` has a :code:`valueURI` attribute, use it for the object of the triple.  If it does not, use
+the text value of :code:`mods:name/mods:namePart`.
+
+Justification
+^^^^^^^^^^^^^
+
+All instances of :code:`mods:name` have a :code:`mods:role/mods:roleTerm` that can be leveraged to determine the name's
+relationship with the digital object.  In some cases, there is a :code:`mods:roleTerm/@valueURI`, but this is not always
+the case.
+
+Xpaths
+^^^^^^
+
+:code:`mods:name/mods:namePart` or :code:`mods:name[@valueURI!=""]`
+
+Decisions
+^^^^^^^^^
+
+When you have a :code:`mods:name` with a :code:`valueURI` attribute like `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
+
+.. code-block:: xml
+    :caption: Example XML from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: Example XML from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+
+    <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
+        <namePart>Swan, W. H. (William H.)</namePart>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/cmp">
+                Composer
+            </roleTerm>
+        </role>
+    </name>
+
+Leverage the valueURI and make it the object of the triple:
+
+.. code-block:: turtle
+    :caption: Resulting RDF for `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: Resulting RDF for `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cmp <http://id.loc.gov/authorities/names/no2002022963> .
+
+When there is no :code:`mods:name/@valueURI`, use the string literal from :code:`mods:name/mods:namePart`:
+
+.. code-block:: xml
+    :caption: XML with Name missing a valueURI
+    :name: XML with Name missing a valueURI
+
+    <name type="personal">
+        <namePart>Daniel, Charles R. (Charlie), Jr., 1930-</namePart>
+        <role>
+            <roleTerm type="text" authority="marcrelator" valueURI=" http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+    </name>
+
+.. code-block:: turtle
+    :caption: Resulting turtle for Name missing a valueURI
+    :name: Resulting turtle for Name missing a valueURI
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cre "Daniel, Charles R. (Charlie), Jr., 1930-" .
+
+If there is a :code:`mods:name/valueURI` but it's empty, use the string literal instead:
+
+.. code-block:: xml
+    :caption: Example XML from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+    :name: Example XML from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+
+    <name authority="naf" type="corporate" valueURI="">
+        <namePart>Bemis Bro. Bag Company</namePart>
+        <role>
+            <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/asn">Associated name</roleTerm>
+        </role>
+    </name>
+
+.. code-block:: turtle
+    :caption: Resulting turtle from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+    :name: Resulting turtle from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:asn "Bemis Bro. Bag Company" .
+
+Keep all Roles
+--------------
+
+Use Case
+^^^^^^^^
+
+Occassionally, a :code:`mods:name` will have multiple roles.  When this happens, keep them all.
+
+Justification
+^^^^^^^^^^^^^
+
+It's important that we keep the relationship between people and our digital object.
+
+Xpaths
+^^^^^^
+:code:`count(mods:name/mods:role)>1`
+
+Decision
+^^^^^^^^
+
+.. code-block:: xml
+    :caption: XML from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_ has multiple role terms
+    :name: XML from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_ has multiple role terms
+
+    <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
+        <namePart>Swan, W. H. (William H.)</namePart>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/cmp">
+                Composer
+            </roleTerm>
+        </role>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/com">
+                Compiler
+            </roleTerm>
+        </role>
+    </name>
+
+.. code-block:: turtle
+    :caption: Resulting RDF for a name from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: Resulting RDF for a name from `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cmp <http://id.loc.gov/authorities/names/no2002022963> ;
+        relators:com <http://id.loc.gov/authorities/names/no2002022963> .
+
+Do Not Keep Any Other Values Associated with a Name
+---------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+There are other xpaths in our system that are associated with names that are no longer needed.  Do not migrate these.
+
+Justification
+^^^^^^^^^^^^^
+
+In an RDF based system that leverages linked data, it's unnecessary to keep traditional :code:`mods:name` information
+like authority, displayForm, type, or description. Authorities are present in the URI itself and information such as
+description or displayForm are avaliable from the class our object refers to.  While type is not available, it has little
+meaning in our current system and will only complicate things in the future.
+
+Xpaths
+^^^^^^
+
+* :code:`name/role/roleTerm/@authority`
+* :code:`name/@authority`
+* :code:`name/role/roleTerm/@authorityURI`
+* :code:`name/@type`
+* :code:`name/displayForm`
+* :code:`name/description`
+
+Decision
+^^^^^^^^
+
+Do not migrate.
+
 originInfo
 ==========
 
