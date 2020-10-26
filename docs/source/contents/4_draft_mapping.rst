@@ -713,14 +713,14 @@ Decisions
 When you have a :code:`mods:name` with a :code:`valueURI` attribute like `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
 
 .. code-block:: xml
-    :caption: Example XML record from `harp:1 MODS <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
-    :name: Example XML record from `harp:1 MODS <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :caption: Example XML record from `tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
+    :name: Example XML record from `tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
 
-    <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
-        <namePart>Swan, W. H. (William H.)</namePart>
+    <name valueURI="http://id.loc.gov/authorities/names/n2017180154">
+        <namePart>White, Hugh Lawson, 1773-1840</namePart>
         <role>
-            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/cmp">
-                Composer
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/crp">
+                Correspondent
             </roleTerm>
         </role>
     </name>
@@ -728,13 +728,13 @@ When you have a :code:`mods:name` with a :code:`valueURI` attribute like `harp:1
 Leverage the valueURI and make it the object of the triple:
 
 .. code-block:: turtle
-    :caption: Resulting RDF `from harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
-    :name: Resulting RDF `from harp:1 MODS <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :caption: Resulting RDF `from tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
+    :name: Resulting RDF `from tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
-        relators:cmp <http://id.loc.gov/authorities/names/no2002022963> .
+        relators:crp <http://id.loc.gov/authorities/names/n2017180154> .
 
 When there is no :code:`mods:name/@valueURI`, use the string literal from :code:`mods:name/mods:namePart`:
 
@@ -801,8 +801,8 @@ Decision
 ^^^^^^^^
 
 .. code-block:: xml
-    :caption: `harp:1 XML record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_ has multiple role terms
-    :name: `harp:1 XML record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_ has multiple role terms
+    :caption: `Multi-role name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: `Multi-role name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
 
     <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
         <namePart>Swan, W. H. (William H.)</namePart>
@@ -819,8 +819,8 @@ Decision
     </name>
 
 .. code-block:: turtle
-    :caption: Resulting RDF for a name from `harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
-    :name: Resulting RDF for a name from `harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :caption:  `Resulting RDF for a name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: `Resulting RDF for a name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
