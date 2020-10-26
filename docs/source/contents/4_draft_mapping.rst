@@ -780,8 +780,8 @@ If there is a :code:`mods:name/valueURI` but it's empty, use the string literal 
     <https://example.org/objects/1>
         relators:asn "Bemis Bro. Bag Company" .
 
-Keep all Roles
---------------
+Names with Multiple Role Terms
+------------------------------
 
 Use Case
 ^^^^^^^^
