@@ -672,15 +672,15 @@ name
 originInfo
 ==========
 
-+-------------------+--------------+---------------------+--------------------------------------------------------------------------------+
-|  Predicate        |  Value Type  |  Range (if needed)  |  Usage Notes                                                                   |
-+===================+==============+=====================+================================================================================+
-|  dcterms:created  |  Literal     |                     |  The date a resource was created, formatted as an EDTF string.                 |
-+-------------------+--------------+---------------------+--------------------------------------------------------------------------------+
-|  dcterms:issued   |  Literal     |                     |  The date a resource was issued, formatted as an EDTF string.                  |
-+-------------------+--------------+---------------------+--------------------------------------------------------------------------------+
-|  dcterms:date     |  Literal     |                     |  An unspecified date associated with a resource, formatted as an EDTF string.  |             |
-+-------------------+--------------+---------------------+--------------------------------------------------------------------------------+
++-----------------+------------+-------+------------------------------------------------------------------------------+
+| RDF predicate   | Value type | Range | Usage notes                                                                  |
++-----------------+------------+-------+------------------------------------------------------------------------------+
+| dcterms:created | Literal    |       | The date a resource was created, formatted as an EDTF string.                |
++-----------------+------------+-------+------------------------------------------------------------------------------+
+| dcterms:issued  | Literal    |       | The date a resource was issued, formatted as an EDTF string.                 |
++-----------------+------------+-------+------------------------------------------------------------------------------+
+| dcterms:date    | Literal    |       | An unspecified date associated with a resource, formatted as an EDTF string. |
++-----------------+------------+-------+------------------------------------------------------------------------------+
 
 `originInfo/dateCreated`
 ------------------------
@@ -698,43 +698,43 @@ No dispute on the values in `dateCreated`.
 XPath
 ^^^^^
 
-`originInfo/dateCreated` OR
-`originInfo/dateCreated[@encoding='edtf']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
-`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
-`originInfo/dateCreated[@encoding='edtf'][@point='end']` OR
-`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
-`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
-`originInfo/dateCreated[@encoding='edtf'][@point='start']` OR
-`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
-`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
-`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
-`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
-`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
-`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
-`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
-`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
-`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
-`originInfo/dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
-`originInfo/dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
-`originInfo/dateCreated[@point='end']` OR
-`originInfo/dateCreated[@qualifier='approximate']` OR
-`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
-`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
-`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-`originInfo/dateCreated[@qualifier='inferred']` OR
-`originInfo/dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-`originInfo/dateCreated[@qualifier='questionable']` OR
-`originInfo/dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
+:code:`originInfo/dateCreated` OR
+:code:`originInfo/dateCreated[@encoding='edtf']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='end']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
+:code:`originInfo/dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@point='end']` OR
+:code:`originInfo/dateCreated[@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@qualifier='questionable']` OR
+:code:`originInfo/dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
 
 physicalDescription
 ===================
