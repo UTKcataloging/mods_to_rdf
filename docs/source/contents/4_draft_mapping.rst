@@ -736,6 +736,26 @@ XPath
 :code:`originInfo/dateCreated[@qualifier='questionable']` OR
 :code:`originInfo/dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
 
+Decisions
+^^^^^^^^^
+
+We will convert `w3cdtf` to `edtf` values as part of our migration process; additionally, we will integrate EDTF Level 2 features where necessary. The `dcterms:created` property was selected.
+
+`Example record - ekcd:95 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:95/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateCreated qualifier="inferred">1955</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes">1955</dateCreated>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:created "1955", "1955~" .
+
 physicalDescription
 ===================
 
