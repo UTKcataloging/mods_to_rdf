@@ -81,7 +81,7 @@ If the role term is associated with a marcrelator:
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
         relators:stm "Marre, Albert" .

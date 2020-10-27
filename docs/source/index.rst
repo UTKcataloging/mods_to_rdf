@@ -41,4 +41,13 @@ This section contains materials related to working group exercises.
 
    working_docs/*
 
+Appendex
+--------
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   appendecies/*
+
 * :ref:`search`
