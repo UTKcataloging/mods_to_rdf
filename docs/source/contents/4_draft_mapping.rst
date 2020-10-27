@@ -1669,9 +1669,10 @@ location
 |                                   |                |                   | a URI for the organization from a controlled vocabulary                 |
 |                                   |                |                   | such as VIAF of Library of Congress Real World Objects.                 |
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
-| skos:note                         | Literal        |                   | Use to note <mods:shelfLocator> strings.                                |
+| skos:note                         | Literal        |                   | Use to note :code:`<mods:shelfLocator>` strings.                        |
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
-| dbo:collection                    | Literal        |                   | Use to note <mods:physicalLocation[@displayLabel=Collection]> strings.  |
+| dbo:collection                    | Literal        |                   | Use to note :code:`mods:physicalLocation[@displayLabel="Collection"]`   |
+|                                   |                |                   | strings.                                                                |
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
 
 physicalLocation as URI
@@ -1688,11 +1689,11 @@ When available, we will opt to use valueURI values as the URI value for relators
 Xpath
 ^^^^^
 
-`mods:location/mods:physicalLocation[@valueURI=https://example.org/authority/1]`
+:code:`mods:location/mods:physicalLocation[@valueURI="https://example.org/authority/1"]`
 
 Decision
 ^^^^^^^^
-The valueURI attribute `mods:location/mods:physicalLocation` is set as object.
+The valueURI attribute :code:`mods:location/mods:physicalLocation` is set as object.
 
 `Example record from egypt:79 <https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view>`_
 
@@ -1704,7 +1705,7 @@ The valueURI attribute `mods:location/mods:physicalLocation` is set as object.
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/no2017033007> .
@@ -1727,7 +1728,7 @@ To create better consistency and cleanliness going forward, we will isolate all 
 Xpath
 ^^^^^
 
-`mods:location/mods:physicalLocation`
+:code: `mods:location/mods:physicalLocation`
 
 Decision
 ^^^^^^^^
@@ -1743,7 +1744,7 @@ Even when mods only has a string present, we will work to map The University of 
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/n80003889> .
@@ -1763,7 +1764,7 @@ Even when mods only has a string present, we will work to map The University of 
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
@@ -1782,7 +1783,7 @@ Translating these to a relative URIs would require significant effort, and the v
 Xpath
 ^^^^^
 
-`mods:location/mods:physicalLocation`
+:code: `mods:location/mods:physicalLocation`
 
 Decision
 ^^^^^^^^
@@ -1805,7 +1806,7 @@ In cases that the physicalLocation are non-UTK and only a string is provided, we
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
         relators:rps "Blount County Public Library" .
@@ -1824,7 +1825,7 @@ Because our records in MODS records may not be accurate and this information is 
 Xpath
 ^^^^^
 
-`mods:location/mods:shelfLocator`
+:code: `mods:location/mods:shelfLocator`
 
 Decision
 ^^^^^^^^
@@ -1841,7 +1842,7 @@ We will drop `mods:shelfLocator` data when present for UT Knoxville records.
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
@@ -1860,11 +1861,11 @@ While, we do not not know if this shelfLocator information is accurate, we will 
 Xpath
 ^^^^^
 
-`mods:location/mods:shelfLocator` OR other variations...
+:code:`mods:location/mods:shelfLocator` OR other variations...
 
 Decision
 ^^^^^^^^
-We will retain `mods:shelfLocator` data when present for non-UTK records, and transcribe this to a skos:note.
+We will retain :code:`mods:shelfLocator` data when present for non-UTK records, and transcribe this to a skos:note.
 
 `Example record from volvoices:2136 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2136/datastream/MODS/view>`_
 
@@ -1890,7 +1891,7 @@ We will retain `mods:shelfLocator` data when present for non-UTK records, and tr
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
     @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
     <https://example.org/objects/1>
@@ -1911,7 +1912,7 @@ To keep our metadata as simple as possible from a technical standpoint we will d
 Xpath
 ^^^^^
 
-`mods:location/mods:holdingExternal`
+:code: `mods:location/mods:holdingExternal`
 
 Decision
 ^^^^^^^^
@@ -1941,7 +1942,7 @@ We will drop all information for `holdingExternal`.
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
     @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
     <https://example.org/objects/1>
@@ -1964,7 +1965,7 @@ Similar to the holdingExternal, we will opt drop this information to maintain si
 Xpath
 ^^^^^
 
-`mods:location/mods:physicalLocation[@displayLabel=Address]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="Address"]`
 
 Decision
 ^^^^^^^^
@@ -1982,7 +1983,7 @@ We will drop all information for `holdingExternal`.
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
     @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
     <https://example.org/objects/1>
@@ -1998,12 +1999,12 @@ In a few of collections for Arrowmont, we will find items having a physicalLocat
 
 Justification
 ^^^^^^^^^^^^^
-Because these records do not already have a dbo:collection predicate, we will transcribe the string literal to dbo:collection for `physicalLocation[@displayLabel=Collection]`. No other data here needs to be retained and will be dropped.
+Because these records do not already have a dbo:collection predicate, we will transcribe the string literal to dbo:collection for :code:`mods:location/mods:physicalLocation[@displayLabel="Collection"]`. No other data here needs to be retained and will be dropped.
 
 Xpath
 ^^^^^
 
-`mods:location/mods:physicalLocation[@displayLabel=Collection]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="Collection"]`
 
 Decision
 ^^^^^^^^
@@ -2025,7 +2026,7 @@ Like when physicalLocation has no displayLabel, Repository is retained as relato
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
@@ -2048,11 +2049,11 @@ This is self-referential and has no value in a new system.
 Xpath
 ^^^^^
 
-`mods:location/mods:url`
+:code:`mods:location/mods:url`
 
 Decision
 ^^^^^^^^
-This is dropped.
+Drop this.
 
 `Example record from volvoices:9999 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/MODS/view>`_
 
