@@ -872,8 +872,8 @@ originInfo
 | dcterms:date    | Literal    |       | An unspecified date associated with a resource, formatted as an EDTF string. |
 +-----------------+------------+-------+------------------------------------------------------------------------------+
 
-`originInfo/dateCreated`
-------------------------
+originInfo/dateCreated
+----------------------
 
 Use Case
 ^^^^^^^^
@@ -945,6 +945,22 @@ We will convert `w3cdtf` to `edtf` values as part of our migration process; addi
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "1955", "1955~" .
+
+`Example record - volvoices:3849 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A3849/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateCreated>approximately between 1940 and 1950</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="approximate">1940</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="end">1950</dateCreated>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:created "approximately between 1940 and 1950", "1940~/1950" .
 
 physicalDescription
 ===================
