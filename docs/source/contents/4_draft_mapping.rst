@@ -2050,9 +2050,7 @@ Providing contributing institutions with the proper credit is important for inte
 Xpath
 ^^^^^
 
-.. code-block::
-
-    `mods:location/mods:physicalLocation[. != mods:recordInfo/mods:recordContentSource]`
+:code:`mods:location/mods:physicalLocation[. != mods:recordInfo/mods:recordContentSource]`
 
 Decision
 ^^^^^^^^
