@@ -1732,7 +1732,7 @@ Xpath
 
 Decision
 ^^^^^^^^
-Even when mods only has a string present, we will work to map The University of Tennessee Libraries, Knoxville and University of Tennessee, Knoxville. Special Collections to relative URIs.
+Even when mods only has a string present, we will map The University of Tennessee Libraries, Knoxville and University of Tennessee, Knoxville. Special Collections to relative URIs.
 
 `Example record from fbpro:94819 <https://digital.lib.utk.edu/collections/islandora/object/fbpro:94819/datastream/MODS/view>`_
 
