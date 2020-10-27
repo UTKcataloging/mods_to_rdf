@@ -9,7 +9,19 @@ This section describes the different values for `genre` that we currently have i
 genre[@authority = 'dct']
 -------------------------
 
-We will explore other options for records using `@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values as `typeOfResource`. Many of the records in Volunteer Voices have multiple `genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_.
+We will explore other options for records using `@authority = 'dct'` or uncontrolled vocabularies, e.g. mapping values as `typeOfResource`. Many of the records in Volunteer Voices have multiple `genre`s; e.g. `volvoices:14311 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:14311/datastream/MODS/view>`_. Following our mapping for :code:`typeOfResource`, we will use the appropriate URI for the given text value.
+
++-------------------------------------+---------------+--------------------------------------------------+----------------+
+| MODS genre[@authority='dct'] String | RDF Predicate | URI                                              | dcterms String |
++-------------------------------------+---------------+--------------------------------------------------+----------------+
+| text                                | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/txt> | Text           |
++-------------------------------------+---------------+--------------------------------------------------+----------------+
+| still image                         | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | StillImage     |
++-------------------------------------+---------------+--------------------------------------------------+----------------+
+| image                               | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | Image          |
++-------------------------------------+---------------+--------------------------------------------------+----------------+
+| collection                          | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/col> | Collection     |
++-------------------------------------+---------------+--------------------------------------------------+----------------+
 
 .. code-block:: xml
 
@@ -21,7 +33,7 @@ We will explore other options for records using `@authority = 'dct'` or uncontro
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:type "text" ;
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/txt> ;
         edm:hasType "letter" .
 
 Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_.
@@ -38,7 +50,7 @@ Roughly 300 other records have more than two `genre`s; e.g. `volvoices:11262 <ht
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> edm:hasType "notated music", "sheet music" ;
-        dcterms:type "still image" .
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
 
 genre[@authority = 'aat']
 -------------------------
