@@ -1861,7 +1861,8 @@ While, we do not not know if this shelfLocator information is accurate, we will 
 Xpath
 ^^^^^
 
-:code:`mods:location/mods:shelfLocator` OR other variations...
+:code:`mods:location/mods:shelfLocator`
+:code:`mods:location/mods:holdingSimple/mods:copyInformation/mods:shelfLocator`
 
 Decision
 ^^^^^^^^
