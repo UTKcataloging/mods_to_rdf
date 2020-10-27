@@ -155,13 +155,7 @@ genre[@authority = 'lcmpt']
 genre[@authority = 'lctgm']
 ---------------------------
 
-This appears on a few records in Arrowmont and on two collection-level records (humbug and uarc); e.g. `arrowmont:208 <https://digital.lib.utk.edu/collections/islandora/object/arrowmont:208/datastream/MODS/view>`_.
-
-.. code-block:: xml
-
-    <genre authority="lctgm" valueURI="http://www.loc.gov/pictures/item/tgm009266/">scrapbooks</genre>
-
-We won't be migrating these values.
+This XPath has been remediated out of our MODS; i.e. we won't be migrating this.
 
 genre[@valueURI = '']
 ---------------------
