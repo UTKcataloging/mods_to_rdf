@@ -53,6 +53,8 @@ Namespaces
 +------------------+----------------------------------------+
 | edm              | http://www.europeana.eu/schemas/edm/   |
 +------------------+----------------------------------------+
+| relators         | http://id.loc.gov/vocabulary/relators/ |
++------------------+----------------------------------------+
 | opaque           | http://opaquenamespace.org/ns/         |
 +------------------+----------------------------------------+
 | skos             | http://www.w3.org/2004/02/skos/core#   |
@@ -479,7 +481,6 @@ character will be used as glue when concatenating the strings.
     <https://example.org/objects/1> dcterms:title "Knoxville -- 1917, Sheet 56" .
 
 
-
 titleInfo - titleInfo has nonSort sub-element
 ---------------------------------------------
 
@@ -668,6 +669,195 @@ All values within <tableOfContents> will be mapped to RDF in the same way. Below
 
 name
 ====
+
+Namespaces
+----------
+
++-----------------+-----------------------+-------------------+----------------------------------------------------------------+
+| Properties      | Value Type            | Range (if needed) | Usage Notes                                                    |
++=================+=======================+===================+================================================================+
+| relators:[term] | URI or String Literal | N/A               | Use with a role from MARC Code List of Relatorsrole terms.     |
+|                 |                       |                   | Value is either text or URI from acontrolled vocabulary (like  |
+|                 |                       |                   | Library of CongressName Authority File).                       |
++-----------------+-----------------------+-------------------+----------------------------------------------------------------+
+
+Leverage Marc Relators for RDF Property Value and Relationship to the Digital Object
+------------------------------------------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+For all instances of :code:`mods:name`, leverage the marcrelator value found in its :code:`mods:role/mods:roleTerm` for
+associating the name with the digital object.
+
+A lookup table is included as an appendix to help with this.
+
+If the :code:`mods:name` has a :code:`valueURI` attribute, use it for the object of the triple.  If it does not, use
+the text value of :code:`mods:name/mods:namePart`.
+
+Justification
+^^^^^^^^^^^^^
+
+All instances of :code:`mods:name` have a :code:`mods:role/mods:roleTerm` that can be leveraged to determine the name's
+relationship with the digital object.  In some cases, there is a :code:`mods:roleTerm/@valueURI`, but this is not always
+the case.
+
+Xpaths
+^^^^^^
+
+:code:`mods:name/mods:namePart` or :code:`mods:name[@valueURI!=""]`
+
+Decisions
+^^^^^^^^^
+
+When you have a :code:`mods:name` with a :code:`valueURI` attribute like `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
+
+.. code-block:: xml
+    :caption: Example XML record from `tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
+    :name: Example XML record from `tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
+
+    <name valueURI="http://id.loc.gov/authorities/names/n2017180154">
+        <namePart>White, Hugh Lawson, 1773-1840</namePart>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/crp">
+                Correspondent
+            </roleTerm>
+        </role>
+    </name>
+
+Leverage the valueURI and make it the object of the triple:
+
+.. code-block:: turtle
+    :caption: Resulting RDF `from tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
+    :name: Resulting RDF `from tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:crp <http://id.loc.gov/authorities/names/n2017180154> .
+
+When there is no :code:`mods:name/@valueURI`, use the string literal from :code:`mods:name/mods:namePart`:
+
+.. code-block:: xml
+    :caption: XML with Name missing a valueURI
+    :name: XML with Name missing a valueURI
+
+    <name type="personal">
+        <namePart>Daniel, Charles R. (Charlie), Jr., 1930-</namePart>
+        <role>
+            <roleTerm type="text" authority="marcrelator" valueURI=" http://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
+        </role>
+    </name>
+
+.. code-block:: turtle
+    :caption: Resulting turtle for Name missing a valueURI
+    :name: Resulting turtle for Name missing a valueURI
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cre "Daniel, Charles R. (Charlie), Jr., 1930-" .
+
+If there is a :code:`mods:name/valueURI` but it's empty, use the string literal instead:
+
+.. code-block:: xml
+    :caption: Example XML from `volvoices:2495 MODS <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+    :name: Example XML from `volvoices:2495 MODS <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+
+    <name authority="naf" type="corporate" valueURI="">
+        <namePart>Bemis Bro. Bag Company</namePart>
+        <role>
+            <roleTerm authority="marcrelator" type="text" valueURI="http://id.loc.gov/vocabulary/relators/asn">Associated name</roleTerm>
+        </role>
+    </name>
+
+.. code-block:: turtle
+    :caption: Resulting turtle from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+    :name: Resulting turtle from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:asn "Bemis Bro. Bag Company" .
+
+Names with Multiple Role Terms
+------------------------------
+
+Use Case
+^^^^^^^^
+
+Occassionally, a :code:`mods:name` will have multiple roles.  When this happens, keep them all.
+
+Justification
+^^^^^^^^^^^^^
+
+It's important that we keep the relationship between people and our digital object.
+
+Xpaths
+^^^^^^
+:code:`count(mods:name/mods:role)>1`
+
+Decision
+^^^^^^^^
+
+.. code-block:: xml
+    :caption: `Multi-role name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: `Multi-role name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+
+    <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
+        <namePart>Swan, W. H. (William H.)</namePart>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/cmp">
+                Composer
+            </roleTerm>
+        </role>
+        <role>
+            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/com">
+                Compiler
+            </roleTerm>
+        </role>
+    </name>
+
+.. code-block:: turtle
+    :caption:  `Resulting RDF for a name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+    :name: `Resulting RDF for a name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:cmp <http://id.loc.gov/authorities/names/no2002022963> ;
+        relators:com <http://id.loc.gov/authorities/names/no2002022963> .
+
+Do Not Keep Any Other Values Associated with a Name
+---------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+There are other xpaths in our system that are associated with names that are no longer needed.  Do not migrate these.
+
+Justification
+^^^^^^^^^^^^^
+
+In an RDF based system that leverages linked data, it's unnecessary to keep traditional :code:`mods:name` information
+like authority, displayForm, type, or description. Authorities are present in the URI itself and information such as
+description or displayForm are avaliable from the class our object refers to.  While type is not available, it has little
+meaning in our current system and will only complicate things in the future.
+
+Xpaths
+^^^^^^
+
+* :code:`name/role/roleTerm/@authority`
+* :code:`name/@authority`
+* :code:`name/role/roleTerm/@authorityURI`
+* :code:`name/@type`
+* :code:`name/displayForm`
+* :code:`name/description`
+
+Decision
+^^^^^^^^
+
+Do not migrate.
 
 originInfo
 ==========
@@ -1483,6 +1673,163 @@ https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MO
 typeOfResource
 ==============
 
+typeOfResource with no attributes
+---------------------------------
+
+Use case
+^^^^^^^^
+Most records currently have a typeOfResource value with no attributes. Depending on the item being described, it is possible
+for there to be multiple typeOfResource values in a single record. The Islandora Metadata Interest Group has carefully
+created a mapping to translate MODS typeOfResource values to dcterms resource types. A selection of the mapping is
+included below that addresses all of the values UTK has within its metadata. Note that the final row, collection="yes"
+is addressed in a subsequent category.
+
++----------------------------+---------------+--------------------------------------------------+--------------------+
+|                            | RDF Predicate | RDF Value                                        | dcterms text value |
+| MODS typeOfResource        |               |                                                  |                    |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| text                       | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/txt> | Text               |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| cartographic               | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/car> | Cartographic       |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| notated music              | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/not> | Notated music      |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| sound recording-nonmusical | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/aun> | Audio non-musical  |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| sound recording            | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/aud> | Audio              |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| still image                | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | Still image        |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| moving image               | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/mov> | Moving image       |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| three dimensional object   | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/art> | Artifact           |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| collection="yes"           | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/col> | Collection         |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+
+Justification
+^^^^^^^^^^^^^
+
+Values within <typeOfResource> are used for initial faceting in search for both UTK's local digital collections website
+and for DPLA's interface. As DPLA doesn't display mods:physicalDescription/mods:form values, it is important to share this
+less granular indication of the resource type.
+
+Xpath
+^^^^^
+
+:code:`mods:typeOfResource`
+
+Decision
+^^^^^^^^
+
+Here's an `example record - vanvactor:1 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor%3A1/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <typeOfResource collection="yes">notated music</typeOfResource>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> .
+
+typeOfResource with @collection="yes"
+-------------------------------------
+
+Use case
+^^^^^^^^
+
+In MODS, an attribute can be used on typeOfResource to indicate that the record refers to an entire collection rather
+than an individual resource. This is useful because it makes it possible to distinguish between object and collection
+records in the catalog so that patrons understand more quickly how much content is associated with the record. The
+Islandora Metadata Interest Group has come up with the solution of using the dcterms resource type of "Collection." In
+this situation we will need multiple triples to preserve the information currently present - one for indicating the record is
+for a collection and one (or more) for indicating prevalent resource type(s) in the collection. In MODS typeOfResource is
+a repeatable field. Note that we will need to make sure that we do not repeat the collection resource type in cases
+where there are multiple typeOfResource[@collection="yes"] instances.
+
++----------------------------+---------------+--------------------------------------------------+--------------------+
+| collection="yes"           | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/col> | Collection         |
++----------------------------+---------------+--------------------------------------------------+--------------------+
+
+Justification
+^^^^^^^^^^^^^
+
+We need to be able to distinguish between an item and collection resource, so retaining this information is necessary.
+
+Xpath
+^^^^^
+
+:code:`mods:typeOfResource[@collection="yes"]`
+
+Decision
+^^^^^^^^
+
+Here's a complex example that includes two <typeOfResource> values - `gsmrc:smhc <https://digital.lib.utk.edu/collections/islandora/object/gsmrc%3Asmhc/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <typeOfResource collection="yes">text</typeOfResource>
+    <typeOfResource collection="yes">still image</typeOfResource>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/col> ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/txt> ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
+
+Missing typeOfResource value
+----------------------------
+
+Use case
+^^^^^^^^
+
+Currently 9,993 records are missing a typeOfResource value. The affected collections include Volunteer Voices (not entire
+collection), Roth, the Howard Baker Speeches and Remarks, Great Smoky Mountains Colloquy, and the Great Smoky Mountains Postcard Collection. We can consider if we would like to apply a blanket value to a collection at the time
+of migration. For monolithic collections like Roth and Baker, this would be easy to achieve (roth = "still image" and
+baker = "text" in MODS). For collections with varied formats, like Volunteer Voices, this will not be possible.
+
+Justification
+^^^^^^^^^^^^^
+
+Given that the Digital Collections home page currently uses typeOfResource to initially limit searches, it would be
+beneficial for this value to be more consistently present. It would also assist with discovery in DPLA.
+
+Xpath
+^^^^^
+
+:code:`not(mods:typeOfResource)`
+
+Decision
+^^^^^^^^
+
+During or post migration we will plan to add typeOfResource on a collection basis if possible. See the chart below for decisions.
+
++----------------------------+---------------------------------------------------+
+| collection PID             | dcterms:type                                      |
++----------------------------+---------------------------------------------------+
+| colloquy                   | <http://id.loc.gov/vocabulary/resourceTypes/txt>  |
++----------------------------+---------------------------------------------------+
+| hbs                        | <http://id.loc.gov/vocabulary/resourceTypes/txt>  |
++----------------------------+---------------------------------------------------+
+| pcard00                    | <http://id.loc.gov/vocabulary/resourceTypes/img>  |
++----------------------------+---------------------------------------------------+
+| roth                       | <http://id.loc.gov/vocabulary/resourceTypes/img>  |
++----------------------------+---------------------------------------------------+
+| volvoices                  | cannot assign blanket value                       |
++----------------------------+---------------------------------------------------+
+
+Here's an example record with no typeOfResource value - `roth:100 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A100/datastream/MODS/view>`_.
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
+
 classification
 ==============
 
@@ -1592,6 +1939,298 @@ location
 
 recordInfo
 ==========
+
+recordIdentifier
+----------------
+
+Use Case
+^^^^^^^^
+
+Unremediated records often contain identifiers for the record. These take a couple of different forms. The Heilman
+collection and Volunteer Voices collections contain this element. In Volunteer Voices the identifier is simply the adminDB
+value with 'record' appended to the beginning (`e.g. volvoices:2352 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2352/datastream/MODS/view>`_).
+
+Justification
+^^^^^^^^^^^^^
+
+As the basic root of the <recordIdentifier> value is already present in the identifier element in all cases and the
+<recordIdentifier> value is never used on its own, there is no reason to retain these values.
+
+Xpath
+^^^^^
+
+:code:`mods:recordInfo/mods:recordIdentifier`
+
+Decision
+^^^^^^^^
+
+All <recordIdentifier> values should be dropped, so no RDF example is included below.
+
+Here's an `example record - heilman:1001 <https://digital.lib.utk.edu/collections/islandora/object/heilman%3A1001/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <identifier type="local">Pseudolarix_0858</identifier>
+    <recordInfo>
+        <recordIdentifier>record_Pseudolarix_0858</recordIdentifier>
+    </recordInfo>
+
+languageOfCataloging
+--------------------
+
+Use Case
+^^^^^^^^
+
+All of the recently migrated SCOUT to TEI collections (e.g. American Civil War Collection, Tennessee Documentary History, etc.)
+as well as some of UTK's less recent collections (e.g. Sanborn, mpabaker, etc.) contain the element languageOfCataloging.
+In total, it is found in approximately 6,000 records. Note that in all cases the language is English, but this information
+is represented as both a code ('eng') and a text value ('English').
+
+Justification
+^^^^^^^^^^^^^
+
+Currently <languageOfCataloging> is not publicly displayed anywhere outside of the MODS XML. The values of this element
+do have the potential to be used if UTK has materials that might warrant cataloging in another language, but currently
+this is not the case. An example of a project that includes two records, one catalogued in Spanish and one in English, is
+`UNC's New Roots / Nuevas Raíces <https://newroots.lib.unc.edu/>`_. While UTK may want to pursue a project like this in the
+future, presently it seems unlikely that it will. More importantly, if such a project became a priority, it would not be
+difficult to distinguish via code UTK's existing English records from records in another language. If we did want to create
+a project like this, information on the language of cataloging could be added across the repository with minimal effort.
+
+Xpath
+^^^^^
+
+:code:`mods:recordInfo/mods:languageOfCataloging`
+
+Decision
+^^^^^^^^
+
+Since we are not currently utilizing these values in any way, these should be dropped in the mapping.
+
+Here's an `example record - sanborn:1002 <https://digital.lib.utk.edu/collections/islandora/object/sanborn%3A1002/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <languageOfCataloging>
+            <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+        </languageOfCataloging>
+    </recordInfo>
+
+recordOrigin
+------------
+
+Use Case
+^^^^^^^^
+
+The <recordOrigin> element includes information about what methods or transformations were used to prepare a record. There
+are six different distinct values in UTK's metadata.
+
+Justification
+^^^^^^^^^^^^^
+
+Because the existing values all relate to MODS XML, the string values present will no longer be applicable in a RDF-based
+platform. Discussion indicated that there might be some use for the general property of recordOrigin if a link to this
+mapping document or some other relevant resource was shared in place of the existing values. This administrative information
+could also be shared on the Digital Collections website or elsewhere rather than the record. As a convincing argument
+was not made that this information is essential, it was decided to drop these values
+
+Xpath
+^^^^^
+
+:code:`mods:recordInfo/mods:recordOrigin`
+
+Decision
+^^^^^^^^
+
+Drop all values.
+
+Here's an `example record - cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1177/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordOrigin>Created and edited in general conformance to MODS Guidelines (Version 3.5).</recordOrigin>
+    </recordInfo>
+
+recordChangeDate
+----------------
+
+Use Case
+^^^^^^^^
+
+This element is used sparingly in UTK's metadata records. Currently there are five distinct values, all indicating that the
+last change to the record was made in 2015, which simply isn't sharing accurate information.
+
+Justification
+^^^^^^^^^^^^^
+
+Keeping this information is not be useful as it doesn't allow someone viewing the record to see when it was actually
+last updated. Inaccurate information is shared. In addition, in a system like Islandora it's easy enough for an internal
+staff member to view when the metadata datastream has been updated without tracking this in the record. This element can
+be dropped.
+
+Xpath
+^^^^^
+
+:code:`mods:recordInfo/mods:recordChangeDate`
+
+Decision
+^^^^^^^^
+
+This element should be dropped.
+
+Here's an `example record - volvoices:3435 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A3435/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordChangeDate encoding="edtf">2015-03-23</recordChangeDate>
+        <recordChangeDate encoding="edtf">2015-03-31</recordChangeDate>
+        <recordChangeDate encoding="edtf">2015-04-01</recordChangeDate>
+    </recordInfo>
+
+recordCreationDate
+------------------
+
+Use Case
+^^^^^^^^
+
+A total of 167 values are present for <recordCreationDate>. This value shows when the record was originally created. All
+but one of these values precedes 2010. All of the recently migrated TEI SCOUT records (2,386) have a value of
+"2020-04-23-04:00". This is the only value not presented in EDTF format. Otherwise all of the values appear to come from
+Volunteer Voices.
+
+Justification
+^^^^^^^^^^^^^
+
+Unlike <recordChangeDate>, all of the values within <recordCreationDate> are at least accurate. Currently this information
+is not used or displayed for users. Given this and the fact that this element is present in a very small percentage of
+UTK records, it does not seem useful to keep this information. Again, a repository system should have a way to track
+when a metadata datastream for a particular digital object was created. Therefore keeping this information adds unnecessary
+complexity.
+
+Xpath
+^^^^^
+
+:code:`mods:recordInfo/mods:recordCreationDate`
+
+Decision
+^^^^^^^^
+
+These values will be dropped.
+
+Here's an `example record - volvoices:1857 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A1857/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordCreationDate encoding="edtf">2007-10-26</recordCreationDate>
+    </recordInfo>
+
+recordContentSource - University of Tennessee, Knoxville as value
+-----------------------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+The <recordContentSource> element is one of the most essential elements within <recordInfo>, as we currently use it to
+communicate the provider in DPLA. Because DPLA cannot handle URIs, the decision has been made to only deliver strings.
+We do not feel strongly that the added functionality provided by using a URI for this field warrants the effort needed
+to process URIs into strings for delivery to DPLA. We recognize that this goes against our general philosophy to use URIs
+when possible.
+
+To better understand UTK's use of this element some background information is helpful. At UTK the information we share in
+this element is not consistent with the definition of <recordContentSource> - "The code or name of the entity (e.g. an
+organization and/or database) that either created or modified the original record." While we work with other partners,
+like the Children's Defense Fund and the McClung Museum, we are still technically the creators of the records in these
+situations. Despite this, we typically list these institutions as the record creator because we set up <recordContentSource>
+as the element that DPLA should map to for content provider. In actuality, when the content provider is not UTK, this
+information should be communicated in <physicalLocation> and our DPLA mapping should be updated. Despite these semantic
+issues, UTK has consistently put this information in an incorrect element, so the mapping is not affected.
+
+Justification
+^^^^^^^^^^^^^
+
+A content provider is required in DPLA. This value also provides UTK with the opportunity to attribute collections to
+the institution that provided them, which is important for maintaining respectful relationships. Because of DPLA's
+limitations, we will provide this information as a string.
+
+Xpath
+^^^^^
+
+:code:`mods:recordInfo/mods:recordContentSource`
+
+Decision
+^^^^^^^^
+
+Because UTK acts as a service hub for DPLA and it delivers data directly to this aggregator, it can be considered an
+edm:provider. This is defined as "The name or identifier of the organization who delivers data directly to an aggregation
+service (e.g. Europeana)."
+
+When UTK physically holds the material and created the record, the metadata resembles this `example record - acwiley:284 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A284/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordContentSource valueURI="http://id.loc.gov/authorities/names/n87808088">University of Tennessee, Knoxville. Libraries</recordContentSource>
+    </recordInfo>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+        <https://example.org/objects/1> edm:provider "University of Tennessee, Knoxville. Libraries" .
+
+recordContentSource - not University of Tennessee, Knoxville as value
+---------------------------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+When a resource comes from a non-UTK institution, its name is typically placed in <recordContentSource>. An exception to
+this is Volunteer Voices, which only includes the contributing institution in mods:location/mods:physicalLocation. See
+location for more information.
+
+Justification
+^^^^^^^^^^^^^
+
+A content provider is required in DPLA. Sharing the names of institutional partners within the Digital Library of Tennessee
+is also a great way to recognize the contributions of these libraries. Because of DPLA's limitations, we will provide
+this information as a string.
+
+Xpath
+^^^^^
+
+:code:`mods:recordInfo/mods:recordContentSource`
+
+Decision
+^^^^^^^^
+When the institution listed as providing the information is not UTK, edm:dataProvider should be used instead of
+edm:provider. edm:dataProvider is defined as "The name or identifier of the organisation who contributes data indirectly
+to an aggregation service."
+
+Here's an `example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
+It is also coupled with an "Intermediate Provider" note, as shown below. McClung's Egypt collection is also treated similarly.
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordContentSource valueURI="http://id.loc.gov/authorities/names/no2017113530">Langston Hughes Library (Children's Defense Fund Haley Farm)</recordContentSource>
+    </recordInfo>
+    <note displayLabel="Intermediate Provider">University of Tennessee, Knoxville. Libraries</note>
+    <location>
+        <physicalLocation valueURI="http://id.loc.gov/authorities/names/no2017113530">Langston Hughes Library (Children's Defense Fund Haley Farm)</physicalLocation>
+    </location>
+
+For the purposes of DPLA, we only need the <recordContentSource> value and not also the <physicalLocation> value. Because
+these institutions are not directly contributing to DPLA, they are listed as an edm:dataProvider instead of an edm:provider.
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+        <https://example.org/objects/1> edm:dataProvider "Langston Hughes Library (Children's Defense Fund Haley Farm)" .
 
 accessCondition
 ===============
