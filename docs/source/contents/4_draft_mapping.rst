@@ -2034,6 +2034,50 @@ Like when physicalLocation has no displayLabel, Repository is retained as relato
         relators:rps <http://id.loc.gov/authorities/names/no2001080757> ;
         dbo:collection "Archives Collection" .
 
+physicalLocation within volvoices used for provider information
+---------------------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+There is one collection in which location information needs to be used to correct inaccuracies for other metadata fields. The Volunteer Voices collection lists the University of Tennessee as the recordContentSource for all records. While UTK may have created the metadata records, our mapping with DPLA makes it so that we are noted as the source of these records rather than the actual contributing institution. There are instances within volvoices in which the institution in physicalLocation and the one listed in recordContent Source are the same. This action doesn't need to be taken for those records.
+
+Justification
+^^^^^^^^^^^^^
+
+Providing contributing institutions with the proper credit is important for inter-institutional projects.
+
+Xpath
+^^^^^
+
+:code: `mods:location/mods:physicalLocation` (where physicalLocation does not equal recordContentSource)
+
+Decision
+^^^^^^^^
+Will be mapped to both relators:rps and edm:dataProvider. edm:dataProvider is being used because the value is an "organisation who contributes data indirectly to an aggregation service" (aka to UTK first and then to DPLA).
+
+Here's an example record -
+
+`Example record from volvoices:2737 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2737/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordContentSource>University of Tennessee, Knoxville. Special Collections</recordContentSource>
+    </recordInfo>
+    <location>
+        <physicalLocation>Chattanooga-Hamilton County Bicentennial Library</physicalLocation>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        edm:dataProvider "Chattanooga-Hamilton County Bicentennial Library" ;
+        relators:rps "Chattanooga-Hamilton County Bicentennial Library" .
+
 url
 ---
 
