@@ -1019,6 +1019,45 @@ We will integrate EDTF Level 2 features where applicable. The `dcterms:issued` p
     <https://example.org/objects/1> dcterms:created "1948-01", "1948-01" ;
         dcterms:issued "1948~" .
 
+originInfo/dateOther
+--------------------
+
+Use Case
+^^^^^^^^
+
+`dateOther` captures other significant dates associated with the resource.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute on the values in `dateOther`.
+
+XPath
+^^^^^
+
+:code:`originInfo/dateOther` OR
+:code:`originInfo/dateOther[@encoding='edtf']` OR
+:code:`originInfo/dateOther[@encoding='edtf'][@point='end']` OR
+:code:`originInfo/dateOther[@encoding='edtf'][@point='start']`
+
+Decisions
+^^^^^^^^^
+
+As part of leveraging the EDTF format, some conversion will be necessary; e.g. translating date strings to EDTF values as in the following example. The `dcterms:date` property was selected.
+
+`kintner:56 <https://digital.lib.utk.edu/collections/islandora/object/kintner%3A56>`_
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateOther>1974 December 10</dateOther>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:date "1974-12-10", "1974 December 10" .
 
 physicalDescription
 ===================
