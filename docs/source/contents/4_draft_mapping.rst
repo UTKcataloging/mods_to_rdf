@@ -865,11 +865,11 @@ originInfo
 +-----------------+------------+-------+------------------------------------------------------------------------------+
 | RDF predicate   | Value type | Range | Usage notes                                                                  |
 +-----------------+------------+-------+------------------------------------------------------------------------------+
-| dcterms:created | Literal    |       | The date a resource was created, formatted as an EDTF string.                |
+| dcterms:created | Literal    | N/A   | The date a resource was created, formatted as an EDTF string.                |
 +-----------------+------------+-------+------------------------------------------------------------------------------+
-| dcterms:issued  | Literal    |       | The date a resource was issued, formatted as an EDTF string.                 |
+| dcterms:issued  | Literal    | N/A   | The date a resource was issued, formatted as an EDTF string.                 |
 +-----------------+------------+-------+------------------------------------------------------------------------------+
-| dcterms:date    | Literal    |       | An unspecified date associated with a resource, formatted as an EDTF string. |
+| dcterms:date    | Literal    | N/A   | An unspecified date associated with a resource, formatted as an EDTF string. |
 +-----------------+------------+-------+------------------------------------------------------------------------------+
 
 originInfo/dateCreated
@@ -961,6 +961,64 @@ We will convert `w3cdtf` to `edtf` values as part of our migration process; addi
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:created "approximately between 1940 and 1950", "1940~/1950" .
+
+originInfo/dateIssued
+---------------------
+
+Use Case
+^^^^^^^^
+
+`dateIssued` captures dates and date ranges identifying or approximating when the physical object was issued.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute  on the values in `dateIssued`.
+
+XPaths
+^^^^^^
+
+:code:`originInfo/dateIssued` OR
+:code:`originInfo/dateIssued[@encoding='edtf']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@point='end']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@point='start']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+:code:`originInfo/dateIssued[@point='end']` OR
+:code:`originInfo/dateIssued[@qualifier='approximate']` OR
+:code:`originInfo/dateIssued[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+:code:`originInfo/dateIssued[@qualifier='inferred']` OR
+:code:`originInfo/dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`originInfo/dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']`
+
+Decision
+^^^^^^^^
+
+We will integrate EDTF Level 2 features where applicable. The `dcterms:issued` property was selected.
+
+`Example record - volvoices:2993 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2993>`_
+
+.. code-block:: xml
+
+    <originInfo>
+      <dateCreated>1948-01</dateCreated>
+      <dateCreated encoding="edtf" keyDate="yes">1948-01</dateCreated>
+      <dateIssued encoding="edtf" keyDate="yes" qualifier="approximate">1948</dateIssued>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:created "1948-01", "1948-01" ;
+        dcterms:issued "1948~" .
+
 
 physicalDescription
 ===================
