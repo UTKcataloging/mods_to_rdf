@@ -1073,7 +1073,7 @@ This XPath identifies a place associated with the publication of the resource.
 Justification
 ^^^^^^^^^^^^^
 
-No dispute  on the values in `place/placeTerm`.
+No dispute on the values in `place/placeTerm`.
 
 XPath
 ^^^^^
@@ -1113,15 +1113,35 @@ originInfo/publisher
 --------------------
 Use Case
 ^^^^^^^^
+Identifies a publisher associated with the resource.
 
 Justification
 ^^^^^^^^^^^^^
+No dispute on the values contained in `publisher`.
 
 XPath
 ^^^^^
+:code:`originInfo/publisher`
 
 Decision
 ^^^^^^^^
+`Example record - <https://digital.lib.utk.edu/collections/islandora/object/utsmc%3A13759>`_:
+
+.. code-block:: xml
+
+    <originInfo>
+        <place>
+            <placeTerm valueURI="http://id.loc.gov/authorities/names/n79006530">Baltimore (Md.)</placeTerm>
+        </place>
+        <publisher>Frederick D. Benteen</publisher>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+
+    <https://example.org/objects/1> relators:pbl "Frederick D. Benteen" ;
+        relators:pup <http://id.loc.gov/authorities/names/n79006530> .
 
 physicalDescription
 ===================
