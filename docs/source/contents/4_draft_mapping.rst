@@ -1143,6 +1143,10 @@ Decision
     <https://example.org/objects/1> relators:pbl "Frederick D. Benteen" ;
         relators:pup <http://id.loc.gov/authorities/names/n79006530> .
 
+originInfo/issuance
+-------------------
+We will not be migrating `issuance`.
+
 physicalDescription
 ===================
 
