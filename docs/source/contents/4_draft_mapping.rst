@@ -871,6 +871,10 @@ originInfo
 +-----------------+------------+-------+------------------------------------------------------------------------------+
 | dcterms:date    | Literal    | N/A   | An unspecified date associated with a resource, formatted as an EDTF string. |
 +-----------------+------------+-------+------------------------------------------------------------------------------+
+| relators:pup    |            | N/A   |                                                                              |
++-----------------+------------+-------+------------------------------------------------------------------------------+
+| relators:pbl    |            | N/A   |                                                                              |
++-----------------+------------+-------+------------------------------------------------------------------------------+
 
 originInfo/dateCreated
 ----------------------
@@ -1058,6 +1062,66 @@ As part of leveraging the EDTF format, some conversion will be necessary; e.g. t
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:date "1974-12-10", "1974 December 10" .
+
+originInfo/place/placeTerm
+---------------------------
+
+Use Case
+^^^^^^^^
+This XPath identifies a place associated with the publication of the resource.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute  on the values in `place/placeTerm`.
+
+XPath
+^^^^^
+:code:`originInfo/place/placeTerm[@text]` OR
+:code:`originInfo/place/placeTerm[@text][@valueURI]` OR
+:code:`originInfo/place[@supplied]/placeTerm[@text][@valueURI]`
+
+Decision
+^^^^^^^^
+The majority of the applicable values are associate with a `@valueURI`.  The `relators:pup` property was selected.
+
+.. code-block:: xml
+
+    <originInfo>
+        <place supplied="yes">
+            <placeTerm type="text" valueURI="http://id.loc.gov/authorities/names/n79072935">Meadville (Crawford County, Pa.)</placeTerm>
+        </place>
+        <publisher>Keystone View Company</publisher>
+        <dateCreated>between 1890 and 1930?</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="questionable">1890</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="end">1930</dateCreated>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> relators:pbl "Keystone View Company" ;
+        relators:pup <http://id.loc.gov/authorities/names/n79072935> ;
+        dcterms:created "between 1890 and 1930?", "1890?/1930" .
+
+Empty :code:`placeTerm` elements will be ignored.
+
+
+originInfo/publisher
+--------------------
+Use Case
+^^^^^^^^
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+
+Decision
+^^^^^^^^
 
 physicalDescription
 ===================
