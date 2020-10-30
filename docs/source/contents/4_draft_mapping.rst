@@ -1077,12 +1077,14 @@ No dispute on the values in `place/placeTerm`.
 
 XPath
 ^^^^^
+
 :code:`originInfo/place/placeTerm[@text]` OR
 :code:`originInfo/place/placeTerm[@text][@valueURI]` OR
 :code:`originInfo/place[@supplied]/placeTerm[@text][@valueURI]`
 
 Decision
 ^^^^^^^^
+
 The majority of the applicable values are associate with a `@valueURI`.  The `relators:pup` property was selected.
 
 .. code-block:: xml
@@ -1108,23 +1110,28 @@ The majority of the applicable values are associate with a `@valueURI`.  The `re
 
 Empty :code:`placeTerm` elements will be ignored.
 
-
 originInfo/publisher
 --------------------
+
 Use Case
 ^^^^^^^^
+
 Identifies a publisher associated with the resource.
 
 Justification
 ^^^^^^^^^^^^^
+
 No dispute on the values contained in `publisher`.
 
 XPath
 ^^^^^
+
 :code:`originInfo/publisher`
 
 Decision
 ^^^^^^^^
+
+The `relators:pbl` property was selected.
 `Example record - <https://digital.lib.utk.edu/collections/islandora/object/utsmc%3A13759>`_:
 
 .. code-block:: xml
