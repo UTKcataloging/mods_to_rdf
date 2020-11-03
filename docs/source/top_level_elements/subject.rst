@@ -286,7 +286,7 @@ If only strings are present, like with volvoices:14173 <https://digital.lib.utk.
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:spatial "Covington (Tenn.)" ;
+    <https://example.org/objects/1> dcterms:spatial "Covington (Tenn.)" .
 
 Coordinates
 -----------
