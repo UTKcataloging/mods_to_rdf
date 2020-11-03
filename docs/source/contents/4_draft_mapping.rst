@@ -882,53 +882,53 @@ originInfo/dateCreated
 Use Case
 ^^^^^^^^
 
-`dateCreated` captures dates and date ranges identifying or approximating when the physical object was created.
+:code:`mods:dateCreated` captures dates and date ranges identifying or approximating when the physical object was created.
 
 Justification
 ^^^^^^^^^^^^^
 
-No dispute on the values in `dateCreated`.
+No dispute on the values in :code:`mods:dateCreated`.
 
 XPath
 ^^^^^
 
-:code:`originInfo/dateCreated` OR
-:code:`originInfo/dateCreated[@encoding='edtf']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@point='end']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@point='start']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
-:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
-:code:`originInfo/dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
-:code:`originInfo/dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
-:code:`originInfo/dateCreated[@point='end']` OR
-:code:`originInfo/dateCreated[@qualifier='approximate']` OR
-:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
-:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
-:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-:code:`originInfo/dateCreated[@qualifier='inferred']` OR
-:code:`originInfo/dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-:code:`originInfo/dateCreated[@qualifier='questionable']` OR
-:code:`originInfo/dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
+:code:`mods:originInfo/mods:dateCreated` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='questionable']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
 
 Decisions
 ^^^^^^^^^
@@ -982,24 +982,24 @@ No dispute  on the values in `dateIssued`.
 XPaths
 ^^^^^^
 
-:code:`originInfo/dateIssued` OR
-:code:`originInfo/dateIssued[@encoding='edtf']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@point='end']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@point='start']` OR
-:code:`originInfo/dateIssued[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
-:code:`originInfo/dateIssued[@point='end']` OR
-:code:`originInfo/dateIssued[@qualifier='approximate']` OR
-:code:`originInfo/dateIssued[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
-:code:`originInfo/dateIssued[@qualifier='inferred']` OR
-:code:`originInfo/dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
-:code:`originInfo/dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']`
+:code:`mods:originInfo/mods:dateIssued` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='end']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='start']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateIssued[@point='end']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']`
 
 Decision
 ^^^^^^^^
@@ -1039,10 +1039,10 @@ No dispute on the values in `dateOther`.
 XPath
 ^^^^^
 
-:code:`originInfo/dateOther` OR
-:code:`originInfo/dateOther[@encoding='edtf']` OR
-:code:`originInfo/dateOther[@encoding='edtf'][@point='end']` OR
-:code:`originInfo/dateOther[@encoding='edtf'][@point='start']`
+:code:`mods:originInfo/mods:dateOther` OR
+:code:`mods:originInfo/mods:dateOther[@encoding='edtf']` OR
+:code:`mods:originInfo/mods:dateOther[@encoding='edtf'][@point='end']` OR
+:code:`mods:originInfo/mods:dateOther[@encoding='edtf'][@point='start']`
 
 Decisions
 ^^^^^^^^^
@@ -1088,9 +1088,9 @@ No dispute on the values in `place/placeTerm`.
 XPath
 ^^^^^
 
-:code:`originInfo/place/placeTerm[@text]` OR
-:code:`originInfo/place/placeTerm[@text][@valueURI]` OR
-:code:`originInfo/place[@supplied]/placeTerm[@text][@valueURI]`
+:code:`mods:originInfo/mods:place/mods:placeTerm[@text]` OR
+:code:`mods:originInfo/mods:place/mods:placeTerm[@text][@valueURI]` OR
+:code:`mods:originInfo/mods:place[@supplied]/mods:placeTerm[@text][@valueURI]`
 
 Decision
 ^^^^^^^^
@@ -1136,7 +1136,7 @@ No dispute on the values contained in `publisher`.
 XPath
 ^^^^^
 
-:code:`originInfo/publisher`
+:code:`mods:originInfo/mods:publisher`
 
 Decision
 ^^^^^^^^
@@ -1162,6 +1162,20 @@ The `relators:pbl` property was selected.
 
 originInfo/issuance
 -------------------
+
+Use Case
+^^^^^^^^
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`mods:originInfo/mods:issuance`
+
+Decision
+^^^^^^^^
+
 We will not be migrating `issuance`.
 
 physicalDescription
