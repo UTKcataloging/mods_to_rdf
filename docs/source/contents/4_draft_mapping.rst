@@ -1166,11 +1166,16 @@ originInfo/issuance
 Use Case
 ^^^^^^^^
 
+This XPath provides details for how the resource was published. All 4207 of our instances of `issuance` have the value "serial".
+
 Justification
 ^^^^^^^^^^^^^
 
+The value held in the XPath doesn't provide any significantly useful information.
+
 XPath
 ^^^^^
+
 :code:`mods:originInfo/mods:issuance`
 
 Decision
