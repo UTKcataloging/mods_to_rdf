@@ -862,6 +862,327 @@ Do not migrate.
 originInfo
 ==========
 
++-----------------+-------------+-------+------------------------------------------------------------------------------+
+| RDF predicate   | Value type  | Range | Usage notes                                                                  |
++-----------------+-------------+-------+------------------------------------------------------------------------------+
+| dcterms:created | Literal     | N/A   | The date a resource was created, formatted as an EDTF string.                |
++-----------------+-------------+-------+------------------------------------------------------------------------------+
+| dcterms:issued  | Literal     | N/A   | The date a resource was issued, formatted as an EDTF string.                 |
++-----------------+-------------+-------+------------------------------------------------------------------------------+
+| dcterms:date    | Literal     | N/A   | An unspecified date associated with a resource, formatted as an EDTF string. |
++-----------------+-------------+-------+------------------------------------------------------------------------------+
+| relators:pbl    | Literal/URI | N/A   | The publisher associated with the resource.                                  |
++-----------------+-------------+-------+------------------------------------------------------------------------------+
+| relators:pup    | Literal/URI | N/A   | A place associated with the publication of the resource.                     |
++-----------------+-------------+-------+------------------------------------------------------------------------------+
+
+originInfo/dateCreated
+----------------------
+
+Use Case
+^^^^^^^^
+
+:code:`mods:dateCreated` captures dates and date ranges identifying or approximating when the physical object was created.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute on the values in :code:`mods:dateCreated`.
+
+XPath
+^^^^^
+
+:code:`mods:originInfo/mods:dateCreated` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='questionable']` OR
+:code:`mods:originInfo/mods:dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
+
+Decisions
+^^^^^^^^^
+
+We will convert `w3cdtf` to `edtf` values as part of our migration process; additionally, we will integrate EDTF Level 2 features where necessary. The `dcterms:created` property was selected.
+
+`Example record - ekcd:95 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:95/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateCreated qualifier="inferred">1955</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes">1955</dateCreated>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:created "1955", "1955~" .
+
+`Example record - volvoices:3849 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A3849/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <originInfo>
+        <dateCreated>approximately between 1940 and 1950</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="approximate">1940</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="end">1950</dateCreated>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:created "approximately between 1940 and 1950", "1940~/1950" .
+
+originInfo/dateIssued
+---------------------
+
+Use Case
+^^^^^^^^
+
+`dateIssued` captures dates and date ranges identifying or approximating when the physical object was issued.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute  on the values in `dateIssued`.
+
+XPaths
+^^^^^^
+
+:code:`mods:originInfo/mods:dateIssued` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='end']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='start']` OR
+:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateIssued[@point='end']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='approximate']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']`
+
+Decision
+^^^^^^^^
+
+We will integrate EDTF Level 2 features where applicable. The `dcterms:issued` property was selected.
+
+`Example record - volvoices:2993 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2993>`_
+
+.. code-block:: xml
+
+    <originInfo>
+      <dateCreated>1948-01</dateCreated>
+      <dateCreated encoding="edtf" keyDate="yes">1948-01</dateCreated>
+      <dateIssued encoding="edtf" keyDate="yes" qualifier="approximate">1948</dateIssued>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:created "1948-01", "1948-01" ;
+        dcterms:issued "1948~" .
+
+originInfo/dateOther
+--------------------
+
+Use Case
+^^^^^^^^
+
+`dateOther` captures other significant dates associated with the resource.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute on the values in `dateOther`.
+
+XPath
+^^^^^
+
+:code:`mods:originInfo/mods:dateOther` OR
+:code:`mods:originInfo/mods:dateOther[@encoding='edtf']` OR
+:code:`mods:originInfo/mods:dateOther[@encoding='edtf'][@point='end']` OR
+:code:`mods:originInfo/mods:dateOther[@encoding='edtf'][@point='start']`
+
+Decisions
+^^^^^^^^^
+
+As part of leveraging the EDTF format, some conversion will be necessary; e.g. translating date strings to EDTF values as in the following example. The `dcterms:date` property was selected.
+
+`playbills:1052 <https://digital.lib.utk.edu/collections/islandora/object/playbills:1052/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <originInfo>
+      <dateIssued>Jun 30, 1965</dateIssued>
+      <dateIssued encoding="edtf">1965-06-30</dateIssued>
+      <dateOther encoding="edtf">1964/1965</dateOther>
+      <place>
+         <placeTerm valueURI="http://id.loc.gov/authorities/names/n80003889">University of Tennessee, Knoxville</placeTerm>
+      </place>
+      <publisher>University of Tennessee Theatre Department </publisher>
+   </originInfo>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+
+    <https://example.org/objects/1> dcterms:issued "Jun 30, 1965", "1965-06-30" ;
+        dcterms:date "1964/1965" ;
+        relators:pbl "University of Tennessee Theatre Department" ;
+        relators:pub <http://id.loc.gov/authorities/names/n80003889> .
+
+originInfo/place/placeTerm
+---------------------------
+
+Use Case
+^^^^^^^^
+This XPath identifies a place associated with the publication of the resource.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute on the values in `place/placeTerm`.
+
+XPath
+^^^^^
+
+:code:`mods:originInfo/mods:place/mods:placeTerm[@text]` OR
+:code:`mods:originInfo/mods:place/mods:placeTerm[@text][@valueURI]` OR
+:code:`mods:originInfo/mods:place[@supplied]/mods:placeTerm[@text][@valueURI]`
+
+Decision
+^^^^^^^^
+
+The majority of the applicable values are associate with a `@valueURI`.  The `relators:pup` property was selected.
+
+.. code-block:: xml
+
+    <originInfo>
+        <place supplied="yes">
+            <placeTerm type="text" valueURI="http://id.loc.gov/authorities/names/n79072935">Meadville (Crawford County, Pa.)</placeTerm>
+        </place>
+        <publisher>Keystone View Company</publisher>
+        <dateCreated>between 1890 and 1930?</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="start" qualifier="questionable">1890</dateCreated>
+        <dateCreated encoding="edtf" keyDate="yes" point="end">1930</dateCreated>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> relators:pbl "Keystone View Company" ;
+        relators:pup <http://id.loc.gov/authorities/names/n79072935> ;
+        dcterms:created "between 1890 and 1930?", "1890?/1930" .
+
+Empty :code:`placeTerm` elements will be ignored.
+
+originInfo/publisher
+--------------------
+
+Use Case
+^^^^^^^^
+
+Identifies a publisher associated with the resource.
+
+Justification
+^^^^^^^^^^^^^
+
+No dispute on the values contained in `publisher`.
+
+XPath
+^^^^^
+
+:code:`mods:originInfo/mods:publisher`
+
+Decision
+^^^^^^^^
+
+The `relators:pbl` property was selected.
+`Example record - <https://digital.lib.utk.edu/collections/islandora/object/utsmc%3A13759>`_:
+
+.. code-block:: xml
+
+    <originInfo>
+        <place>
+            <placeTerm valueURI="http://id.loc.gov/authorities/names/n79006530">Baltimore (Md.)</placeTerm>
+        </place>
+        <publisher>Frederick D. Benteen</publisher>
+    </originInfo>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+
+    <https://example.org/objects/1> relators:pbl "Frederick D. Benteen" ;
+        relators:pup <http://id.loc.gov/authorities/names/n79006530> .
+
+originInfo/issuance
+-------------------
+
+Use Case
+^^^^^^^^
+
+This XPath provides details for how the resource was published. All 4207 of our instances of `issuance` have the value "serial".
+
+Justification
+^^^^^^^^^^^^^
+
+The value held in the XPath doesn't provide any significantly useful information.
+
+XPath
+^^^^^
+
+:code:`mods:originInfo/mods:issuance`
+
+Decision
+^^^^^^^^
+
+We will not be migrating `issuance`.
+
 physicalDescription
 ===================
 
