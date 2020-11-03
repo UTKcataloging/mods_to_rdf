@@ -2005,11 +2005,11 @@ Because these records do not already have a dbo:collection predicate, we will tr
 Xpath
 ^^^^^
 
-:code:`mods:location[mods:physicalLocation[@displayLabel="Collection" and text()[contains(.,"Archives Collection")]]]`
-:code:`mods:location[mods:physicalLocation[@displayLabel="Repository"]]`
-:code:`mods:location[mods:physicalLocation[@displayLabel="Detailed Location"]]`
-:code:`mods:location[mods:physicalLocation[@displayLabel="City"]]`
-:code:`mods:location[mods:physicalLocation[@displayLabel="State"]]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="Collection" and text()[contains(.,"Archives Collection")]]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="Repository"]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="Detailed Location"]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="City"]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="State"]`
 
 Decision
 ^^^^^^^^
