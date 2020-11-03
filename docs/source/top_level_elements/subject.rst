@@ -234,17 +234,117 @@ URIs will be used when present, but strings can be used when there is no URI.
     mods:subject[@valueURI]/mods:geographic
     mods:subject/mods:geographic[@valueURI]
 
-    Adding examples....
+`Here's an example where the URI is present on the subject - webster:1127 <https://digital.lib.utk.edu/collections/islandora/object/webster%3A1127/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject authority="geonames" valueURI="http://sws.geonames.org/4050810">
+        <geographic>The Sawteeth</geographic>
+        <cartographics>
+            <coordinates>35.64342, -83.36237</coordinates>
+        </cartographics>
+    </subject>
+    <subject authority="geonames" valueURI="http://sws.geonames.org/4609260">
+        <geographic>Brushy Mountain</geographic>
+        <cartographics>
+            <coordinates>35.67787, -83.43016</coordinates>
+    </cartographics>
+    </subject>
+    <subject authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85057008">
+        <geographic>Great Smoky Mountains (N.C. and Tenn.)</geographic>
+    </subject>
+
+`Here's an example where the URI is present on the geographic element - roth:2165 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A2165/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <geographic authority="geonames" valueURI="http://sws.geonames.org/4178924/about.rdf">Yulee Sugar Mill Ruins Historic State Park</geographic>
+    </subject>
+
+Regardless of URI placement, we will map the values the same. Note that if the geographic term includes coordinates and
+a geonames URI, we will drop the coordinates. More information on this is given in the Coordinates section following this
+section. Below is the decision for webster:1127.
 
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:spatial <http://id.loc.gov/vocabulary/geographicAreas/n-us> .
+    <https://example.org/objects/1> dcterms:spatial <http://sws.geonames.org/4050810> ;
+        dcterms:spatial <http://sws.geonames.org/4609260> ;
+        dcterms:spatial <http://id.loc.gov/authorities/subjects/sh85057008> .
+
+If only strings are present, like with volvoices:14173 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A14173/datastream/MODS/view>`_, then the string value will be kept.
+
+.. code-block:: xml
+
+    <subject>
+        <geographic>Covington (Tenn.)</geographic>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:spatial "Covington (Tenn.)" ;
 
 Coordinates
 -----------
-- Look and see what values have coordinates outside of geonames
+
+There are a total of **702 unique coordinate values** in UTK's collections. Many are associated with geonames terms,
+but there are 8 coordinates associated with Library of Congress terms. These terms are "Great Smoky Mountains
+National Park (N.C. And Tenn.)", "Knoxville (Tenn.)", "Sevier County (Tenn.)", "Dickson County (Tenn.)", "Hardin County (Tenn.)",
+"Bluff City (Tenn.)", and "Saint Andrews (Tenn.)". In addition, there are **120 geographic names that are not associated**
+**with an authority** through the use of a URI, but they contain coordinates. The following lists some: "Abrams Creek", "Anthony Creek (Tenn.)",
+"Arcadia Dam (Okla.)", "Arch Rock", "Arizona", "Arkansas", "Becky Cable House (Tenn.)", "Boston (Mass.)", "Bote Mountain Trail (Tenn.)",
+"Bristol (Tenn.)", "Cades Cove Campground (Tenn.)", "Cades Cove Loop Road (Tenn.)", "Cades Cove Picnic Area (Tenn.)",
+"Calderwood Dam (Tenn.)", "California", "Chattanooga (Tenn.)", "Cherokee Orchard (Tenn.)", "Chestnut Flats", "Chilhowee (Extinct city)",
+"Chimney Tops", "Chimney Tops (Tenn.)", "Chimney Tops Foot Bridge (Tenn.)", "Chimney Tops Trail", "Clingmans Dome Road",
+"Davenport Gap (Tenn.)", "Deals Gap (Tenn.)", "Dry Sluice Gap (Tenn.)", "Dry Valley (Tenn.)", "Elijah Oliver Place (Tenn.)",
+"Fighting Creek Gap (Tenn.)", "Florida", "Fontana Dam (N.C.)", "Foothills Parkway", "Forge Creek", "Forney Ridge Parking Lot (N.C.)",
+"Fort George Site", "Fort Manuel Site", "Fowler (Kan.)", "Gatlinburg (Tenn.)", "Greenbrier Pinnacle (Tenn.)", "Gregory Bald (Tenn.)",
+"Guyot, Mount (Tenn.)", "Harrison, Mount (Tenn.)", "Headrick Chapel (Tenn.)", and many more.
+
+For those geographic names associated with geonames through a URI, there is arguably no need to migrate the coordinates
+as a string value as these can be retrieved using the URI at any time.
+
+`Here's an example record - webster:1005 <https://digital.lib.utk.edu/collections/islandora/object/webster%3A1005/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject authority="geonames" valueURI="https://sws.geonames.org/4630912">
+        <geographic>House Mountain</geographic>
+        <cartographics>
+            <coordinates>36.11175, -83.76657</coordinates>
+        </cartographics>
+    </subject>
+
+All that is needed in this case is to bring over the URI.
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:spatial <https://sws.geonames.org/4630912> .
+
+Given the extent of coordinates that cannot be retrieved using a URI (120), a separate solution is needed to preserve these values.
+`Here's an example record - derris:610 <https://digital.lib.utk.edu/collections/islandora/object/derris%3A610/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <geographic>Becky Cable House (Tenn.)</geographic>
+        <cartographics>
+            <coordinates>35.58546, -83.84444</coordinates>
+        </cartographics>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:spatial <https://sws.geonames.org/4630912> ;
+        dcterms:spatial "35.58546, -83.84444" .
 
 HierarchicalGeographic subjects
 -------------------------------
@@ -380,4 +480,3 @@ While not significant from a mapping standpoint, it is also helpful to note that
 a discovery and access standpoint, adding subject values to these records would be very helpful. The Albert "Dutch" Roth
 photograph collection is the most significant offender. An `example record is roth:3095 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A3095/datastream/MODS/view>`_
 The nine records from the Arrowmont Curriculum Documents also do not include any subjects.
-
