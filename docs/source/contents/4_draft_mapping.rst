@@ -1049,19 +1049,29 @@ Decisions
 
 As part of leveraging the EDTF format, some conversion will be necessary; e.g. translating date strings to EDTF values as in the following example. The `dcterms:date` property was selected.
 
-`kintner:56 <https://digital.lib.utk.edu/collections/islandora/object/kintner%3A56>`_
+`playbills:1052 <https://digital.lib.utk.edu/collections/islandora/object/playbills:1052/datastream/MODS/view>`_
 
 .. code-block:: xml
 
     <originInfo>
-        <dateOther>1974 December 10</dateOther>
-    </originInfo>
+      <dateIssued>Jun 30, 1965</dateIssued>
+      <dateIssued encoding="edtf">1965-06-30</dateIssued>
+      <dateOther encoding="edtf">1964/1965</dateOther>
+      <place>
+         <placeTerm valueURI="http://id.loc.gov/authorities/names/n80003889">University of Tennessee, Knoxville</placeTerm>
+      </place>
+      <publisher>University of Tennessee Theatre Department </publisher>
+   </originInfo>
 
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
-    <https://example.org/objects/1> dcterms:date "1974-12-10", "1974 December 10" .
+    <https://example.org/objects/1> dcterms:issued "Jun 30, 1965", "1965-06-30" ;
+        dcterms:date "1964/1965" ;
+        relators:pbl "University of Tennessee Theatre Department" ;
+        relators:pub <http://id.loc.gov/authorities/names/n80003889> .
 
 originInfo/place/placeTerm
 ---------------------------
