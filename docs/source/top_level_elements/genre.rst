@@ -20,8 +20,6 @@ We will explore other options for records using `@authority = 'dct'` or uncontro
 +-------------------------------------+---------------+--------------------------------------------------+----------------+
 | image                               | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | Image          |
 +-------------------------------------+---------------+--------------------------------------------------+----------------+
-| collection                          | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/col> | Collection     |
-+-------------------------------------+---------------+--------------------------------------------------+----------------+
 
 .. code-block:: xml
 
