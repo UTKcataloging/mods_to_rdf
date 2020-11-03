@@ -1680,7 +1680,7 @@ physicalLocation as URI
 
 Use Case
 ^^^^^^^^
-Many of records have valueURI attributes set for physicalLocation. This is inconsistent, even in our own collections.'
+Many records have valueURI attributes set for physicalLocation. This is inconsistent, even in our own collections.
 
 Justification
 ^^^^^^^^^^^^^
@@ -1689,7 +1689,7 @@ When available, we will opt to use valueURI values as the URI value for relators
 Xpath
 ^^^^^
 
-:code:`mods:location/mods:physicalLocation[@valueURI="https://example.org/authority/1"]`
+:code:`mods:location/mods:physicalLocation[@valueURI]`
 
 Decision
 ^^^^^^^^
@@ -1728,7 +1728,7 @@ To create better consistency and cleanliness going forward, we will isolate all 
 Xpath
 ^^^^^
 
-:code:`mods:location/mods:physicalLocation`
+:code:`mods:location/mods:physicalLocation[not(@valueURI)][text()="The University of Tennessee Libraries, Knoxville" or text()="University of Tennesse Knoxville. Libraries" or text()="University of Tennessee Knoxville. Libraries"]`
 
 Decision
 ^^^^^^^^
@@ -1783,7 +1783,7 @@ Translating these to a relative URIs would require significant effort, and the v
 Xpath
 ^^^^^
 
-:code:`mods:location/mods:physicalLocation`
+:code:`mods:location/mods:physicalLocation[not(@valueURI)][not(text()="The University of Tennessee Libraries, Knoxville" or text()="University of Tennesse Knoxville. Libraries" or text()="University of Tennessee Knoxville. Libraries")]`
 
 Decision
 ^^^^^^^^
@@ -1825,7 +1825,7 @@ Because our records in MODS records may not be accurate and this information is 
 Xpath
 ^^^^^
 
-:code:`mods:location/mods:shelfLocator`
+:code:`mods:location[mods:physicalLocation[text()[contains(., "University of Tennessee")]]]/mods:shelfLocator`
 
 Decision
 ^^^^^^^^
@@ -1861,8 +1861,8 @@ While, we do not not know if this shelfLocator information is accurate, we will 
 Xpath
 ^^^^^
 
-:code:`mods:location/mods:shelfLocator`
-:code:`mods:location/mods:holdingSimple/mods:copyInformation/mods:shelfLocator`
+:code:`mods:location[mods:physicalLocation[text()[not(contains(., "University of Tennessee"))]]]/mods:shelfLocator`
+:code:`mods:location[mods:physicalLocation[not(contains(.,'University of Tennessee'))] and mods:holdingSimple/mods:copyInformation/mods:shelfLocator]`
 
 Decision
 ^^^^^^^^
@@ -1970,7 +1970,7 @@ Xpath
 
 Decision
 ^^^^^^^^
-We will drop all information for `holdingExternal`.
+Drop this.
 
 `Example record from volvoices:2199 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view>`_
 
@@ -1996,7 +1996,7 @@ physicalLocation with @displayLabel="Collection"
 
 Use Case
 ^^^^^^^^
-In a few of collections for Arrowmont, we will find items having a physicalLocation subelement with the displayLabel attribute of Collection, along with Detailed Location, City and State.
+In a some collections for Arrowmont, we will find items having a physicalLocation subelement with the displayLabel attribute of Collection with text containing "Archives Collection". We also have extra physicalLocation subelements with displayLabel attributes of Detailed Location, City and State.
 
 Justification
 ^^^^^^^^^^^^^
@@ -2005,13 +2005,19 @@ Because these records do not already have a dbo:collection predicate, we will tr
 Xpath
 ^^^^^
 
-:code:`mods:location/mods:physicalLocation[@displayLabel="Collection"]`
+:code:`mods:location[mods:physicalLocation[@displayLabel="Collection" and text()[contains(.,"Archives Collection")]]]`
+:code:`mods:location[mods:physicalLocation[@displayLabel="Repository"]]`
+:code:`mods:location[mods:physicalLocation[@displayLabel="Detailed Location"]]`
+:code:`mods:location[mods:physicalLocation[@displayLabel="City"]]`
+:code:`mods:location[mods:physicalLocation[@displayLabel="State"]]`
 
 Decision
 ^^^^^^^^
 We will keep the string for the physicalLocation instance with displayLabel=Collection and transcribe this to literal for dbo:collection.
 
-Like when physicalLocation has no displayLabel, Repository is retained as relators:rps. All other displayLabel (Detailed Location, City, State) data is dropped.
+Similar to when physicalLocation has no displayLabel, physicalLocation with displayLabel  of Repository is retained as relators:rps.
+
+All other physicalLocation (Detailed Location, City, State) data is dropped.
 
 `Example record from volvoices:2199 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view>`_
 
