@@ -207,7 +207,7 @@ If only a string is available, like with , we will use that:
 Temporal subjects
 -----------------
 
-None of our existing temporal subjects include URIs, so all will be treated as strings. These values are prominent in
+None of our existing temporal subjects include URIs. Most will be treated as strings. These values are prominent in
 Volunteer Voices and the Pi Beta Phi to Arrowmont collections.
 
 `Example of temporal subject - volvoices:1833 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A1833/datastream/MODS/view>`_.
@@ -224,6 +224,21 @@ Volunteer Voices and the Pi Beta Phi to Arrowmont collections.
     @prefix schema: <http://schema.org/> .
 
     <https://example.org/objects/1> schema:temporalCoverage "Era 9 - Postwar United States (1945-1970's)" .
+
+In addition to these textual values, UTK does have temporal subjects that share numeric dates in EDTF format. These are
+primarily from the Volunteer Voices collection. `Here's an example record - volvoices:2945 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2945/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <temporal>1970-09-30</temporal>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix schema: <http://schema.org/> .
+
+    <https://example.org/objects/1> schema:temporalCoverage "1970-09-30" .
 
 Geographic subjects
 -------------------
