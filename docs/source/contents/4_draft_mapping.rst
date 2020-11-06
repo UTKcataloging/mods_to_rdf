@@ -1784,6 +1784,83 @@ subject
 genre
 =====
 
++-----------------+--------------------+-------+
+| Predicate       | Value Type         | Range |
++-----------------+--------------------+-------+
+| dcterms:type    | URI/String Literal | N/A   |
++-----------------+--------------------+-------+
+| dcterms:subject | URI/String Literal | N/A   |
++-----------------+--------------------+-------+
+| edm:hasType     | URI/String Literal | N/A   |
++-----------------+--------------------+-------+
+
+genre[not(@*)]
+--------------
+
+Use Case
+^^^^^^^^
+`genre`, without any attributes, has been used as a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource.
+
+Justification
+^^^^^^^^^^^^^
+Based on the wide range of possible values, we selected the `edm:hasType` property as it aligns well with the possible overlap between `mods:genre` and `mods:physicalDescription/form`.
+
+XPath
+^^^^^
+:code:`genre[not(@*)]`
+
+Decision
+^^^^^^^^
+The property `edm:hasType` was selected.
+
+`Example record - volvoices:11551 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11551/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre>notated music</genre>
+    <genre>sheet music</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/objects/1> edm:hasType "notated music", "sheet music" .
+
+genre[@authority='dct']
+-----------------------
+
+Use Case
+^^^^^^^^
+`genre[@authority='dct']` has three distinct values: "text", "still image", and "image", that broadly indicate the type of the resource being described.
+
+Justification
+^^^^^^^^^^^^^
+We chose to use the appropriate URIs for these based on the similarity between the values in this XPath and values present in :code:`mods:typeOfResource`.
+
+XPath
+^^^^^
+:code:`genre[@authority='dct']`
+
+Decision
+^^^^^^^^
+The `dcterms:type` property was selected.
+
+`Example record - volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre>notated music</genre>
+    <genre authority="dct">still image</genre>
+    <genre>sheet music</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> edm:hasType "notated music", "sheet music" ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
+
 language
 ========
 
