@@ -1937,12 +1937,43 @@ genre[@authority='lcgft']
 -------------------------
 Use Case
 ^^^^^^^^
+This `genre` element is used in the Arrowmont, Van Vactor, VP Moore, and Kefauver Crime Documents collections.
+
 Justification
 ^^^^^^^^^^^^^
+
 XPath
 ^^^^^
+:code:`genre[@authority='lcgft']`
+
 Decision
 ^^^^^^^^
+The `edm:hasType` property was selected.
+
+`Example record - ekcd:611 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:611/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026131">Newsletters</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026131> .
+
+`Example record - vpmoore:50 <https://digital.lib.utk.edu/collections/islandora/object/vpmoore:50/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre authority="lcgft" authorityURI="http://id.loc.gov/authorities/genreForms" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026173">Scrapbooks</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026173> .
+
 genre[@authority='lcmpt']
 -------------------------
 Use Case
