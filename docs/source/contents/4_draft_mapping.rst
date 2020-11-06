@@ -1978,12 +1978,46 @@ genre[@authority='lcmpt']
 -------------------------
 Use Case
 ^^^^^^^^
+This XPath is used in the Van Vactor collection to express performance medium and instrumentation information.
+
 Justification
 ^^^^^^^^^^^^^
+
 XPath
 ^^^^^
+:code:`genre[@authority='lcmpt']`
+
 Decision
 ^^^^^^^^
+The `dcterms:subject` property was selected.
+
+`Example record - vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre authority="lcmpt" valueURI="http://id.loc.gov/authorities/performanceMediums/mp2013015074">bassoon</genre>
+    <genre authority="lcmpt" valueURI="http://id.loc.gov/authorities/performanceMediums/mp2013015342">horn</genre>
+    <genre authority="lcmpt" valueURI="http://id.loc.gov/authorities/performanceMediums/mp2013015748">trumpet</genre>
+    <genre authority="lcmpt" valueURI="http://id.loc.gov/authorities/performanceMediums/mp2013015540">percussion</genre>
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014027156">Variations (Music)</genre>
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026956">Musical sketches</genre>
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026097">Excerpts</genre>
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/subjects/sh99001779">Scores</genre>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/object/1>
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014027156> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026956> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026097> ;
+        dcterms:type <http://id.loc.gov/authorities/subjects/sh99001779> .
+
 language
 ========
 
