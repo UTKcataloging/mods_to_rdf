@@ -1861,6 +1861,98 @@ The `dcterms:type` property was selected.
     <https://example.org/objects/1> edm:hasType "notated music", "sheet music" ;
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
 
+genre[@authority='aat']
+-----------------------
+
+Use Case
+^^^^^^^^
+`genre[@authority='aat']` appears in the Archivision collection and uses a controlled vocabulary.
+
+Justification
+^^^^^^^^^^^^^
+These will be treated as `dcterms:subject`, based on the values from the AAT controlled vocabulary.
+
+XPath
+^^^^^
+:code:`genre[@authority='aat']`
+
+Decision
+^^^^^^^^
+The `dcterms:subject` property was selected.
+
+`Example record - archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_
+.. code-block:: xml
+
+    <genre authority="aat" valueURI="http://vocab.getty.edu/aat/300021140">Renaissance</genre>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/object/1> dcterms:subject <http://vocab.getty.edu/aat/300021140> .
+
+genre[@authority='lcsh']
+------------------------
+
+Use Case
+^^^^^^^^
+Used in the Archivision, Charlie Daniels, and AirScoop collections. There are four distinct values in the XPath: "Editorial cartoons", "College student newspapers and periodicals", "Twentieth century", and "Nineteenth century".
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`genre[@authority='lcsh']`
+
+Decision
+^^^^^^^^
+The `dcterms:subject` property was selected.
+
+`Example record - cDanielCartoon:455 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:455/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <genre authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85040974">Editorial cartoons</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+
+and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/archivision:1754/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <genre authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85139020">Twentieth century</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+
+genre[@authority='lcgft']
+-------------------------
+Use Case
+^^^^^^^^
+Justification
+^^^^^^^^^^^^^
+XPath
+^^^^^
+Decision
+^^^^^^^^
+genre[@authority='lcmpt']
+-------------------------
+Use Case
+^^^^^^^^
+Justification
+^^^^^^^^^^^^^
+XPath
+^^^^^
+Decision
+^^^^^^^^
 language
 ========
 
