@@ -2018,6 +2018,29 @@ The `dcterms:subject` property was selected.
         dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026097> ;
         dcterms:type <http://id.loc.gov/authorities/subjects/sh99001779> .
 
+genre[not(text())]
+------------------
+Use Case
+^^^^^^^^
+Empty `genre` elements should not be migrated.
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`genre[not(text())]`
+
+Decision
+^^^^^^^^
+Do not migrate.
+
+..code-block:: xml
+    <genre valueURI=""/>
+
+..code-block:: xml
+    <genre authority="lcgft" authorityURI="http://id.loc.gov/authorities/genreForms"/>
+
 language
 ========
 
