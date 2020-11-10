@@ -104,8 +104,7 @@ Topical subjects with URIs
 
 Note the variations in where @valueURI is placed in the Xpaths listed below.
 
-    mods:subject[@valueURI]/mods:topic
-    mods:subject/mods:topic[@valueURI]
+    :code:`mods:subject[@valueURI]/mods:topic` OR :code:`mods:subject/mods:topic[@valueURI]`
 
 `acwiley:280 as an example of mods:subject[@valueURI]/mods:topic <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A280/datastream/MODS/view>`_
 
@@ -144,8 +143,7 @@ Name subjects with URIs
 
 Like with other subjects, placement of URIs for name values is not consistent. Here are the variations:
 
-      mods:subject[@valueURI]/mods:name/mods:namePart
-      mods:subject/mods:name[@valueURI]/mods:namePart
+      :code:`mods:subject[@valueURI]/mods:name/mods:namePart` OR :code:`mods:subject/mods:name[@valueURI]/mods:namePart`
 
 There are also many instances in which only strings are available.
 
@@ -246,8 +244,7 @@ Geographic subjects
 UTK has geographic subjects with and without URIs. Like with other elements, the placement of the URIs is not consistent.
 URIs will be used when present, but strings can be used when there is no URI.
 
-    mods:subject[@valueURI]/mods:geographic
-    mods:subject/mods:geographic[@valueURI]
+    :code:`mods:subject[@valueURI]/mods:geographic` OR :code:`mods:subject/mods:geographic[@valueURI]`
 
 `Here's an example where the URI is present on the subject - webster:1127 <https://digital.lib.utk.edu/collections/islandora/object/webster%3A1127/datastream/MODS/view>`_.
 
