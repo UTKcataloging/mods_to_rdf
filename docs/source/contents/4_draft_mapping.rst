@@ -2170,6 +2170,45 @@ Decision
 ^^^^^^^^
 Do not migrate.
 
+relatedItem[@type='host'][@displayLabel='Collection']
+-----------------------------------------------------
+Use Case
+^^^^^^^^
+This XPath is used to indicate the resource's archival collection.
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`relatedItem[@type='host'][@displayLabel='Collection']`
+
+Decision
+^^^^^^^^
+The `dbo:collection` property was selected.
+
+`Example record - heilman:261 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem type="host" displayLabel="Project">
+      <titleInfo>
+        <title>Botanical Photography of Alan S. Heilman</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem type="host" displayLabel="Collection">
+      <titleInfo>
+        <title>Botany Department Photographs</title>
+      </titleInfo>
+      <identifier type="local">AR.0488</identifier>
+    </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
+
 Hierarchical Sheet Music Identifier
 -----------------------------------
 
