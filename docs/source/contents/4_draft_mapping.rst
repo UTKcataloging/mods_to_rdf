@@ -2152,21 +2152,23 @@ Drop all values in mods:part.
 relatedItem
 ===========
 
-relatedItem[not(@*)]
---------------------
+relatedItem as simple structural metadata
+-----------------------------------------
 Use Case
 ^^^^^^^^
-`relatedItem`, without attributes, is used in the Volunteer Voices collection. It expresses a structural relationship; that will be handled/expressed by default behavior in our next-gen DAMS.
+`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. These relationships will be handled/expressed by default behavior in our next-gen DAMS.
 
 Justification
 ^^^^^^^^^^^^^
 
 XPath
 ^^^^^
-:code:`relatedItem[not(@*)]`
+:code:`relatedItem[not(@*)]` OR
+:code:`relatedItem[@type='host'][@displayLabel[matches(., 'project') or matches(., 'Project') or matches(., 'Digital Collection') or matches(., 'Project Part')]
 
 Decision
 ^^^^^^^^
+Do not migrate.
 
 Hierarchical Sheet Music Identifier
 -----------------------------------
