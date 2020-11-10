@@ -2174,6 +2174,459 @@ opaque:hostItem
 location
 ========
 
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| Predicate                         | Value Type     | Range (if needed) | Usage Notes                                                             |
++===================================+================+===================+=========================================================================+
+| relators:rps                      | Literal or URI |                   | Use for :code:`mods:physicalLocation` values, preferably using          |
+|                                   |                |                   | a URI for the organization from a controlled vocabulary                 |
+|                                   |                |                   | such as VIAF of Library of Congress Real World Objects.                 |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| skos:note                         | Literal        |                   | Use to note :code:`mods:shelfLocator` strings.                          |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+| dbo:collection                    | Literal        |                   | Use to note :code:`mods:physicalLocation[@displayLabel="Collection"]`   |
+|                                   |                |                   | strings.                                                                |
++-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
+
+physicalLocation as URI
+-----------------------
+
+Use Case
+^^^^^^^^
+Many records have valueURI attributes set for physicalLocation. This is inconsistent, even in our own collections.
+
+Justification
+^^^^^^^^^^^^^
+When available, we will opt to use valueURI values as the URI value for relators:rps, to better qualify objects of relators:rps.
+
+Xpath
+^^^^^
+
+:code:`mods:location/mods:physicalLocation[@valueURI]`
+
+Decision
+^^^^^^^^
+The valueURI attribute :code:`mods:location/mods:physicalLocation` is set as object.
+
+`Example record from egypt:79 <https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation valueURI="http://id.loc.gov/authorities/names/no2017033007">Frank H. McClung Museum of Natural History and Culture</physicalLocation>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/no2017033007> .
+
+physicalLocation as string (UTK)
+--------------------------------
+
+Use Case
+^^^^^^^^
+In many of our own collections, we use strings to describe physicalLocation. We are inconsistent in the structuring of these strings, leading to many different variations for both our Libraries and Special Collections, some of these include misspellings or just different formatting:
+
+- The University of Tennessee Libraries, Knoxville
+- University of Tennesse Knoxville. Libraries
+- University of Tennessee Knoxville. Libraries
+
+Justification
+^^^^^^^^^^^^^
+To create better consistency and cleanliness going forward, we will isolate all instances of these strings and transcribe them to appropriate URIs for UT Libraries and Special collections.
+
+Xpath
+^^^^^
+
+:code:`mods:location/mods:physicalLocation[not(@valueURI)][text()="The University of Tennessee Libraries, Knoxville" or text()="University of Tennesse Knoxville. Libraries" or text()="University of Tennessee Knoxville. Libraries"]`
+
+Decision
+^^^^^^^^
+Even when mods only has a string present, we will map The University of Tennessee Libraries, Knoxville and University of Tennessee, Knoxville. Special Collections to relative URIs.
+
+`Example record from fbpro:94819 <https://digital.lib.utk.edu/collections/islandora/object/fbpro:94819/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>The University of Tennessee Libraries, Knoxville</physicalLocation>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/n80003889> .
+
+`Example record from cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:1177/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>University of Tennessee, Knoxville. Special Collections</physicalLocation>
+        <holdingSimple>
+            <copyInformation>
+                <shelfLocator>Taxes and Economy</shelfLocator>
+            </copyInformation>
+        </holdingSimple>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
+
+physicalLocation as string (non-UTK)
+------------------------------------
+
+Use Case
+^^^^^^^^
+Across our collections, there are also many cases where non-UTK items do not have URIs and instead use strings.
+
+Justification
+^^^^^^^^^^^^^
+Translating these to a relative URIs would require significant effort, and the value added may be trivial at this point.
+
+Xpath
+^^^^^
+
+:code:`mods:location/mods:physicalLocation[not(@valueURI)][not(text()="The University of Tennessee Libraries, Knoxville" or text()="University of Tennesse Knoxville. Libraries" or text()="University of Tennessee Knoxville. Libraries")]`
+
+Decision
+^^^^^^^^
+In cases that the physicalLocation are non-UTK and only a string is provided, we will only use the string literal.
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>Blount County Public Library</physicalLocation>
+        <holdingExternal>
+            <holding xsi:schemaLocation="info:ofi/fmt:xml:xsd:iso20775 http://www.loc.gov/standards/iso20775/N130_ISOholdings_v6_1.xsd">
+                <physicalAddress>
+                    <text>City: Maryville</text>
+                    <text>County: Blount County</text>
+                    <text>State: Tennessee</text>
+                </physicalAddress>
+            </holding>
+        </holdingExternal>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:rps "Blount County Public Library" .
+
+physicalLocation with shelfLocator (UTK)
+----------------------------------------
+
+Use Case
+^^^^^^^^
+In many cases, some of our collection items will have shelfLocator information. This information may not currently be accurate and can found via Special Collections’ finding aids.
+
+Justification
+^^^^^^^^^^^^^
+Because our records in MODS records may not be accurate and this information is located elsewhere, and perhaps more accurate, we will drop this information when shelfLocator is used in conjunction with our repositories.
+
+Xpath
+^^^^^
+
+:code:`mods:location[mods:physicalLocation[text()[contains(., "University of Tennessee")]]]/mods:shelfLocator`
+
+Decision
+^^^^^^^^
+We will drop `mods:shelfLocator` data when present for UT Knoxville records.
+
+`Example record from scopes:1258 <https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation valueURI="http://id.loc.gov/authorities/names/no2014027633">University of Tennessee, Knoxville. Special Collections</physicalLocation>
+        <shelfLocator>Box 5, Folder 8</shelfLocator>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
+
+physicalLocation with shelfLocator (non-UTK)
+--------------------------------------------
+
+Use Case
+^^^^^^^^
+Instances where non-UTK held items have shelfLocator information.
+
+Justification
+^^^^^^^^^^^^^
+While, we do not not know if this shelfLocator information is accurate, we will opt to retain it going forward as a string and map to skos:note. Samvera does note some possible future availability of opaque:locationShelfLocator, however this predicate does not exist yet.
+
+Xpath
+^^^^^
+
+:code:`mods:location[mods:physicalLocation[text()[not(contains(., "University of Tennessee"))]]]/mods:shelfLocator`
+:code:`mods:location[mods:physicalLocation[not(contains(.,'University of Tennessee'))] and mods:holdingSimple/mods:copyInformation/mods:shelfLocator]`
+
+Decision
+^^^^^^^^
+We will retain :code:`mods:shelfLocator` data when present for non-UTK records, and transcribe this to a skos:note.
+
+`Example record from volvoices:2136 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2136/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>Cleveland State Community College</physicalLocation>
+        <holdingSimple>
+            <copyInformation>
+                <shelfLocator>Photograph Collection 2, People</shelfLocator>
+            </copyInformation>
+        </holdingSimple>
+        <holdingExternal>
+            <holding xsi:schemaLocation="info:ofi/fmt:xml:xsd:iso20775 http://www.loc.gov/standards/iso20775/N130_ISOholdings_v6_1.xsd">
+                <physicalAddress>
+                    <text>City: Cleveland</text>
+                    <text>County: Bradley County</text>
+                    <text>State: Tennessee</text>
+                </physicalAddress>
+            </holding>
+        </holdingExternal>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+    <https://example.org/objects/1>
+        relators:rps "Cleveland State Community College" ;
+        skos:note "Shelf locator: Photograph Collection 2, People" .
+
+physicalLocation with holdingExternal
+-------------------------------------
+
+Use Case
+^^^^^^^^
+Some instances in our collections contain nested subelements for holdingExternal and the further nested physicalAddress information.
+
+Justification
+^^^^^^^^^^^^^
+To keep our metadata as simple as possible from a technical standpoint we will drop all information for holdingExternal. This type of information has little additive value when physicalLocation is already referenced.
+
+Xpath
+^^^^^
+
+:code:`mods:location/mods:holdingExternal`
+
+Decision
+^^^^^^^^
+We will drop all information for `holdingExternal`.
+
+`Example record from volvoices:2199 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>University of Memphis. Special Collections</physicalLocation>
+        <holdingSimple>
+            <copyInformation>
+                <shelfLocator>Manuscript Number 5</shelfLocator>
+            </copyInformation>
+        </holdingSimple>
+        <holdingExternal>
+            <holding xsi:schemaLocation="info:ofi/fmt:xml:xsd:iso20775 http://www.loc.gov/standards/iso20775/N130_ISOholdings_v6_1.xsd">
+                <physicalAddress>
+                    <text>City: Memphis</text>
+                    <text>County: Shelby County</text>
+                    <text>State: Tennessee</text>
+                </physicalAddress>
+            </holding>
+        </holdingExternal>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+    <https://example.org/objects/1>
+        relators:rps "University of Memphis. Special Collections" ;
+        skos:note "Shelf locator: Manuscript Number 5" .
+
+physicalLocation with @displayLabel="Address"
+---------------------------------------------
+
+Use Case
+^^^^^^^^
+
+Some of items with the physicalLocation of Pi Beta Phi Fraternity also have a physicalLocation subelement with the displayLabel attribute of Address.
+
+Justification
+^^^^^^^^^^^^^
+
+Similar to the holdingExternal, we will opt drop this information to maintain simplicity of our data from a technical standpoint.
+
+Xpath
+^^^^^
+
+:code:`mods:location/mods:physicalLocation[@displayLabel="Address"]`
+
+Decision
+^^^^^^^^
+Drop this.
+
+`Example record from volvoices:2199 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>Pi Beta Phi Fraternity</physicalLocation>
+        <physicalLocation displayLabel="Address">1154 Town and Country Commons Drive, Town and Country, Missouri 63017</physicalLocation>
+        <shelfLocator>Box 36, Folder 14</shelfLocator>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+    <https://example.org/objects/1>
+        relators:rps "Pi Beta Phi Fraternity" ;
+        skos:note "Shelf locator: Box 36, Folder 14" .
+
+physicalLocation with @displayLabel="Collection"
+------------------------------------------------
+
+Use Case
+^^^^^^^^
+In a some collections for Arrowmont, we will find items having a physicalLocation subelement with the displayLabel attribute of Collection with text containing "Archives Collection". We also have extra physicalLocation subelements with displayLabel attributes of Detailed Location, City and State.
+
+Justification
+^^^^^^^^^^^^^
+Because these records do not already have a dbo:collection predicate, we will transcribe the string literal to dbo:collection for :code:`mods:location/mods:physicalLocation[@displayLabel="Collection"]`. No other data here needs to be retained and will be dropped.
+
+Xpath
+^^^^^
+
+:code:`mods:location/mods:physicalLocation[@displayLabel="Collection" and text()[contains(.,"Archives Collection")]]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="Repository"]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="Detailed Location"]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="City"]`
+:code:`mods:location/mods:physicalLocation[@displayLabel="State"]`
+
+Decision
+^^^^^^^^
+We will keep the string for the physicalLocation instance with displayLabel=Collection and transcribe this to literal for dbo:collection.
+
+Similar to when physicalLocation has no displayLabel, physicalLocation with displayLabel  of Repository is retained as relators:rps.
+
+All other physicalLocation (Detailed Location, City, State) data is dropped.
+
+`Example record from volvoices:2199 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation displayLabel="Collection">Archives Collection</physicalLocation>
+        <physicalLocation displayLabel="Repository">Arrowmont School of Arts and Crafts</physicalLocation>
+        <physicalLocation displayLabel="Detailed Location"/>
+        <physicalLocation displayLabel="City">Gatlinburg</physicalLocation>
+        <physicalLocation displayLabel="State">Tennessee</physicalLocation>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1>
+        relators:rps <http://id.loc.gov/authorities/names/no2001080757> ;
+        dbo:collection "Archives Collection" .
+
+physicalLocation within volvoices used for provider information
+---------------------------------------------------------------
+
+Use Case
+^^^^^^^^
+
+There is one collection in which location information needs to be used to correct inaccuracies for other metadata fields. The Volunteer Voices collection lists the University of Tennessee as the recordContentSource for all records. While UTK may have created the metadata records, our mapping with DPLA makes it so that we are noted as the source of these records rather than the actual contributing institution. There are instances within volvoices in which the institution in physicalLocation and the one listed in recordContent Source are the same. This action doesn't need to be taken for those records.
+
+Justification
+^^^^^^^^^^^^^
+
+Providing contributing institutions with the proper credit is important for inter-institutional projects.
+
+Xpath
+^^^^^
+
+:code:`mods:location/mods:physicalLocation[. != mods:recordInfo/mods:recordContentSource]`
+
+Decision
+^^^^^^^^
+Will be mapped to both relators:rps and edm:dataProvider. edm:dataProvider is being used because the value is an "organisation who contributes data indirectly to an aggregation service" (aka to UTK first and then to DPLA).
+
+Here's an example record -
+
+`Example record from volvoices:2737 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2737/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <recordInfo>
+        <recordContentSource>University of Tennessee, Knoxville. Special Collections</recordContentSource>
+    </recordInfo>
+    <location>
+        <physicalLocation>Chattanooga-Hamilton County Bicentennial Library</physicalLocation>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        edm:dataProvider "Chattanooga-Hamilton County Bicentennial Library" ;
+        relators:rps "Chattanooga-Hamilton County Bicentennial Library" .
+
+url
+---
+
+Use Case
+^^^^^^^^
+
+Some of our metadata for volvoices may contain self-referential URL locations. The data contained in these directly reference objects in our current Islandora 7 build and the object’s datastreams.
+
+Justification
+^^^^^^^^^^^^^
+
+This is self-referential and has no value in a new system.
+
+Xpath
+^^^^^
+
+:code:`mods:location/mods:url`
+
+Decision
+^^^^^^^^
+Drop this.
+
+`Example record from volvoices:9999 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <url access="object in context" usage="primary display">https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999</url>
+        <url access="preview">https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/TN/view</url>
+    </location>
+
 recordInfo
 ==========
 
