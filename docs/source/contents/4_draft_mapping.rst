@@ -2164,7 +2164,7 @@ Justification
 XPath
 ^^^^^
 :code:`relatedItem[not(@*)]` OR
-:code:`relatedItem[@type='host'][@displayLabel[matches(., 'project') or matches(., 'Project') or matches(., 'Digital Collection') or matches(., 'Project Part')]
+:code:`relatedItem[@type='host'][@displayLabel[matches(., 'project') or matches(., 'Project') or matches(., 'Digital Collection') or matches(., 'Project Part')]`
 
 Decision
 ^^^^^^^^
