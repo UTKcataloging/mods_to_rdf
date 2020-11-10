@@ -2152,6 +2152,22 @@ Drop all values in mods:part.
 relatedItem
 ===========
 
+relatedItem[not(@*)]
+--------------------
+Use Case
+^^^^^^^^
+`relatedItem`, without attributes, is used in the Volunteer Voices collection. It expresses a structural relationship; that will be handled/expressed by default behavior in our next-gen DAMS.
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`relatedItem[not(@*)]`
+
+Decision
+^^^^^^^^
+
 Hierarchical Sheet Music Identifier
 -----------------------------------
 
