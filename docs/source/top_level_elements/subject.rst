@@ -126,9 +126,6 @@ Note the variations in where @valueURI is placed in the Xpaths listed below.
 .. code-block:: xml
 
     <subject>
-        <geographic valueURI="http://id.loc.gov/vocabulary/geographicAreas/n-us">United States</geographic>
-    </subject>
-    <subject>
         <topic valueURI="http://id.loc.gov/authorities/subjects/sh85023396">Child welfare</topic>
     </subject>
 
