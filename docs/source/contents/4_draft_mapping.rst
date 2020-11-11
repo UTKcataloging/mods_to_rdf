@@ -2209,6 +2209,42 @@ The `dbo:collection` property was selected.
 
     <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
 
+relateItem[@type='series'][@displayLabel='Project']
+---------------------------------------------------
+Use Case
+Justification
+XPath
+Decision
+
+relatedItem[@type='host'][@displayLabel='Bibliographic Citation']
+-----------------------------------------------------------------
+Use Case
+Justification
+XPath
+Decision
+
+relatedItem/identifier[@type]
+-----------------------------
+Use Case
+Justification
+XPath
+Decision
+
+relatedItem/location[physicalLocation]
+--------------------------------------
+Use Case
+Justification
+XPath
+Decision
+
+relatedItem[@type='host'][@displayLabel='Is Part Of']
+-----------------------------------------------------
+Use Case
+Justification
+XPath
+Decision
+Do not migrate.
+
 Hierarchical Sheet Music Identifier
 -----------------------------------
 
