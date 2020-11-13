@@ -2152,6 +2152,22 @@ Drop all values in mods:part.
 relatedItem
 ===========
 
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| Predicate                     | Value Type         | Range | Use Case                                                                                   |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| dcterms:bibliographicCitation | String Literal     | N/A   | A String Literal of the bibliographic citation for the resource.                           |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| dcterms:tableOfContents       | String Literal     | N/A   | A String Literal that represents constituent parts of a resource.                          |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| dbo:collection                | String Literal     | N/A   | A String Literal that represents the physical archival collection the resource belongs to. |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| dbo:isPartOf                  | URI                | N/A   | A URI that represents the physical archival collection a resource belongs to.              |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| opaque:memberOfArchivalSeries | URI/String Literal | N/A   | A URI or String Literal that indicates the archival series a resource belongs to.          |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| opaque:sheetMusic_hostItem    | URI/String Literal | N/A   | A URI or String Literal that indicates the host itemfor the resource being described.      |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+
 relatedItem as simple structural metadata
 -----------------------------------------
 Use Case
