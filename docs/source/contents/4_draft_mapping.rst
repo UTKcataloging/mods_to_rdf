@@ -2237,6 +2237,13 @@ Justification
 XPath
 Decision
 
+relatedItem/name
+----------------
+Use Case
+Justification
+XPath
+Decision
+
 relatedItem[@type='host'][@displayLabel='Is Part Of']
 -----------------------------------------------------
 Use Case
@@ -2244,6 +2251,15 @@ Justification
 XPath
 Decision
 Do not migrate.
+
+relatedItem/abstract
+--------------------
+Use Case
+Justification
+XPath
+Decision
+Values present in `relatedItem/abstract` should be handled at the collection level. Do not migrate.
+
 
 Hierarchical Sheet Music Identifier
 -----------------------------------
