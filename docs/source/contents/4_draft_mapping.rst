@@ -2226,7 +2226,7 @@ The `dbo:collection` property was selected.
     <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
 
 relatedItem[@type='series'][@displayLabel='Project']
----------------------------------------------------
+----------------------------------------------------
 Use Case
 ^^^^^^^^
 The `@type='series'` XPath indicates a resource's archival series.
