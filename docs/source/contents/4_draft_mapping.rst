@@ -1777,9 +1777,383 @@ Decision
 
 **Do not migrate!**
 
-
 subject
 =======
+
+None type
+---------
+
+Use Case
+^^^^^^^^
+
+Several elements contain unintentional null values. There are five within Tennessee Documentary History. Additional null
+subjects include vpmoore:133 and adams:76. Most of roth seems to have null mods:subject/mods:name/mods:namePart values.
+It appears we might have inserted some blank nodes using the Islandora form entry. As there is no information, these
+"values" are not used and have no true use case.
+
+Justification
+^^^^^^^^^^^^^
+
+These nodes contain no information.
+
+Xpath
+^^^^^
+
+:code:`subject/topic=''` OR
+:code:`subject/geographic=''` OR
+:code:`subject/name/namePart=''`
+
+Decision
+^^^^^^^^
+
+Do not migrate.
+
+Here's an `example record - tdh:366 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A366/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <topic/>
+    </subject>
+
+Here's an example from `roth - roth:1587 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A1587/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <name authority="" valueURI="">
+            <namePart/>
+            </name>
+    </subject>
+
+Topical and name subjects with URIs
+-----------------------------------
+
+Use Case
+^^^^^^^^
+
+Remediated collections include subject values with URIs.
+
+Justification
+^^^^^^^^^^^^^
+
+In migration, subjects with name and topical values will be treated in the same way. We have decided that the previous
+distinction between name and topical values as subjects is not essential - only the presence of all the values in the
+metadata is important.
+
+Xpath
+^^^^^
+
+Note that there is inconsistency in where the valueURI attribute is placed.
+
+:code:`mods:subject[@valueURI]/mods:topic` OR
+:code:`mods:subject/mods:topic[@valueURI]` OR
+:code:`mods:subject[@valueURI]/mods:name/mods:namePart` OR
+:code:`mods:subject/mods:name[@valueURI]/mods:namePart`
+
+Decision
+^^^^^^^^
+
+When a valueURI is present for topical or name subject, it will be the value used in migration. Examples showing each
+of the distinct Xpaths are given below:
+
+`acwiley:280 as an example of mods:subject[@valueURI]/mods:topic <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A280/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <subject authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85147554">
+        <topic>Women in art</topic>
+    </subject>
+    <subject authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85147447">
+        <topic>Women artists</topic>
+    </subject>
+    <subject authority="tgm" valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm008085">
+        <topic>Portraits</topic>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:subject "http://id.loc.gov/authorities/subjects/sh85147554" ;
+        dcterms:subject "http://id.loc.gov/authorities/subjects/sh85147447" ;
+        dcterms:subject "http://id.loc.gov/vocabulary/graphicMaterials/tgm008085" .
+
+`cdf:5384 as an example of mods:subject
+/mods:topic[@valueURI] <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A5384/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <subject>
+        <topic valueURI="http://id.loc.gov/authorities/subjects/sh85023396">Child welfare</topic>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:subject "http://id.loc.gov/authorities/subjects/sh85023396" .
+
+`wwiioh:2451 as an example of mods:subject[@valueURI]/mods:name/mods:namePart <https://digital.lib.utk.edu/collections/islandora/object/wwiioh%3A2451/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject authority="naf" valueURI="http://id.loc.gov/authorities/names/n85185770">
+        <name>
+            <namePart>United States. Army. Medical Corps</namePart>
+        </name>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:subject "http://id.loc.gov/authorities/names/n85185770" .
+
+`helser:24792 as an example of mods:subject/mods:name[@valueURI] <https://digital.lib.utk.edu/collections/islandora/object/hesler%3A24792/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n87116131">
+            <namePart>Atkinson, George Francis, 1854-1918</namePart>
+        </name>
+    </subject>
+    <subject>
+        <name authority="naf" valueURI="http://id.loc.gov/authorities/names/n88144876">
+            <namePart>Arthur, Joseph Charles, 1850-1942</namePart>
+        </name>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:subject "http://id.loc.gov/authorities/names/n88144876" ;
+        dcterms:subject "http://id.loc.gov/authorities/names/n87116131" .
+
+Name and topical subjects without URIs
+--------------------------------------
+
+Use Case
+^^^^^^^^
+
+We'll need to treat any of these subjects that aren't able to be reconciled as string values. For the postcard collection,
+the use of dots (Database of the Smokies) as the authority makes it impossible to include a URI presently. Other collections
+with string values that are: Charlie Daniel Cartoon Collection, Ed Gamble Cartoon Collection, Football Programs, Insurance Company of
+North America Records, the American Civil War Collection, Ramsey Family Papers, Tennessee Documentary History,
+and Volunteer Voices.
+
+Justification
+^^^^^^^^^^^^^
+
+Subject values are important access points for users that require migration. While URIs would be ideal from a technical
+standpoint, strings still support discovery.
+
+Xpath
+^^^^^
+
+:code:`mods/subject[not(@valueURI)]/topic[not(@valueURI)]` OR
+:code:`mods/subject[not(@valueURI)]/name[not(valueURI)]/namePart[not(valueURI)]`
+
+Decision
+^^^^^^^^
+
+String values for topical or name subjects will be migrated when a valueURI is not present.
+
+Here's an `example record where only string values are available for topical subjects - gamble:123 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A123/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <topic>Environmentalism</topic>
+    </subject>
+    <subject>
+        <topic>Factory and trade waste--Environmental aspects</topic>
+    </subject>
+    <subject>
+        <topic>Pollution</topic>
+    </subject>
+    <subject>
+        <topic>Knight</topic>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:subject "Environmentalism" ;
+        dcterms:subject "Factory and trade waste--Environmental aspects" ;
+        dcterms:subject "Pollution" ;
+        dcterms:subject "Knight" .
+
+Here's an `example where only a string value is available for a name - gamble:144 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A144/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <name>
+            <namePart>Xerox Corporation</namePart>
+        </name>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:subject "Xerox Corporation" .
+
+Temporal subjects
+-----------------
+
+Use Case
+^^^^^^^^
+
+Temporal subjects share information about a time period using text or a date (edtf). None of our existing temporal subjects
+include URIs.These values are prominent in Volunteer Voices and the Pi Beta Phi to Arrowmont collections.
+
+Justification
+^^^^^^^^^^^^^
+
+Temporal subjects provide important access points. While not associated with a URI, the values are often from controlled
+vocabularies created as part of a grant project. Because they are associated with grants and cross-institutional projects,
+retaining these values is particularly important.
+
+Xpath
+^^^^^
+
+:code:`mods/subject[not(@displayLabel)]/temporal`
+
+Decision
+^^^^^^^^
+
+Temporal subjects without the displayLabel attribute will be directly mapped as strings to schema:temporalCoverage. This
+property was chosen because it allows a wider range of values than other potential solutions (such as ).
+
+`Example of temporal subject - arrow:268 <https://digital.lib.utk.edu/collections/islandora/object/arrow%3A268>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <temporal>The Birth of Arrowmont, Gatlinburg, Tennessee, 1965-1979</temporal>
+    </subject>
+
+
+.. code-block:: turtle
+
+    @prefix schema: <http://schema.org/> .
+
+    <https://example.org/objects/1> schema:temporalCoverage "The Birth of Arrowmont, Gatlinburg, Tennessee, 1965-1979" .
+
+In addition to these textual values, UTK does have temporal subjects that share numeric dates in EDTF format. These are
+primarily from the Volunteer Voices collection. `Here's an example record - volvoices:2945 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2945/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <temporal>1970-09-30</temporal>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix schema: <http://schema.org/> .
+
+    <https://example.org/objects/1> schema:temporalCoverage "1970-09-30" .
+
+Subjects with attribute displayLabel
+------------------------------------
+
+The Volunteer Voices collection includes subjects with three different displayLabel values - Volunteer Voices Curriculum Topics,
+Tennessee Social Studies K-12 Eras in American History, and Broad Topics. These subjects are currently given separate
+facets in Islandora's metadata display. Discovery to the collection via two of these subject categories is also featured
+on the `Tennessee State Library and Archives website <https://sos.tn.gov/products/tsla/volunteer-voices>`_ (Broad Topics
+and Tennessee Social Studies K-12 Eras in American History). There are instances in which a value associated with one
+of these topics is used, but the displayLabel has been left off. For instance `volvoices:11303 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A11303/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <topic>Jacksonian democracy and Tennessee's leadership role in the early republic .</topic>
+    </subject>
+    <subject>
+        <topic>Music and Performing Arts.</topic>
+    </subject>
+    <subject>
+        <topic>Frontier Settlement and Migration.</topic>
+    </subject>
+    <subject>
+        <geographic>Expansion and Reform (1801-1861).</geographic>
+    </subject>
+
+The final subject/geographic value actually matches one of the values listed in the Tennessee Social Studies K-12 Eras
+in American History. While it is placed in a geographic subject here in the XML, it should be in a temporal subject (as
+the date range following the text suggests). One value is placed in subject/topic.The following values are all
+of the exceptions:
+
+1. Contemporary United States (1968-present).
+2. Postwar United States (1945-1970).
+3. The Great Depression and World War II (1929-1945).
+4. The Emergence of Modern America (1890-1930).
+5. The Development of the Industrial United States (1870-1900).
+6. The Development of the Industrial United States (1870-1900). (in topic)
+7. Expansion and Reform (1801-1861).
+8. Revolution and the New Nation (1754-1820).
+9. Colonization and Settlement (1585-1763).
+
+We will want to remediate before migration, match on and transform these values during migration, or deal with them after migration. The string values
+also don't exactly match the string values present in mods:topic[@displayLabel="Tennessee Social Studies K-12 Eras in American History"].
+The eras ("Era 2 - ", "Era 3 - ", etc.) need to be added and the trailing periods removed for these to match.
+
+.. code-block:: turtle
+
+    @prefix schema: <http://schema.org/> .
+
+    <https://example.org/objects/1> schema:temporalCoverage "Era 4 - Expansion and Reform (1801-1861)" .
+
+
+`Example of @displayLabel="Broad Topics" - volvoices:4058 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A4058/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject displayLabel="Broad Topics">
+        <topic>Frontier Settlement and Migration</topic>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:subject "Frontier Settlement and Migration" .
+
+`Example of @displayLabel="Tennessee Social Studies K-12 Eras in American History" - volvoices:1833 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A1833/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject displayLabel="Tennessee Social Studies K-12 Eras in American History">
+        <temporal>Era 9 - Postwar United States (1945-1970's)</temporal>
+    </subject>
+
+These will simply be treated as other temporal subjects are. Note that we only have strings for temporal subjects.
+
+.. code-block:: turtle
+
+    @prefix schema: <http://schema.org/> .
+
+    <https://example.org/objects/1> schema:temporalCoverage "Era 9 - Postwar United States (1945-1970's)" .
+
+`Example of @displayLabel="Volunteer Voices Curriculum Topics" - volvoices:2141 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2141/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject displayLabel="Volunteer Voices Curriculum Topics">
+        <topic>Civil Rights movement in Tennessee</topic>
+    </subject>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:subject "Civil Rights movement in Tennessee" .
 
 genre
 =====
