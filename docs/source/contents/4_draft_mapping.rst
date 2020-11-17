@@ -2311,16 +2311,77 @@ The `dcterms:bibliographicCitation` predicate was selected for these values.
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> dcterms:bibliographicCitation "The Arrow, Volume 27, Number 1" .
+
 relatedItem/identifier[@type]
 -----------------------------
 Use Case
 ^^^^^^^^
+This XPath's `@type` has three distinct values: `local`, `catalog`, and `pid`. `@type='pid'` is used in collection-level records to indicate featured items and should not be migrated. `@type='local'` is used to indicate the manuscript number of the resource's archival collection. `@type='catalog'` is used in the Van Vactor collection to indicate the identifying number for an alternate version of the score.
+
 Justification
 ^^^^^^^^^^^^^
 XPath
 ^^^^^
+:code:`relatedItem/identifier[@type]`
+
 Decision
 ^^^^^^^^
+`@type='local'`'s value, if present, maps in to the `dbo:collection` property.
+
+`Example record - heilman:26 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem type="host" displayLabel="Collection">
+      <titleInfo>
+        <title>Botany Department Photographs</title>
+      </titleInfo>
+      <identifier type="local">AR.0488</identifier>
+    </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
+
+`@type='catalog'`'s value, if present, will be represented by the `opaque:sheetmusic_hostItem` property.
+
+`Example record - vanvactor:1 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:1/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem type="otherVersion">
+      <titleInfo>
+        <title>Gefunden</title>
+      </titleInfo>
+      <identifier type="catalog">M047</identifier>
+    </relatedItem>
+    <relatedItem displayLabel="Project" type="host">
+      <titleInfo>
+        <title>David Van Vactor Music Collection</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>David Van Vactor Papers</title>
+      </titleInfo>
+      <identifier>MS.1942</identifier>
+      <location>
+        <url>https://n2t.net/ark:/87290/v8pz5703</url>
+      </location>
+    </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
+
+    <https://example.org/objects/1> dbo:collection "David Van Vactor Papers, MS.1942" ;
+        dbo:isPartOf <https://n2t.net/ark:/87290/v8pz5703> ;
+        opaque:sheetmusic_hostItem "Gefunden, M047" .
+
+`@type='pid'` will not be migrated.
 
 relatedItem/location[physicalLocation]
 --------------------------------------
