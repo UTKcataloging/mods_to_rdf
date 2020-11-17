@@ -2274,13 +2274,43 @@ relatedItem[@type='host'][@displayLabel='Bibliographic Citation']
 -----------------------------------------------------------------
 Use Case
 ^^^^^^^^
+This XPath only appears 1264 times in the Arrowmont Collection, specifically the Arrow of Pi Beta Phi sub-collection.
+
 Justification
 ^^^^^^^^^^^^^
 XPath
 ^^^^^
+:code:`relatedItem[@type='host'][@displayLabel='Bibliographic Citation']`
+
 Decision
 ^^^^^^^^
+The `dcterms:bibliographicCitation` predicate was selected for these values.
 
+`Example record - arrow:1 <https://digital.lib.utk.edu/collections/islandora/object/arrow:1/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem type="host" displayLabel="Project">
+      <titleInfo>
+        <title>From Pi Beta Phi to Arrowmont</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Project Part" type="host">
+      <titleInfo>
+        <title>The Arrow of Pi Beta Phi</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Bibliographic Citation" type="host">
+      <titleInfo>
+        <title>The Arrow, Volume 27, Number 1</title>
+      </titleInfo>
+    </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:bibliographicCitation "The Arrow, Volume 27, Number 1" .
 relatedItem/identifier[@type]
 -----------------------------
 Use Case
