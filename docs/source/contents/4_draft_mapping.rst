@@ -2347,15 +2347,15 @@ Decision
 
 `@type='catalog'`'s value, if present, will be represented by the `opaque:sheetmusic_hostItem` property.
 
-`Example record - vanvactor:1 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:1/datastream/MODS/view>`_
+`Example record - vanvactor:10012 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:10012/datastream/MODS/view>`_
 
 .. code-block:: xml
 
     <relatedItem type="otherVersion">
       <titleInfo>
-        <title>Gefunden</title>
+        <title>Three songs for soprano, alto flute, English horn, and bass clarinet</title>
       </titleInfo>
-      <identifier type="catalog">M047</identifier>
+      <identifier type="catalog">M120</identifier>
     </relatedItem>
     <relatedItem displayLabel="Project" type="host">
       <titleInfo>
@@ -2379,7 +2379,7 @@ Decision
 
     <https://example.org/objects/1> dbo:collection "David Van Vactor Papers, MS.1942" ;
         dbo:isPartOf <https://n2t.net/ark:/87290/v8pz5703> ;
-        opaque:sheetmusic_hostItem "Gefunden, M047" .
+        opaque:sheetmusic_hostItem "Three songs for soprano, alto flute, English horn, and bass clarinet, M120" .
 
 `@type='pid'` will not be migrated.
 
