@@ -2225,16 +2225,51 @@ The `dbo:collection` property was selected.
 
     <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
 
-relateItem[@type='series'][@displayLabel='Project']
+relatedItem[@type='series'][@displayLabel='Project']
 ---------------------------------------------------
 Use Case
 ^^^^^^^^
+The `@type='series'` XPath indicates a resource's archival series.
+
 Justification
 ^^^^^^^^^^^^^
 XPath
 ^^^^^
+:code:`relatedItem[@type='series'][@displayLabel='Project']`
+
 Decision
 ^^^^^^^^
+The `opaque:memberOfArchivalSeries` predicate was chosen for these values.
+
+`Example record - roth:1538 <https://digital.lib.utk.edu/collections/islandora/object/roth:1538/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem type="series" displayLabel="Project">
+      <titleInfo>
+        <title>Series II: Margaret Ann Roth Photographs and Other Materials, 1947 March 11-2002 December 14 (bulk 1947 March 11-1955 March 20). Sub-Series A: Photographs, 1947 March 11-1955 March 139</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>A. G. "Dutch" and Margaret Ann  Roth  Papers</title>
+      </titleInfo>
+      <identifier>MS.3334</identifier>
+    </relatedItem>
+    <relatedItem displayLabel="Project" type="host">
+      <titleInfo>
+        <title>Albert "Dutch" Roth Photograph Collection</title>
+      </titleInfo>
+    </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
+
+    <https://example.org/objects/1> dbo:collection """A. G. "Dutch" and Margaret Ann Roth Papers, MS.3334""" ;
+        opaque:memberOfArchivalSeries "Series II: Margaret Ann Roth Photographs and Other Materials, 1947 March 11-2002 December 14 (bulk 1947 March 11-1955 March 20). Sub-Series A: Photographs, 1947 March 11-1955 March 139" .
+
 relatedItem[@type='host'][@displayLabel='Bibliographic Citation']
 -----------------------------------------------------------------
 Use Case
