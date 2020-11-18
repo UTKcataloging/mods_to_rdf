@@ -2465,7 +2465,7 @@ relatedItem/location/physicalLocation/
 --------------------------------------
 Use Case
 ^^^^^^^^
-This XPath is used once in the Charles Dabney collection.
+This XPath is used once in the Charles Dabney collection. It provides an authority, a valueURI, and string value, in this single case, for the University of Tennessee's Special Collections.
 
 Justification
 ^^^^^^^^^^^^^
