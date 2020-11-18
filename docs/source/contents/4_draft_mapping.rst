@@ -2159,6 +2159,8 @@ relatedItem
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 | dcterms:tableOfContents       | String Literal     | N/A   | A String Literal that represents constituent parts of a resource.                          |
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| dcterms:hasVersion            | URI                | N/A   | A String Literal that represents constituent parts of a resource.                          |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 | dbo:collection                | String Literal     | N/A   | A String Literal that represents the physical archival collection the resource belongs to. |
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 | dbo:isPartOf                  | URI                | N/A   | A URI that represents the physical archival collection a resource belongs to.              |
@@ -2312,6 +2314,45 @@ The `dcterms:bibliographicCitation` predicate was selected for these values.
 
     <https://example.org/objects/1> dcterms:bibliographicCitation "The Arrow, Volume 27, Number 1" .
 
+relatedItem[@type="otherVersion"]
+---------------------------------
+Use Case
+^^^^^^^^
+`relatedItem[@type="otherVersion"]` is used to indicate identifying information about another version of the resource. It appears in the Van Vactor and Arrowmont metadata; it is used, respectively, to identify an alternate version of the sheet music or the scrapbook that holds the image.
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`relatedItem[@type='otherVersion']/identifier` OR
+:code:`relatedItem[@type='otherVersion']/location/url`
+
+Decision
+^^^^^^^^
+See the following section on `relatedItem/identifier[@type]`.
+
+I'm not sure about the relevance of `relatedItem[@type='otherVersion']/location/url`. In theory, it would look something like this, but it would need to be added to our metadata/RDF after migration:
+
+`Example record - arrpgimg:319 <https://digital.lib.utk.edu/collections/islandora/object/arrpgimg:319/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem type="otherVersion">
+      <titleInfo>
+         <title>Gaitlinburg from All Sides</title>
+      </titleInfo>
+      <location>
+         <url>https://digital.lib.utk.edu/collections/islandora/object/arrowmont%3A16</url>
+      </location>
+    </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> dcterms:hasVersion <uri-of-source-scrapbook-in-new-system> .
+
 relatedItem/identifier[@type]
 -----------------------------
 Use Case
@@ -2383,17 +2424,77 @@ Decision
 
 `@type='pid'` will not be migrated.
 
-relatedItem/location[physicalLocation]
---------------------------------------
+relatedItem/location/url
+------------------------
 Use Case
 ^^^^^^^^
+This XPath is used 8516 times, but only has 33 distinct strings.
+
 Justification
 ^^^^^^^^^^^^^
 XPath
 ^^^^^
+:code:`relatedItem/location/url`
+
 Decision
 ^^^^^^^^
+The `dbo:isPartOf` property was selected.
+
+`Example record - ruskin:204 <https://digital.lib.utk.edu/collections/islandora/object/ruskin:204/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>Ruskin Cooperative Association Collection</title>
+      </titleInfo>
+      <identifier>MS.0023</identifier>
+      <location>
+        <url>https://n2t.net/ark:/87290/v81g0jf1</url>
+      </location>
+    </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:isPartOf <https://n2t.net/ark:/87290/v81g0jf1> ;
+        dbo:collection "Ruskin Cooperative Association Collection, MS.0023" .
+
+relatedItem/location/physicalLocation/
+--------------------------------------
+Use Case
+^^^^^^^^
+This XPath is used once in the Charles Dabney collection.
+
+Justification
+^^^^^^^^^^^^^
+XPath
+^^^^^
+:code:`relatedItem/location/physicalLocation`
+
 Decision
+^^^^^^^^
+`Example record - collections:dabney <https://digital.lib.utk.edu/collections/islandora/object/collections:dabney/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Collection" type="host">
+      <titleInfo>
+        <title>University of Tennessee President's Papers, 1867-1954</title>
+      </titleInfo>
+      <identifier>AR.0001</identifier>
+      <location>
+        <physicalLocation authority="naf" valueURI="http://id.loc.gov/authorities/names/no2014027633">University of Tennessee, Knoxville. Special Collections</physicalLocation>
+      </location>
+    </relatedItem>
+
+.. code-block:: turtle
+
+    @prefix dbo: <http://dbpedia.org/ontology/> .
+
+    <https://example.org/objects/1> dbo:institution <http://id.loc.gov/authorities/names/no2014027633> ;
+        dbo:collection "University of Tennessee President's Papers, 1867-1954, AR.0001" .
 
 relatedItem/name
 ----------------
