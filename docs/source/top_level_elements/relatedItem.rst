@@ -547,10 +547,7 @@ relatedItem/name
 
 .. code-block:: turtle
 
-    @prefix rdfs: <https://www.w3.org/TR/rdf-schema/> .
-    @prefix pcdm: <http://pcdm.org/models#> .
     @prefix dbo: <http://dbpedia.org/ontology/> .
-    @prefix opaque: <http://opaquenamespace.org/ns/> .
     @prefix dcterms: <http://purl.org/dc/terms/> .
     @prefix relators: <http://id.loc.gov/vocabulary/relators> .
 
