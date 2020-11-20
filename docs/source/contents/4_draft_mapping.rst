@@ -1803,7 +1803,21 @@ Use Case
 
 Justification
 ^^^^^^^^^^^^^
-Based on the wide range of possible values, we selected the `edm:hasType` property as it aligns well with the possible overlap between `mods:genre` and `mods:physicalDescription/form`.
+For values *outside* of the following table, we selected the `edm:hasType` property as it aligns well with the possible overlap between `mods:genre` and `mods:physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the possible values in `genre[not(@*)]`.
+
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| (//genre[not(@*] | //genre[@authority='dct']) | RDF Predicate | URI                                              | dcterms text value |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| cartographic                                  | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/car> | Cartographic       |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| image                                         | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | Image              |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| notated music                                 | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/not> | Notated music      |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| still image                                   | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | Still image        |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| text                                          | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/txt> | Text               |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 
 XPath
 ^^^^^
@@ -1811,7 +1825,7 @@ XPath
 
 Decision
 ^^^^^^^^
-The property `edm:hasType` was selected.
+The property `edm:hasType` was selected for values that fall outside of the preceding table. For values that match, `dcterms:type` has been selected.
 
 `Example record - volvoices:11551 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11551/datastream/MODS/view>`_
 
@@ -1823,8 +1837,10 @@ The property `edm:hasType` was selected.
 .. code-block:: turtle
 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> edm:hasType "notated music", "sheet music" .
+    <https://example.org/objects/1> edm:hasType "sheet music" ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> .
 
 genre[@authority='dct']
 -----------------------
