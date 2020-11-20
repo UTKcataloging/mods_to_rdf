@@ -1808,7 +1808,7 @@ Decision
 
 Do not migrate.
 
-Here's an `example record - tdh:366 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A366/datastream/MODS/view>`_.
+Here's an `example of a null topic value - tdh:366 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A366/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -1816,7 +1816,15 @@ Here's an `example record - tdh:366 <https://digital.lib.utk.edu/collections/isl
         <topic/>
     </subject>
 
-Here's an example from `roth - roth:1587 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A1587/datastream/MODS/view>`_.
+Here's an `example of a null geographic value - vpmoore:133 <https://digital.lib.utk.edu/collections/islandora/object/vpmoore%3A133/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <subject>
+        <geographic/>
+    </subject>
+
+Here's an `example of a null namePart value - roth:1587 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A1587/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -2120,14 +2128,14 @@ done for all the records associated with a given concept to be colocated.
 
 Xpath
 ^^^^^
-    :code:`subject/geographic[text()="Contemporary United States (1968-present)."]` OR
-    :code:`subject/geographic[text()="Postwar United States (1945-1970)."]` OR
-    :code:`subject/geographic[text()="The Great Depression and World War II (1929-1945)."]` OR
-    :code:`subject/geographic[text()="The Emergence of Modern America (1890-1930)."]` OR
-    :code:`subject/geographic[text()="The Development of the Industrial United States (1870-1900)."]` OR
-    :code:`subject/geographic[text()="Expansion and Reform (1801-1861)."]` OR
-    :code:`subject/geographic[text()="Revolution and the New Nation (1754-1820)."]` OR
-    :code:`subject/geographic[text()="Colonization and Settlement (1585-1763)."]`
+    :code:`subject/geographic[string()="Contemporary United States (1968-present)."]` OR
+    :code:`subject/geographic[string()="Postwar United States (1945-1970)."]` OR
+    :code:`subject/geographic[string()="The Great Depression and World War II (1929-1945)."]` OR
+    :code:`subject/geographic[string()="The Emergence of Modern America (1890-1930)."]` OR
+    :code:`subject/geographic[string()="The Development of the Industrial United States (1870-1900)."]` OR
+    :code:`subject/geographic[string()="Expansion and Reform (1801-1861)."]` OR
+    :code:`subject/geographic[string()="Revolution and the New Nation (1754-1820)."]` OR
+    :code:`subject/geographic[string()="Colonization and Settlement (1585-1763)."]`
 
 Decision
 ^^^^^^^^
@@ -2216,14 +2224,14 @@ Xpath
 As noted previously, there are a handful of string values in geographic elements within volvoices that need to be moved
 to be treated differently than other geographic values.
 
-    :code:`subject/geographic[not(text()="Contemporary United States (1968-present).")]` OR
-    :code:`subject/geographic[not(text()="Postwar United States (1945-1970).")]` OR
-    :code:`subject/geographic[not(text()="The Great Depression and World War II (1929-1945).")]` OR
-    :code:`subject/geographic[not(text()="The Emergence of Modern America (1890-1930).")]` OR
-    :code:`subject/geographic[not(text()="The Development of the Industrial United States (1870-1900).")]` OR
-    :code:`subject/geographic[not(text()="Expansion and Reform (1801-1861).")]` OR
-    :code:`subject/geographic[not(text()="Revolution and the New Nation (1754-1820).")]` OR
-    :code:`subject/geographic[not(text()="Colonization and Settlement (1585-1763).")]`
+    :code:`subject/geographic[not(string()="Contemporary United States (1968-present).")]` OR
+    :code:`subject/geographic[not(string()="Postwar United States (1945-1970).")]` OR
+    :code:`subject/geographic[not(string()="The Great Depression and World War II (1929-1945).")]` OR
+    :code:`subject/geographic[not(string()="The Emergence of Modern America (1890-1930).")]` OR
+    :code:`subject/geographic[not(string()="The Development of the Industrial United States (1870-1900).")]` OR
+    :code:`subject/geographic[not(string()="Expansion and Reform (1801-1861).")]` OR
+    :code:`subject/geographic[not(string()="Revolution and the New Nation (1754-1820).")]` OR
+    :code:`subject/geographic[not(string()="Colonization and Settlement (1585-1763).")]`
 
 Decision
 ^^^^^^^^
