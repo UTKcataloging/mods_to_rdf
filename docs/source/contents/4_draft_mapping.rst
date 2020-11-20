@@ -2471,7 +2471,7 @@ Justification
 ^^^^^^^^^^^^^
 XPath
 ^^^^^
-:code:`relatedItem/location/physicalLocation`
+:code:`relatedItem[@type='host'][@displayLabel='Collection']/location/physicalLocation`
 
 Decision
 ^^^^^^^^
@@ -2496,16 +2496,22 @@ Decision
     <https://example.org/objects/1> dbo:institution <http://id.loc.gov/authorities/names/no2014027633> ;
         dbo:collection "University of Tennessee President's Papers, 1867-1954, AR.0001" .
 
-relatedItem/name
-----------------
+relatedItem/name OR relatedItem[@type='constituent']/name
+---------------------------------------------------------
 Use Case
 ^^^^^^^^
+`name` with a `relatedItem` parent is used 131 times in the Bass Collection, and only appears in `relatedItem[@type='constituent']` elements. The children of `relatedItem[@type='constituent'` (or the siblings of `relatedItem/name`) provide descriptive information about distinct parts of the resource.
+
 Justification
 ^^^^^^^^^^^^^
+
 XPath
 ^^^^^
+:code:`relatedItem[@type='constituent']/name`
+
 Decision
 ^^^^^^^^
+
 
 relatedItem[@type='host'][@displayLabel='Is Part Of']
 -----------------------------------------------------
