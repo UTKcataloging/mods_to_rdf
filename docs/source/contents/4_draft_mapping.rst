@@ -1780,6 +1780,20 @@ Decision
 subject
 =======
 
+Namespaces
+----------
+
++-------------------------+----------------+-------------------+------------------------------------------------------+
+| Properties              | Value Type     | Range (if needed) | Usage Notes                                          |
++-------------------------+----------------+-------------------+------------------------------------------------------+
+| dcterms:spatial         | URI or Literal |                   | Use for geographic subjects and coordinates.         |
++-------------------------+----------------+-------------------+------------------------------------------------------+
+| dcterms:subject         | URI or Literal |                   | Use for topic and name subjects. URIs are preferred. |
++-------------------------+----------------+-------------------+------------------------------------------------------+
+| schema:temporalCoverage | Literal        |                   | Use for temporal subjects.   Numeric values should   |
+|                         |                |                   |      be formatted using EDTF.                        |
++-------------------------+----------------+-------------------+------------------------------------------------------+
+
 None type
 ---------
 
@@ -2123,7 +2137,7 @@ Justification
 ^^^^^^^^^^^^^
 
 It is important to treat these values as a separate category to ensure that the text value is not split across separate
-categories (aka schema:temporalCoverage and dcterms:subject). In addition, some standardization of the label needs to be
+categories (aka `schema:temporalCoverage` and `dcterms:subject`). In addition, some standardization of the label needs to be
 done for all the records associated with a given concept to be colocated.
 
 Xpath
