@@ -2178,7 +2178,7 @@ relatedItem as simple structural metadata
 -----------------------------------------
 Use Case
 ^^^^^^^^
-`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. These relationships will be handled/expressed by default behavior in our next-gen DAMS.
+`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. These relationships will be handled/expressed by default behavior in our next-gen DAMS. In the case of `relatedItem/abstract`, the values present should be handled at the collection level.
 
 Justification
 ^^^^^^^^^^^^^
@@ -2186,7 +2186,8 @@ Justification
 XPath
 ^^^^^
 :code:`relatedItem[not(@*)]` OR
-:code:`relatedItem[@type='host'][@displayLabel[matches(., 'project') or matches(., 'Project') or matches(., 'Digital Collection') or matches(., 'Project Part')]`
+:code:`relatedItem[@type='host'][@displayLabel[matches(., 'project') or matches(., 'Project') or matches(., 'Digital Collection') or matches(., 'Project Part') or matches(., 'Is Part Of')]` OR
+:code:`relatedItem/abstract`
 
 Decision
 ^^^^^^^^
