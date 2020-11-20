@@ -1972,7 +1972,7 @@ Xpath
 ^^^^^
 
     :code:`mods/subject[not(@valueURI)]/topic[not(@valueURI)]` OR
-    :code:`mods/subject[not(@valueURI)]/name[not(valueURI)]/namePart[not(valueURI)]` OR
+    :code:`mods/subject[not(@valueURI)]/name[not(valueURI)]/namePart[not(valueURI)]`
 
 Decision
 ^^^^^^^^
