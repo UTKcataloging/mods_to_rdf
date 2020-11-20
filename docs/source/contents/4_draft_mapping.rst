@@ -2167,7 +2167,11 @@ relatedItem
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 | opaque:memberOfArchivalSeries | URI/String Literal | N/A   | A URI or String Literal that indicates the archival series a resource belongs to.          |
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
-| opaque:sheetMusic_hostItem    | URI/String Literal | N/A   | A URI or String Literal that indicates the host itemfor the resource being described.      |
+| opaque:sheetMusic_hostItem    | URI/String Literal | N/A   | A URI or String Literal that indicates the host item for the resource being described.     |
++-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
+| relators:[term]               | URI/String Literal | N/A   | Use with a role from MARC Code List of Relators role terms.                                |
+|                               |                    |       | Value is either text or URI from a controlled vocabulary (like                             |
+|                               |                    |       | Library of Congress Name Authority File).                                                  |
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 
 relatedItem as simple structural metadata
