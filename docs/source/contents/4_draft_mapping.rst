@@ -1851,7 +1851,7 @@ Use Case
 
 Justification
 ^^^^^^^^^^^^^
-We chose to use the appropriate URIs for these based on the similarity between the values in this XPath and values present in :code:`mods:typeOfResource`.
+We chose to use the appropriate URIs for these based on the similarity between the values in this XPath and values present in :code:`mods:typeOfResource`. See the table in the preceding section for details.
 
 XPath
 ^^^^^
@@ -1874,7 +1874,8 @@ The `dcterms:type` property was selected.
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> edm:hasType "notated music", "sheet music" ;
+    <https://example.org/objects/1> edm:hasType "sheet music" ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> ;
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
 
 genre[@authority='aat']
