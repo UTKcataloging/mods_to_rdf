@@ -2768,31 +2768,6 @@ The `dcterms:tableOfContents` was selected to capture the title information avai
         relators:cre <http://id.loc.gov/authorities/names/n78078895> ;
         relators:cre <http://id.loc.gov/authorities/names/n50038965> .
 
-relatedItem[@type='host'][@displayLabel='Is Part Of']
------------------------------------------------------
-Use Case
-^^^^^^^^
-Justification
-^^^^^^^^^^^^^
-XPath
-^^^^^
-Decision
-^^^^^^^^
-Do not migrate.
-
-relatedItem/abstract
---------------------
-Use Case
-^^^^^^^^
-Justification
-^^^^^^^^^^^^^
-XPath
-^^^^^
-Decision
-^^^^^^^^
-Values present in `relatedItem/abstract` should be handled at the collection level. Do not migrate.
-
-
 Hierarchical Sheet Music Identifier
 -----------------------------------
 
