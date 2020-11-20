@@ -629,7 +629,7 @@ Regardless of the number, the value has the same semantic relationship to the ob
 Xpath
 ^^^^^
 
-:code:`mods:abstract[text()!=""]`
+:code:`mods:abstract[text()]`
 
 Decision
 ^^^^^^^^
@@ -682,7 +682,7 @@ The value of the text node has no semantic meaning or value.
 Xpaths
 ^^^^^^
 
-:code:`mods:abstract[text()=""]`
+:code:`mods:abstract[string()=""]`
 
 Decision
 ^^^^^^^^
