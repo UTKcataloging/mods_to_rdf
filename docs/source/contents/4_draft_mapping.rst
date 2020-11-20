@@ -1799,9 +1799,9 @@ These nodes contain no information.
 Xpath
 ^^^^^
 
-    :code:`subject/topic[text()='']` OR
-    :code:`subject/geographic[text()='']` OR
-    :code:`subject/name/namePart[text()='']`
+    :code:`subject/topic[string() = '']` OR
+    :code:`subject/geographic[string() = '']` OR
+    :code:`subject/name/namePart[string() = '']`
 
 Decision
 ^^^^^^^^
@@ -1875,12 +1875,11 @@ of the distinct Xpaths are given below:
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:subject "http://id.loc.gov/authorities/subjects/sh85147554" ;
-        dcterms:subject "http://id.loc.gov/authorities/subjects/sh85147447" ;
-        dcterms:subject "http://id.loc.gov/vocabulary/graphicMaterials/tgm008085" .
+    <https://example.org/objects/1> dcterms:subject <http://id.loc.gov/authorities/subjects/sh85147554> ;
+        dcterms:subject <http://id.loc.gov/authorities/subjects/sh85147447> ;
+        dcterms:subject <http://id.loc.gov/vocabulary/graphicMaterials/tgm008085> .
 
-`cdf:5384 as an example of mods:subject
-/mods:topic[@valueURI] <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A5384/datastream/MODS/view>`_
+`cdf:5384 as an example of mods:subject/mods:topic[@valueURI] <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A5384/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -1892,7 +1891,7 @@ of the distinct Xpaths are given below:
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:subject "http://id.loc.gov/authorities/subjects/sh85023396" .
+    <https://example.org/objects/1> dcterms:subject <http://id.loc.gov/authorities/subjects/sh85023396> .
 
 `wwiioh:2451 as an example of mods:subject[@valueURI]/mods:name/mods:namePart <https://digital.lib.utk.edu/collections/islandora/object/wwiioh%3A2451/datastream/MODS/view>`_.
 
@@ -1908,7 +1907,7 @@ of the distinct Xpaths are given below:
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:subject "http://id.loc.gov/authorities/names/n85185770" .
+    <https://example.org/objects/1> dcterms:subject <http://id.loc.gov/authorities/names/n85185770> .
 
 `helser:24792 as an example of mods:subject/mods:name[@valueURI] <https://digital.lib.utk.edu/collections/islandora/object/hesler%3A24792/datastream/MODS/view>`_.
 
@@ -1929,8 +1928,8 @@ of the distinct Xpaths are given below:
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:subject "http://id.loc.gov/authorities/names/n88144876" ;
-        dcterms:subject "http://id.loc.gov/authorities/names/n87116131" .
+    <https://example.org/objects/1> dcterms:subject <http://id.loc.gov/authorities/names/n88144876> ;
+        dcterms:subject <http://id.loc.gov/authorities/names/n87116131> .
 
 Name and topical subjects without URIs
 --------------------------------------
@@ -2413,7 +2412,7 @@ ambiguous, but doesn't state anything that is clearly untrue.
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/objects/1> dcterms:subject "Whaley, Aunt Lydia"
+    <https://example.org/objects/1> dcterms:subject "Whaley, Aunt Lydia" .
 
 genre
 =====
