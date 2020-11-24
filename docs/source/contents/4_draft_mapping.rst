@@ -2178,10 +2178,11 @@ relatedItem as simple structural metadata
 -----------------------------------------
 Use Case
 ^^^^^^^^
-`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. These relationships will be handled/expressed by default behavior in our next-gen DAMS. In the case of `relatedItem/abstract`, the values present should be handled at the collection level.
+`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. Currently, values in this XPath are displayed in both search/browse facets and the item-level metadata display.
 
 Justification
 ^^^^^^^^^^^^^
+These relationships will be handled/expressed by default behavior in our next-gen DAMS. In the case of `relatedItem/abstract`, the values present should be handled at the collection level.
 
 XPath
 ^^^^^
@@ -2192,6 +2193,65 @@ XPath
 Decision
 ^^^^^^^^
 Do not migrate.
+
+`Example record - relatedItem[not(@)]: volvoices:11925 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11925/datastream/MODS/content>`_
+.. code-block:: xml
+
+    <relatedItem>
+      <titleInfo>
+        <title>Digital Collection: The Growth of Democracy in Tennessee: A Grassroots Approach to Volunteer Voices</title>
+      </titleInfo>
+    </relatedItem>
+
+`Example record - relatedItem[@displayLabel='Project'][@type='host'] - roth:3346 <https://digital.lib.utk.edu/collections/islandora/object/roth:3346/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Project" type="host">
+      <titleInfo>
+        <title>Albert "Dutch" Roth Photograph Collection</title>
+      </titleInfo>
+    </relatedItem>
+
+`Example record - relatedItem[@displayLabel='project'][@type='host'] - thompson:1 <https://digital.lib.utk.edu/collections/islandora/object/thompson:1/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem type="host" displayLabel="project">
+      <titleInfo>
+        <title>Thompson Brothers Commercial Photographers</title>
+      </titleInfo>
+    </relatedItem>
+
+`Example record - relatedItem[@displayLabel='Digital Collection'][@type='host'] - cdf:7850 <https://digital.lib.utk.edu/collections/islandora/object/cdf:7850/datastream/MODS/view>`_. Synonymous with `@displayLabel = "Project"`.
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Digital Collection" type="host">
+      <titleInfo>
+        <title>Children's Defense Fund</title>
+      </titleInfo>
+    </relatedItem>
+
+`Example record - relatedItem[@displayLabel='Project Part'][@type='host'] - arrow:167 <https://digital.lib.utk.edu/collections/islandora/object/arrow:167/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <relatedItem type="host" displayLabel="Project">
+      <titleInfo>
+        <title>From Pi Beta Phi to Arrowmont</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Project Part" type="host">
+      <titleInfo>
+        <title>The Arrow of Pi Beta Phi</title>
+      </titleInfo>
+    </relatedItem>
+    <relatedItem displayLabel="Bibliographic Citation" type="host">
+      <titleInfo>
+        <title>The Arrow, Volume 61, Number 4</title>
+      </titleInfo>
+    </relatedItem>
 
 relatedItem[@type='host'][@displayLabel='Collection']
 -----------------------------------------------------
