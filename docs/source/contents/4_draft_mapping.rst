@@ -1794,16 +1794,16 @@ genre
 | edm:hasType     | URI/String Literal | N/A   |
 +-----------------+--------------------+-------+
 
-genre[not(@*)]
---------------
+genre[not(@*)] AND genre[@authority='dct']
+------------------------------------------
 
 Use Case
 ^^^^^^^^
-`genre`, without any attributes, has been used as a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource.
+`genre`, without any attributes, has been used as a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource. `genre[@authority='dct']` has three distinct values: "text", "still image", and "image", that broadly indicate the type of the resource being described.
 
 Justification
 ^^^^^^^^^^^^^
-For values *outside* of the following table, we selected the `edm:hasType` property as it aligns well with the possible overlap between `mods:genre` and `mods:physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the possible values in `genre[not(@*)]`.
+For values *outside* of the following table, we selected the `edm:hasType` property as it aligns well with the possible overlap between `mods:genre` and `mods:physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the union of values in `genre[not(@*)]` and `genre[@authority='dct']`.
 
 +-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 | (//genre[not(@*] | //genre[@authority='dct']) | RDF Predicate | URI                                              | dcterms text value |
@@ -1819,9 +1819,13 @@ For values *outside* of the following table, we selected the `edm:hasType` prope
 | text                                          | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/txt> | Text               |
 +-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 
-XPath
-^^^^^
-:code:`genre[not(@*)]`
+XPaths
+^^^^^^
+:code:`genre[not(@*)][string() = 'cartographic']` OR
+:code:`genre[not(@*)][string() = 'notated music']` OR
+:code:`genre[@authority = 'dct'][string() = 'image']` OR
+:code:`genre[@authority = 'dct'][string() = 'still image']` OR
+:code:`genre[@authority = 'dct'][string() = 'text']`
 
 Decision
 ^^^^^^^^
@@ -1841,25 +1845,6 @@ The property `edm:hasType` was selected for values that fall outside of the prec
 
     <https://example.org/objects/1> edm:hasType "sheet music" ;
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> .
-
-genre[@authority='dct']
------------------------
-
-Use Case
-^^^^^^^^
-`genre[@authority='dct']` has three distinct values: "text", "still image", and "image", that broadly indicate the type of the resource being described.
-
-Justification
-^^^^^^^^^^^^^
-We chose to use the appropriate URIs for these based on the similarity between the values in this XPath and values present in :code:`mods:typeOfResource`. See the table in the preceding section for details.
-
-XPath
-^^^^^
-:code:`genre[@authority='dct']`
-
-Decision
-^^^^^^^^
-The `dcterms:type` property was selected.
 
 `Example record - volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_
 
