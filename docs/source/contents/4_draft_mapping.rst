@@ -1794,8 +1794,8 @@ genre
 | edm:hasType     | URI/String Literal | N/A   |
 +-----------------+--------------------+-------+
 
-genre[not(@*)] AND genre[@authority='dct']
-------------------------------------------
+genre: values that map to dcterms:type and edm:hasType
+------------------------------------------------------
 
 Use Case
 ^^^^^^^^
