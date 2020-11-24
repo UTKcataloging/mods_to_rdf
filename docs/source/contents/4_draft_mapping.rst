@@ -1794,8 +1794,8 @@ genre
 | edm:hasType     | URI/String Literal | N/A   |
 +-----------------+--------------------+-------+
 
-genre: values that map to dcterms:type and edm:hasType
-------------------------------------------------------
+genre: values that map to dcterms:type
+--------------------------------------
 
 Use Case
 ^^^^^^^^
@@ -1818,8 +1818,6 @@ For values *outside* of the following table, we selected the `edm:hasType` prope
 +-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 | text                                          | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/txt> | Text               |
 +-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
-| *                                             | edm:hasType   | <http://www.europeana.eu/schemas/edm/>           | N/A                |
-+-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 
 XPaths
 ^^^^^^
@@ -1827,15 +1825,14 @@ XPaths
 :code:`genre[not(@*)][string() = 'notated music']` OR
 :code:`genre[@authority = 'dct'][string() = 'image']` OR
 :code:`genre[@authority = 'dct'][string() = 'still image']` OR
-:code:`genre[@authority = 'dct'][string() = 'text']` OR
-:code:`genre[not(@*) and not(string() = ('cartographic','notated music'))]`
+:code:`genre[@authority = 'dct'][string() = 'text']`
 
-Alternately, the first set of XPaths can be notated as:
+Alternately, these XPaths can be notated as:
 :code:`genre[(not(@*) and (string() = ('cartographic', 'notated music')) or (@authority = 'dct' and (string() = ('text', 'image', 'still image')))]`
 
 Decision
 ^^^^^^^^
-The property `edm:hasType` was selected for values that fall outside of the preceding table. For values that match, `dcterms:type` has been selected.
+The `dcterms:type` property has been selected.
 
 `Example record - volvoices:11551 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11551/datastream/MODS/view>`_
 
@@ -1868,6 +1865,36 @@ The property `edm:hasType` was selected for values that fall outside of the prec
     <https://example.org/objects/1> edm:hasType "sheet music" ;
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> ;
         dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
+
+genre values that map to edm:hasType
+------------------------------------
+Use Case
+^^^^^^^^
+`genre[not(@*)]` has been used a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource.
+
+Justification
+^^^^^^^^^^^^^
+The values in this XPath fall outside of the table presented in the preceding section ("genre values that map to dcterms:type").
+
+XPath
+^^^^^
+:code:`genre[not(@*) and not(string() = ('cartographic','notated music'))]`
+
+Decision
+^^^^^^^^
+Use the `edm:hasType` property for these values.
+
+`Example record - volvoices:3827 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:3827/datastream/MODS/content>`_
+
+.. code-block:: xml
+
+    <genre>Hogsheads</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/objects/1> edm:hasType "Hogsheads" .
 
 genre[@authority='aat']
 -----------------------
