@@ -2174,11 +2174,11 @@ relatedItem
 |                               |                    |       | Library of Congress Name Authority File).                                                  |
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 
-relatedItem as simple structural metadata
------------------------------------------
+relatedItem - do not migrate
+----------------------------
 Use Case
 ^^^^^^^^
-`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. Currently, values in this XPath are displayed in both search/browse facets and the item-level metadata display.
+`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. Currently, values in this XPath are displayed in both search/browse facets and the item-level metadata display. Post-migration, we will need to consider how to express these relationships in our next-gen DAMS.
 
 Justification
 ^^^^^^^^^^^^^
@@ -2261,6 +2261,7 @@ This XPath is used to indicate the resource's archival collection.
 
 Justification
 ^^^^^^^^^^^^^
+We use these values for search/browse facets, as well as item-level metadata display. Additionally, collection titles are shared with DPLA.
 
 XPath
 ^^^^^
