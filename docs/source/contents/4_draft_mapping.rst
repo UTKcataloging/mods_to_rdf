@@ -1818,6 +1818,8 @@ For values *outside* of the following table, we selected the `edm:hasType` prope
 +-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 | text                                          | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/txt> | Text               |
 +-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| *                                             | edm:hasType   | <http://www.europeana.eu/schemas/edm/>           | N/A                |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 
 XPaths
 ^^^^^^
@@ -1825,7 +1827,11 @@ XPaths
 :code:`genre[not(@*)][string() = 'notated music']` OR
 :code:`genre[@authority = 'dct'][string() = 'image']` OR
 :code:`genre[@authority = 'dct'][string() = 'still image']` OR
-:code:`genre[@authority = 'dct'][string() = 'text']`
+:code:`genre[@authority = 'dct'][string() = 'text']` OR
+:code:`genre[not(@*) and not(string() = ('cartographic','notated music'))]`
+
+Alternately, the first set of XPaths can be notated as:
+:code:`genre[(not(@*) and (string() = ('cartographic', 'notated music')) or (@authority = 'dct' and (string() = ('text', 'image', 'still image')))]`
 
 Decision
 ^^^^^^^^
