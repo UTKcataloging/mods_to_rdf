@@ -2529,12 +2529,16 @@ This XPath is used once in the Charles Dabney collection. It provides an authori
 
 Justification
 ^^^^^^^^^^^^^
+As this is only used once in our metadata, we have decided to remediate this XPath.
+
 XPath
 ^^^^^
 :code:`relatedItem[@type='host'][@displayLabel='Collection']/location/physicalLocation`
 
 Decision
 ^^^^^^^^
+Do not migrate.
+
 `Example record - collections:dabney <https://digital.lib.utk.edu/collections/islandora/object/collections:dabney/datastream/MODS/view>`_
 
 .. code-block:: xml
@@ -2548,13 +2552,6 @@ Decision
         <physicalLocation authority="naf" valueURI="http://id.loc.gov/authorities/names/no2014027633">University of Tennessee, Knoxville. Special Collections</physicalLocation>
       </location>
     </relatedItem>
-
-.. code-block:: turtle
-
-    @prefix dbo: <http://dbpedia.org/ontology/> .
-
-    <https://example.org/objects/1> dbo:institution <http://id.loc.gov/authorities/names/no2014027633> ;
-        dbo:collection "University of Tennessee President's Papers, 1867-1954, AR.0001" .
 
 relatedItem[@type='constituent']
 --------------------------------
