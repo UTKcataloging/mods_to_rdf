@@ -2820,25 +2820,6 @@ The `dcterms:tableOfContents` was selected to capture the title information avai
         relators:cre <http://id.loc.gov/authorities/names/n78078895> ;
         relators:cre <http://id.loc.gov/authorities/names/n50038965> .
 
-Hierarchical Sheet Music Identifier
------------------------------------
-
-Use Case
-^^^^^^^^
-
-Justification
-^^^^^^^^^^^^^
-
-Xpath
-^^^^^
-
-mods: relatedItem[@type="otherVersion"]/mods:identifier[@type="catalog"]
-
-Decision
-^^^^^^^^
-
-opaque:hostItem
-
 location
 ========
 
