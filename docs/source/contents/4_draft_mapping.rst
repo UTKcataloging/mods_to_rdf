@@ -2301,13 +2301,15 @@ The `@type='series'` XPath indicates a resource's archival series.
 
 Justification
 ^^^^^^^^^^^^^
+We decided not to migrate to be consistent with how we are approaching other parts of metadata relating back to a resource's archival collection. We are not migrating box and folder information, so we will not migrate series information either.
+
 XPath
 ^^^^^
 :code:`relatedItem[@type='series'][@displayLabel='Project']`
 
 Decision
 ^^^^^^^^
-The `opaque:memberOfArchivalSeries` predicate was chosen for these values.
+Do not migrate.
 
 `Example record - roth:1538 <https://digital.lib.utk.edu/collections/islandora/object/roth:1538/datastream/MODS/view>`_
 
@@ -2329,14 +2331,6 @@ The `opaque:memberOfArchivalSeries` predicate was chosen for these values.
         <title>Albert "Dutch" Roth Photograph Collection</title>
       </titleInfo>
     </relatedItem>
-
-.. code-block:: turtle
-
-    @prefix dbo: <http://dbpedia.org/ontology/> .
-    @prefix opaque: <http://opaquenamespace.org/ns/> .
-
-    <https://example.org/objects/1> dbo:collection """A. G. "Dutch" and Margaret Ann Roth Papers, MS.3334""" ;
-        opaque:memberOfArchivalSeries "Series II: Margaret Ann Roth Photographs and Other Materials, 1947 March 11-2002 December 14 (bulk 1947 March 11-1955 March 20). Sub-Series A: Photographs, 1947 March 11-1955 March 139" .
 
 relatedItem[@type='host'][@displayLabel='Bibliographic Citation']
 -----------------------------------------------------------------
