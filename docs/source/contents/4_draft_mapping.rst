@@ -2492,6 +2492,8 @@ This XPath is used 8516 times, but only has 33 distinct strings.
 
 Justification
 ^^^^^^^^^^^^^
+This value is used to highlight the archival collection related to the resource being described. Its availability encourages users to further explore the archival collection by giving them a link to the finding aid.
+
 XPath
 ^^^^^
 :code:`relatedItem/location/url`
