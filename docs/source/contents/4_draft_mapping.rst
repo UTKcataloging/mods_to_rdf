@@ -1867,6 +1867,298 @@ subject
 genre
 =====
 
++-----------------+--------------------+-------+
+| Predicate       | Value Type         | Range |
++-----------------+--------------------+-------+
+| dcterms:type    | URI/String Literal | N/A   |
++-----------------+--------------------+-------+
+| dcterms:subject | URI/String Literal | N/A   |
++-----------------+--------------------+-------+
+| edm:hasType     | URI/String Literal | N/A   |
++-----------------+--------------------+-------+
+
+genre: values that map to dcterms:type
+--------------------------------------
+
+Use Case
+^^^^^^^^
+`genre`, without any attributes, has been used as a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource. `genre[@authority='dct']` has three distinct values: "text", "still image", and "image", that broadly indicate the type of the resource being described.
+
+Justification
+^^^^^^^^^^^^^
+For values *outside* of the following table, we selected the `edm:hasType` property as it aligns well with the possible overlap between `mods:genre` and `mods:physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the union of values in `genre[not(@*)]` and `genre[@authority='dct']`.
+
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| (//genre[not(@*] | //genre[@authority='dct']) | RDF Predicate | URI                                              | dcterms text value |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| cartographic                                  | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/car> | Cartographic       |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| image                                         | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | Image              |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| notated music                                 | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/not> | Notated music      |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| still image                                   | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/img> | Still image        |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+| text                                          | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/txt> | Text               |
++-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
+
+XPaths
+^^^^^^
+:code:`genre[not(@*)][string() = 'cartographic']` OR
+:code:`genre[not(@*)][string() = 'notated music']` OR
+:code:`genre[@authority = 'dct'][string() = 'image']` OR
+:code:`genre[@authority = 'dct'][string() = 'still image']` OR
+:code:`genre[@authority = 'dct'][string() = 'text']`
+
+Alternately, these XPaths can be notated as:
+:code:`genre[(not(@*) and (string() = ('cartographic', 'notated music')) or (@authority = 'dct' and (string() = ('text', 'image', 'still image')))]`
+
+Decision
+^^^^^^^^
+The `dcterms:type` property has been selected.
+
+`Example record - volvoices:11551 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11551/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre>notated music</genre>
+    <genre>sheet music</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> edm:hasType "sheet music" ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> .
+
+`Example record - volvoices:11262 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11262/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre>notated music</genre>
+    <genre authority="dct">still image</genre>
+    <genre>sheet music</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/objects/1> edm:hasType "sheet music" ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/not> ;
+        dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
+
+genre values that map to edm:hasType
+------------------------------------
+Use Case
+^^^^^^^^
+`genre[not(@*)]` has been used a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource.
+
+Justification
+^^^^^^^^^^^^^
+The values in this XPath fall outside of the table presented in the preceding section ("genre values that map to dcterms:type").
+
+XPath
+^^^^^
+:code:`genre[not(@*) and not(string() = ('cartographic','notated music'))]`
+
+Decision
+^^^^^^^^
+Use the `edm:hasType` property for these values.
+
+`Example record - volvoices:3827 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:3827/datastream/MODS/content>`_
+
+.. code-block:: xml
+
+    <genre>Hogsheads</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/objects/1> edm:hasType "Hogsheads" .
+
+genre[@authority='aat']
+-----------------------
+
+Use Case
+^^^^^^^^
+`genre[@authority='aat']` appears in the Archivision collection and uses a controlled vocabulary.
+
+Justification
+^^^^^^^^^^^^^
+These will be treated as `dcterms:subject`, based on the values from the AAT controlled vocabulary.
+
+XPath
+^^^^^
+:code:`genre[@authority='aat']`
+
+Decision
+^^^^^^^^
+The `dcterms:subject` property was selected.
+
+`Example record - archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_
+.. code-block:: xml
+
+    <genre authority="aat" valueURI="http://vocab.getty.edu/aat/300021140">Renaissance</genre>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/object/1> dcterms:subject <http://vocab.getty.edu/aat/300021140> .
+
+genre[@authority='lcsh']
+------------------------
+
+Use Case
+^^^^^^^^
+Used in the Archivision, Charlie Daniels, and AirScoop collections. There are four distinct values in the XPath: "Editorial cartoons", "College student newspapers and periodicals", "Twentieth century", and "Nineteenth century".
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`genre[@authority='lcsh']`
+
+Decision
+^^^^^^^^
+The `dcterms:subject` property was selected.
+
+`Example record - cDanielCartoon:455 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:455/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <genre authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85040974">Editorial cartoons</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+
+and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/archivision:1754/datastream/MODS/view>`_.
+
+.. code-block:: xml
+
+    <genre authority="lcsh" valueURI="http://id.loc.gov/authorities/subjects/sh85139020">Twentieth century</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+
+genre[@authority='lcgft']
+-------------------------
+Use Case
+^^^^^^^^
+This `genre` element is used in the Arrowmont, Van Vactor, VP Moore, and Kefauver Crime Documents collections.
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`genre[@authority='lcgft']`
+
+Decision
+^^^^^^^^
+The `edm:hasType` property was selected.
+
+`Example record - ekcd:611 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:611/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026131">Newsletters</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026131> .
+
+`Example record - vpmoore:50 <https://digital.lib.utk.edu/collections/islandora/object/vpmoore:50/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre authority="lcgft" authorityURI="http://id.loc.gov/authorities/genreForms" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026173">Scrapbooks</genre>
+
+.. code-block:: turtle
+
+    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+
+    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/genreForms/gf2014026173> .
+
+genre[@authority='lcmpt']
+-------------------------
+Use Case
+^^^^^^^^
+This XPath is used in the Van Vactor collection to express performance medium and instrumentation information.
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`genre[@authority='lcmpt']`
+
+Decision
+^^^^^^^^
+The `dcterms:subject` property was selected.
+
+`Example record - vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <genre authority="lcmpt" valueURI="http://id.loc.gov/authorities/performanceMediums/mp2013015074">bassoon</genre>
+    <genre authority="lcmpt" valueURI="http://id.loc.gov/authorities/performanceMediums/mp2013015342">horn</genre>
+    <genre authority="lcmpt" valueURI="http://id.loc.gov/authorities/performanceMediums/mp2013015748">trumpet</genre>
+    <genre authority="lcmpt" valueURI="http://id.loc.gov/authorities/performanceMediums/mp2013015540">percussion</genre>
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014027156">Variations (Music)</genre>
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026956">Musical sketches</genre>
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/genreForms/gf2014026097">Excerpts</genre>
+    <genre authority="lcgft" valueURI="http://id.loc.gov/authorities/subjects/sh99001779">Scores</genre>
+
+.. code-block:: turtle
+
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+
+    <https://example.org/object/1>
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015074> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015342> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015748> ;
+        dcterms:subject <http://id.loc.gov/authorities/performanceMediums/mp2013015540> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014027156> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026956> ;
+        dcterms:type <http://id.loc.gov/authorities/genreForms/gf2014026097> ;
+        dcterms:type <http://id.loc.gov/authorities/subjects/sh99001779> .
+
+genre[not(text())]
+------------------
+Use Case
+^^^^^^^^
+Empty `genre` elements should not be migrated.
+
+Justification
+^^^^^^^^^^^^^
+
+XPath
+^^^^^
+:code:`genre[not(text())]`
+
+Decision
+^^^^^^^^
+Do not migrate.
+
+..code-block:: xml
+    <genre valueURI=""/>
+
+..code-block:: xml
+    <genre authority="lcgft" authorityURI="http://id.loc.gov/authorities/genreForms"/>
+
 language
 ========
 
