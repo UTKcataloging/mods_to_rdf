@@ -2431,6 +2431,7 @@ I'm not sure about the relevance of `relatedItem[@type='otherVersion']/location/
 
 relatedItem/identifier[@type = 'local']
 ---------------------------------------
+
 Use Case
 ^^^^^^^^
 This XPath's attribute value (`local`) is used to indicate the manuscript number associated with the resource's archival collection.
@@ -2466,6 +2467,7 @@ Decision
 
 relatedItem/identifier[@type = 'catalog']
 -----------------------------------------
+
 Use Case
 ^^^^^^^^
 `@type='catalog'` is used exclusively in the Van Vactor collection to indicate the identifying number for an alternate version of the score.
@@ -2518,6 +2520,7 @@ Decision
 
 relatedItem/identifier[@type = 'pid']
 -------------------------------------
+
 Use Case
 ^^^^^^^^
 `@type='pid'` is used in collection-level records to indicate featured items and should not be migrated.
@@ -2551,6 +2554,7 @@ Do not migrate.
 
 relatedItem/location/url
 ------------------------
+
 Use Case
 ^^^^^^^^
 This XPath is used 8516 times, but only has 33 distinct strings.
@@ -2590,6 +2594,7 @@ The `dbo:isPartOf` property was selected.
 
 relatedItem/location/physicalLocation/
 --------------------------------------
+
 Use Case
 ^^^^^^^^
 This XPath is used once in the Charles Dabney collection. It provides an authority, a valueURI, and string value, in this single case, for the University of Tennessee's Special Collections.
