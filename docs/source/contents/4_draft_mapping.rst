@@ -2188,7 +2188,8 @@ XPath
 ^^^^^
 :code:`relatedItem[not(@*)]` OR
 :code:`relatedItem[@type='host'][@displayLabel[matches(., 'project') or matches(., 'Project') or matches(., 'Digital Collection') or matches(., 'Project Part') or matches(., 'Is Part Of')]` OR
-:code:`relatedItem/abstract`
+:code:`relatedItem/abstract` OR
+:code:`relatedItem[@displayLabel='Featured Item']`
 
 Decision
 ^^^^^^^^
@@ -2251,6 +2252,21 @@ Do not migrate.
       <titleInfo>
         <title>The Arrow, Volume 61, Number 4</title>
       </titleInfo>
+    </relatedItem>
+
+`Exmaple record - relatedItem[@displayLabel='Featured Item'] - collections:mugwump <view-source:https://digital.lib.utk.edu/collections/islandora/object/collections:mugwump/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Featured Item">
+      <titleInfo>
+        <title>Mugwump, volume 11, number 6</title>
+      </titleInfo>
+      <identifier type="pid">mugwump:3380</identifier>
+      <abstract>Monthly student publication that highlights student life issues, sports, literary critiques, poetry, as well as cartoons and art work.</abstract>
+      <originInfo>
+        <dateIssued>March 1931</dateIssued>
+      </originInfo>
     </relatedItem>
 
 relatedItem[@type='host'][@displayLabel='Collection']
