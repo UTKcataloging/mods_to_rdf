@@ -2407,7 +2407,7 @@ Decision
 ^^^^^^^^
 See the following section on `relatedItem/identifier[@type]`.
 
-I'm not sure about the relevance of `relatedItem[@type='otherVersion']/location/url`. In theory, it would look something like this, but it would need to be added to our metadata/RDF after migration:
+The XPath `relatedItem[@type='otherVersion']/location/url` will not be migrated. Because it provides a link back to the hosting scrapbook, we will not be able to migrate this specific XPath. This will need to be a post-migration metadata update.
 
 `Example record - arrpgimg:319 <https://digital.lib.utk.edu/collections/islandora/object/arrpgimg:319/datastream/MODS/view>`_
 
