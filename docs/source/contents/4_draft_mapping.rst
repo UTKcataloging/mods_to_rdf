@@ -2165,8 +2165,6 @@ relatedItem
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 | dbo:isPartOf                  | URI                | N/A   | A URI that represents the physical archival collection a resource belongs to.              |
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
-| opaque:memberOfArchivalSeries | URI/String Literal | N/A   | A URI or String Literal that indicates the archival series a resource belongs to.          |
-+-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 | opaque:sheetMusic_hostItem    | URI/String Literal | N/A   | A URI or String Literal that indicates the host item for the resource being described.     |
 +-------------------------------+--------------------+-------+--------------------------------------------------------------------------------------------+
 | relators:[term]               | URI/String Literal | N/A   | Use with a role from MARC Code List of Relators role terms.                                |
