@@ -2413,17 +2413,19 @@ I'm not sure about the relevance of `relatedItem[@type='otherVersion']/location/
 
     <https://example.org/objects/1> dcterms:hasVersion <uri-of-source-scrapbook-in-new-system> .
 
-relatedItem/identifier[@type]
------------------------------
+relatedItem/identifier[@type = 'local']
+---------------------------------------
 Use Case
 ^^^^^^^^
-This XPath's `@type` has three distinct values: `local`, `catalog`, and `pid`. `@type='pid'` is used in collection-level records to indicate featured items and should not be migrated. `@type='local'` is used to indicate the manuscript number of the resource's archival collection. `@type='catalog'` is used in the Van Vactor collection to indicate the identifying number for an alternate version of the score.
+This XPath's attribute value (`local`) is used to indicate the manuscript number associated with the resource's archival collection.
 
 Justification
 ^^^^^^^^^^^^^
+While we have decided to ignore granular archival metadata (e.g. box/folder or series information), migrating a known manuscript number gives us the ability to link back to the resource's finding aid.
+
 XPath
 ^^^^^
-:code:`relatedItem/identifier[@type]`
+:code:`relatedItem/identifier[@type='local']`
 
 Decision
 ^^^^^^^^
@@ -2446,6 +2448,22 @@ Decision
 
     <https://example.org/objects/1> dbo:collection "Botany Department Photographs, AR.0488" .
 
+relatedItem/identifier[@type = 'catalog']
+-----------------------------------------
+Use Case
+^^^^^^^^
+`@type='catalog'` is used exclusively in the Van Vactor collection to indicate the identifying number for an alternate version of the score.
+
+Justification
+^^^^^^^^^^^^^
+This XPath provides contextual data for users.
+
+XPath
+^^^^^
+:code:`relatedItem/identifier[@type='catalog']`
+
+Decision
+^^^^^^^^
 `@type='catalog'`'s value, if present, will be represented by the `opaque:sheetmusic_hostItem` property.
 
 `Example record - vanvactor:10012 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:10012/datastream/MODS/view>`_
@@ -2482,7 +2500,38 @@ Decision
         dbo:isPartOf <https://n2t.net/ark:/87290/v8pz5703> ;
         opaque:sheetmusic_hostItem "Three songs for soprano, alto flute, English horn, and bass clarinet, M120" .
 
-`@type='pid'` will not be migrated.
+relatedItem/identifier[@type = 'pid']
+-------------------------------------
+Use Case
+^^^^^^^^
+`@type='pid'` is used in collection-level records to indicate featured items and should not be migrated.
+
+Justification
+^^^^^^^^^^^^^
+We will determine alternate ways of modeling featured item metadata post-migration.
+
+XPath
+^^^^^
+:code:`relatedItem/identifier[@type='pid']`
+
+Decision
+^^^^^^^^
+Do not migrate.
+
+`Example record - collections:knoxgardens <https://digital.lib.utk.edu/collections/islandora/object/collections:knoxgardens/datastream/MODS/view>_`
+
+.. code-block:: xml
+
+    <relatedItem displayLabel="Featured Item">
+        <titleInfo>
+            <title>Mrs. Hazz's Dogwoods</title>
+        </titleInfo>
+        <identifier type="pid">knoxgardens:133</identifier>
+        <abstract>Glass slide of Dogwoods in a garden.</abstract>
+        <originInfo>
+            <dateCreated>1927-1935</dateCreated>
+        </originInfo>
+    </relatedItem>
 
 relatedItem/location/url
 ------------------------
