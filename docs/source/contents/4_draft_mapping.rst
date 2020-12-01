@@ -2194,6 +2194,7 @@ Decision
 Do not migrate.
 
 `Example record - relatedItem[not(@)]: volvoices:11925 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11925/datastream/MODS/content>`_
+
 .. code-block:: xml
 
     <relatedItem>
@@ -2252,7 +2253,7 @@ Do not migrate.
       </titleInfo>
     </relatedItem>
 
-`Exmaple record - relatedItem[@displayLabel='Featured Item'] - collections:mugwump <view-source:https://digital.lib.utk.edu/collections/islandora/object/collections:mugwump/datastream/MODS/view>`_
+`Example record - relatedItem[@displayLabel='Featured Item'] - collections:mugwump <https://digital.lib.utk.edu/collections/islandora/object/collections:mugwump/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
