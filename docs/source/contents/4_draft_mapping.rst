@@ -44,21 +44,33 @@ Simple Example
 Namespaces
 **********
 
-+------------------+----------------------------------------+
-| Predicate Prefix | Namespace                              |
-+==================+========================================+
-| bf               | http://id.loc.gov/ontologies/bibframe/ |
-+------------------+----------------------------------------+
-| dce              | http://purl.org/dc/elements/1.1/       |
-+------------------+----------------------------------------+
-| edm              | http://www.europeana.eu/schemas/edm/   |
-+------------------+----------------------------------------+
-| relators         | http://id.loc.gov/vocabulary/relators/ |
-+------------------+----------------------------------------+
-| opaque           | http://opaquenamespace.org/ns/         |
-+------------------+----------------------------------------+
-| skos             | http://www.w3.org/2004/02/skos/core#   |
-+------------------+----------------------------------------+
++------------------------------+--------------+--------------------------------------------+
+| Vocabulary Name              | Prefix       | URI                                        |
++------------------------------+--------------+--------------------------------------------+
+| BIBFRAME                     | bf           | http://id.loc.gov/ontologies/bibframe/     |
++------------------------------+--------------+--------------------------------------------+
+| Classification Schemes       | classSchemes | http://id.loc.gov/vocabulary/classSchemes/ |
++------------------------------+--------------+--------------------------------------------+
+| DBpedia Ontology             | dbo          | http://dbpedia.org/ontology/               |
++------------------------------+--------------+--------------------------------------------+
+| DCMI Metadata Terms          | dcterms      | http://purl.org/dc/terms/                  |
++------------------------------+--------------+--------------------------------------------+
+| Dublin Core Metadata Element | dce          | http://purl.org/dc/elements/1.1/           |
+| Set, Version 1.1             |              |                                            |
++------------------------------+--------------+--------------------------------------------+
+| Europeana Data Model         | edm          | http://www.europeana.eu/schemas/edm/       |
++------------------------------+--------------+--------------------------------------------+
+| MARC Code List for Relators  | relators     | http://id.loc.gov/vocabulary/relators/     |
++------------------------------+--------------+--------------------------------------------+
+| Opaque Namespace             | opaque       | http://opaquenamespace.org/ns/             |
++------------------------------+--------------+--------------------------------------------+
+| RDA Unconstrained            | rdau         | http://www.rdaregistry.info/Elements/u/    |
++------------------------------+--------------+--------------------------------------------+
+| SKOS Simple Knowledge        | skos         | http://www.w3.org/2004/02/skos/core#       |
+| Organization System          |              |                                            |
++------------------------------+--------------+--------------------------------------------+
+| Standard Identifier Scheme   | identifiers  | http://id.loc.gov/vocabulary/identifiers/  |
++------------------------------+--------------+--------------------------------------------+
 
 *******
 Mapping
@@ -66,6 +78,20 @@ Mapping
 
 identifier
 ==========
+
++------------------------+------------+-------------------+---------------------------------------------------------------------------------------+
+| Predicate              | Value Type | Range (if needed) | Usage Notes                                                                           |
++------------------------+------------+-------------------+---------------------------------------------------------------------------------------+
+| dbo:isbn               | Literal    |                   | Use for identifiers with type=""isbn                                                  |
++------------------------+------------+-------------------+---------------------------------------------------------------------------------------+
+| dbo:issn               | Literal    |                   | Use for identifiers with type=""issn"                                                 |
++------------------------+------------+-------------------+---------------------------------------------------------------------------------------+
+| dbo:oclc               | Literal    |                   | Use for identifiers with type="oclc"                                                  |
++------------------------+------------+-------------------+---------------------------------------------------------------------------------------+
+| identifiers:local      | Literal    |                   | Use for the majority of identifiers (all those that do not fit into other categories) |
++------------------------+------------+-------------------+---------------------------------------------------------------------------------------+
+| opaque:accessionNumber | Literal    |                   | Use for identifiers with type="acquisition"                                           |
++------------------------+------------+-------------------+---------------------------------------------------------------------------------------+
 
 Local Identifiers
 -----------------
@@ -126,7 +152,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers> .
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
     <https://example.org/objects/1>
         identifiers:local "egypt:8" .
 
@@ -138,7 +164,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers> .
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
 
     <https://example.org/objects/1>
         identifiers:local "Circular 79" .
@@ -216,10 +242,10 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix dbpedia: <http://dbpedia.org/ontology/> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
-        dbpedia:oclc "44394278" .
+        dbo:oclc "44394278" .
 
 ISSNs
 -----
@@ -271,10 +297,10 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix dbpedia: <http://dbpedia.org/ontology/> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
-        dbpedia:issn "2687-7325" .
+        dbo:issn "2687-7325" .
 
 ISBNs
 -----
@@ -304,10 +330,10 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix dbpedia: <http://dbpedia.org/ontology/> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
-        dbpedia:issn "0938008501" .
+        dbo:issn "0938008501" .
 
 titleInfo
 =========
@@ -607,7 +633,7 @@ abstract
 ========
 
 +------------------+------------+-------------------+-----------------------------------------------------+
-| Predicate        | Value Type | Range (if needed) | Usage notes                                         |
+| Predicate        | Value Type | Range (if needed) | Usage Notes                                         |
 +==================+============+===================+=====================================================+
 | dcterms:abstract | Literal    |                   | Use for all mods:abstracts that are not blank nodes |
 +------------------+------------+-------------------+-----------------------------------------------------+
@@ -757,9 +783,9 @@ Namespaces
 ----------
 
 +-----------------+-----------------------+-------------------+----------------------------------------------------------------+
-| Properties      | Value Type            | Range (if needed) | Usage Notes                                                    |
+| Predicate       | Value Type            | Range (if needed) | Usage Notes                                                    |
 +=================+=======================+===================+================================================================+
-| relators:[term] | URI or String Literal | N/A               | Use with a role from MARC Code List of Relatorsrole terms.     |
+| relators:[term] | URI or String Literal |                   | Use with a role from MARC Code List of Relators role terms.    |
 |                 |                       |                   | Value is either text or URI from acontrolled vocabulary (like  |
 |                 |                       |                   | Library of CongressName Authority File).                       |
 +-----------------+-----------------------+-------------------+----------------------------------------------------------------+
@@ -945,19 +971,19 @@ Do not migrate.
 originInfo
 ==========
 
-+-----------------+-------------+-------+------------------------------------------------------------------------------+
-| RDF predicate   | Value type  | Range | Usage notes                                                                  |
-+-----------------+-------------+-------+------------------------------------------------------------------------------+
-| dcterms:created | Literal     | N/A   | The date a resource was created, formatted as an EDTF string.                |
-+-----------------+-------------+-------+------------------------------------------------------------------------------+
-| dcterms:issued  | Literal     | N/A   | The date a resource was issued, formatted as an EDTF string.                 |
-+-----------------+-------------+-------+------------------------------------------------------------------------------+
-| dcterms:date    | Literal     | N/A   | An unspecified date associated with a resource, formatted as an EDTF string. |
-+-----------------+-------------+-------+------------------------------------------------------------------------------+
-| relators:pbl    | Literal/URI | N/A   | The publisher associated with the resource.                                  |
-+-----------------+-------------+-------+------------------------------------------------------------------------------+
-| relators:pup    | Literal/URI | N/A   | A place associated with the publication of the resource.                     |
-+-----------------+-------------+-------+------------------------------------------------------------------------------+
++-----------------+----------------+-------------------+------------------------------------------------------------------------------+
+| Predicate       | Value Type     | Range (if needed) | Usage Notes                                                                  |
++-----------------+----------------+-------------------+------------------------------------------------------------------------------+
+| dcterms:created | Literal or URI |                   | The date a resource was created, formatted as an EDTF string.                |
++-----------------+----------------+-------------------+------------------------------------------------------------------------------+
+| dcterms:issued  | Literal or URI |                   | The date a resource was issued, formatted as an EDTF string.                 |
++-----------------+----------------+-------------------+------------------------------------------------------------------------------+
+| dcterms:date    | Literal or URI |                   | An unspecified date associated with a resource, formatted as an EDTF string. |
++-----------------+----------------+-------------------+------------------------------------------------------------------------------+
+| relators:pbl    | Literal or URI |                   | The publisher associated with the resource.                                  |
++-----------------+----------------+-------------------+------------------------------------------------------------------------------+
+| relators:pup    | Literal or URI |                   | A place associated with the publication of the resource.                     |
++-----------------+----------------+-------------------+------------------------------------------------------------------------------+
 
 originInfo/dateCreated
 ----------------------
@@ -1149,7 +1175,7 @@ As part of leveraging the EDTF format, some conversion will be necessary; e.g. t
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1> dcterms:issued "Jun 30, 1965", "1965-06-30" ;
         dcterms:date "1964/1965" ;
@@ -1194,7 +1220,7 @@ The majority of the applicable values are associate with a `@valueURI`.  The `re
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> relators:pbl "Keystone View Company" ;
@@ -1238,7 +1264,7 @@ The `relators:pbl` property was selected.
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1> relators:pbl "Frederick D. Benteen" ;
         relators:pup <http://id.loc.gov/authorities/names/n79006530> .
@@ -1268,6 +1294,18 @@ We will not be migrating `issuance`.
 
 physicalDescription
 ===================
+
++------------------+----------------+-------------------+--------------------------------------------------+
+| Predicate        | Value Type     | Range (if needed) | Usage Notes                                      |
++------------------+----------------+-------------------+--------------------------------------------------+
+| dcterms:abstract | Literal        |                   | Use for form values with @type="material".       |
++------------------+----------------+-------------------+--------------------------------------------------+
+| edm:hasType      | URI or Literal |                   | Use for form values without attributes.          |
++------------------+----------------+-------------------+--------------------------------------------------+
+| rdau:P60550      | Literal        |                   | Use for all extent values.                       |
++------------------+----------------+-------------------+--------------------------------------------------+
+| skos:note        | Literal        |                   | Use for notes nested within physicalDescription. |
++------------------+----------------+-------------------+--------------------------------------------------+
 
 digitalOrigin
 -------------
@@ -2940,6 +2978,14 @@ https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MO
 typeOfResource
 ==============
 
++--------------+------------+-------------------+-----------------------------------------------------------+
+| Predicate    | Value Type | Range (if needed) | Usage Notes                                               |
++--------------+------------+-------------------+-----------------------------------------------------------+
+| dcterms:type | URI        |                   | Use with a type from a controlled vocabulary (such as the |
+|              |            |                   | LoC Resource Types Scheme or DCMI Type                    |
+|              |            |                   | Vocabulary).                                              |
++--------------+------------+-------------------+-----------------------------------------------------------+
+
 typeOfResource with no attributes
 ---------------------------------
 
@@ -3099,6 +3145,12 @@ Here's an example record with no typeOfResource value - `roth:100 <https://digit
 
 classification
 ==============
+
++------------------+------------+-------------------+---------------------------------------------------------+
+| Predicate        | Value Type | Range (if needed) | Usage Notes                                             |
++------------------+------------+-------------------+---------------------------------------------------------+
+| classSchemes:lcc | Literal    |                   | Use for values from Library of Congress Classification. |
++------------------+------------+-------------------+---------------------------------------------------------+
 
 Use case
 --------
@@ -3660,6 +3712,16 @@ Drop this.
 recordInfo
 ==========
 
++------------------+----------------+-------------------+-----------------------------------------------------------------------------------------------------------------+
+| Predicate        | Value Type     | Range (if needed) | Usage Notes                                                                                                     |
++------------------+----------------+-------------------+-----------------------------------------------------------------------------------------------------------------+
+| edm:dataProvider | URI or Literal |                   | Use the name of the organization who contributes data indirectly                                                |
+|                  |                |                   | to an aggregation service. Note that we have decided to only use literals even though the property allows URIs. |
++------------------+----------------+-------------------+-----------------------------------------------------------------------------------------------------------------+
+| edm:provider     | URI or Literal |                   | Use the name of the organization (typically UTK) who delivers data directly to an aggregation                   |
+|                  |                |                   | service. Note that we have decided to only use literals even though the property allows URIs.                   |
++------------------+----------------+-------------------+-----------------------------------------------------------------------------------------------------------------+
+
 recordIdentifier
 ----------------
 
@@ -3955,6 +4017,14 @@ these institutions are not directly contributing to DPLA, they are listed as an 
 accessCondition
 ===============
 
++------------+------------+-------------------+----------------------------------------------------------------+
+| Predicate  | Value Type | Range (if needed) | Usage Notes                                                    |
++------------+------------+-------------------+----------------------------------------------------------------+
+| edm:rights | URI        |                   | Use for rights URIs from RightsStatements or Creative Commons. |
++------------+------------+-------------------+----------------------------------------------------------------+
+| skos:note  | Literal    |                   | Use for accessConditions with @type="restrictions on access".  |
++------------+------------+-------------------+----------------------------------------------------------------+
+
 accessCondition - Rights Statements and Creative Commons Licenses
 -----------------------------------------------------------------
 
@@ -3968,7 +4038,7 @@ Justification
 ^^^^^^^^^^^^^
 
 DPLA maps both CC licenses and Rights Statements to edm:rights. So does Samvera. Presently only the heilman collection includes
-a CC license
+a CC license.
 
 Xpath
 ^^^^^
@@ -3991,7 +4061,6 @@ Decision
 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
-
         <https://example.org/objects/1> edm:rights <http://rightsstatements.org/vocab/CNE/1.0/> .
 
 
@@ -4007,7 +4076,6 @@ Decision
 .. code-block:: turtle
 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
-
 
         <https://example.org/objects/1> edm:rights <https://creativecommons.org/licenses/by-nc-nd/3.0/> .
 
