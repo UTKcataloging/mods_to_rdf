@@ -97,7 +97,7 @@ in the future.
 Xpath
 ^^^^^
 
-:code:`identifer[@type="Vendor ID"]` OR
+:code:`identifier[@type="Vendor ID"]` OR
 :code:`identifier[@type="archival number"]` OR
 :code:`identifier[@type="catalog"]` OR
 :code:`identifier[@type="circular"]` OR
@@ -337,7 +337,7 @@ titleInfo - one titleInfo element
 Use Case
 ^^^^^^^^
 
-An object with a single titleInfo element.
+An object with a single :code:`titleInfo` element.
 
 Justification
 ^^^^^^^^^^^^^
@@ -372,7 +372,7 @@ titleInfo - single titleInfo element having a supplied attribute of yes
 Use Case
 ^^^^^^^^
 
-A single titleInfo element having an attribute of supplied="yes".
+A single :code:`titleInfo` element having an attribute of :code:`supplied="yes"`.
 
 Justification
 ^^^^^^^^^^^^^
@@ -389,7 +389,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-In these cases a supplied="yes" may also be present for one titleInfo element. Supplied titles would be used as `dcterms:title`. Triples will not indicate supplied titles using brackets.
+In these cases a :code:`supplied="yes"` may also be present for one :code:`titleInfo` element. Supplied titles would be used as `dcterms:title`. Triples will not indicate supplied titles using brackets.
 
 `Example record from roth:5342 <https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/>`_
 
@@ -411,7 +411,7 @@ titleInfo - Multiple titleInfo elements with one having a supplied attribute of 
 Use Case
 ^^^^^^^^
 
-An object with a multiple titleInfo elements and one having a attribute of supplied="yes".
+An object with a multiple :code:`titleInfo` elements and one having a attribute of :code:`supplied="yes"`.
 
 Justification
 ^^^^^^^^^^^^^
@@ -428,7 +428,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-In cases where supplied="yes" are present for one titleInfo element the :code:`titleInfo[@supplied]/title` value will be used as `dcterms:title`.
+In cases where :code:`supplied="yes"` are present for one :code:`titleInfo` element the :code:`titleInfo[@supplied]/title` value will be used as `dcterms:title`.
 
 `Example record from swim:162 <https://digital.lib.utk.edu/collections/islandora/object/swim:162/datastream/MODS/>`_
 
@@ -456,7 +456,7 @@ titleInfo - titleInfo has partName sub-element
 Use Case
 ^^^^^^^^
 
-An object with a single titleInfo element and sub-element of partName.
+An object with a single :code:`titleInfo` element and sub-element of :code:`partName`.
 
 Justification
 ^^^^^^^^^^^^^
@@ -472,7 +472,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-In these cases the string contained partName will be appended to the :code:`title`. A ','
+In these cases the string contained in :code:`partName` will be appended to the :code:`title`. A ','
 character will be used as glue when concatenating the strings.
 
 `Example record from sanborn:1194 <https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream/MODS/>`_
@@ -497,12 +497,12 @@ titleInfo - titleInfo has nonSort sub-element
 Use Case
 ^^^^^^^^
 
-An object with a single titleInfo element and sub-element of nonSort.
+An object with a single :code:`titleInfo` element and sub-element of :code:`nonSort`.
 
 Justification
 ^^^^^^^^^^^^^
 
-We desire clean strings and will not retain nonSorts moving forward.
+We desire clean strings and will not retain :code:`nonSorts` moving forward.
 
 Xpath
 ^^^^^
@@ -511,7 +511,8 @@ Xpath
 
 Decision
 ^^^^^^^^
-The string contained within the nonSort element will be prepended to the title value.
+
+The string contained within the :code:`nonSort` element will be prepended to the :code:`title` value.
 
 `Example record from volvoices:2890 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2890/datastream/MODS/>`_
 
@@ -535,10 +536,11 @@ titleInfo - Multiple titleInfo elements with one having a type of alternative
 Use Case
 ^^^^^^^^
 
-An object with two titleInfo elements and one having an attribute of type="alternative".
+An object with two :code:`titleInfo` elements and one having an attribute of :code:`type="alternative"`.
 
 Justification
 ^^^^^^^^^^^^^
+
 Keeping direct mapping simple.
 
 Xpath
@@ -549,7 +551,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-titleInfo elements with @type="alternative" will defined as `dcterms:alternative`.
+:code:`titleInfo` elements with :code:`@type="alternative"` will defined as `dcterms:alternative`.
 
 `Example record from pcard00:100233 <https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastream/MODS/>`_
 
@@ -577,12 +579,12 @@ titleInfo - Multiple titleInfo elements with one having a displayLabel attribute
 Use Case
 ^^^^^^^^
 
-An object with a two titleInfo elements and one having an attribute of displayLabel="some string".
+An object with a two :code:`titleInfo` elements and one having an attribute of :code:`displayLabel="some string"`.
 
 Justification
 ^^^^^^^^^^^^^
 
-For cleanliness and consistency displayLabels won't be used to describe titles.
+For cleanliness and consistency :code:`displayLabel`s won't be used to describe titles.
 
 Xpath
 ^^^^^
@@ -592,7 +594,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-We will not retain data regarding displayLabel attributes moving forward.
+We will not retain data regarding :code:`displayLabel` attributes moving forward.
 
 `Example record from womenbball:653 <https://digital.lib.utk.edu/collections/islandora/object/womenbball:653/datastream/MODS/>`_
 
@@ -629,7 +631,7 @@ Abstracts that are not Blank Nodes
 Use Case
 ^^^^^^^^
 
-If a record has an abstract or many abstracts, they will each be mapped to `dcterms:abstract` as long as the abstract
+If a record has an :code:`abstract` or many :code:`abstract`s, they will each be mapped to `dcterms:abstract` as long as the :code:`abstract`
 does not have an empty text node.
 
 Justification
@@ -637,7 +639,7 @@ Justification
 
 Regardless of the number, the value has the same semantic relationship to the object as it did in MODS.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`abstract[text()]`
@@ -645,7 +647,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-If it has one abstract like `gamble:124 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A124/datastream/MODS>`_, map to `dcterms:abstract`.
+If it has one :code:`abstract` like `gamble:124 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A124/datastream/MODS>`_, map to `dcterms:abstract`.
 
 .. code-block:: xml
 
@@ -659,7 +661,7 @@ If it has one abstract like `gamble:124 <https://digital.lib.utk.edu/collections
 
     <https://example.org/objects/1> dcterms:abstract "Prosecutor John Keker gives his closing statement to the jury, explaining Col. John North's involvement in the Iran-Contra affair even though the majority of his statement is censored due to classified information." .
 
-If it has more than one abstract like `1001:1 <https://digital.lib.utk.edu/collections/islandora/object/1001%3A1/datastream/MODS>`_,
+If it has more than one :code:`abstract` like `1001:1 <https://digital.lib.utk.edu/collections/islandora/object/1001%3A1/datastream/MODS>`_,
 we will still map to `dcterms:abstract`.
 
 .. code-block:: xml
@@ -683,14 +685,14 @@ Blank Abstracts
 Use Case
 ^^^^^^^^
 
-We have a fair number of records with empty abstracts.  When an abstract is an empty node, don't map it.
+We have a fair number of records with empty :code:`abstract`s.  When an :code:`abstract` is an empty node, don't map it.
 
 Justification
 ^^^^^^^^^^^^^
 
 The value of the text node has no semantic meaning or value.
 
-Xpaths
+XPaths
 ^^^^^^
 
 :code:`abstract[string()=""]`
@@ -706,11 +708,11 @@ tableOfContents
 Use Case
 --------
 
-The following collections include tableOfContents - David Van Vactor Music Collection, Tennessee Farm and Home Science,
+The following collections include :code:`tableOfContents` - David Van Vactor Music Collection, Tennessee Farm and Home Science,
 The Arrow of Pi Beta Phi. There are a total of 455 unique values. This element contains the names of individually titled
 parts that make up the larger resource. It is used to provide more detailed information on the content of a resource in
 a non-structured way. Note that punctuation separating part titles varies depending on the string values being separated.
-The following punctuation is present in UTK's tableOfContents elements: " -- ", " - ", and ";".
+The following punctuation is present in UTK's :code:`tableOfContents` elements: " -- ", " - ", and ";".
 
 Justification
 -------------
@@ -718,10 +720,10 @@ Justification
 This information aides keyword discovery by adding more text to the record and providing users with a listing of parts
 within the larger resource.
 
-Xpath
+XPath
 -----
 
-:code:`mods:tableOfContents`
+:code:`tableOfContents`
 
 Decision
 --------
@@ -752,7 +754,7 @@ Below are examples showing the punctuation variations present in this element's 
     Catalog of books, scores, and manuscripts in Special Collections -- Books and scores in the George F. DeVine Music
     Library -- Sound recordings, 1942-1979</tableOfContents>
 
-All values within <tableOfContents> will be mapped to RDF in the same way. Below is a representation of arrow:305.
+All values within :code:`tableOfContents` will be mapped to RDF in the same way. Below is a representation of arrow:305.
 
 .. code-block:: turtle
 
@@ -781,30 +783,31 @@ Leverage Marc Relators for RDF Property Value and Relationship to the Digital Ob
 Use Case
 ^^^^^^^^
 
-For all instances of :code:`mods:name`, leverage the marcrelator value found in its :code:`mods:role/mods:roleTerm` for
+For all instances of :code:`name`, leverage the marcrelator value found in its :code:`role/roleTerm` for
 associating the name with the digital object.
 
 A lookup table is included as an appendix to help with this.
 
-If the :code:`mods:name` has a :code:`valueURI` attribute, use it for the object of the triple.  If it does not, use
-the text value of :code:`mods:name/mods:namePart`.
+If the :code:`name` has a :code:`valueURI` attribute, use it for the object of the triple.  If it does not, use
+the text value of :code:`name/namePart`.
 
 Justification
 ^^^^^^^^^^^^^
 
-All instances of :code:`mods:name` have a :code:`mods:role/mods:roleTerm` that can be leveraged to determine the name's
-relationship with the digital object.  In some cases, there is a :code:`mods:roleTerm/@valueURI`, but this is not always
+All instances of :code:`name` have a :code:`role/roleTerm` that can be leveraged to determine the name's
+relationship with the digital object.  In some cases, there is a :code:`roleTerm/@valueURI`, but this is not always
 the case.
 
-Xpaths
+XPaths
 ^^^^^^
 
-:code:`mods:name/mods:namePart` or :code:`mods:name[@valueURI!=""]`
+:code:`name/namePart` OR
+:code:`name[@valueURI!=""]`
 
 Decisions
 ^^^^^^^^^
 
-When you have a :code:`mods:name` with a :code:`valueURI` attribute like `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
+When you have a :code:`name` with a :code:`valueURI` attribute like `harp:1 <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
 
 .. code-block:: xml
     :caption: Example XML record from `tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
@@ -819,7 +822,7 @@ When you have a :code:`mods:name` with a :code:`valueURI` attribute like `harp:1
         </role>
     </name>
 
-Leverage the valueURI and make it the object of the triple:
+Leverage the :code:`valueURI` and make it the object of the triple:
 
 .. code-block:: turtle
     :caption: Resulting RDF `from tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
@@ -830,7 +833,7 @@ Leverage the valueURI and make it the object of the triple:
     <https://example.org/objects/1>
         relators:crp <http://id.loc.gov/authorities/names/n2017180154> .
 
-When there is no :code:`mods:name/@valueURI`, use the string literal from :code:`mods:name/mods:namePart`:
+When there is no :code:`name/@valueURI`, use the string literal from :code:`name/namePart`:
 
 .. code-block:: xml
     :caption: XML with Name missing a valueURI
@@ -852,7 +855,7 @@ When there is no :code:`mods:name/@valueURI`, use the string literal from :code:
     <https://example.org/objects/1>
         relators:cre "Daniel, Charles R. (Charlie), Jr., 1930-" .
 
-If there is a :code:`mods:name/valueURI` but it's empty, use the string literal instead:
+If there is a :code:`name/valueURI` but it's empty, use the string literal instead:
 
 .. code-block:: xml
     :caption: Example XML from `volvoices:2495 MODS <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
@@ -880,16 +883,17 @@ Names with Multiple Role Terms
 Use Case
 ^^^^^^^^
 
-Occassionally, a :code:`mods:name` will have multiple roles.  When this happens, keep them all.
+Occasionally, a :code:`name` will have multiple roles.  When this happens, keep them all.
 
 Justification
 ^^^^^^^^^^^^^
 
 It's important that we keep the relationship between people and our digital object.
 
-Xpaths
+XPaths
 ^^^^^^
-:code:`count(mods:name/mods:role)>1`
+
+:code:`count(name/role)>1`
 
 Decision
 ^^^^^^^^
@@ -928,25 +932,25 @@ Do Not Keep Any Other Values Associated with a Name
 Use Case
 ^^^^^^^^
 
-There are other xpaths in our system that are associated with names that are no longer needed.  Do not migrate these.
+There are other XPaths in our system that are associated with names that are no longer needed.  Do not migrate these.
 
 Justification
 ^^^^^^^^^^^^^
 
-In an RDF based system that leverages linked data, it's unnecessary to keep traditional :code:`mods:name` information
-like authority, displayForm, type, or description. Authorities are present in the URI itself and information such as
-description or displayForm are avaliable from the class our object refers to.  While type is not available, it has little
+In an RDF based system that leverages linked data, it's unnecessary to keep traditional :code:`name` information
+like :code:`authority`, :code:`displayForm`, :code:`type`, or :code:`description`. Authorities are present in the URI itself and information such as
+:code:`description` or :code:`displayForm` are available from the class our object refers to.  While :code:`type` is not available, it has little
 meaning in our current system and will only complicate things in the future.
 
-Xpaths
+XPaths
 ^^^^^^
 
-* :code:`name/role/roleTerm/@authority`
-* :code:`name/@authority`
-* :code:`name/role/roleTerm/@authorityURI`
-* :code:`name/@type`
-* :code:`name/displayForm`
-* :code:`name/description`
+:code:`name/role/roleTerm/@authority` OR
+:code:`name/@authority` OR
+:code:`name/role/roleTerm/@authorityURI` OR
+:code:`name/@type` OR
+:code:`name/displayForm` OR
+:code:`name/description`
 
 Decision
 ^^^^^^^^
