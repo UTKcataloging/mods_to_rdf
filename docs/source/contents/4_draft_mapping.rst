@@ -126,7 +126,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers> .
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
     <https://example.org/objects/1>
         identifiers:local "egypt:8" .
 
@@ -138,7 +138,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers> .
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
 
     <https://example.org/objects/1>
         identifiers:local "Circular 79" .
@@ -1149,7 +1149,7 @@ As part of leveraging the EDTF format, some conversion will be necessary; e.g. t
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1> dcterms:issued "Jun 30, 1965", "1965-06-30" ;
         dcterms:date "1964/1965" ;
@@ -1194,7 +1194,7 @@ The majority of the applicable values are associate with a `@valueURI`.  The `re
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
     @prefix dcterms: <http://purl.org/dc/terms/> .
 
     <https://example.org/objects/1> relators:pbl "Keystone View Company" ;
@@ -1238,7 +1238,7 @@ The `relators:pbl` property was selected.
 
 .. code-block:: turtle
 
-    @prefix relators: <http://id.loc.gov/vocabulary/relators> .
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1> relators:pbl "Frederick D. Benteen" ;
         relators:pup <http://id.loc.gov/authorities/names/n79006530> .
@@ -1706,7 +1706,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix opaque: <http://opaquenamespace.org/​ns/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
 
     <https://example.org/objects/1>
         opaque:sheetmusic_instrumentation "For soprano, mezzo-soprano, contralto, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons, 2 horns, 2 trumpets, timpani, 2 violins, viola, cello, and double bass." .
@@ -1748,7 +1748,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix opaque: <http://opaquenamespace.org/​ns/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
 
     <https://example.org/objects/1>
         opaque:sheetmusic_firstLine "Ojitos de pena carita de luna, lloraba la niña sin causa ninguna." .
