@@ -4009,7 +4009,7 @@ Decision
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
 
-        <https://example.org/objects/1> edm:rights <https://creativecommons.org/licenses/by-nc-nd/3.0/> .
+        <https://example.org/objects/1> edm:rights <https://creativecommons.org/licenses/by-nc-nd/3.0/rdf> .
 
 accessCondition - Restrictions on Access
 ----------------------------------------
