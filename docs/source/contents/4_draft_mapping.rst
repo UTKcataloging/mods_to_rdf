@@ -86,10 +86,10 @@ include the Anna Catherine Wiley Sketches, Images of East Tennessee, and Photogr
 Justification
 ^^^^^^^^^^^^^
 
-These values are being kept because they may be helpful to users in finding specific materials. For instance, while @type="pid"
+These values are being kept because they may be helpful to users in finding specific materials. For instance, while :code:`@type="pid"`
 identifiers will no longer be the primary identifiers on UTK's next digital collections platform, they could be used to
 identify cited resources that have broken links. Many of the identifiers associated with Special Collections allow users
-to see how the same resource might be referenced within finding aids. Have @type="opac" identifiers helps staff at UTK
+to see how the same resource might be referenced within finding aids. Have :code:`@type="opac"` identifiers helps staff at UTK
 know immediately whether a resource has a MARC record, which could prove useful if descriptive metadata is needed in this
 form. Overall, little effort needs to be exerted to keep all of these values and they all have the potential to be helpful
 in the future.
@@ -97,23 +97,23 @@ in the future.
 Xpath
 ^^^^^
 
-mods:identifer[@type="Vendor ID"] OR
-mods:identifier[@type="archival number"] OR
-mods:identifier[@type="catalog"] OR
-mods:identifier[@type="circular"] OR
-mods:identifier[@type="cw"] OR
-mods:identifier[@type="document ID"] OR
-mods:identifier[@type="documentID"] OR
-mods:identifier[@type="filename"] OR
-mods:identifier[@type="film number"] OR
-mods:identifier[@type="legacy"] OR
-mods:identifier[@type="local"] OR
-mods:identifier[@type="original ID"] OR
-mods:identifier[@type="photograph number"] OR
-mods:identifier[@type="slide number"] OR
-mods:identifier[@type=”pid”] OR
-mods:identifier[@type=”opac”] OR
-mods:identifier[@type="spc"]
+:code:`identifer[@type="Vendor ID"]` OR
+:code:`identifier[@type="archival number"]` OR
+:code:`identifier[@type="catalog"]` OR
+:code:`identifier[@type="circular"]` OR
+:code:`identifier[@type="cw"]` OR
+:code:`identifier[@type="document ID"]` OR
+:code:`identifier[@type="documentID"]` OR
+:code:`identifier[@type="filename"]` OR
+:code:`identifier[@type="film number"]` OR
+:code:`identifier[@type="legacy"]` OR
+:code:`identifier[@type="local"]` OR
+:code:`identifier[@type="original ID"]` OR
+:code:`identifier[@type="photograph number"]` OR
+:code:`identifier[@type="slide number"]` OR
+:code:`identifier[@type=”pid”]` OR
+:code:`identifier[@type=”opac”]` OR
+:code:`identifier[@type="spc"]`
 
 Decision
 ^^^^^^^^
@@ -148,6 +148,7 @@ Acquisition Identifier
 
 Use Case
 ^^^^^^^^
+
 Several of UTK's collections come from institutions outside the library and include identifiers assigned by those
 institutions. The McClung Museum of Natural History and Culture on campus is one of these institutions. In the `Nineteenth
 and Early Twentieth Century Images of Egypt collection <https://digital.lib.utk.edu/collections/islandora/object/collections%3Aegypt>`_ shared by McClung, traditional museum acquisition numbers
@@ -159,18 +160,18 @@ Justification
 Both OpaqueNamespace and `CIDOC-CRM <http://www.cidoc-crm.org/>`_ properties were considered for mapping these values.
 Both `opaque:accessionNumber <http://opaquenamespace.org/ns/cco_accessionNumber>`_ and `crm:E8 (Acquisition) <http://www.cidoc-crm.org/cidoc-crm/E8_Acquisition>`_ were defined
 appropriately for UTK's use cases. Because CIDOC-CRM is particularly used in a museum context, we decided to use
-opaque:accessionNumber as it is arguably more flexible. This allows us to use the same property for accession numbers
+`opaque:accessionNumber` as it is arguably more flexible. This allows us to use the same property for accession numbers
 from a wide variety of institutions. Both properties supported content negotiation.
 
 Xpath
 ^^^^^
 
-mods:identifier[@type="acquisition"]
+:code:`identifier[@type="acquisition"]`
 
 Decision
 ^^^^^^^^
 
-The property opaque:accessionNumber was selected.
+The property `opaque:accessionNumber` was selected.
 
 `Example record - egypt:10 <https://digital.lib.utk.edu/collections/islandora/object/egypt%3A10/datastream/MODS/view>`_
 
@@ -198,12 +199,12 @@ Justification
 ^^^^^^^^^^^^^
 
 OCLC identifiers could be useful if these materials are ever shared with HathiTrust, as this value is a requirement for
-submission. Only one property, dbpedia:oclc, was identified to use and it aligns with our philosophy guidelines.
+submission. Only one property, `dbpedia:oclc`, was identified to use and it aligns with our philosophy guidelines.
 
 Xpath
 ^^^^^
 
-mods:identifier[@type="oclc"]
+:code:`identifier[@type="oclc"]`
 
 Decision
 ^^^^^^^^
@@ -226,6 +227,7 @@ ISSNs
 
 Use Case
 ^^^^^^^^
+
 Approximately 10% of our records describe periodicals. Effort has been invested in establishing official e-ISSNs for several
 titles through the Library of Congress. These titles include:
 
@@ -253,16 +255,19 @@ records. A title-level MARC XML record with a link to all issues with the same I
 
 Justification
 ^^^^^^^^^^^^^
+
 Properties for ISSN values are established in DBpedia and the Standard Identifiers Scheme. Both follow our philosophy
 guidelines and could be used to accurately represent the ISSN values. Ultimately we decided to use DBpedia because it is
 a widely used core ontology whereas the Standard Identifiers Scheme is more library specific.
 
 Xpath
 ^^^^^
-mods:identifier[@type="issn"]
+
+:code:`identifier[@type="issn"]`
 
 Decision
 ^^^^^^^^
+
 `Example record - agrutesc:2130 <https://digital.lib.utk.edu/collections/islandora/object/agrutesc:2130/datastream/MODS>`_
 
 .. code-block:: xml
@@ -281,21 +286,25 @@ ISBNs
 
 Use Case
 ^^^^^^^^
+
 International Standard Book Numbers are present as identifier values in the Children's Defense Fund collection. As these
 identifiers have meaning outside of the context of UTK and might be used by patrons in a search to find these materials,
 it is important that we continue to support a unique field for these values.
 
 Justification
 ^^^^^^^^^^^^^
+
 Properties for ISBN values are established in DBpedia and the Standard Identifiers Scheme. Because we give preference to
-core ontologies rather than library specific ones, we selected dbpedia:issn.
+core ontologies rather than library specific ones, we selected `dbpedia:issn`.
 
 Xpath
 ^^^^^
-mods:identifier[@type="isbn"]
+
+:code:`identifier[@type="isbn"]`
 
 Decision
 ^^^^^^^^
+
 `Example record - cdf:6909 <https://digital.lib.utk.edu/collections/islandora/object/cdf:6909/datastream/MODS>`_
 
 .. code-block:: xml
@@ -337,11 +346,11 @@ No dispute on what the title is.
 Xpath
 ^^^^^
 
-`mods:titleInfo/mods:title`
+:code:`titleInfo/title`
 
 Decision
 ^^^^^^^^
-The string `mods:titleInfo/mods:title` can easily translate to the dcterms:title
+The string :code:`titleInfo/title` can easily translate to the `dcterms:title` property.
 
 `Example record from acwiley:280 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A280/datastream/MODS>`_
 
@@ -375,12 +384,12 @@ provided by DPLA, they recommend we "not have brackets or ending periods."
 Xpath
 ^^^^^
 
-`mods:titleInfo[@supplied="yes"]/mods:title`
+:code:`titleInfo[@supplied="yes"]/title`
 
 Decision
 ^^^^^^^^
 
-In these cases a supplied="yes" may also be present for one titleInfo element. Supplied titles would be used as dcterms:title. Triples will not indicate supplied titles using brackets.
+In these cases a supplied="yes" may also be present for one titleInfo element. Supplied titles would be used as `dcterms:title`. Triples will not indicate supplied titles using brackets.
 
 `Example record from roth:5342 <https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/>`_
 
@@ -414,12 +423,12 @@ See **single titleInfo element having a supplied attribute of yes** for justific
 Xpath
 ^^^^^
 
-`mods:titleInfo[@supplied="yes"]/mods:title` AND `mods:titleInfo/mods:title`
+:code:`titleInfo[@supplied="yes"]/title` AND :code:`titleInfo/title`
 
 Decision
 ^^^^^^^^
 
-In cases where supplied="yes" are present for one titleInfo element the mods:titleInfo[@supplied]/mods:title value will be used as dcterms:title.
+In cases where supplied="yes" are present for one titleInfo element the :code:`titleInfo[@supplied]/title` value will be used as `dcterms:title`.
 
 `Example record from swim:162 <https://digital.lib.utk.edu/collections/islandora/object/swim:162/datastream/MODS/>`_
 
@@ -458,11 +467,12 @@ enumeration of an object within a string.
 Xpath
 ^^^^^
 
-`mods:titleInfo/mods:title` AND `mods:titleInfo/mods:partName`
+:code:`titleInfo/title` AND :code:`titleInfo/partName`
 
 Decision
 ^^^^^^^^
-In these cases the string contained partName will be appended to the <title>. A ','
+
+In these cases the string contained partName will be appended to the :code:`title`. A ','
 character will be used as glue when concatenating the strings.
 
 `Example record from sanborn:1194 <https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream/MODS/>`_
@@ -491,12 +501,13 @@ An object with a single titleInfo element and sub-element of nonSort.
 
 Justification
 ^^^^^^^^^^^^^
+
 We desire clean strings and will not retain nonSorts moving forward.
 
 Xpath
 ^^^^^
 
-`mods:titleInfo` AND `mods:titleInfo/mods:nonSort`
+:code:`titleInfo` AND :code:`titleInfo/nonSort`
 
 Decision
 ^^^^^^^^
@@ -533,12 +544,12 @@ Keeping direct mapping simple.
 Xpath
 ^^^^^
 
-`mods:titleInfo` AND `mods:titleInfo[@type="alternative"]`
+:code:`titleInfo` AND :code:`titleInfo[@type="alternative"]`
 
 Decision
 ^^^^^^^^
 
-titleInfo elements with @type="alternative" will defined as dcterms:alternative
+titleInfo elements with @type="alternative" will defined as `dcterms:alternative`.
 
 `Example record from pcard00:100233 <https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastream/MODS/>`_
 
@@ -576,7 +587,7 @@ For cleanliness and consistency displayLabels won't be used to describe titles.
 Xpath
 ^^^^^
 
-`mods:titleInfo` AND `mods:titleInfo[@displayLabel="some string"]`
+:code:`titleInfo` AND :code:`titleInfo[@displayLabel="some string"]`
 
 Decision
 ^^^^^^^^
@@ -629,12 +640,12 @@ Regardless of the number, the value has the same semantic relationship to the ob
 Xpath
 ^^^^^
 
-:code:`mods:abstract[text()]`
+:code:`abstract[text()]`
 
 Decision
 ^^^^^^^^
 
-If it has one abstract like `gamble:124 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A124/datastream/MODS>`_, map to dcterms:abstract.
+If it has one abstract like `gamble:124 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A124/datastream/MODS>`_, map to `dcterms:abstract`.
 
 .. code-block:: xml
 
@@ -649,7 +660,7 @@ If it has one abstract like `gamble:124 <https://digital.lib.utk.edu/collections
     <https://example.org/objects/1> dcterms:abstract "Prosecutor John Keker gives his closing statement to the jury, explaining Col. John North's involvement in the Iran-Contra affair even though the majority of his statement is censored due to classified information." .
 
 If it has more than one abstract like `1001:1 <https://digital.lib.utk.edu/collections/islandora/object/1001%3A1/datastream/MODS>`_,
-we will still map to dc:terms abstract.
+we will still map to `dcterms:abstract`.
 
 .. code-block:: xml
 
@@ -682,7 +693,7 @@ The value of the text node has no semantic meaning or value.
 Xpaths
 ^^^^^^
 
-:code:`mods:abstract[string()=""]`
+:code:`abstract[string()=""]`
 
 Decision
 ^^^^^^^^
