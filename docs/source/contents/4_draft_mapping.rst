@@ -3279,16 +3279,20 @@ relatedItem
 
 relatedItem - do not migrate
 ----------------------------
+
 Use Case
 ^^^^^^^^
-`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. Currently, values in this XPath are displayed in both search/browse facets and the item-level metadata display. Post-migration, we will need to consider how to express these relationships in our next-gen DAMS.
+
+:code:`relatedItem`, with and without attributes, is used in a number of collections to express structural relationships. Currently, values in this XPath are displayed in both search/browse facets and the item-level metadata display. Post-migration, we will need to consider how to express these relationships in our next-gen DAMS.
 
 Justification
 ^^^^^^^^^^^^^
-These relationships will be handled/expressed by default behavior in our next-gen DAMS. In the case of `relatedItem/abstract`, the values present should be handled at the collection level.
+
+These relationships will be handled/expressed by default behavior in our next-gen DAMS. In the case of :code:`relatedItem/abstract`, the values present should be handled at the collection level.
 
 XPath
 ^^^^^
+
 :code:`relatedItem[not(@*)]` OR
 :code:`relatedItem[@type='host'][@displayLabel[matches(., 'project') or matches(., 'Project') or matches(., 'Digital Collection') or matches(., 'Project Part') or matches(., 'Is Part Of')]` OR
 :code:`relatedItem/abstract` OR
@@ -3296,6 +3300,7 @@ XPath
 
 Decision
 ^^^^^^^^
+
 Do not migrate.
 
 `Example record - relatedItem[not(@)]: volvoices:11925 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11925/datastream/MODS/content>`_
@@ -3375,20 +3380,25 @@ Do not migrate.
 
 relatedItem[@type='host'][@displayLabel='Collection']
 -----------------------------------------------------
+
 Use Case
 ^^^^^^^^
+
 This XPath is used to indicate the resource's archival collection.
 
 Justification
 ^^^^^^^^^^^^^
+
 We use these values for search/browse facets, as well as item-level metadata display. Additionally, collection titles are shared with DPLA.
 
 XPath
 ^^^^^
+
 :code:`relatedItem[@type='host'][@displayLabel='Collection']`
 
 Decision
 ^^^^^^^^
+
 The `dbo:collection` property was selected.
 
 `Example record - heilman:261 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_
@@ -3415,20 +3425,25 @@ The `dbo:collection` property was selected.
 
 relatedItem[@type='series'][@displayLabel='Project']
 ----------------------------------------------------
+
 Use Case
 ^^^^^^^^
+
 The `@type='series'` XPath indicates a resource's archival series.
 
 Justification
 ^^^^^^^^^^^^^
+
 We decided not to migrate to be consistent with how we are approaching other parts of metadata relating back to a resource's archival collection. We are not migrating box and folder information, so we will not migrate series information either.
 
 XPath
 ^^^^^
+
 :code:`relatedItem[@type='series'][@displayLabel='Project']`
 
 Decision
 ^^^^^^^^
+
 Do not migrate.
 
 `Example record - roth:1538 <https://digital.lib.utk.edu/collections/islandora/object/roth:1538/datastream/MODS/view>`_
@@ -3454,18 +3469,23 @@ Do not migrate.
 
 relatedItem[@type='host'][@displayLabel='Bibliographic Citation']
 -----------------------------------------------------------------
+
 Use Case
 ^^^^^^^^
+
 This XPath only appears 1264 times in the Arrowmont Collection, specifically the Arrow of Pi Beta Phi sub-collection.
 
 Justification
 ^^^^^^^^^^^^^
+
 XPath
 ^^^^^
+
 :code:`relatedItem[@type='host'][@displayLabel='Bibliographic Citation']`
 
 Decision
 ^^^^^^^^
+
 The `dcterms:bibliographicCitation` predicate was selected for these values.
 
 `Example record - arrow:1 <https://digital.lib.utk.edu/collections/islandora/object/arrow:1/datastream/MODS/view>`_
@@ -3496,23 +3516,27 @@ The `dcterms:bibliographicCitation` predicate was selected for these values.
 
 relatedItem[@type="otherVersion"]
 ---------------------------------
+
 Use Case
 ^^^^^^^^
-`relatedItem[@type="otherVersion"]` is used to indicate identifying information about another version of the resource. It appears in the Van Vactor and Arrowmont metadata; it is used, respectively, to identify an alternate version of the sheet music or the scrapbook that holds the image.
+
+:code:`relatedItem[@type="otherVersion"]` is used to indicate identifying information about another version of the resource. It appears in the Van Vactor and Arrowmont metadata; it is used, respectively, to identify an alternate version of the sheet music or the scrapbook that holds the image.
 
 Justification
 ^^^^^^^^^^^^^
 
 XPath
 ^^^^^
+
 :code:`relatedItem[@type='otherVersion']/identifier` OR
 :code:`relatedItem[@type='otherVersion']/location/url`
 
 Decision
 ^^^^^^^^
-See the following section on `relatedItem/identifier[@type]`.
 
-The XPath `relatedItem[@type='otherVersion']/location/url` will not be migrated. Because it provides a link back to the hosting scrapbook, we will not be able to migrate this specific XPath. This will need to be a post-migration metadata update.
+See the following section on :code:`relatedItem/identifier[@type]`.
+
+The XPath :code:`relatedItem[@type='otherVersion']/location/url` will not be migrated. Because it provides a link back to the hosting scrapbook, we will not be able to migrate this specific XPath. This will need to be a post-migration metadata update.
 
 `Example record - arrpgimg:319 <https://digital.lib.utk.edu/collections/islandora/object/arrpgimg:319/datastream/MODS/view>`_
 
@@ -3538,19 +3562,23 @@ relatedItem/identifier[@type = 'local']
 
 Use Case
 ^^^^^^^^
-This XPath's attribute value (`local`) is used to indicate the manuscript number associated with the resource's archival collection.
+
+This XPath's attribute value (:code:`local`) is used to indicate the manuscript number associated with the resource's archival collection.
 
 Justification
 ^^^^^^^^^^^^^
+
 While we have decided to ignore granular archival metadata (e.g. box/folder or series information), migrating a known manuscript number gives us the ability to link back to the resource's finding aid.
 
 XPath
 ^^^^^
+
 :code:`relatedItem/identifier[@type='local']`
 
 Decision
 ^^^^^^^^
-`@type='local'`'s value, if present, maps in to the `dbo:collection` property.
+
+:code:`@type='local'`\ 's value, if present, maps in to the `dbo:collection` property.
 
 `Example record - heilman:26 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_
 
@@ -3574,19 +3602,23 @@ relatedItem/identifier[@type = 'catalog']
 
 Use Case
 ^^^^^^^^
-`@type='catalog'` is used exclusively in the Van Vactor collection to indicate the identifying number for an alternate version of the score.
+
+:code:`@type='catalog'` is used exclusively in the Van Vactor collection to indicate the identifying number for an alternate version of the score.
 
 Justification
 ^^^^^^^^^^^^^
+
 This XPath provides contextual data for users.
 
 XPath
 ^^^^^
+
 :code:`relatedItem/identifier[@type='catalog']`
 
 Decision
 ^^^^^^^^
-`@type='catalog'`'s value, if present, will be represented by the `opaque:sheetmusic_hostItem` property.
+
+:code:`@type='catalog'`\ 's value, if present, will be represented by the `opaque:sheetmusic_hostItem` property.
 
 `Example record - vanvactor:10012 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:10012/datastream/MODS/view>`_
 
@@ -3627,14 +3659,17 @@ relatedItem/identifier[@type = 'pid']
 
 Use Case
 ^^^^^^^^
-`@type='pid'` is used in collection-level records to indicate featured items and should not be migrated.
+
+:code:`@type='pid'` is used in collection-level records to indicate featured items and should not be migrated.
 
 Justification
 ^^^^^^^^^^^^^
+
 We will determine alternate ways of modeling featured item metadata post-migration.
 
 XPath
 ^^^^^
+
 :code:`relatedItem/identifier[@type='pid']`
 
 Decision
@@ -3661,18 +3696,22 @@ relatedItem/location/url
 
 Use Case
 ^^^^^^^^
+
 This XPath is used 8516 times, but only has 33 distinct strings.
 
 Justification
 ^^^^^^^^^^^^^
+
 This value is used to highlight the archival collection related to the resource being described. Its availability encourages users to further explore the archival collection by giving them a link to the finding aid.
 
 XPath
 ^^^^^
+
 :code:`relatedItem/location/url`
 
 Decision
 ^^^^^^^^
+
 The `dbo:isPartOf` property was selected.
 
 `Example record - ruskin:204 <https://digital.lib.utk.edu/collections/islandora/object/ruskin:204/datastream/MODS/view>`_
@@ -3701,18 +3740,22 @@ relatedItem/location/physicalLocation/
 
 Use Case
 ^^^^^^^^
-This XPath is used once in the Charles Dabney collection. It provides an authority, a valueURI, and string value, in this single case, for the University of Tennessee's Special Collections.
+
+This XPath is used once in the Charles Dabney collection. It provides an :code:`authority`, a :code:`valueURI`, and string value, in this single case, for the University of Tennessee's Special Collections.
 
 Justification
 ^^^^^^^^^^^^^
+
 As this is only used once in our metadata, we have decided to remediate this XPath.
 
 XPath
 ^^^^^
+
 :code:`relatedItem[@type='host'][@displayLabel='Collection']/location/physicalLocation`
 
 Decision
 ^^^^^^^^
+
 Do not migrate.
 
 `Example record - collections:dabney <https://digital.lib.utk.edu/collections/islandora/object/collections:dabney/datastream/MODS/view>`_
@@ -3731,22 +3774,26 @@ Do not migrate.
 
 relatedItem[@type='constituent']
 --------------------------------
+
 Use Case
 ^^^^^^^^
-`relatedItem[@type='constituent']` appears 131 times in the Bass collection. The children of `relatedItem[@type='constituent'` provide descriptive information about distinct parts of the resource.
+
+:code:`relatedItem[@type='constituent']` appears 131 times in the Bass collection. The children of :code:`relatedItem[@type='constituent']` provide descriptive information about distinct parts of the resource.
 
 Justification
 ^^^^^^^^^^^^^
 
 XPaths
 ^^^^^^
+
 :code:`relatedItem[@type='constituent']/titleInfo/title` AND
 :code:`relatedItem[@type='constituent']/name[namePart][role/roleTerm[@authority='marcrelator'][@type='text'][@valueURI]]` AND
 :code:`relatedItem[@type='constituent']/name[@authority='naf'][@valueURI][namepart][role/roleTerm[@authority='marcrelator'][@type='text'][@valueURI]]`
 
 Decision
 ^^^^^^^^
-The `dcterms:tableOfContents` was selected to capture the title information available, the `relators:` namespace was chosen to capture information available in the `roleTerm` elements, and `dbo:collection` serves to identify the name of the physical archival collection.
+
+The `dcterms:tableOfContents` property was selected to capture the title information available, the `relators:` namespace was chosen to capture information available in the :code:`roleTerm` elements, and `dbo:collection` property serves to identify the name of the physical archival collection.
 
 `Example record - bass:19644 <https://digital.lib.utk.edu/collections/islandora/object/bass:19644/datastream/MODS/view>`_
 
