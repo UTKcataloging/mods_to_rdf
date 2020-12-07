@@ -3018,9 +3018,10 @@ typeOfResource with no attributes
 
 Use case
 ^^^^^^^^
-Most records currently have a typeOfResource value with no attributes. Depending on the item being described, it is possible
-for there to be multiple typeOfResource values in a single record. The Islandora Metadata Interest Group has carefully
-created a mapping to translate MODS typeOfResource values to dcterms resource types. A selection of the mapping is
+
+Most records currently have a :code:`typeOfResource` value with no attributes. Depending on the item being described, it is possible
+for there to be multiple :code:`typeOfResource` values in a single record. The Islandora Metadata Interest Group has carefully
+created a mapping to translate MODS :code:`typeOfResource` values to `dcterms` resource types. A selection of the mapping is
 included below that addresses all of the values UTK has within its metadata. Note that the final row, collection="yes"
 is addressed in a subsequent category.
 
@@ -3050,11 +3051,11 @@ is addressed in a subsequent category.
 Justification
 ^^^^^^^^^^^^^
 
-Values within <typeOfResource> are used for initial faceting in search for both UTK's local digital collections website
-and for DPLA's interface. As DPLA doesn't display physicalDescription/form values, it is important to share this
+Values within :code:`typeOfResource` are used for initial faceting in search for both UTK's local digital collections website
+and for DPLA's interface. As DPLA doesn't display :code:`physicalDescription/form` values, it is important to share this
 less granular indication of the resource type.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`typeOfResource`
@@ -3080,14 +3081,14 @@ typeOfResource with @collection="yes"
 Use case
 ^^^^^^^^
 
-In MODS, an attribute can be used on typeOfResource to indicate that the record refers to an entire collection rather
+In MODS, an attribute can be used on :code:`typeOfResource` to indicate that the record refers to an entire collection rather
 than an individual resource. This is useful because it makes it possible to distinguish between object and collection
 records in the catalog so that patrons understand more quickly how much content is associated with the record. The
-Islandora Metadata Interest Group has come up with the solution of using the dcterms resource type of "Collection." In
+Islandora Metadata Interest Group has come up with the solution of using the `dcterms` resource type of "Collection." In
 this situation we will need multiple triples to preserve the information currently present - one for indicating the record is
-for a collection and one (or more) for indicating prevalent resource type(s) in the collection. In MODS typeOfResource is
-a repeatable field. Note that we will need to make sure that we do not repeat the collection resource type in cases
-where there are multiple typeOfResource[@collection="yes"] instances.
+for a collection and one (or more) for indicating prevalent resource type(s) in the collection. In MODS :code:`typeOfResource` is
+a repeatable field. Note that we will need to make sure that we do not repeat the :code:`collection` resource type in cases
+where there are multiple :code:`typeOfResource[@collection="yes"]` instances.
 
 +----------------------------+---------------+--------------------------------------------------+--------------------+
 | collection="yes"           | dcterms:type  | <http://id.loc.gov/vocabulary/resourceTypes/col> | Collection         |
@@ -3098,7 +3099,7 @@ Justification
 
 We need to be able to distinguish between an item and collection resource, so retaining this information is necessary.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`typeOfResource[@collection="yes"]`
@@ -3106,7 +3107,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-Here's a complex example that includes two <typeOfResource> values - `gsmrc:smhc <https://digital.lib.utk.edu/collections/islandora/object/gsmrc%3Asmhc/datastream/MODS/view>`_.
+Here's a complex example that includes two :code:`typeOfResource` values - `gsmrc:smhc <https://digital.lib.utk.edu/collections/islandora/object/gsmrc%3Asmhc/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -3127,18 +3128,16 @@ Missing typeOfResource value
 Use case
 ^^^^^^^^
 
-Currently 9,993 records are missing a typeOfResource value. The affected collections include Volunteer Voices (not entire
-collection), Roth, the Howard Baker Speeches and Remarks, Great Smoky Mountains Colloquy, and the Great Smoky Mountains Postcard Collection. We can consider if we would like to apply a blanket value to a collection at the time
-of migration. For monolithic collections like Roth and Baker, this would be easy to achieve (roth = "still image" and
-baker = "text" in MODS). For collections with varied formats, like Volunteer Voices, this will not be possible.
+Currently 9,993 records are missing a :code:`typeOfResource` value. The affected collections include Volunteer Voices (not entire
+collection), Roth, the Howard Baker Speeches and Remarks, Great Smoky Mountains Colloquy, and the Great Smoky Mountains Postcard Collection. We can consider if we would like to apply a blanket value to a collection at the time of migration. For monolithic collections like Roth and Baker, this would be easy to achieve (`roth = "still image"` and `baker = "text"` in MODS). For collections with varied formats, like Volunteer Voices, this will not be possible.
 
 Justification
 ^^^^^^^^^^^^^
 
-Given that the Digital Collections home page currently uses typeOfResource to initially limit searches, it would be
+Given that the Digital Collections home page currently uses :code:`typeOfResource` to initially limit searches, it would be
 beneficial for this value to be more consistently present. It would also assist with discovery in DPLA.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`not(typeOfResource)`
@@ -3146,7 +3145,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-During or post migration we will plan to add typeOfResource on a collection basis if possible. See the chart below for decisions.
+During or post migration we will plan to add :code:`typeOfResource` on a collection basis if possible. See the chart below for decisions.
 
 +----------------------------+---------------------------------------------------+
 | collection PID             | dcterms:type                                      |
@@ -3162,7 +3161,7 @@ During or post migration we will plan to add typeOfResource on a collection basi
 | volvoices                  | cannot assign blanket value                       |
 +----------------------------+---------------------------------------------------+
 
-Here's an example record with no typeOfResource value - `roth:100 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A100/datastream/MODS/view>`_.
+Here's an example record with no :code:`typeOfResource` value - `roth:100 <https://digital.lib.utk.edu/collections/islandora/object/roth%3A100/datastream/MODS/view>`_.
 
 .. code-block:: turtle
 
