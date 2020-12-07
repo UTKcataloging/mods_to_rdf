@@ -1920,8 +1920,8 @@ None type
 Use Case
 ^^^^^^^^
 
-Several elements contain unintentional null values. There are five within Tennessee Documentary History. Additional null
-subjects include vpmoore:133 and adams:76. Most of roth seems to have null subject/name/namePart values.
+Several :code:`subject` elements contain unintentional null values. There are five within Tennessee Documentary History. Additional null
+:code:`subject`\ s include vpmoore:133 and adams:76. Most of roth seems to have null :code:`subject`\ /:code:`name`\ /:code:`namePart` values.
 It appears we might have inserted some blank nodes using the Islandora form entry. As there is no information, these
 "values" are not used and have no true use case.
 
@@ -1930,7 +1930,7 @@ Justification
 
 These nodes contain no information.
 
-Xpath
+XPath
 ^^^^^
 
     :code:`subject/topic[string() = '']` OR
@@ -1974,19 +1974,19 @@ Topical and name subjects with URIs
 Use Case
 ^^^^^^^^
 
-Remediated collections include subject values with URIs.
+Remediated collections include :code:`subject` values with URIs.
 
 Justification
 ^^^^^^^^^^^^^
 
-In migration, subjects with name and topical values will be treated in the same way. We have decided that the previous
-distinction between name and topical values as subjects is not essential - only the presence of all the values in the
+In migration, :code:`subject`\ s with :code:`name` and :code:`topical` values will be treated in the same way. We have decided that the previous
+distinction between :code:`name` and :code:`topical` values as :code:`subject`\ s is not essential - only the presence of all the values in the
 metadata is important.
 
-Xpath
+XPath
 ^^^^^
 
-Note that there is inconsistency in where the valueURI attribute is placed.
+Note that there is inconsistency in where the :code:`valueURI` attribute is placed.
 
     :code:`subject[@valueURI]/topic` OR
     :code:`subject/topic[@valueURI]` OR
@@ -1996,8 +1996,8 @@ Note that there is inconsistency in where the valueURI attribute is placed.
 Decision
 ^^^^^^^^
 
-When a valueURI is present for topical or name subject, it will be the value used in migration. Examples showing each
-of the distinct Xpaths are given below:
+When a :code:`valueURI` is present for :code:`topical` or :code:`name` subject, it will be the value used in migration. Examples showing each
+of the distinct XPaths are given below:
 
 `acwiley:280 as an example of subject[@valueURI]/topic <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A280/datastream/MODS/view>`_
 
@@ -2079,27 +2079,27 @@ Name and topical subjects without URIs
 Use Case
 ^^^^^^^^
 
-We'll need to treat any of these subjects that aren't able to be reconciled as string values. For the postcard collection,
+We'll need to treat any of these :code:`subject`\ s that aren't able to be reconciled as string values. For the postcard collection,
 the use of dots (Database of the Smokies) as the authority makes it impossible to include a URI presently. Other collections
 with string values that are: Charlie Daniel Cartoon Collection, Ed Gamble Cartoon Collection, Football Programs, Insurance Company of
 North America Records, the American Civil War Collection, Ramsey Family Papers, Tennessee Documentary History,
 and Volunteer Voices.
 
-The Volunteer Voices collection includes subjects with three different displayLabel values - Volunteer Voices Curriculum Topics,
-Tennessee Social Studies K-12 Eras in American History, and Broad Topics. These subjects are currently given separate
+The Volunteer Voices collection includes :code:`subject`\ s with three different :code:`displayLabel` values - "Volunteer Voices Curriculum Topics",
+"Tennessee Social Studies K-12 Eras in American History", and "Broad Topics". These :code:`subject`\ s are currently given separate
 facets in Islandora's metadata display. Discovery to the collection via two of these subject categories is also featured
-on the `Tennessee State Library and Archives website <https://sos.tn.gov/products/tsla/volunteer-voices>`_ (Broad Topics
-and Tennessee Social Studies K-12 Eras in American History). While these subjects have been distinguished previously from
-other subjects in the past by their distinct Xpath, having so many different types of subjects was found to be unnecessary
-going forward. Broad Topics and Curriculum Topics will be folded in with all other subjects. For links to external websites,
+on the `Tennessee State Library and Archives website <https://sos.tn.gov/products/tsla/volunteer-voices>`_ ("Broad Topics"
+and "Tennessee Social Studies K-12 Eras in American History"). While these :code:`subject`\ s have been distinguished previously from
+other :code:`subject`\ s in the past by their distinct XPath, having so many different types of :code:`subject`\ s was found to be unnecessary
+going forward. "Broad Topics" and "Curriculum Topics" will be folded in with all other :code:`subject`\ s. For links to external websites,
 like TSLA's, we can use the string values to supply a link without needing to place them in a separate property. Note that
-subjects associated with Tennessee Social Studies K-12 Eras in American History are dealt with
+:code:`subject`\ s associated with "Tennessee Social Studies K-12 Eras in American History" are dealt with
 separately below.
 
 Justification
 ^^^^^^^^^^^^^
 
-Subject values are important access points for users that require migration. While URIs would be ideal from a technical
+:code:`subject`\ s values are important access points for users that require migration. While URIs would be ideal from a technical
 standpoint, strings still support discovery.
 
 Xpath
@@ -2111,7 +2111,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-String values for topical or name subjects will be migrated when a valueURI is not present.
+String values for :code:`topical` or :code:`name` subjects will be migrated when a :code:`valueURI` is not present.
 
 Here's an `example record where only string values are available for topical subjects - gamble:123 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A123/datastream/MODS/view>`_.
 
@@ -2189,17 +2189,16 @@ Temporal subjects
 Use Case
 ^^^^^^^^
 
-Temporal subjects share information about a time period using text or a date (edtf). None of our existing temporal subjects
-include URIs.These values are prominent in Volunteer Voices and the Pi Beta Phi to Arrowmont collections.
+:code:`temporal` :code:`subject`\ s share information about a time period using text or a date (:code:`edtf`). None of our existing :code:`temporal` :code:`subject`\ s include URIs.These values are prominent in Volunteer Voices and the Pi Beta Phi to Arrowmont collections.
 
 Justification
 ^^^^^^^^^^^^^
 
-Temporal subjects provide important access points. While not associated with a URI, the values are often from controlled
+:code:`temporal` :code:`subject`\ s provide important access points. While not associated with a URI, the values are often from controlled
 vocabularies created as part of a grant project. Because they are associated with grants and cross-institutional projects,
 retaining these values is particularly important.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`mods/subject/temporal`
@@ -2207,8 +2206,8 @@ Xpath
 Decision
 ^^^^^^^^
 
-Temporal subjects without the displayLabel attribute will be directly mapped as strings to schema:temporalCoverage. This
-property was chosen because it allows a wider range of values than other potential solutions (such as dcterms:temporalCoverage
+:code:`temporal` :code:`subject`\ s without the :code:`displayLabel` attribute will be directly mapped as strings to `schema:temporalCoverage`. This
+property was chosen because it allows a wider range of values than other potential solutions (such as `dcterms:temporalCoverage`
 which requires that the value is part of the class PeriodOfTime).
 
 `Example of temporal subject - arrow:268 <https://digital.lib.utk.edu/collections/islandora/object/arrow%3A268>`_.
@@ -2226,7 +2225,7 @@ which requires that the value is part of the class PeriodOfTime).
 
     <https://example.org/objects/1> schema:temporalCoverage "The Birth of Arrowmont, Gatlinburg, Tennessee, 1965-1979" .
 
-In addition to these textual values, UTK does have temporal subjects that share numeric dates in EDTF format. These are
+In addition to these textual values, UTK does have :code:`temporal` :code:`subject`\ s that share numeric dates in EDTF format. These are
 primarily from the Volunteer Voices collection. `Here's an example record - volvoices:2945 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2945/datastream/MODS/view>`_.
 
 .. code-block:: xml
@@ -2241,17 +2240,17 @@ primarily from the Volunteer Voices collection. `Here's an example record - volv
 
     <https://example.org/objects/1> schema:temporalCoverage "1970-09-30" .
 
-Temporal subjects from Volunteer Voices (K-12 Eras) with string and Xpath inconsistencies
+Temporal subjects from Volunteer Voices (K-12 Eras) with string and XPath inconsistencies
 -----------------------------------------------------------------------------------------
 
 Use Case
 ^^^^^^^^
 
-While two of the subject categories associated with the Volunteer Voices collection can be folded into dcterms:subject
-directl (Broad Topics and Volunteer Voices Curriculum Topics), special attention needs to be given to subjects associated
-with Tennessee Social Studies K-12 Eras in American History. There are instances in which a value associated with one
-of these topics is used, but the displayLabel has been left off and they have incorrectly been categorized as geographic
-subjects.
+While two of the subject categories associated with the Volunteer Voices collection can be folded into `dcterms:subject`
+directly ("Broad Topics" and "Volunteer Voices Curriculum Topics"), special attention needs to be given to :code:`subject`\ s associated
+with "Tennessee Social Studies K-12 Eras in American History". There are instances in which a value associated with one
+of these topics is used, but the :code:`displayLabel` has been left off and they have incorrectly been categorized as :code:`geographic`
+:code:`subject`\ s.
 
 Justification
 ^^^^^^^^^^^^^
@@ -2260,8 +2259,9 @@ It is important to treat these values as a separate category to ensure that the 
 categories (aka `schema:temporalCoverage` and `dcterms:subject`). In addition, some standardization of the label needs to be
 done for all the records associated with a given concept to be colocated.
 
-Xpath
+XPath
 ^^^^^
+
     :code:`subject/geographic[string()="Contemporary United States (1968-present)."]` OR
     :code:`subject/geographic[string()="Postwar United States (1945-1970)."]` OR
     :code:`subject/geographic[string()="The Great Depression and World War II (1929-1945)."]` OR
@@ -2282,13 +2282,13 @@ An `example of a record that leaves off the displayLabel, but the string matches
         <geographic>Expansion and Reform (1801-1861).</geographic>
     </subject>
 
-The final subject/geographic value actually matches one of the values listed in the Tennessee Social Studies K-12 Eras
-in American History. While it is placed in a geographic subject here in the XML, it should be in a temporal subject (as
-the date range following the text suggests). One value is placed in subject/topic.The following values are all
+The final :code:`subject/geographic` value actually matches one of the values listed in the "Tennessee Social Studies K-12 Eras
+in American History". While it is placed in a :code:`geographic` :code:`subject` here in the XML, it should be in a :code:`temporal` :code:`subject` (as
+the date range following the text suggests). One value is placed in :code:`subject/topic`.The following values are all
 of the exceptions:
 
 We will want to remediate before migration, match on and transform these values during migration, or deal with them after migration. The string values
-also don't exactly match the string values present in topic[@displayLabel="Tennessee Social Studies K-12 Eras in American History"].
+also don't exactly match the string values present in :code:`topic[@displayLabel="Tennessee Social Studies K-12 Eras in American History"]`.
 The eras ("Era 2 - ", "Era 3 - ", etc.) need to be added and the trailing periods removed for these to match. Below is a
 table of the values that need to be edited along with their appropriate match.
 
@@ -2326,7 +2326,7 @@ table of the values that need to be edited along with their appropriate match.
         <temporal>Era 9 - Postwar United States (1945-1970's)</temporal>
     </subject>
 
-These will simply be treated as other temporal subjects are. Note that we only have strings for temporal subjects.
+These will simply be treated as other :code:`temporal` :code:`subject`\ s are. Note that we only have strings for :code:`temporal` :code:`subject`\ s.
 
 .. code-block:: turtle
 
@@ -2340,23 +2340,23 @@ Geographic subjects
 Use Case
 ^^^^^^^^
 
-UTK has geographic subjects with and without URIs. Like with other elements, the placement of the URIs is not consistent.
+UTK has :code:`geographic` :code:`subject`\ s with and without URIs. Like with other elements, the placement of the URIs is not consistent.
 URIs will be used when present, but strings can be used when there is no URI.
 
 Justification
 ^^^^^^^^^^^^^
 
-Geographic subjects warrant a separate property from both temporal and topic subjects so that they can be displayed
-separately on the interface. Geographic subjects aid with discovery.
+:code:`geographic` :code:`subject`\ s warrant a separate property from both :code:`temporal` and :code:`topic` :code:`subject`\ s so that they can be displayed
+separately on the interface. :code:`geographic` :code:`subject`\ s aid with discovery.
 
-Xpath
+XPath
 ^^^^^
 
     :code:`subject[@valueURI]/geographic` OR
     :code:`subject/geographic[@valueURI]`
 
-As noted previously, there are a handful of string values in geographic elements within volvoices that need to be moved
-to be treated differently than other geographic values.
+As noted previously, there are a handful of string values in :code:`geographic` elements within volvoices that need to be moved
+to be treated differently than other :code:`geographic` values.
 
     :code:`subject/geographic[not(string()="Contemporary United States (1968-present).")]` OR
     :code:`subject/geographic[not(string()="Postwar United States (1945-1970).")]` OR
@@ -2398,8 +2398,8 @@ Decision
         <geographic authority="geonames" valueURI="http://sws.geonames.org/4178924/about.rdf">Yulee Sugar Mill Ruins Historic State Park</geographic>
     </subject>
 
-Regardless of URI placement, we will map the values the same. Note that if the geographic term includes coordinates and
-a geonames URI, we will drop the coordinates. More information on this is given in the Coordinates section following this
+Regardless of URI placement, we will map the values the same. Note that if the :code:`geographic` term includes coordinates and
+a :code:`geonames` URI, we will drop the coordinates. More information on this is given in the Coordinates section following this
 section. Below is the decision for webster:1127.
 
 .. code-block:: turtle
@@ -2444,16 +2444,16 @@ National Park (N.C. And Tenn.)", "Knoxville (Tenn.)", "Sevier County (Tenn.)", "
 "Fort George Site", "Fort Manuel Site", "Fowler (Kan.)", "Gatlinburg (Tenn.)", "Greenbrier Pinnacle (Tenn.)", "Gregory Bald (Tenn.)",
 "Guyot, Mount (Tenn.)", "Harrison, Mount (Tenn.)", "Headrick Chapel (Tenn.)", and many more.
 
-For those geographic names associated with geonames through a URI, there is arguably no need to migrate the coordinates
+For those :code:`geographic` names associated with :code:`geonames` through a URI, there is arguably no need to migrate the coordinates
 as a string value as these can be retrieved using the URI at any time.
 
 Justification
 ^^^^^^^^^^^^^
 
-Having coordinates to leverage support mapping and digital humanities projects. Coordinates increase the number of
+Having :code:`coordinates` to leverage support mapping and digital humanities projects. :code:`coordinates` increase the number of
 ways in which our data can be used.
 
-Xpath
+XPath
 ^^^^^
 
     :code:`subject/cartographics/coordinates`
@@ -2480,7 +2480,7 @@ All that is needed in this case is to bring over the URI.
 
     <https://example.org/objects/1> dcterms:spatial <https://sws.geonames.org/4630912> .
 
-Given the extent of coordinates that cannot be retrieved using a URI (120), a separate solution is needed to preserve these values.
+Given the extent of :code:`coordinates` that cannot be retrieved using a URI (120), a separate solution is needed to preserve these values.
 `Here's an example record - derris:610 <https://digital.lib.utk.edu/collections/islandora/object/derris%3A610/datastream/MODS/view>`_.
 
 .. code-block:: xml
@@ -2505,18 +2505,18 @@ Name values with roleTerms represented as subjects
 Use Case
 ^^^^^^^^
 
-The Arrowmont Simple Images collection includes subject/name/namePart values with roleTerms. Something should
-be treated as a subject if it is represented within a photograph and treated as a name with a roleTerm if the indvidual
-listed is associated with the creation or provenance of the item depicted. As the names values are currently represented
+The Arrowmont Simple Images collection includes :code:`subject/name/namePart` values with :code:`roleTerm`\ s. Something should
+be treated as a :code:`subject` if it is represented within a photograph and treated as a name with a :code:`roleTerm` if the individual
+listed is associated with the creation or provenance of the item depicted. As the :code:`name` values are currently represented
 in the metadata, these two distinct categories are mixed. The only place where the two can overlap is if the name
 is given a role of `"Depicted" - <https://id.loc.gov/vocabulary/relators/dpc>`_.
 
 Justification
 ^^^^^^^^^^^^^
 
-As the names are currently represented, they share incorrect information.
+As the :code:`name`\ s are currently represented, they share incorrect information.
 
-Xpath
+XPath
 ^^^^^
 
     :code:`mods/subject/name[role]`
@@ -2528,7 +2528,7 @@ Decision
 This record is particularly problematic because it both suggests that Aunt Lydia Whaley is the photographer and that the
 photographer is unknown. This suggests that she cannot have the role of photographer. She may be depicted within the
 photograph, but this is also unconfirmed. While more vague, the safest way to deal with these records is to drop the
-roleTerm and treat the names as general subjects. For this record, the inclusion of this subject could mean that
+:code:`roleTerm` and treat the :code:`name`\ s as general subjects. For this record, the inclusion of this :code:`subject` could mean that
 Aunt Lydia is the woman depicted, but it could also reinforce the title (Aunt Lydia's cave by the creek). It is
 ambiguous, but doesn't state anything that is clearly untrue.
 
