@@ -622,7 +622,7 @@ abstract
 +------------------+------------+-------------------+-----------------------------------------------------+
 | Predicate        | Value Type | Range (if needed) | Usage notes                                         |
 +==================+============+===================+=====================================================+
-| dcterms:abstract | Literal    |                   | Use for all abstracts that are not blank nodes |
+| dcterms:abstract | Literal    |                   | Use for all abstracts that are not blank nodes      |
 +------------------+------------+-------------------+-----------------------------------------------------+
 
 Abstracts that are not Blank Nodes
