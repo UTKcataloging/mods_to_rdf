@@ -631,7 +631,7 @@ Abstracts that are not Blank Nodes
 Use Case
 ^^^^^^^^
 
-If a record has an :code:`abstract` or many :code:`abstract`s, they will each be mapped to `dcterms:abstract` as long as the :code:`abstract`
+If a record has an :code:`abstract` or many :code:`abstract`\ s, they will each be mapped to `dcterms:abstract` as long as the :code:`abstract`
 does not have an empty text node.
 
 Justification
@@ -685,7 +685,7 @@ Blank Abstracts
 Use Case
 ^^^^^^^^
 
-We have a fair number of records with empty :code:`abstract`s.  When an :code:`abstract` is an empty node, don't map it.
+We have a fair number of records with empty :code:`abstract`\ s.  When an :code:`abstract` is an empty node, don't map it.
 
 Justification
 ^^^^^^^^^^^^^
