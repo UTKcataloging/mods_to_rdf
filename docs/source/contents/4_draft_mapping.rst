@@ -4064,20 +4064,23 @@ physicalLocation as URI
 
 Use Case
 ^^^^^^^^
-Many records have valueURI attributes set for physicalLocation. This is inconsistent, even in our own collections.
+
+Many records have :code:`valueURI` attributes set for :code:`physicalLocation`. This is inconsistent, even in our own collections.
 
 Justification
 ^^^^^^^^^^^^^
-When available, we will opt to use valueURI values as the URI value for relators:rps, to better qualify objects of relators:rps.
 
-Xpath
+When available, we will opt to use :code:`valueURI` values as the URI value for `relators:rps`, to better qualify objects of `relators:rps`.
+
+XPath
 ^^^^^
 
 :code:`location/physicalLocation[@valueURI]`
 
 Decision
 ^^^^^^^^
-The valueURI attribute :code:`location/physicalLocation` is set as object.
+
+The :code:`valueURI` attribute :code:`location/physicalLocation` is set as object.
 
 `Example record from egypt:79 <https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view>`_
 
@@ -4099,24 +4102,27 @@ physicalLocation as string (UTK)
 
 Use Case
 ^^^^^^^^
-In many of our own collections, we use strings to describe physicalLocation. We are inconsistent in the structuring of these strings, leading to many different variations for both our Libraries and Special Collections, some of these include misspellings or just different formatting:
 
-- The University of Tennessee Libraries, Knoxville
-- University of Tennesse Knoxville. Libraries
-- University of Tennessee Knoxville. Libraries
+In many of our own collections, we use strings to describe :code:`physicalLocation`. We are inconsistent in the structuring of these strings, leading to many different variations for both our Libraries and Special Collections, some of these include misspellings or just different formatting:
+
+- "The University of Tennessee Libraries, Knoxville"
+- "University of Tennesse Knoxville. Libraries"
+- "University of Tennessee Knoxville. Libraries"
 
 Justification
 ^^^^^^^^^^^^^
+
 To create better consistency and cleanliness going forward, we will isolate all instances of these strings and transcribe them to appropriate URIs for UT Libraries and Special collections.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`location/physicalLocation[not(@valueURI)][text()="The University of Tennessee Libraries, Knoxville" or text()="University of Tennesse Knoxville. Libraries" or text()="University of Tennessee Knoxville. Libraries"]`
 
 Decision
 ^^^^^^^^
-Even when mods only has a string present, we will map The University of Tennessee Libraries, Knoxville and University of Tennessee, Knoxville. Special Collections to relative URIs.
+
+Even when MODS only has a string present, we will map "The University of Tennessee Libraries, Knoxville" and "University of Tennessee, Knoxville. Special Collections" to relative URIs.
 
 `Example record from fbpro:94819 <https://digital.lib.utk.edu/collections/islandora/object/fbpro:94819/datastream/MODS/view>`_
 
@@ -4158,20 +4164,23 @@ physicalLocation as string (non-UTK)
 
 Use Case
 ^^^^^^^^
+
 Across our collections, there are also many cases where non-UTK items do not have URIs and instead use strings.
 
 Justification
 ^^^^^^^^^^^^^
+
 Translating these to a relative URIs would require significant effort, and the value added may be trivial at this point.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`location/physicalLocation[not(@valueURI)][not(text()="The University of Tennessee Libraries, Knoxville" or text()="University of Tennesse Knoxville. Libraries" or text()="University of Tennessee Knoxville. Libraries")]`
 
 Decision
 ^^^^^^^^
-In cases that the physicalLocation are non-UTK and only a string is provided, we will only use the string literal.
+
+In cases that the :code:`physicalLocation` are non-UTK and only a string is provided, we will only use the string literal.
 
 .. code-block:: xml
 
@@ -4200,20 +4209,23 @@ physicalLocation with shelfLocator (UTK)
 
 Use Case
 ^^^^^^^^
-In many cases, some of our collection items will have shelfLocator information. This information may not currently be accurate and can found via Special Collections’ finding aids.
+
+In many cases, some of our collection items will have :code:`shelfLocator` information. This information may not currently be accurate and can found via Special Collections’ finding aids.
 
 Justification
 ^^^^^^^^^^^^^
-Because our records in MODS records may not be accurate and this information is located elsewhere, and perhaps more accurate, we will drop this information when shelfLocator is used in conjunction with our repositories.
 
-Xpath
+Because our records in MODS records may not be accurate and this information is located elsewhere, and perhaps more accurate, we will drop this information when :code:`shelfLocator` is used in conjunction with our repositories.
+
+XPath
 ^^^^^
 
 :code:`location[physicalLocation[text()[contains(., "University of Tennessee")]]]/shelfLocator`
 
 Decision
 ^^^^^^^^
-We will drop `shelfLocator` data when present for UT Knoxville records.
+
+We will drop :code:`shelfLocator` data when present for UT Knoxville records.
 
 `Example record from scopes:1258 <https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/MODS/view>`_
 
@@ -4236,11 +4248,13 @@ physicalLocation with shelfLocator (non-UTK)
 
 Use Case
 ^^^^^^^^
-Instances where non-UTK held items have shelfLocator information.
+
+Instances where non-UTK held items have :code:`shelfLocator` information.
 
 Justification
 ^^^^^^^^^^^^^
-While, we do not not know if this shelfLocator information is accurate, we will opt to retain it going forward as a string and map to skos:note. Samvera does note some possible future availability of opaque:locationShelfLocator, however this predicate does not exist yet.
+
+While, we do not not know if this :code:`shelfLocator` information is accurate, we will opt to retain it going forward as a string and map to `skos:note`. Samvera does note some possible future availability of `opaque:locationShelfLocator`, however this predicate does not exist yet.
 
 Xpath
 ^^^^^
@@ -4250,7 +4264,8 @@ Xpath
 
 Decision
 ^^^^^^^^
-We will retain :code:`shelfLocator` data when present for non-UTK records, and transcribe this to a skos:note.
+
+We will retain :code:`shelfLocator` data when present for non-UTK records, and transcribe this to a `skos:note`.
 
 `Example record from volvoices:2136 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2136/datastream/MODS/view>`_
 
@@ -4288,20 +4303,23 @@ physicalLocation with holdingExternal
 
 Use Case
 ^^^^^^^^
-Some instances in our collections contain nested subelements for holdingExternal and the further nested physicalAddress information.
+
+Some instances in our collections contain nested subelements for :code:`holdingExternal` and the further nested :code:`physicalAddress` information.
 
 Justification
 ^^^^^^^^^^^^^
-To keep our metadata as simple as possible from a technical standpoint we will drop all information for holdingExternal. This type of information has little additive value when physicalLocation is already referenced.
 
-Xpath
+To keep our metadata as simple as possible from a technical standpoint we will drop all information for :code:`holdingExternal`. This type of information has little additive value when :code:`physicalLocation` is already referenced.
+
+XPath
 ^^^^^
 
 :code:`location/holdingExternal`
 
 Decision
 ^^^^^^^^
-We will drop all information for `holdingExternal`.
+
+We will drop all information for :code:`holdingExternal`.
 
 `Example record from volvoices:2199 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view>`_
 
@@ -4340,20 +4358,21 @@ physicalLocation with @displayLabel="Address"
 Use Case
 ^^^^^^^^
 
-Some of items with the physicalLocation of Pi Beta Phi Fraternity also have a physicalLocation subelement with the displayLabel attribute of Address.
+Some of items with the :code:`physicalLocation` of Pi Beta Phi Fraternity also have a :code:physicalLocation subelement with the :code:`displayLabel` attribute value of "Address".
 
 Justification
 ^^^^^^^^^^^^^
 
-Similar to the holdingExternal, we will opt drop this information to maintain simplicity of our data from a technical standpoint.
+Similar to the :code:`holdingExternal`, we will opt drop this information to maintain simplicity of our data from a technical standpoint.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`location/physicalLocation[@displayLabel="Address"]`
 
 Decision
 ^^^^^^^^
+
 Drop this.
 
 `Example record from volvoices:2199 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view>`_
@@ -4380,13 +4399,15 @@ physicalLocation with @displayLabel="Collection"
 
 Use Case
 ^^^^^^^^
-In a some collections for Arrowmont, we will find items having a physicalLocation subelement with the displayLabel attribute of Collection with text containing "Archives Collection". We also have extra physicalLocation subelements with displayLabel attributes of Detailed Location, City and State.
+
+In a some collections for Arrowmont, we will find items having a :code:`physicalLocation` subelement with the :code:`displayLabel` attribute value of "Collection" with text containing "Archives Collection". We also have extra :code:`physicalLocation` subelements with :code:`displayLabel` attribute values of "Detailed Location", "City" and "State".
 
 Justification
 ^^^^^^^^^^^^^
-Because these records do not already have a dbo:collection predicate, we will transcribe the string literal to dbo:collection for :code:`location/physicalLocation[@displayLabel="Collection"]`. No other data here needs to be retained and will be dropped.
 
-Xpath
+Because these records do not already have a `dbo:collection` predicate, we will transcribe the string literal to `dbo:collection` for :code:`location/physicalLocation[@displayLabel="Collection"]`. No other data here needs to be retained and will be dropped.
+
+XPath
 ^^^^^
 
 :code:`location/physicalLocation[@displayLabel="Collection" and text()[contains(.,"Archives Collection")]]`
@@ -4397,11 +4418,12 @@ Xpath
 
 Decision
 ^^^^^^^^
-We will keep the string for the physicalLocation instance with displayLabel=Collection and transcribe this to literal for dbo:collection.
 
-Similar to when physicalLocation has no displayLabel, physicalLocation with displayLabel  of Repository is retained as relators:rps.
+We will keep the string for the :code:`physicalLocation` instance with :code:`displayLabel="Collection"` and transcribe this to literal for `dbo:collection`.
 
-All other physicalLocation (Detailed Location, City, State) data is dropped.
+Similar to when :code:`physicalLocation` has no :code:`displayLabel` attribute, :code:`physicalLocation` with an :code:`displayLabel` attribute value of "Repository" is retained as `relators:rps`.
+
+All other :code:`physicalLocation` ("Detailed Location", "City", "State") data is dropped.
 
 `Example record from volvoices:2199 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2199/datastream/MODS/view>`_
 
@@ -4430,7 +4452,7 @@ physicalLocation within volvoices used for provider information
 Use Case
 ^^^^^^^^
 
-There is one collection in which location information needs to be used to correct inaccuracies for other metadata fields. The Volunteer Voices collection lists the University of Tennessee as the recordContentSource for all records. While UTK may have created the metadata records, our mapping with DPLA makes it so that we are noted as the source of these records rather than the actual contributing institution. There are instances within volvoices in which the institution in physicalLocation and the one listed in recordContent Source are the same. This action doesn't need to be taken for those records.
+There is one collection in which location information needs to be used to correct inaccuracies for other metadata fields. The Volunteer Voices collection lists the University of Tennessee as the :code:`recordContentSource` for all records. While UTK may have created the metadata records, our mapping with DPLA makes it so that we are noted as the source of these records rather than the actual contributing institution. There are instances within volvoices in which the institution in physicalLocation and the one listed in recordContent Source are the same. This action doesn't need to be taken for those records.
 
 Justification
 ^^^^^^^^^^^^^
