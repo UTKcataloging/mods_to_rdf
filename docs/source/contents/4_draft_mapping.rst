@@ -1290,14 +1290,14 @@ digitalOrigin
 Use Case
 ^^^^^^^^
 
-Currently there are 28,137 records that have a digitalOrigin value. This value is absent from 23,190 records. While present
+Currently there are 28,137 records that have a :code:`digitalOrigin` value. This value is absent from 23,190 records. While present
 in the MODS record, these values (we have "born digital", "digitized other analog", and "reformatted digital" in our collections)
 are not publicly displayed anywhere. These values communicate the "method by which a resource achieved digital form."
 
 Justification
 ^^^^^^^^^^^^^
 
-We have decided for a number of reasons that migrating our digitalOrigin values does is not beneficial. As mentioned above,
+We have decided for a number of reasons that migrating our :code:`digitalOrigin` values does is not beneficial. As mentioned above,
 these values are not currently viewable by users. Arguably, these values will also already be apparent from the technical
 metadata and do not need to be captured in the descriptive metadata. In addition, we are unaware of any backend technical
 use case for this data at present. While knowing if something is "born digital" might be useful, all of the content within
@@ -1308,7 +1308,7 @@ likely not be on the same platform as Digital Collections resources.
 Xpath
 ^^^^^
 
-mods:physicalDescription/mods:digitalOrigin
+:code:`physicalDescription/digitalOrigin`
 
 Decision
 ^^^^^^^^
@@ -1324,8 +1324,9 @@ note
 
 Use Case
 ^^^^^^^^
-Two collections, the Botanical Photography of Alan S. Heilman and the William Derris Film Collection, include <note> elements
-within <physicalDescription>. These values are of two types. The majority of the values communicate camera settings for the
+
+Two collections, the Botanical Photography of Alan S. Heilman and the William Derris Film Collection, include :code:`note` elements
+within :code:`physicalDescription`. These values are of two types. The majority of the values communicate camera settings for the
 Heilman collection, while a smaller number of values share the "Film type" that was used to produce the print that was
 digitized. Below is a small sample of these values:
 
@@ -1337,25 +1338,28 @@ digitized. Below is a small sample of these values:
 
 These values are somewhat problematic because they do not describe the digitized resource, but instead provide information about
 the process that created these resources. This is useful information to know, but isn't tied directly to the resource, making
-the inclusion of the values within physicalDescription inaccurate.
+the inclusion of the values within :code:`physicalDescription` inaccurate.
 
 Justification
 ^^^^^^^^^^^^^
-Since we do not use mods:physicalDescription/mods:note regularly, it would streamline our data if these values could be
+
+Since we do not use :code:`physicalDescription/note` regularly, it would streamline our data if these values could be
 appropriately placed elsewhere. I attempted to match film type values ("GEMounts" and "Kodachrome Transparency") with AAT
 terms, but wasn't able to find anything appropriate for "GEMounts." The accuracy of some of this information is questionable
 (for instance, GEMounts are likely a brand instead of a film type), but without access to the actual materials during the quarantine, it's
 impossible to make an informed judgement on what should be changed. To retain this contextual information that might
 prove useful to researchers interested in photographic processes and techniques, it seems best to simply put these values
-in a generic note field. If additional attention can be given to these two collections in the future, we can remediate
+in a generic `note` field. If additional attention can be given to these two collections in the future, we can remediate
 the metadata following migration with the benefit of having access to the physical materials.
 
 Xpath
 ^^^^^
-mods:physicalDescription/mods:note
+
+:code:`physicalDescription/note`
 
 Decision
 ^^^^^^^^
+
 All values will be moved to a generic note field.
 
 `Example record - derris:879 <https://digital.lib.utk.edu/collections/islandora/object/derris%3A879/datastream/MODS/view>`_
@@ -1381,7 +1385,8 @@ extent
 
 Use Case
 ^^^^^^^^
-The element includes values that indicate time and physical dimensions. Time is consistently shared in hours, minutes
+
+The :code:`extent` element includes values that indicate time and physical dimensions. Time is consistently shared in hours, minutes
 and seconds. Physical dimensions are most consistently represented in inches and feet, but cm are also used for smaller
 items that might benefit from a more granular measurement. While this kind of information has historically been included
 in MARC records to ensure that books are not larger than the shelf height, extent values can also provide important
@@ -1390,19 +1395,20 @@ case of photography, the dimensions can be used to help determine the type of fi
 
 Justification
 ^^^^^^^^^^^^^
-The working group's shared philosophies were influential in decided on the best property to use for <extent> values. The
-Islandora Metadata Interest Group's default mapping suggests using dcterms:extent and using a blank node with a literal as
+
+The working group's shared philosophies were influential in decided on the best property to use for :code:`extent` values. The
+Islandora Metadata Interest Group's default mapping suggests using `dcterms:extent` and using a blank node with a literal as
 a RDF value. This group is against using blank nodes when at all possible because they make it more difficult for the
-user to consume content. The Samvera mapping uses rdau:P60550, which is less than ideal because rdau does not support
+user to consume content. The Samvera mapping uses `rdau:P60550`, which is less than ideal because `rdau` does not support
 content negotiation. This means that the URI provided for the desired property does not allow a user to directly request
-RDF. No other more suitable properties could be found for <extent> values. Given this predicament, the working group
-decided to use rdau:P60550 because it is dereferenceable, which a blank node is not. Still, the inability to retrieve
+RDF. No other more suitable properties could be found for :code:`extent` values. Given this predicament, the working group
+decided to use `rdau:P60550` because it is dereferenceable, which a blank node is not. Still, the inability to retrieve
 RDF directly will limit users wishing to interact with our data in this way.
 
 Xpath
 ^^^^^
 
-mods:physicalDescription/mods:extent
+:code:`physicalDescription/extent`
 
 Decision
 ^^^^^^^^
@@ -1424,25 +1430,28 @@ extent - @unit
 
 Use Case
 ^^^^^^^^
-The Great Smoky Mountains Colloquy collection is the only collection that includes the unit attribute on <extent>. The
+
+The Great Smoky Mountains Colloquy collection is the only collection that includes the :code:`unit` attribute on :code:`extent`. The
 collection consists of 34 total records.
 
 Justification
 ^^^^^^^^^^^^^
-It is important for the user to know what the unit of measurement is for a value within the <extent> field. It is also
+
+It is important for the user to know what the unit of measurement is for a value within the :code:`extent` field. It is also
 important for us to share this information consistently. In order to retain the needed information while also conforming
-the metadata from this collection with the rest of our records, we propose that the @unit value is added to the extent
-string during migration. This would involve simply taking the existing value in <extent> and then adding ' pages' to the
+the metadata from this collection with the rest of our records, we propose that the :code:`@unit` value is added to the :code:`extent`
+string during migration. This would involve simply taking the existing value in :code:`extent` and then adding ' pages' to the
 string. Note that all of the resources within the Colloquy collection have more than one page, so the plural form of the
-word will always be accurate. See the Decision section of extent above for more explanation of rdau:P60550.
+word will always be accurate. See the Decision section of extent above for more explanation of `rdau:P60550`.
 
 Xpath
 ^^^^^
 
-mods:physicalDescription/mods:extent[@unit="pages"]
+:code:`physicalDescription/extent[@unit="pages"]`
 
 Decision
 ^^^^^^^^
+
 `Example record - colloquy:202 <https://digital.lib.utk.edu/collections/islandora/object/colloquy%3A202/datastream/MODS/view>`_
 
 .. code-block:: xml
@@ -1462,7 +1471,7 @@ form - No URI
 Use Case
 ^^^^^^^^
 
-At the time of analysis, there were 10,853 records that contained a form term without an associated valueURI attribute.
+At the time of analysis, there were 10,853 records that contained a :code:`form` term without an associated :code:`valueURI` attribute.
 Through individually assessing the values, it was determined that all of these values do indeed come from the Art and
 Architecture Thesaurus (AAT), but without additional remediation the relationship of these values to the controlled
 vocabulary is not actionable. In the coming months, work will be done to add the appropriate valueURIs to these records,
@@ -1475,19 +1484,19 @@ Justification
 ^^^^^^^^^^^^^
 
 Form values are important access points that provide more specific information than is provided in higher-level elements
-like <typeOfResource>. While these form values do not currently contain valueURI attributes, the strings themselves
+like :code:`typeOfResource`. While these form values do not currently contain :code:`valueURI` attributes, the strings themselves
 are controlled terms that are clean and consistent so we want to bring them over.
 
 Xpath
 ^^^^^
 
-mods:physicalDescription/mods:form
+:code:`physicalDescription/form`
 
 Decision
 ^^^^^^^^
 
-We will use edm:hasType instead of dcterms:format in order to accommodate form values without a URI. We need to move all
-of the form values over, so using edm:hasType will make sure that we bring every form term regardless of whether it is
+We will use `edm:hasType` instead of `dcterms:format` in order to accommodate form values without a URI. We need to move all
+of the form values over, so using `edm:hasType` will make sure that we bring every form term regardless of whether it is
 defined as a URI or a literal.
 
 Here's an `example record - gamble:1 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A1/datastream/MODS/view>`_
@@ -1509,22 +1518,22 @@ form - Has URI
 Use Case
 ^^^^^^^^
 
-The majority of UTK's form values include a valueURI from the Art and Architecture Thesaurus (AAT). These values provide
-important access to users by providing physical information about the original resource. Form values are not currently
+The majority of UTK's :code:`form` values include a :code:`valueURI` from the Art and Architecture Thesaurus (AAT). These values provide
+important access to users by providing physical information about the original resource. :code:`form` values are not currently
 displayed in DPLA's interface, but `DPLA's MAP 5 <https://drive.google.com/file/d/1fJEWhnYy5Ch7_ef_-V48-FAViA72OieG/view>`_
-lists preferred from subtype values that will eventually be implemented. Work has been done to align as many of our form
+lists preferred from subtype values that will eventually be implemented. Work has been done to align as many of our :code:`form`
 terms as possible with this preferred list.
 
 Justification
 ^^^^^^^^^^^^^
 
-Form values are important access points that provide more specific information than is provided in higher-level elements
-like <typeOfResource>
+:code:`form` values are important access points that provide more specific information than is provided in higher-level elements
+like :code:`typeOfResource`.
 
 Xpath
 ^^^^^
 
-mods:physicalDescription/mods:form[@valueURI]
+:code:`physicalDescription/form[@valueURI]`
 
 Decision
 ^^^^^^^^
@@ -1547,15 +1556,17 @@ form - @type="material"
 
 Use Case
 ^^^^^^^^
-The Archivision collection has a special type attribute so that the list of materials used to create specific buildings
+
+The Archivision collection has a special :code:`type` attribute so that the list of materials used to create specific buildings
 can be faceted. The material types are consistently listed in the same order within the string to make this possible.
 
 Justification
 ^^^^^^^^^^^^^
+
 In order to attempt to streamline this data to better align with UTK's existing records, all existing terms were compared
 with similar terms from the Art and Architecture Thesaurus. The hope was to split the string field on commas and find
-controlled terms for each individual value so that these could simply be presented in mods:physicalDescription/mods:form
-without the need for a unique type attribute. Analysis showed that a number of values included very specific descriptions
+controlled terms for each individual value so that these could simply be presented in :code:`physicalDescription/form`
+without the need for a unique :code:`type` attribute. Analysis showed that a number of values included very specific descriptions
 of the material type in parentheses following the broader term. For instance, 'marble (white Carrara and green Prato marble).'
 This specificity made it impossible to use the AAT without losing some of the information present in the original records.
 Treating these values as part of the abstract will ensure that they display prominently, which wouldn't be the case with
@@ -1565,10 +1576,11 @@ period added ('.').
 Xpath
 ^^^^^
 
-mods:physicalDescription/mods:form[@type="material"]
+:code:`physicalDescription/form[@type="material"]`
 
 Decision
 ^^^^^^^^
+
 `Example record - archvision:8477 <https://digital.lib.utk.edu/collections/islandora/object/archivision%3A8477/datastream/MODS/view>`_
 
 .. code-block:: xml
@@ -1586,11 +1598,13 @@ internetMediaType
 
 Use Case
 ^^^^^^^^
-A total of 14,725 records have an <internetMediaType> while this element is not present in 36,602 records. It is used to indicate
+
+A total of 14,725 records have an :code:`internetMediaType` while this element is not present in 36,602 records. It is used to indicate
 the MIME type of the access file for the digitized resource.
 
 Justification
 ^^^^^^^^^^^^^
+
 We do not need to migrate this information from the descriptive metadata as it will be captured automatically during
 file characterization in the new system. We also do not want to move the current values over from the existing metadata
 because they often share inaccurate information. Finally, this element is currently present in only
@@ -1598,7 +1612,7 @@ because they often share inaccurate information. Finally, this element is curren
 Xpath
 ^^^^^
 
-mods:physicalDescription/mods:internetMediaType
+:code:`physicalDescription/internetMediaType`
 
 Decision
 ^^^^^^^^
