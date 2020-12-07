@@ -980,53 +980,53 @@ originInfo/dateCreated
 Use Case
 ^^^^^^^^
 
-:code:`mods:dateCreated` captures dates and date ranges identifying or approximating when the physical object was created.
+:code:`dateCreated` captures dates and date ranges identifying or approximating when the physical object was created.
 
 Justification
 ^^^^^^^^^^^^^
 
-No dispute on the values in :code:`mods:dateCreated`.
+No dispute on the values in :code:`dateCreated`.
 
 XPath
 ^^^^^
 
-:code:`mods:originInfo/mods:dateCreated` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
-:code:`mods:originInfo/mods:dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
-:code:`mods:originInfo/mods:dateCreated[@point='end']` OR
-:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
-:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
-:code:`mods:originInfo/mods:dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-:code:`mods:originInfo/mods:dateCreated[@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-:code:`mods:originInfo/mods:dateCreated[@qualifier='questionable']` OR
-:code:`mods:originInfo/mods:dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
+:code:`originInfo/dateCreated` OR
+:code:`originInfo/dateCreated[@encoding='edtf']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='end']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
+:code:`originInfo/dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@point='end']` OR
+:code:`originInfo/dateCreated[@qualifier='approximate']` OR
+:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@qualifier='inferred']` OR
+:code:`originInfo/dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateCreated[@qualifier='questionable']` OR
+:code:`originInfo/dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
 
 Decisions
 ^^^^^^^^^
@@ -1070,34 +1070,34 @@ originInfo/dateIssued
 Use Case
 ^^^^^^^^
 
-`dateIssued` captures dates and date ranges identifying or approximating when the physical object was issued.
+:code:`dateIssued` captures dates and date ranges identifying or approximating when the physical object was issued.
 
 Justification
 ^^^^^^^^^^^^^
 
-No dispute  on the values in `dateIssued`.
+No dispute on the values in :code:`dateIssued`.
 
 XPaths
 ^^^^^^
 
-:code:`mods:originInfo/mods:dateIssued` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='end']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='start']` OR
-:code:`mods:originInfo/mods:dateIssued[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
-:code:`mods:originInfo/mods:dateIssued[@point='end']` OR
-:code:`mods:originInfo/mods:dateIssued[@qualifier='approximate']` OR
-:code:`mods:originInfo/mods:dateIssued[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
-:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred']` OR
-:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
-:code:`mods:originInfo/mods:dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']`
+:code:`originInfo/dateIssued` OR
+:code:`originInfo/dateIssued[@encoding='edtf']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@point='end']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@point='start']` OR
+:code:`originInfo/dateIssued[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+:code:`originInfo/dateIssued[@point='end']` OR
+:code:`originInfo/dateIssued[@qualifier='approximate']` OR
+:code:`originInfo/dateIssued[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+:code:`originInfo/dateIssued[@qualifier='inferred']` OR
+:code:`originInfo/dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+:code:`originInfo/dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']`
 
 Decision
 ^^^^^^^^
@@ -1127,20 +1127,20 @@ originInfo/dateOther
 Use Case
 ^^^^^^^^
 
-`dateOther` captures other significant dates associated with the resource.
+:code:`dateOther` captures other significant dates associated with the resource.
 
 Justification
 ^^^^^^^^^^^^^
 
-No dispute on the values in `dateOther`.
+No dispute on the values in :code:`dateOther`.
 
 XPath
 ^^^^^
 
-:code:`mods:originInfo/mods:dateOther` OR
-:code:`mods:originInfo/mods:dateOther[@encoding='edtf']` OR
-:code:`mods:originInfo/mods:dateOther[@encoding='edtf'][@point='end']` OR
-:code:`mods:originInfo/mods:dateOther[@encoding='edtf'][@point='start']`
+:code:`originInfo/dateOther` OR
+:code:`originInfo/dateOther[@encoding='edtf']` OR
+:code:`originInfo/dateOther[@encoding='edtf'][@point='end']` OR
+:code:`originInfo/dateOther[@encoding='edtf'][@point='start']`
 
 Decisions
 ^^^^^^^^^
@@ -1181,19 +1181,19 @@ This XPath identifies a place associated with the publication of the resource.
 Justification
 ^^^^^^^^^^^^^
 
-No dispute on the values in `place/placeTerm`.
+No dispute on the values in :code:`place/placeTerm`.
 
 XPath
 ^^^^^
 
-:code:`mods:originInfo/mods:place/mods:placeTerm[@text]` OR
-:code:`mods:originInfo/mods:place/mods:placeTerm[@text][@valueURI]` OR
-:code:`mods:originInfo/mods:place[@supplied]/mods:placeTerm[@text][@valueURI]`
+:code:`originInfo/place/placeTerm[@text]` OR
+:code:`originInfo/place/placeTerm[@text][@valueURI]` OR
+:code:`originInfo/place[@supplied]/placeTerm[@text][@valueURI]`
 
 Decision
 ^^^^^^^^
 
-The majority of the applicable values are associate with a `@valueURI`.  The `relators:pup` property was selected.
+The majority of the applicable values are associate with a :code:`@valueURI`.  The `relators:pup` property was selected.
 
 .. code-block:: xml
 
@@ -1229,12 +1229,12 @@ Identifies a publisher associated with the resource.
 Justification
 ^^^^^^^^^^^^^
 
-No dispute on the values contained in `publisher`.
+No dispute on the values contained in :code:`publisher`.
 
 XPath
 ^^^^^
 
-:code:`mods:originInfo/mods:publisher`
+:code:`originInfo/publisher`
 
 Decision
 ^^^^^^^^
@@ -1264,7 +1264,7 @@ originInfo/issuance
 Use Case
 ^^^^^^^^
 
-This XPath provides details for how the resource was published. All 4207 of our instances of `issuance` have the value "serial".
+This XPath provides details for how the resource was published. All 4207 of our instances of :code:`issuance` have the value "serial".
 
 Justification
 ^^^^^^^^^^^^^
@@ -1274,12 +1274,12 @@ The value held in the XPath doesn't provide any significantly useful information
 XPath
 ^^^^^
 
-:code:`mods:originInfo/mods:issuance`
+:code:`originInfo/issuance`
 
 Decision
 ^^^^^^^^
 
-We will not be migrating `issuance`.
+We will not be migrating :code:`issuance`.
 
 physicalDescription
 ===================
