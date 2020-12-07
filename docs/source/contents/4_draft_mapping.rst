@@ -584,7 +584,7 @@ An object with a two :code:`titleInfo` elements and one having an attribute of :
 Justification
 ^^^^^^^^^^^^^
 
-For cleanliness and consistency :code:`displayLabel`s won't be used to describe titles.
+For cleanliness and consistency :code:`displayLabel`\ s won't be used to describe titles.
 
 Xpath
 ^^^^^
