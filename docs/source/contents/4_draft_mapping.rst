@@ -3174,20 +3174,23 @@ classification
 
 Use case
 --------
-Some of our resources have already been formally cataloged and have a classification number. When these are available,
+
+Some of our resources have already been formally cataloged and have a :code:`classification` number. When these are available,
 they are included in the MODS metadata. Serials like the Alumnus and many of the Athletics media guides are good examples.
-Some collections, like the University of Tennessee Commencements collection include full shelfLocators in the classification
+Some collections, like the University of Tennessee Commencements collection include full shelfLocators in the :code:`classification`
 field (e.g. LD5297 .U55 2013). These should be edited before migration.
 
 Justification
 -------------
+
 This information is helpful to include as it provides information about where the physical item is shelved (though this
 is not a complete shelfLocator) and the broad subject the materials relate to.
 
-Xpath
+XPath
 -----
 
-classification[@authority="lcc"] OR classification
+:code:`classification[@authority="lcc"]` OR
+:code:`classification`
 
 Decision
 --------
@@ -3216,25 +3219,25 @@ part
 Use Case
 --------
 
-The MODS part element is infrequently used to describe a portion of a larger resource. In UTK's metadata, <part> is used
+The MODS :code:`part` element is infrequently used to describe a portion of a larger resource. In UTK's metadata, :code:`part` is used
 in two collections - Great Smoky Mountains Colloquy and Sanborn Fire Insurance Map Collection.
 
 Justification
 -------------
 
 Ultimately it was decided that this information is not important to keep because it is already present in the title field
-in both instances. With the Sanborn maps there is a difference between how the part is named - Sheet versus District-Ward,
+in both instances. With the Sanborn maps there is a difference between how the :code:`part` is named - Sheet versus District-Ward,
 but it was not felt strongly that any additional remediation needed to be done.
 
-Xpath
+XPath
 -----
 
-part
+:code:`part`
 
 Decision
 --------
 
-Drop all values in part.
+Drop all values in :code:`part`.
 
 `Example record - sanborn:1237 <https://digital.lib.utk.edu/collections/islandora/object/sanborn:1237/datastream/MODS>`_
 
