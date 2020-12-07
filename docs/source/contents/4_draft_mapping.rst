@@ -2574,11 +2574,13 @@ genre: values that map to dcterms:type
 
 Use Case
 ^^^^^^^^
-`genre`, without any attributes, has been used as a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource. `genre[@authority='dct']` has three distinct values: "text", "still image", and "image", that broadly indicate the type of the resource being described.
+
+:code:`genre`, without any attributes, has been used as a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource. :code:`genre[@authority='dct']` has three distinct values: "text", "still image", and "image", that broadly indicate the type of the resource being described.
 
 Justification
 ^^^^^^^^^^^^^
-For values *outside* of the following table, we selected the `edm:hasType` property as it aligns well with the possible overlap between `genre` and `physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the union of values in `genre[not(@*)]` and `genre[@authority='dct']`.
+
+For values *outside* of the following table, we selected the `edm:hasType` property as it aligns well with the possible overlap between :code:`genre` and :code:`physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the union of values in :code:`genre[not(@*)]` and :code:`genre[@authority='dct']`.
 
 +-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 | (//genre[not(@*] | //genre[@authority='dct']) | RDF Predicate | URI                                              | dcterms text value |
@@ -2596,6 +2598,7 @@ For values *outside* of the following table, we selected the `edm:hasType` prope
 
 XPaths
 ^^^^^^
+
 :code:`genre[not(@*)][string() = 'cartographic']` OR
 :code:`genre[not(@*)][string() = 'notated music']` OR
 :code:`genre[@authority = 'dct'][string() = 'image']` OR
@@ -2607,6 +2610,7 @@ Alternately, these XPaths can be notated as:
 
 Decision
 ^^^^^^^^
+
 The `dcterms:type` property has been selected.
 
 `Example record - volvoices:11551 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11551/datastream/MODS/view>`_
@@ -2643,20 +2647,25 @@ The `dcterms:type` property has been selected.
 
 genre values that map to edm:hasType
 ------------------------------------
+
 Use Case
 ^^^^^^^^
-`genre[not(@*)]` has been used a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource.
+
+:code:`genre[not(@*)]` has been used a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource.
 
 Justification
 ^^^^^^^^^^^^^
+
 The values in this XPath fall outside of the table presented in the preceding section ("genre values that map to dcterms:type").
 
 XPath
 ^^^^^
+
 :code:`genre[not(@*) and not(string() = ('cartographic','notated music'))]`
 
 Decision
 ^^^^^^^^
+
 Use the `edm:hasType` property for these values.
 
 `Example record - volvoices:3827 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:3827/datastream/MODS/content>`_
@@ -2676,18 +2685,22 @@ genre[@authority='aat']
 
 Use Case
 ^^^^^^^^
-`genre[@authority='aat']` appears in the Archivision collection and uses a controlled vocabulary.
+
+:code:`genre[@authority='aat']` appears in the Archivision collection and uses a controlled vocabulary.
 
 Justification
 ^^^^^^^^^^^^^
+
 These will be treated as `dcterms:subject`, based on the values from the AAT controlled vocabulary.
 
 XPath
 ^^^^^
+
 :code:`genre[@authority='aat']`
 
 Decision
 ^^^^^^^^
+
 The `dcterms:subject` property was selected.
 
 `Example record - archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_
@@ -2706,6 +2719,7 @@ genre[@authority='lcsh']
 
 Use Case
 ^^^^^^^^
+
 Used in the Archivision, Charlie Daniels, and AirScoop collections. There are four distinct values in the XPath: "Editorial cartoons", "College student newspapers and periodicals", "Twentieth century", and "Nineteenth century".
 
 Justification
@@ -2713,10 +2727,12 @@ Justification
 
 XPath
 ^^^^^
+
 :code:`genre[@authority='lcsh']`
 
 Decision
 ^^^^^^^^
+
 The `dcterms:subject` property was selected.
 
 `Example record - cDanielCartoon:455 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:455/datastream/MODS/view>`_.
@@ -2745,19 +2761,23 @@ and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/
 
 genre[@authority='lcgft']
 -------------------------
+
 Use Case
 ^^^^^^^^
-This `genre` element is used in the Arrowmont, Van Vactor, VP Moore, and Kefauver Crime Documents collections.
+
+This :code:`genre` element is used in the Arrowmont, Van Vactor, VP Moore, and Kefauver Crime Documents collections.
 
 Justification
 ^^^^^^^^^^^^^
 
 XPath
 ^^^^^
+
 :code:`genre[@authority='lcgft']`
 
 Decision
 ^^^^^^^^
+
 The `edm:hasType` property was selected.
 
 `Example record - ekcd:611 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:611/datastream/MODS/view>`_
@@ -2786,8 +2806,10 @@ The `edm:hasType` property was selected.
 
 genre[@authority='lcmpt']
 -------------------------
+
 Use Case
 ^^^^^^^^
+
 This XPath is used in the Van Vactor collection to express performance medium and instrumentation information.
 
 Justification
@@ -2795,10 +2817,12 @@ Justification
 
 XPath
 ^^^^^
+
 :code:`genre[@authority='lcmpt']`
 
 Decision
 ^^^^^^^^
+
 The `dcterms:subject` property was selected.
 
 `Example record - vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_
@@ -2830,19 +2854,23 @@ The `dcterms:subject` property was selected.
 
 genre[not(text())]
 ------------------
+
 Use Case
 ^^^^^^^^
-Empty `genre` elements should not be migrated.
+
+Empty :code:`genre` elements should not be migrated.
 
 Justification
 ^^^^^^^^^^^^^
 
 XPath
 ^^^^^
+
 :code:`genre[not(text())]`
 
 Decision
 ^^^^^^^^
+
 Do not migrate.
 
 ..code-block:: xml
