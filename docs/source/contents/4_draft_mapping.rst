@@ -126,7 +126,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers> .
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
     <https://example.org/objects/1>
         identifiers:local "egypt:8" .
 
@@ -138,7 +138,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers> .
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
 
     <https://example.org/objects/1>
         identifiers:local "Circular 79" .
@@ -1706,7 +1706,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix opaque: <http://opaquenamespace.org/​ns/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
 
     <https://example.org/objects/1>
         opaque:sheetmusic_instrumentation "For soprano, mezzo-soprano, contralto, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons, 2 horns, 2 trumpets, timpani, 2 violins, viola, cello, and double bass." .
@@ -1748,7 +1748,7 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix opaque: <http://opaquenamespace.org/​ns/> .
+    @prefix opaque: <http://opaquenamespace.org/ns/> .
 
     <https://example.org/objects/1>
         opaque:sheetmusic_firstLine "Ojitos de pena carita de luna, lloraba la niña sin causa ninguna." .
@@ -4729,7 +4729,7 @@ Decision
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
 
-        <https://example.org/objects/1> edm:rights <https://creativecommons.org/licenses/by-nc-nd/3.0/> .
+        <https://example.org/objects/1> edm:rights <https://creativecommons.org/licenses/by-nc-nd/3.0/rdf> .
 
 accessCondition - Restrictions on Access
 ----------------------------------------
