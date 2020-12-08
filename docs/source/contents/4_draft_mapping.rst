@@ -3177,14 +3177,14 @@ Use case
 
 Some of our resources have already been formally cataloged and have a :code:`classification` number. When these are available,
 they are included in the MODS metadata. Serials like the Alumnus and many of the Athletics media guides are good examples.
-Some collections, like the University of Tennessee Commencements collection include full shelfLocators in the :code:`classification`
+Some collections, like the University of Tennessee Commencements collection include full :code:`shelfLocator`\ s in the :code:`classification`
 field (e.g. LD5297 .U55 2013). These should be edited before migration.
 
 Justification
 -------------
 
 This information is helpful to include as it provides information about where the physical item is shelved (though this
-is not a complete shelfLocator) and the broad subject the materials relate to.
+is not a complete :code:`shelfLocator`) and the broad subject the materials relate to.
 
 XPath
 -----
