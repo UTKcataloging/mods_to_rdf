@@ -4459,14 +4459,17 @@ Justification
 
 Providing contributing institutions with the proper credit is important for inter-institutional projects.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`location/physicalLocation[. != recordInfo/recordContentSource]`
 
+Note: an easier way to resolve this particular XPath expression might be to start at the document node, :code:`mods`; e.g. :code:`mods[location/physicalLocation != recordInfo/recordContentSource]`.
+
 Decision
 ^^^^^^^^
-Will be mapped to both relators:rps and edm:dataProvider. edm:dataProvider is being used because the value is an "organisation who contributes data indirectly to an aggregation service" (aka to UTK first and then to DPLA).
+
+Will be mapped to both `relators:rps` and `edm:dataProvider`. `edm:dataProvider` is being used because the value is an "organisation who contributes data indirectly to an aggregation service" (aka to UTK first and then to DPLA).
 
 Here's an example record -
 
@@ -4503,13 +4506,14 @@ Justification
 
 This is self-referential and has no value in a new system.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`location/url`
 
 Decision
 ^^^^^^^^
+
 Drop this.
 
 `Example record from volvoices:9999 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/MODS/view>`_
@@ -4537,10 +4541,10 @@ value with 'record' appended to the beginning (`e.g. volvoices:2352 <https://dig
 Justification
 ^^^^^^^^^^^^^
 
-As the basic root of the <recordIdentifier> value is already present in the identifier element in all cases and the
-<recordIdentifier> value is never used on its own, there is no reason to retain these values.
+As the basic root of the :code:`recordIdentifier` value is already present in the :code:`identifier` element in all cases and the
+:code:`recordIdentifier` value is never used on its own, there is no reason to retain these values.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`recordInfo/recordIdentifier`
@@ -4548,7 +4552,7 @@ Xpath
 Decision
 ^^^^^^^^
 
-All <recordIdentifier> values should be dropped, so no RDF example is included below.
+All :code:`recordIdentifier` values should be dropped, so no RDF example is included below.
 
 Here's an `example record - heilman:1001 <https://digital.lib.utk.edu/collections/islandora/object/heilman%3A1001/datastream/MODS/view>`_.
 
@@ -4566,14 +4570,14 @@ Use Case
 ^^^^^^^^
 
 All of the recently migrated SCOUT to TEI collections (e.g. American Civil War Collection, Tennessee Documentary History, etc.)
-as well as some of UTK's less recent collections (e.g. Sanborn, mpabaker, etc.) contain the element languageOfCataloging.
+as well as some of UTK's less recent collections (e.g. Sanborn, mpabaker, etc.) contain the element :code:`languageOfCataloging`.
 In total, it is found in approximately 6,000 records. Note that in all cases the language is English, but this information
-is represented as both a code ('eng') and a text value ('English').
+is represented as both a code ("eng") and a text value ("English").
 
 Justification
 ^^^^^^^^^^^^^
 
-Currently <languageOfCataloging> is not publicly displayed anywhere outside of the MODS XML. The values of this element
+Currently :code:`languageOfCataloging` is not publicly displayed anywhere outside of the MODS XML. The values of this element
 do have the potential to be used if UTK has materials that might warrant cataloging in another language, but currently
 this is not the case. An example of a project that includes two records, one catalogued in Spanish and one in English, is
 `UNC's New Roots / Nuevas Raíces <https://newroots.lib.unc.edu/>`_. While UTK may want to pursue a project like this in the
@@ -4581,7 +4585,7 @@ future, presently it seems unlikely that it will. More importantly, if such a pr
 difficult to distinguish via code UTK's existing English records from records in another language. If we did want to create
 a project like this, information on the language of cataloging could be added across the repository with minimal effort.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`recordInfo/languageOfCataloging`
@@ -4607,19 +4611,19 @@ recordOrigin
 Use Case
 ^^^^^^^^
 
-The <recordOrigin> element includes information about what methods or transformations were used to prepare a record. There
+The :code:`recordOrigin` element includes information about what methods or transformations were used to prepare a record. There
 are six different distinct values in UTK's metadata.
 
 Justification
 ^^^^^^^^^^^^^
 
 Because the existing values all relate to MODS XML, the string values present will no longer be applicable in a RDF-based
-platform. Discussion indicated that there might be some use for the general property of recordOrigin if a link to this
+platform. Discussion indicated that there might be some use for the general property of :code:`recordOrigin` if a link to this
 mapping document or some other relevant resource was shared in place of the existing values. This administrative information
 could also be shared on the Digital Collections website or elsewhere rather than the record. As a convincing argument
 was not made that this information is essential, it was decided to drop these values
 
-Xpath
+XPath
 ^^^^^
 
 :code:`recordInfo/recordOrigin`
@@ -4654,7 +4658,7 @@ last updated. Inaccurate information is shared. In addition, in a system like Is
 staff member to view when the metadata datastream has been updated without tracking this in the record. This element can
 be dropped.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`recordInfo/recordChangeDate`
@@ -4680,7 +4684,7 @@ recordCreationDate
 Use Case
 ^^^^^^^^
 
-A total of 167 values are present for <recordCreationDate>. This value shows when the record was originally created. All
+A total of 167 values are present for :code:`recordCreationDate`. This value shows when the record was originally created. All
 but one of these values precedes 2010. All of the recently migrated TEI SCOUT records (2,386) have a value of
 "2020-04-23-04:00". This is the only value not presented in EDTF format. Otherwise all of the values appear to come from
 Volunteer Voices.
@@ -4688,13 +4692,13 @@ Volunteer Voices.
 Justification
 ^^^^^^^^^^^^^
 
-Unlike <recordChangeDate>, all of the values within <recordCreationDate> are at least accurate. Currently this information
+Unlike :code:`recordChangeDate`, all of the values within :code:`recordCreationDate` are at least accurate. Currently this information
 is not used or displayed for users. Given this and the fact that this element is present in a very small percentage of
 UTK records, it does not seem useful to keep this information. Again, a repository system should have a way to track
 when a metadata datastream for a particular digital object was created. Therefore keeping this information adds unnecessary
 complexity.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`recordInfo/recordCreationDate`
@@ -4718,19 +4722,19 @@ recordContentSource - University of Tennessee, Knoxville as value
 Use Case
 ^^^^^^^^
 
-The <recordContentSource> element is one of the most essential elements within <recordInfo>, as we currently use it to
+The :code:`recordContentSource` element is one of the most essential elements within :code:`recordInfo`, as we currently use it to
 communicate the provider in DPLA. Because DPLA cannot handle URIs, the decision has been made to only deliver strings.
 We do not feel strongly that the added functionality provided by using a URI for this field warrants the effort needed
 to process URIs into strings for delivery to DPLA. We recognize that this goes against our general philosophy to use URIs
 when possible.
 
 To better understand UTK's use of this element some background information is helpful. At UTK the information we share in
-this element is not consistent with the definition of <recordContentSource> - "The code or name of the entity (e.g. an
+this element is not consistent with the definition of :code:`recordContentSource` - "The code or name of the entity (e.g. an
 organization and/or database) that either created or modified the original record." While we work with other partners,
 like the Children's Defense Fund and the McClung Museum, we are still technically the creators of the records in these
-situations. Despite this, we typically list these institutions as the record creator because we set up <recordContentSource>
+situations. Despite this, we typically list these institutions as the record creator because we set up :code:`recordContentSource`
 as the element that DPLA should map to for content provider. In actuality, when the content provider is not UTK, this
-information should be communicated in <physicalLocation> and our DPLA mapping should be updated. Despite these semantic
+information should be communicated in :code:`physicalLocation` and our DPLA mapping should be updated. Despite these semantic
 issues, UTK has consistently put this information in an incorrect element, so the mapping is not affected.
 
 Justification
@@ -4740,7 +4744,7 @@ A content provider is required in DPLA. This value also provides UTK with the op
 the institution that provided them, which is important for maintaining respectful relationships. Because of DPLA's
 limitations, we will provide this information as a string.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`recordInfo/recordContentSource`
@@ -4749,7 +4753,7 @@ Decision
 ^^^^^^^^
 
 Because UTK acts as a service hub for DPLA and it delivers data directly to this aggregator, it can be considered an
-edm:provider. This is defined as "The name or identifier of the organization who delivers data directly to an aggregation
+`edm:provider`. This is defined as "The name or identifier of the organization who delivers data directly to an aggregation
 service (e.g. Europeana)."
 
 When UTK physically holds the material and created the record, the metadata resembles this `example record - acwiley:284 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A284/datastream/MODS/view>`_.
@@ -4772,9 +4776,9 @@ recordContentSource - not University of Tennessee, Knoxville as value
 Use Case
 ^^^^^^^^
 
-When a resource comes from a non-UTK institution, its name is typically placed in <recordContentSource>. An exception to
-this is Volunteer Voices, which only includes the contributing institution in location/physicalLocation. See
-location for more information.
+When a resource comes from a non-UTK institution, its name is typically placed in :code:`recordContentSource`. An exception to
+this is Volunteer Voices, which only includes the contributing institution in :code:`location/physicalLocation`. See
+:code:`location` for more information.
 
 Justification
 ^^^^^^^^^^^^^
@@ -4783,15 +4787,16 @@ A content provider is required in DPLA. Sharing the names of institutional partn
 is also a great way to recognize the contributions of these libraries. Because of DPLA's limitations, we will provide
 this information as a string.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`recordInfo/recordContentSource`
 
 Decision
 ^^^^^^^^
-When the institution listed as providing the information is not UTK, edm:dataProvider should be used instead of
-edm:provider. edm:dataProvider is defined as "The name or identifier of the organisation who contributes data indirectly
+
+When the institution listed as providing the information is not UTK, `edm:dataProvider` should be used instead of
+`edm:provider`. `edm:dataProvider` is defined as "The name or identifier of the organisation who contributes data indirectly
 to an aggregation service."
 
 Here's an `example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
@@ -4807,8 +4812,8 @@ It is also coupled with an "Intermediate Provider" note, as shown below. McClung
         <physicalLocation valueURI="http://id.loc.gov/authorities/names/no2017113530">Langston Hughes Library (Children's Defense Fund Haley Farm)</physicalLocation>
     </location>
 
-For the purposes of DPLA, we only need the <recordContentSource> value and not also the <physicalLocation> value. Because
-these institutions are not directly contributing to DPLA, they are listed as an edm:dataProvider instead of an edm:provider.
+For the purposes of DPLA, we only need the :code:`recordContentSource` value and not also the :code:`physicalLocation` value. Because
+these institutions are not directly contributing to DPLA, they are listed as an `edm:dataProvider` instead of an `edm:provider`.
 
 .. code-block:: turtle
 
@@ -4826,18 +4831,18 @@ Use Case
 ^^^^^^^^
 
 When one of the twelve standardized rights statements from `https://righsstatements.org <https://righsstatements.org>`_
-or one of the CC licenses is present, the value should be mapped to edm:rights and have a value type of URI.
+or one of the CC licenses is present, the value should be mapped to `edm:rights` and have a value type of URI.
 
 Justification
 ^^^^^^^^^^^^^
 
-DPLA maps both CC licenses and Rights Statements to edm:rights. So does Samvera. Presently only the heilman collection includes
-a CC license
+DPLA maps both CC licenses and Rights Statements to `edm:rights`. So does Samvera. Presently only the Heilman Collection includes
+a CC license.
 
-Xpath
+XPath
 ^^^^^
 
-accessCondition[@xlink:href]
+:code:`accessCondition[@xlink:href]`
 
 Decision
 ^^^^^^^^
@@ -4892,14 +4897,14 @@ users visit the metadata, this note makes it clear why they cannot access the re
 Justification
 ^^^^^^^^^^^^^
 
-As the value present in the current accessCondition node is not associated with a controlled vocabulary and simply needs to
-be displayed to the user within the record, there is no reason to connect it with other accessCondition values. A note is
+As the value present in the current :code:`accessCondition` node is not associated with a controlled vocabulary and simply needs to
+be displayed to the user within the record, there is no reason to connect it with other :code:`accessCondition` values. A note is
 sufficient for this use case.
 
-Xpath
+XPath
 ^^^^^
 
-accessCondition[@type="restriction on access"]
+:code:`accessCondition[@type="restriction on access"]`
 
 Decision
 ^^^^^^^^
