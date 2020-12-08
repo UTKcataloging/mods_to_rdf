@@ -4049,13 +4049,13 @@ location
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
 | Predicate                         | Value Type     | Range (if needed) | Usage Notes                                                             |
 +===================================+================+===================+=========================================================================+
-| relators:rps                      | Literal or URI |                   | Use for :code:`physicalLocation` values, preferably using          |
+| relators:rps                      | Literal or URI |                   | Use for :code:`physicalLocation` values, preferably using               |
 |                                   |                |                   | a URI for the organization from a controlled vocabulary                 |
 |                                   |                |                   | such as VIAF of Library of Congress Real World Objects.                 |
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
-| skos:note                         | Literal        |                   | Use to note :code:`shelfLocator` strings.                          |
+| skos:note                         | Literal        |                   | Use to note :code:`shelfLocator` strings.                               |
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
-| dbo:collection                    | Literal        |                   | Use to note :code:`physicalLocation[@displayLabel="Collection"]`   |
+| dbo:collection                    | Literal        |                   | Use to note :code:`physicalLocation[@displayLabel="Collection"]`        |
 |                                   |                |                   | strings.                                                                |
 +-----------------------------------+----------------+-------------------+-------------------------------------------------------------------------+
 
