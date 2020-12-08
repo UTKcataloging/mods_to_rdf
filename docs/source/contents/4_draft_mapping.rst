@@ -94,7 +94,7 @@ know immediately whether a resource has a MARC record, which could prove useful 
 form. Overall, little effort needs to be exerted to keep all of these values and they all have the potential to be helpful
 in the future.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`identifier[@type="Vendor ID"]` OR
@@ -163,7 +163,7 @@ appropriately for UTK's use cases. Because CIDOC-CRM is particularly used in a m
 `opaque:accessionNumber` as it is arguably more flexible. This allows us to use the same property for accession numbers
 from a wide variety of institutions. Both properties supported content negotiation.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`identifier[@type="acquisition"]`
@@ -201,7 +201,7 @@ Justification
 OCLC identifiers could be useful if these materials are ever shared with HathiTrust, as this value is a requirement for
 submission. Only one property, `dbpedia:oclc`, was identified to use and it aligns with our philosophy guidelines.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`identifier[@type="oclc"]`
@@ -260,7 +260,7 @@ Properties for ISSN values are established in DBpedia and the Standard Identifie
 guidelines and could be used to accurately represent the ISSN values. Ultimately we decided to use DBpedia because it is
 a widely used core ontology whereas the Standard Identifiers Scheme is more library specific.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`identifier[@type="issn"]`
@@ -297,7 +297,7 @@ Justification
 Properties for ISBN values are established in DBpedia and the Standard Identifiers Scheme. Because we give preference to
 core ontologies rather than library specific ones, we selected `dbpedia:issn`.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`identifier[@type="isbn"]`
@@ -343,7 +343,7 @@ Justification
 ^^^^^^^^^^^^^
 No dispute on what the title is.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`titleInfo/title`
@@ -381,7 +381,7 @@ Samvera uses brackets to wrap title strings in direct mapping examples. Accordin
 provided by DPLA, they recommend we "not have brackets or ending periods."
 
 
-Xpath
+XPath
 ^^^^^
 
 :code:`titleInfo[@supplied="yes"]/title`
@@ -420,7 +420,7 @@ For consistency within collections, the best title to display for users is the s
 
 See **single titleInfo element having a supplied attribute of yes** for justification regarding use of supplied in the transcribed turtle.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`titleInfo[@supplied="yes"]/title` AND :code:`titleInfo/title`
@@ -464,7 +464,7 @@ Justification
 Consistent with previous UT description practices, we use commas rather periods to indicate
 enumeration of an object within a string.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`titleInfo/title` AND :code:`titleInfo/partName`
@@ -504,7 +504,7 @@ Justification
 
 We desire clean strings and will not retain :code:`nonSorts` moving forward.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`titleInfo` AND :code:`titleInfo/nonSort`
@@ -543,7 +543,7 @@ Justification
 
 Keeping direct mapping simple.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`titleInfo` AND :code:`titleInfo[@type="alternative"]`
@@ -586,7 +586,7 @@ Justification
 
 For cleanliness and consistency :code:`displayLabel`\ s won't be used to describe titles.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`titleInfo` AND :code:`titleInfo[@displayLabel="some string"]`
@@ -1305,7 +1305,7 @@ Digital Collections is curated and meets our technical expectations. A "born dig
 resources gathered outside of the Digital Collections creation process. These born digital resources from "the wild" would
 likely not be on the same platform as Digital Collections resources.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`physicalDescription/digitalOrigin`
@@ -1352,7 +1352,7 @@ prove useful to researchers interested in photographic processes and techniques,
 in a generic `note` field. If additional attention can be given to these two collections in the future, we can remediate
 the metadata following migration with the benefit of having access to the physical materials.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`physicalDescription/note`
@@ -1405,7 +1405,7 @@ RDF. No other more suitable properties could be found for :code:`extent` values.
 decided to use `rdau:P60550` because it is dereferenceable, which a blank node is not. Still, the inability to retrieve
 RDF directly will limit users wishing to interact with our data in this way.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`physicalDescription/extent`
@@ -1444,7 +1444,7 @@ string during migration. This would involve simply taking the existing value in 
 string. Note that all of the resources within the Colloquy collection have more than one page, so the plural form of the
 word will always be accurate. See the Decision section of extent above for more explanation of `rdau:P60550`.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`physicalDescription/extent[@unit="pages"]`
@@ -1487,7 +1487,7 @@ Form values are important access points that provide more specific information t
 like :code:`typeOfResource`. While these form values do not currently contain :code:`valueURI` attributes, the strings themselves
 are controlled terms that are clean and consistent so we want to bring them over.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`physicalDescription/form`
@@ -1530,7 +1530,7 @@ Justification
 :code:`form` values are important access points that provide more specific information than is provided in higher-level elements
 like :code:`typeOfResource`.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`physicalDescription/form[@valueURI]`
@@ -1573,7 +1573,7 @@ Treating these values as part of the abstract will ensure that they display prom
 a note value necessarily. To make this read more fluidly, 'Made of ' can be added to the front of the string and an ending
 period added ('.').
 
-Xpath
+XPath
 ^^^^^
 
 :code:`physicalDescription/form[@type="material"]`
@@ -1609,7 +1609,7 @@ We do not need to migrate this information from the descriptive metadata as it w
 file characterization in the new system. We also do not want to move the current values over from the existing metadata
 because they often share inaccurate information. Finally, this element is currently present in only
 
-Xpath
+XPath
 ^^^^^
 
 :code:`physicalDescription/internetMediaType`
@@ -1762,7 +1762,7 @@ MusicBrainz, but none seemed to have a predicate to represent this idea. We did 
 Oregon Digital did have a matching predicate.  In the Samvera community, not only is this ontology used, but occasionally
 the community has suggested new predicates to be created within Opaque Namespaces.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`note[@type="First line"]` OR
@@ -2102,7 +2102,7 @@ Justification
 :code:`subject`\ s values are important access points for users that require migration. While URIs would be ideal from a technical
 standpoint, strings still support discovery.
 
-Xpath
+XPath
 ^^^^^
 
     :code:`mods/subject[not(@valueURI)]/topic[not(@valueURI)]` OR
@@ -4256,7 +4256,7 @@ Justification
 
 While, we do not not know if this :code:`shelfLocator` information is accurate, we will opt to retain it going forward as a string and map to `skos:note`. Samvera does note some possible future availability of `opaque:locationShelfLocator`, however this predicate does not exist yet.
 
-Xpath
+XPath
 ^^^^^
 
 :code:`location[physicalLocation[text()[not(contains(., "University of Tennessee"))]]]/shelfLocator`
