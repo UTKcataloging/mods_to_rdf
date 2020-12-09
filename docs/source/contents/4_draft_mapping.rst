@@ -199,7 +199,7 @@ Justification
 ^^^^^^^^^^^^^
 
 OCLC identifiers could be useful if these materials are ever shared with HathiTrust, as this value is a requirement for
-submission. Only one property, `dbpedia:oclc`, was identified to use and it aligns with our philosophy guidelines.
+submission. Only one property, `dbo:oclc`, was identified to use and it aligns with our philosophy guidelines.
 
 XPath
 ^^^^^
@@ -217,10 +217,10 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix dbpedia: <http://dbpedia.org/ontology/> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
-        dbpedia:oclc "44394278" .
+        dbo:oclc "44394278" .
 
 ISSNs
 -----
@@ -276,10 +276,10 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix dbpedia: <http://dbpedia.org/ontology/> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
-        dbpedia:issn "2687-7325" .
+        dbo:issn "2687-7325" .
 
 ISBNs
 -----
@@ -295,7 +295,7 @@ Justification
 ^^^^^^^^^^^^^
 
 Properties for ISBN values are established in DBpedia and the Standard Identifiers Scheme. Because we give preference to
-core ontologies rather than library specific ones, we selected `dbpedia:issn`.
+core ontologies rather than library specific ones, we selected `dbo:issn`.
 
 XPath
 ^^^^^
@@ -313,10 +313,10 @@ Decision
 
 .. code-block:: turtle
 
-    @prefix dbpedia: <http://dbpedia.org/ontology/> .
+    @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
-        dbpedia:issn "0938008501" .
+        dbo:issn "0938008501" .
 
 titleInfo
 =========
