@@ -1979,8 +1979,8 @@ Remediated collections include :code:`subject` values with URIs.
 Justification
 ^^^^^^^^^^^^^
 
-In migration, :code:`subject`\ s with :code:`name` and :code:`topical` values will be treated in the same way. We have decided that the previous
-distinction between :code:`name` and :code:`topical` values as :code:`subject`\ s is not essential - only the presence of all the values in the
+In migration, :code:`subject`\ s with :code:`name` and :code:`topic` values will be treated in the same way. We have decided that the previous
+distinction between :code:`name` and :code:`topic` values as :code:`subject`\ s is not essential - only the presence of all the values in the
 metadata is important.
 
 XPath
@@ -1996,7 +1996,7 @@ Note that there is inconsistency in where the :code:`valueURI` attribute is plac
 Decision
 ^^^^^^^^
 
-When a :code:`valueURI` is present for :code:`topical` or :code:`name` subject, it will be the value used in migration. Examples showing each
+When a :code:`valueURI` is present for :code:`topic` or :code:`name` subject, it will be the value used in migration. Examples showing each
 of the distinct XPaths are given below:
 
 `acwiley:280 as an example of subject[@valueURI]/topic <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A280/datastream/MODS/view>`_
@@ -2111,7 +2111,7 @@ XPath
 Decision
 ^^^^^^^^
 
-String values for :code:`topical` or :code:`name` subjects will be migrated when a :code:`valueURI` is not present.
+String values for :code:`topic` or :code:`name` subjects will be migrated when a :code:`valueURI` is not present.
 
 Here's an `example record where only string values are available for topical subjects - gamble:123 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A123/datastream/MODS/view>`_.
 
