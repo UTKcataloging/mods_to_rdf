@@ -1921,7 +1921,7 @@ Use Case
 ^^^^^^^^
 
 Several :code:`subject` elements contain unintentional null values. There are five within Tennessee Documentary History. Additional null
-:code:`subject`\ s include vpmoore:133 and adams:76. Most of roth seems to have null :code:`subject`\ /:code:`name`\ /:code:`namePart` values.
+:code:`subject`\ s include vpmoore:133 and adams:76. Most of roth seems to have null :code:`subject/name/namePart` values.
 It appears we might have inserted some blank nodes using the Islandora form entry. As there is no information, these
 "values" are not used and have no true use case.
 
