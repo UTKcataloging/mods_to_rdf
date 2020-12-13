@@ -502,7 +502,7 @@ An object with a single :code:`titleInfo` element and sub-element of :code:`nonS
 Justification
 ^^^^^^^^^^^^^
 
-We desire clean strings and will not retain :code:`nonSorts` moving forward.
+We desire clean strings and will not retain :code:`nonSort` elements moving forward.
 
 XPath
 ^^^^^
