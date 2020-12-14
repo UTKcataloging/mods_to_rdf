@@ -855,7 +855,7 @@ When there is no :code:`name/@valueURI`, use the string literal from :code:`name
     <https://example.org/objects/1>
         relators:cre "Daniel, Charles R. (Charlie), Jr., 1930-" .
 
-If there is a :code:`name/valueURI` but it's empty, use the string literal instead:
+If there is a :code:`name/@valueURI` but it's empty, use the string literal instead:
 
 .. code-block:: xml
     :caption: Example XML from `volvoices:2495 MODS <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
