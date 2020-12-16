@@ -125,51 +125,35 @@ XPath
 
 :code:`identifier[@type="Vendor ID"]` OR
 
-
 :code:`identifier[@type="archival number"]` OR
-
 
 :code:`identifier[@type="catalog"]` OR
 
-
 :code:`identifier[@type="circular"]` OR
-
 
 :code:`identifier[@type="cw"]` OR
 
-
 :code:`identifier[@type="document ID"]` OR
-
 
 :code:`identifier[@type="documentID"]` OR
 
-
 :code:`identifier[@type="filename"]` OR
-
 
 :code:`identifier[@type="film number"]` OR
 
-
 :code:`identifier[@type="legacy"]` OR
-
 
 :code:`identifier[@type="local"]` OR
 
-
 :code:`identifier[@type="original ID"]` OR
-
 
 :code:`identifier[@type="photograph number"]` OR
 
-
 :code:`identifier[@type="slide number"]` OR
-
 
 :code:`identifier[@type="pid"]` OR
 
-
 :code:`identifier[@type="opac"]` OR
-
 
 :code:`identifier[@type="spc"]`
 
@@ -3986,7 +3970,9 @@ XPaths
 ^^^^^^
 
 :code:`relatedItem[@type='constituent']/titleInfo/title` AND
+
 :code:`relatedItem[@type='constituent']/name[namePart][role/roleTerm[@authority='marcrelator'][@type='text'][@valueURI]]` AND
+
 :code:`relatedItem[@type='constituent']/name[@authority='naf'][@valueURI][namepart][role/roleTerm[@authority='marcrelator'][@type='text'][@valueURI]]`
 
 Decision
