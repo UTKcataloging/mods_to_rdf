@@ -19,28 +19,6 @@ This section contains materials for our final report.
 
    contents/*
 
-Top Level Elements
-------------------
-
-This section contains notes about each MODS top level element.
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   top_level_elements/*
-
-Working Documents
------------------
-
-This section contains materials related to working group exercises.
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   working_docs/*
-
 Appendex
 --------
 
