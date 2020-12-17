@@ -124,21 +124,37 @@ XPath
 ^^^^^
 
 :code:`identifier[@type="Vendor ID"]` OR
+
 :code:`identifier[@type="archival number"]` OR
+
 :code:`identifier[@type="catalog"]` OR
+
 :code:`identifier[@type="circular"]` OR
+
 :code:`identifier[@type="cw"]` OR
+
 :code:`identifier[@type="document ID"]` OR
+
 :code:`identifier[@type="documentID"]` OR
+
 :code:`identifier[@type="filename"]` OR
+
 :code:`identifier[@type="film number"]` OR
+
 :code:`identifier[@type="legacy"]` OR
+
 :code:`identifier[@type="local"]` OR
+
 :code:`identifier[@type="original ID"]` OR
+
 :code:`identifier[@type="photograph number"]` OR
+
 :code:`identifier[@type="slide number"]` OR
-:code:`identifier[@type=”pid”]` OR
-:code:`identifier[@type=”opac”]` OR
+
+:code:`identifier[@type="pid"]` OR
+
+:code:`identifier[@type="opac"]` OR
+
 :code:`identifier[@type="spc"]`
 
 Decision
@@ -449,7 +465,9 @@ See **single titleInfo element having a supplied attribute of yes** for justific
 XPath
 ^^^^^
 
-:code:`titleInfo[@supplied="yes"]/title` AND :code:`titleInfo/title`
+:code:`titleInfo[@supplied="yes"]/title` AND
+
+:code:`titleInfo/title`
 
 Decision
 ^^^^^^^^
@@ -493,7 +511,9 @@ enumeration of an object within a string.
 XPath
 ^^^^^
 
-:code:`titleInfo/title` AND :code:`titleInfo/partName`
+:code:`titleInfo/title` AND 
+
+:code:`titleInfo/partName`
 
 Decision
 ^^^^^^^^
@@ -533,7 +553,9 @@ We desire clean strings and will not retain :code:`nonSort` elements moving forw
 XPath
 ^^^^^
 
-:code:`titleInfo` AND :code:`titleInfo/nonSort`
+:code:`titleInfo` AND 
+
+:code:`titleInfo/nonSort`
 
 Decision
 ^^^^^^^^
@@ -572,7 +594,9 @@ Keeping direct mapping simple.
 XPath
 ^^^^^
 
-:code:`titleInfo` AND :code:`titleInfo[@type="alternative"]`
+:code:`titleInfo` AND 
+
+:code:`titleInfo[@type="alternative"]`
 
 Decision
 ^^^^^^^^
@@ -615,7 +639,9 @@ For cleanliness and consistency :code:`displayLabel`\ s won't be used to describ
 XPath
 ^^^^^
 
-:code:`titleInfo` AND :code:`titleInfo[@displayLabel="some string"]`
+:code:`titleInfo` AND 
+
+:code:`titleInfo[@displayLabel="some string"]`
 
 Decision
 ^^^^^^^^
@@ -828,6 +854,7 @@ XPaths
 ^^^^^^
 
 :code:`name/namePart` OR
+
 :code:`name[@valueURI!=""]`
 
 Decisions
@@ -972,10 +999,15 @@ XPaths
 ^^^^^^
 
 :code:`name/role/roleTerm/@authority` OR
+
 :code:`name/@authority` OR
+
 :code:`name/role/roleTerm/@authorityURI` OR
+
 :code:`name/@type` OR
+
 :code:`name/displayForm` OR
+
 :code:`name/description`
 
 Decision
@@ -1017,41 +1049,77 @@ XPath
 ^^^^^
 
 :code:`originInfo/dateCreated` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='approximate']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='approximate']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='questionable']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@point='end']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='approximate']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@point='end'][@qualifier='inferred']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@point='start']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@keyDate='yes'][@qualifier='approximate']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='approximate']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@point='start'][@qualifier='inferred'][@keyDate='yes']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@keyDate='yes'][@point='start']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='approximate'][@point='end']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@keyDate='yes'][@point='start']` OR
+
 :code:`originInfo/dateCreated[@encoding='edtf'][@qualifier='inferred'][@point='end']` OR
+
 :code:`originInfo/dateCreated[@encoding='w3cdtf'][@keyDate='yes'][@point='start']` OR
+
 :code:`originInfo/dateCreated[@encoding='w3cdtf'][@point='start'][@keyDate='yes']` OR
+
 :code:`originInfo/dateCreated[@point='end']` OR
+
 :code:`originInfo/dateCreated[@qualifier='approximate']` OR
+
 :code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+
 :code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+
 :code:`originInfo/dateCreated[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+
 :code:`originInfo/dateCreated[@qualifier='inferred']` OR
+
 :code:`originInfo/dateCreated[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+
 :code:`originInfo/dateCreated[@qualifier='questionable']` OR
+
 :code:`originInfo/dateCreated[@qualifier='questionable'][@encoding='edtf'][@keyDate='yes']`
 
 Decisions
@@ -1107,22 +1175,39 @@ XPaths
 ^^^^^^
 
 :code:`originInfo/dateIssued` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='end'][@qualifier='inferred']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@point='start'][@qualifier='inferred']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='approximate']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='inferred']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@keyDate='yes'][@qualifier='questionable']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@point='end']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@point='start']` OR
+
 :code:`originInfo/dateIssued[@encoding='edtf'][@point='start'][@keyDate='yes']` OR
+
 :code:`originInfo/dateIssued[@point='end']` OR
+
 :code:`originInfo/dateIssued[@qualifier='approximate']` OR
+
 :code:`originInfo/dateIssued[@qualifier='approximate'][@encoding='edtf'][@keyDate='yes']` OR
+
 :code:`originInfo/dateIssued[@qualifier='inferred']` OR
+
 :code:`originInfo/dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='end']` OR
+
 :code:`originInfo/dateIssued[@qualifier='inferred'][@encoding='edtf'][@keyDate='yes'][@point='start']`
 
 Decision
@@ -1164,8 +1249,11 @@ XPath
 ^^^^^
 
 :code:`originInfo/dateOther` OR
+
 :code:`originInfo/dateOther[@encoding='edtf']` OR
+
 :code:`originInfo/dateOther[@encoding='edtf'][@point='end']` OR
+
 :code:`originInfo/dateOther[@encoding='edtf'][@point='start']`
 
 Decisions
@@ -1213,7 +1301,9 @@ XPath
 ^^^^^
 
 :code:`originInfo/place/placeTerm[@text]` OR
+
 :code:`originInfo/place/placeTerm[@text][@valueURI]` OR
+
 :code:`originInfo/place[@supplied]/placeTerm[@text][@valueURI]`
 
 Decision
@@ -1710,10 +1800,15 @@ XPath
 ^^^^^
 
 :code:`note` OR
+
 :code:`note[@type="handwritten"]` OR
+
 :code:`note[@type="provenance"]` OR
+
 :code:`note[@displayLabel="Attribution"]` OR
+
 :code:`note[@displayLabel="use and reproduction"]` OR
+
 :code:`note[@displayLabel="Local Rights"]`
 
 Decision
@@ -1804,6 +1899,7 @@ XPath
 ^^^^^
 
 :code:`note[@type="First line"]` OR
+
 :code:`note[@type="first line"]`
 
 Decision
@@ -1916,10 +2012,15 @@ XPath
 ^^^^^
 
 :code:`note[@displayLabel="DPN"]` OR
+
 :code:`note[string()=""]` OR
+
 :code:`note[@displayLabel="Intermediate provider"]` OR
+
 :code:`note[@displayLabel="Intermediate Provider"]` OR
+
 :code:`note[@displayLabel="Transcribed from Original Collection"]` OR
+
 :code:`note[@displayLabel="Project Part"]`
 
 Decision
@@ -1969,7 +2070,9 @@ XPath
 ^^^^^
 
     :code:`subject/topic[string() = '']` OR
+
     :code:`subject/geographic[string() = '']` OR
+
     :code:`subject/name/namePart[string() = '']`
 
 Decision
@@ -2024,8 +2127,11 @@ XPath
 Note that there is inconsistency in where the :code:`valueURI` attribute is placed.
 
     :code:`subject[@valueURI]/topic` OR
+
     :code:`subject/topic[@valueURI]` OR
+
     :code:`subject[@valueURI]/name/namePart` OR
+
     :code:`subject/name[@valueURI]/namePart`
 
 Decision
@@ -2141,6 +2247,7 @@ XPath
 ^^^^^
 
     :code:`mods/subject[not(@valueURI)]/topic[not(@valueURI)]` OR
+
     :code:`mods/subject[not(@valueURI)]/name[not(valueURI)]/namePart[not(valueURI)]`
 
 Decision
@@ -2298,12 +2405,19 @@ XPath
 ^^^^^
 
     :code:`subject/geographic[string()="Contemporary United States (1968-present)."]` OR
+
     :code:`subject/geographic[string()="Postwar United States (1945-1970)."]` OR
+
     :code:`subject/geographic[string()="The Great Depression and World War II (1929-1945)."]` OR
+
     :code:`subject/geographic[string()="The Emergence of Modern America (1890-1930)."]` OR
+
     :code:`subject/geographic[string()="The Development of the Industrial United States (1870-1900)."]` OR
+
     :code:`subject/geographic[string()="Expansion and Reform (1801-1861)."]` OR
+
     :code:`subject/geographic[string()="Revolution and the New Nation (1754-1820)."]` OR
+
     :code:`subject/geographic[string()="Colonization and Settlement (1585-1763)."]`
 
 Decision
@@ -2388,18 +2502,26 @@ XPath
 ^^^^^
 
     :code:`subject[@valueURI]/geographic` OR
+
     :code:`subject/geographic[@valueURI]`
 
 As noted previously, there are a handful of string values in :code:`geographic` elements within volvoices that need to be moved
 to be treated differently than other :code:`geographic` values.
 
     :code:`subject/geographic[not(string()="Contemporary United States (1968-present).")]` OR
+
     :code:`subject/geographic[not(string()="Postwar United States (1945-1970).")]` OR
+
     :code:`subject/geographic[not(string()="The Great Depression and World War II (1929-1945).")]` OR
+
     :code:`subject/geographic[not(string()="The Emergence of Modern America (1890-1930).")]` OR
+
     :code:`subject/geographic[not(string()="The Development of the Industrial United States (1870-1900).")]` OR
+
     :code:`subject/geographic[not(string()="Expansion and Reform (1801-1861).")]` OR
+
     :code:`subject/geographic[not(string()="Revolution and the New Nation (1754-1820).")]` OR
+
     :code:`subject/geographic[not(string()="Colonization and Settlement (1585-1763).")]`
 
 Decision
@@ -2636,9 +2758,13 @@ XPaths
 ^^^^^^
 
 :code:`genre[not(@*)][string() = 'cartographic']` OR
+
 :code:`genre[not(@*)][string() = 'notated music']` OR
+
 :code:`genre[@authority = 'dct'][string() = 'image']` OR
+
 :code:`genre[@authority = 'dct'][string() = 'still image']` OR
+
 :code:`genre[@authority = 'dct'][string() = 'text']`
 
 Alternately, these XPaths can be notated as:
@@ -2946,6 +3072,7 @@ XPath
 ^^^^^
 
 :code:`language/languageTerm[@type="text"]` OR
+
 :code:`language/languageTerm[@type="code"]`
 
 Decision
@@ -3023,6 +3150,7 @@ XPath
 ^^^^^
 
 :code:`language/languageTerm[@type="text"]` OR
+
 :code:`language/languageTerm[@type="code"]`
 
 Decision
@@ -3240,6 +3368,7 @@ XPath
 -----
 
 :code:`classification[@authority="lcc"]` OR
+
 :code:`classification`
 
 Decision
@@ -3344,8 +3473,11 @@ XPath
 ^^^^^
 
 :code:`relatedItem[not(@*)]` OR
+
 :code:`relatedItem[@type='host'][@displayLabel[matches(., 'project') or matches(., 'Project') or matches(., 'Digital Collection') or matches(., 'Project Part') or matches(., 'Is Part Of')]` OR
+
 :code:`relatedItem/abstract` OR
+
 :code:`relatedItem[@displayLabel='Featured Item']`
 
 Decision
@@ -3579,6 +3711,7 @@ XPath
 ^^^^^
 
 :code:`relatedItem[@type='otherVersion']/identifier` OR
+
 :code:`relatedItem[@type='otherVersion']/location/url`
 
 Decision
@@ -3837,7 +3970,9 @@ XPaths
 ^^^^^^
 
 :code:`relatedItem[@type='constituent']/titleInfo/title` AND
+
 :code:`relatedItem[@type='constituent']/name[namePart][role/roleTerm[@authority='marcrelator'][@type='text'][@valueURI]]` AND
+
 :code:`relatedItem[@type='constituent']/name[@authority='naf'][@valueURI][namepart][role/roleTerm[@authority='marcrelator'][@type='text'][@valueURI]]`
 
 Decision
