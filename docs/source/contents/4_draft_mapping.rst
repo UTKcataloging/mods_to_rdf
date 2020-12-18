@@ -203,7 +203,7 @@ Both OpaqueNamespace and `CIDOC-CRM <http://www.cidoc-crm.org/>`_ properties wer
 Both `opaque:accessionNumber <http://opaquenamespace.org/ns/cco_accessionNumber>`_ and `crm:E8 (Acquisition) <http://www.cidoc-crm.org/cidoc-crm/E8_Acquisition>`_ were defined
 appropriately for UTK's use cases. Because CIDOC-CRM is particularly used in a museum context, we decided to use
 `opaque:accessionNumber` as it is arguably more flexible. This allows us to use the same property for accession numbers
-from a wide variety of institutions. Both properties supported content negotiation.
+from a wide variety of institutions. Both properties support content negotiation.
 
 XPath
 ^^^^^
@@ -290,13 +290,17 @@ titles through the Library of Congress. These titles include:
 
 More information on assigning an e-ISSN can be found here - https://www.loc.gov/issn/basics/basics-brochure-eserials.html.
 
-As these identifiers have meaning outside of the context of UTK and might be used by patrons
-in a search to find these materials, it is important that we continue to support a unique field for these values. In addition,
-having a persistent link for resources with a particular ISSN is essential to the Libraries' HathiTrust submission
-records. A title-level MARC XML record with a link to all issues with the same ISSN is shared for this purpose.
+UTK currently has a specific Solr field for publication identifiers (ISBNs and ISSNs) so that these identifiers can be
+displayed and searched for separately: utk_mods_publication_identifier_ms.
 
 Justification
 ^^^^^^^^^^^^^
+
+As these identifiers have meaning outside of the context of UTK and might be used by patrons
+in a search to find these materials, it is important that we continue to support a unique field for these values rather
+than including them in a generic identifier category with other types of identifier values. In addition,
+having a persistent link for resources with a particular ISSN is essential to the Libraries' HathiTrust submission
+records. A title-level MARC XML record with a link to all issues with the same ISSN is shared for this purpose.
 
 Properties for ISSN values are established in DBpedia and the Standard Identifiers Scheme. Both follow our philosophy
 guidelines and could be used to accurately represent the ISSN values. Ultimately we decided to use DBpedia because it is
@@ -329,15 +333,17 @@ ISBNs
 Use Case
 ^^^^^^^^
 
-International Standard Book Numbers are present as identifier values in the Children's Defense Fund collection. As these
-identifiers have meaning outside of the context of UTK and might be used by patrons in a search to find these materials,
-it is important that we continue to support a unique field for these values.
+International Standard Book Numbers are present as identifier values in the Children's Defense Fund collection. UTK
+currently has a specific Solr field for publication identifiers (ISBNs and ISSNs) so that these identifiers can be
+displayed and searched for separately: utk_mods_publication_identifier_ms.
 
 Justification
 ^^^^^^^^^^^^^
 
-Properties for ISBN values are established in DBpedia and the Standard Identifiers Scheme. Because we give preference to
-core ontologies rather than library specific ones, we selected `dbo:issn`.
+As these identifiers have meaning outside of the context of UTK and might be used by patrons in a search to find these materials,
+it is important that we continue to support a unique field for these values.Properties for ISBN values are established
+in DBpedia and the Standard Identifiers Scheme. Because preference is given to core ontologies rather than library specific
+ones, we selected `dbo:issn`.
 
 XPath
 ^^^^^
@@ -367,10 +373,11 @@ titleInfo
 | Predicate                         | Value Type     | Usage Notes                                                             |
 +===================================+================+=========================================================================+
 | dcterms:title                     | Literal        | A name given to the resource. If multiple titleInfo elements are        |
-|                                   |                | present, supplied title is assumed to the title. Using of []            |
-|                                   |                | to note supplied has not been determined.                               |
+|                                   |                | present, supplied title is displayed as the title.                      |
+|                                   |                |                                                                         |
 +-----------------------------------+----------------+-------------------------------------------------------------------------+
-| dcterms:alternative               | Literal        | An alternative name for the resource.                                   |
+| dcterms:alternative               | Literal        | An alternative name for the resource. This property is used if there is |
+|                                   |                | more than one title given.                                              |
 +-----------------------------------+----------------+-------------------------------------------------------------------------+
 
 titleInfo - one titleInfo element
@@ -379,11 +386,19 @@ titleInfo - one titleInfo element
 Use Case
 ^^^^^^^^
 
-An object with a single :code:`titleInfo` element.
+This category refers to records with a single :code:`titleInfo` element. All records within UTK's collections contain at
+least one title value. Typically, in the case of traditional bibliographic materials, this value is transcribed
+directly from the source (title page, etc.). In UTK's collections, :code:`titleInfo/title` is not restricted to transcribed
+titles only and also contains supplied title strings constructed by the cataloger.
 
 Justification
 ^^^^^^^^^^^^^
-No dispute on what the title is.
+
+Titles are required values for DPLA and are used as the main way of identifying a resource within Islandora, PrimoVE, and
+Worldcat, so it is essential that these values are kept. This mapping document consistently designates the displayed
+title as the primary title rather than privileging transcribed titles. Currently within Islandora, the fgsLabel is by
+default associated with the value within :code:`titleInfo/title`. Looking to possible future platforms, the equivalent
+property for the title which is given preference by default in display is `dcterms:title`.
 
 XPath
 ^^^^^
@@ -392,9 +407,11 @@ XPath
 
 Decision
 ^^^^^^^^
-The string :code:`titleInfo/title` can easily translate to the `dcterms:title` property.
+The string within :code:`titleInfo/title` can easily translate to the `dcterms:title` property. In the case below, the single
+title value given is a supplied value (since there is no writing on the actual resource to transcribe). This shows the
+inconsistency with which :code:`@supplied="yes"` is used.
 
-`Example record from acwiley:280 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A280/datastream/MODS>`_
+`Example record - acwiley:280 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A280/datastream/MODS>`_
 
 .. code-block:: xml
 
@@ -414,13 +431,21 @@ titleInfo - single titleInfo element having a supplied attribute of yes
 Use Case
 ^^^^^^^^
 
-A single :code:`titleInfo` element having an attribute of :code:`supplied="yes"`.
+This category refers to single :code:`titleInfo` element having an attribute of :code:`supplied="yes"`. :code:`titleInfo[@supplied="yes"]`
+is used currently to indicate that a title is constructed by a cataloger rather than transcribed from the source. As mentioned
+previously, this is not consistently used to indicate whether a title is supplied or not, particularly when the only title
+value has to be supplied because the materials being described have no linguistic content to transcribe.
 
 Justification
 ^^^^^^^^^^^^^
 
-Samvera uses brackets to wrap title strings in direct mapping examples. According to the `Aggregation Overview document <https://www.njstatelib.org/wp-content/uploads/2017/01/DPLA-Aggregation-Overview.pdf>`_
-provided by DPLA, they recommend we "not have brackets or ending periods."
+While the title values themselves need to be retained, it was decided that it is not important to keep values within
+:code:`titleInfo[@supplied="yes"]` separate from values within :code:`titleInfo` without the attribute value. Therefore both
+single title values are mapped to the same property - `dcterms:title`. In traditional MARC records and in Samvera's mapping,
+brackets are used to wrap title strings that are supplied as a way to distinguish supplied and transcribed titles within the
+same field. The decision to not use brackets was made because these characters do not have intuitive meeting to users. This
+decision is supported by the Digital Public Library of America's `Aggregation Overview document <https://www.njstatelib.org/wp-content/uploads/2017/01/DPLA-Aggregation-Overview.pdf>`_
+that recommends contributors do "not have brackets or ending periods" in their title values.
 
 
 XPath
@@ -431,9 +456,10 @@ XPath
 Decision
 ^^^^^^^^
 
-In these cases a :code:`supplied="yes"` may also be present for one :code:`titleInfo` element. Supplied titles would be used as `dcterms:title`. Triples will not indicate supplied titles using brackets.
+Supplied titles will be represented as `dcterms:title`. Supplied titles will not be distinguished from transcribed titles
+by using brackets. It is felt that this convention focuses more on cataloging conventions than on users' needs.
 
-`Example record from roth:5342 <https://digital.lib.utk.edu/collections/islandora/object/roth:5342/datastream/MODS/>`_
+`Example record - hesler:10076 <https://digital.lib.utk.edu/collections/islandora/object/hesler%3A10076/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -453,14 +479,15 @@ titleInfo - Multiple titleInfo elements with one having a supplied attribute of 
 Use Case
 ^^^^^^^^
 
-An object with a multiple :code:`titleInfo` elements and one having a attribute of :code:`supplied="yes"`.
+This category is defined by the presence of multiple :code:`titleInfo` elements and one having a attribute of :code:`supplied="yes"`.
+Multiple :code:`titleInfo/title' values are typically present for materials where a title can be transcribed, but an additional
+value is desired for display purposes. This is particularly prevalent for serial publications.
 
 Justification
 ^^^^^^^^^^^^^
 
-For consistency within collections, the best title to display for users is the supplied title.
-
-See **single titleInfo element having a supplied attribute of yes** for justification regarding use of supplied in the transcribed turtle.
+For consistency within collections, the best title to display for users is the supplied title. In current practice, collections with supplied titles require
+that the fgsLabel be updated following ingest so that the value within :code:`titleInfo[@supplied="yes"]/title`.
 
 XPath
 ^^^^^
@@ -474,7 +501,7 @@ Decision
 
 In cases where :code:`supplied="yes"` are present for one :code:`titleInfo` element the :code:`titleInfo[@supplied]/title` value will be used as `dcterms:title`.
 
-`Example record from swim:162 <https://digital.lib.utk.edu/collections/islandora/object/swim:162/datastream/MODS/>`_
+`Example record - swim:162 <https://digital.lib.utk.edu/collections/islandora/object/swim:162/datastream/MODS/>`_
 
 .. code-block:: xml
 
@@ -505,7 +532,7 @@ An object with a single :code:`titleInfo` element and sub-element of :code:`part
 Justification
 ^^^^^^^^^^^^^
 
-Consistent with previous UT description practices, we use commas rather periods to indicate
+Consistent with previous UT description practices, we use commas rather than periods to indicate
 enumeration of an object within a string.
 
 XPath
@@ -519,7 +546,7 @@ Decision
 ^^^^^^^^
 
 In these cases the string contained in :code:`partName` will be appended to the :code:`title`. A ','
-character will be used as glue when concatenating the strings.
+character followed by a space will be used as glue when concatenating the strings.
 
 `Example record from sanborn:1194 <https://digital.lib.utk.edu/collections/islandora/object/sanborn:1194/datastream/MODS/>`_
 
@@ -603,7 +630,7 @@ Decision
 
 :code:`titleInfo` elements with :code:`@type="alternative"` will defined as `dcterms:alternative`.
 
-`Example record from pcard00:100233 <https://digital.lib.utk.edu/collections/islandora/object/pcard00:100233/datastream/MODS/>`_
+`Example record - utsmc:17870 <https://digital.lib.utk.edu/collections/islandora/object/utsmc%3A17870/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -629,7 +656,7 @@ titleInfo - Multiple titleInfo elements with one having a displayLabel attribute
 Use Case
 ^^^^^^^^
 
-An object with a two :code:`titleInfo` elements and one having an attribute of :code:`displayLabel="some string"`.
+An object with two :code:`titleInfo` elements and one having an attribute of :code:`displayLabel="some string"`.
 
 Justification
 ^^^^^^^^^^^^^
