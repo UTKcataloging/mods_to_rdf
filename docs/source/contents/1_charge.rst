@@ -7,9 +7,9 @@ Membership
 ----------
 
 Meredith Hale, Lead
-Member
-Member
-Member
+Mark Baggett
+Bridger Dyson-Smith
+Mat Jordan
 
 Introduction
 ------------
