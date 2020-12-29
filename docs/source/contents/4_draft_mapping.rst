@@ -5208,7 +5208,7 @@ Use Case
 
 This category is defined by the presence of either one of the twelve standardized rights statements from `https://righsstatements.org <https://righsstatements.org>`_
 or one of the CC licenses. These values are used to provide users with standard and clear information on the copyright
- status of an item and how or if it can be reused. These values are currently displayed in a facet and are recommended for
+status of an item and how or if it can be reused. These values are currently displayed in a facet and are recommended for
 sharing with DPLA.
 
 Justification
