@@ -100,7 +100,7 @@ Use Case
 ^^^^^^^^
 
 This is the catch-all category for identifiers that is important to keep but that do not need to be separated into individual
-categories for discovery. UTK's adminDB values as well as a range of different locally created identifiers are present.
+categories for discovery. UT's adminDB values as well as a range of different locally created identifiers are present.
 A great deal of the values were initially created by Special Collections in finding aids - for instance identifiers with a
 type attribute of "slide number", "archival number", "cw", and "film number". If an identifier type attribute of "opac" is
 present, this means that the resource also has a full MARC record present in the Alma catalog. The strings values for opac
@@ -113,7 +113,7 @@ Justification
 ^^^^^^^^^^^^^
 
 These values are being kept because they may be helpful to users in finding specific materials. For instance, while :code:`@type="pid"`
-identifiers will no longer be the primary identifiers on UTK's next digital collections platform, they could be used to
+identifiers will no longer be the primary identifiers on UT's next digital collections platform, they could be used to
 identify cited resources that have broken links. Many of the identifiers associated with Special Collections allow users
 to see how the same resource might be referenced within finding aids. Have :code:`@type="opac"` identifiers helps staff at UTK
 know immediately whether a resource has a MARC record, which could prove useful if descriptive metadata is needed in this
@@ -191,7 +191,7 @@ Acquisition Identifier
 Use Case
 ^^^^^^^^
 
-Several of UTK's collections come from institutions outside the library and include identifiers assigned by those
+Several of UT's collections come from institutions outside the library and include identifiers assigned by those
 institutions. The McClung Museum of Natural History and Culture on campus is one of these institutions. In the `Nineteenth
 and Early Twentieth Century Images of Egypt collection <https://digital.lib.utk.edu/collections/islandora/object/collections%3Aegypt>`_ shared by McClung, traditional museum acquisition numbers
 consisting of the year three numbers separated by periods (year.acquisition group.item) are present.
@@ -201,7 +201,7 @@ Justification
 
 Both OpaqueNamespace and `CIDOC-CRM <http://www.cidoc-crm.org/>`_ properties were considered for mapping these values.
 Both `opaque:accessionNumber <http://opaquenamespace.org/ns/cco_accessionNumber>`_ and `crm:E8 (Acquisition) <http://www.cidoc-crm.org/cidoc-crm/E8_Acquisition>`_ were defined
-appropriately for UTK's use cases. Because CIDOC-CRM is particularly used in a museum context, we decided to use
+appropriately for UT's use cases. Because CIDOC-CRM is particularly used in a museum context, we decided to use
 `opaque:accessionNumber` as it is arguably more flexible. This allows us to use the same property for accession numbers
 from a wide variety of institutions. Both properties support content negotiation.
 
@@ -386,9 +386,9 @@ titleInfo - one titleInfo element
 Use Case
 ^^^^^^^^
 
-This category refers to records with a single :code:`titleInfo` element. All records within UTK's collections contain at
+This category refers to records with a single :code:`titleInfo` element. All records within UT's collections contain at
 least one title value. Typically, in the case of traditional bibliographic materials, this value is transcribed
-directly from the source (title page, etc.). In UTK's collections, :code:`titleInfo/title` is not restricted to transcribed
+directly from the source (title page, etc.). In UT's collections, :code:`titleInfo/title` is not restricted to transcribed
 titles only and also contains supplied title strings constructed by the cataloger.
 
 Justification
@@ -542,7 +542,7 @@ The values in :code:`partName` are essential to keep as they uniquely distinguis
 distinct from the title. While they were historically separated because MODS had the granularity to define these values as
 distinct from yet related to the title, this separation does not serve any practical purpose. For sharing with DPLA,
 :code:`titleInfo/title` has to be concatenated to :code:`partName`. It therefore makes sense to remove this granularity
-in UTK's data itself to make it easier to share. Consistent with previous UT descriptive practices, commas rather than
+in UT's data itself to make it easier to share. Consistent with previous UT descriptive practices, commas rather than
 periods will be used to indicate enumeration of an object within a string.
 
 XPath
@@ -831,7 +831,7 @@ The following collections include :code:`tableOfContents` - David Van Vactor Mus
 The Arrow of Pi Beta Phi. There are a total of 455 unique values. This element contains the names of individually titled
 parts that make up the larger resource. It is used to provide more detailed information on the content of a resource in
 a non-structured way. Note that punctuation separating part titles varies depending on the string values being separated.
-The following punctuation is present in UTK's :code:`tableOfContents` elements: " -- ", " - ", and ";".
+The following punctuation is present in UT's :code:`tableOfContents` elements: " -- ", " - ", and ";".
 
 Justification
 -------------
@@ -1952,7 +1952,8 @@ Decision
 
     <note displayLabel="Local Rights">Permission granted for reproduction for use in research and teaching, provided proper attribution of source.
     Credit line should read: [description of item, including photographic number], 'Courtesy of McClung Museum of Natural History and Culture, The
-    University of Tennessee.' For all other uses consult https://mcclungmuseum.utk.edu/research/image-services/rights-reproductions/ or call 865-974-2144.</note>
+    University of Tennessee.' For all other uses consult https://mcclungmuseum.utk.edu/research/image-services/rights-reproductions/ or call 865-974-2144.
+    </note>
 
 .. code-block:: turtle
 
@@ -2721,7 +2722,7 @@ Coordinates
 Use Case
 ^^^^^^^^
 
-There are a total of **702 unique coordinate values** in UTK's collections. Many are associated with geonames terms,
+There are a total of **702 unique coordinate values** in UT's collections. Many are associated with geonames terms,
 but there are 8 coordinates associated with Library of Congress terms. These terms are "Great Smoky Mountains
 National Park (N.C. And Tenn.)", "Knoxville (Tenn.)", "Sevier County (Tenn.)", "Dickson County (Tenn.)", "Hardin County (Tenn.)",
 "Bluff City (Tenn.)", and "Saint Andrews (Tenn.)". In addition, there are **120 geographic names that are not associated**
@@ -2867,10 +2868,15 @@ genre: values that map to dcterms:type
 Use Case
 ^^^^^^^^
 
-:code:`genre`, without any attributes, has been used as a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource. :code:`genre[@authority='dct']` has three distinct values: "text", "still image", and "image", that broadly indicate the type of the resource being described.
+:code:`genre`, without any attributes, has been used as a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource. :code:`genre[@authority='dct']` has three distinct values: "text", "still image", and "image", that broadly indicate the type of the resource being described. This category consists of :code:`typeOfResource` values that are present in :code:`genre` due to the use of the LoC Dublin Core to MODS transform. In many remediated collections, these values have already been moved to :code:`typeOfResource`, but there are still many that remain in :code:`genre` that should be addressed for consistency's sake during migration.
 
 Justification
 ^^^^^^^^^^^^^
+
+The justification for keeping :code:`genre` values that map to `dcterms:type`, is the same as the justification for keeping :code:`typeOfResource` values generally.
+Values within :code:`typeOfResource` are used for initial faceting in search for both UT's local Digital Collections website
+and for DPLA's interface. As DPLA doesn't display :code:`physicalDescription/form` values, it is important to share this
+less granular indication of the resource type.
 
 For values *outside* of the following table, we selected the `edm:hasType` property as it aligns well with the possible overlap between :code:`genre` and :code:`physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the union of values in :code:`genre[not(@*)]` and :code:`genre[@authority='dct']`.
 
@@ -2947,10 +2953,14 @@ genre values that map to edm:hasType
 Use Case
 ^^^^^^^^
 
-:code:`genre[not(@*)]` has been used a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource.
+:code:`genre[not(@*)]` has been used a catch-all descriptive element that may or may not hold values from a controlled vocabulary, and that may or may not provide appropriate descriptive information about the resource. Unlike the previous category, values within :code:`genre[not(@*)]` generally contain more specific terms related to the physical characteristics of a resource and closely mirror MODS :code:`physicalDescription/form` values.
 
 Justification
 ^^^^^^^^^^^^^
+
+The justification for keeping these values is similar to that expressed for :code:`physicalDescription/form` values that do not
+have a :code:`@valueURI`. This category contains terms that should be in :code:`physicalDescription/form` if more time for
+remediation had been possible.
 
 The values in this XPath fall outside of the table presented in the preceding section ("genre values that map to dcterms:type").
 
@@ -2982,12 +2992,19 @@ genre[@authority='aat']
 Use Case
 ^^^^^^^^
 
-:code:`genre[@authority='aat']` appears in the Archivision collection and uses a controlled vocabulary.
+:code:`genre[@authority='aat']` appears in the Archivision collection and uses a controlled vocabulary. Generally these
+terms reflect an artistic style or period. While some values potentially mirror MODS :code:`subject/temporal` values, in
+many cases the building described was built after the period mentioned, but still in that time period's style. Therefore
+the terms relate more closely to a general :code:`subject/topic` rather than :code:`subject/temporal`.
 
 Justification
 ^^^^^^^^^^^^^
 
-These will be treated as `dcterms:subject`, based on the values from the AAT controlled vocabulary.
+These values share important information about architectural style that could help users search through Archivision more effectively.
+
+These will be treated as `dcterms:subject`, based on the values from the AAT controlled vocabulary. `edm:hasType`, which is
+suggested by Samvera as the best match for :code:`genre` is not used in order to keep values from :code:`genre` and :code:`physicalDescription/form`
+separate following migration.
 
 XPath
 ^^^^^
@@ -3016,10 +3033,15 @@ genre[@authority='lcsh']
 Use Case
 ^^^^^^^^
 
-Used in the Archivision, Charlie Daniels, and AirScoop collections. There are four distinct values in the XPath: "Editorial cartoons", "College student newspapers and periodicals", "Twentieth century", and "Nineteenth century".
+Used in the Archivision, Charlie Daniels, and AirScoop collections. There are four distinct values in the XPath:
+"Editorial cartoons", "College student newspapers and periodicals", "Twentieth century", and "Nineteenth century".
 
 Justification
 ^^^^^^^^^^^^^
+
+As these values come directly from the Library of Congress Subject Headings (lcsh), they would benefit from being grouped with
+all of the other values from this vocabulary in `dcterms:subject`. They share helpful information about a resource's subject
+matter rather than a style.
 
 XPath
 ^^^^^
@@ -3061,10 +3083,17 @@ genre[@authority='lcgft']
 Use Case
 ^^^^^^^^
 
-This :code:`genre` element is used in the Arrowmont, Van Vactor, VP Moore, and Kefauver Crime Documents collections.
+This :code:`genre` element is used in the Arrowmont, Van Vactor, VP Moore, and Kefauver Crime Documents collections. Values
+within :code:`genre[@authority='lcgft']` come from the Library of Congress Genre Form Terms vocabulary and share terms
+that relate to both the resource's form and subject matter (aka, the term "Newsletter" suggests certain formal characteristics,
+but it also shares what type of content is present in the resource).
 
 Justification
 ^^^^^^^^^^^^^
+
+Because most values relate more closely to the resource's formal characteristics, `edm:hasType` was chosen for mapping.
+This groups them with MODS values from :code:`physicalDescription/form`. These values are helpful to discovery and
+in understanding the type of resource being viewed.
 
 XPath
 ^^^^^
@@ -3106,10 +3135,16 @@ genre[@authority='lcmpt']
 Use Case
 ^^^^^^^^
 
-This XPath is used in the Van Vactor collection to express performance medium and instrumentation information.
+This XPath is used in the Van Vactor collection to express performance medium and instrumentation information. Individual
+instruments with :code:`@valueURI` values were placed within :code:`genre[@authority='lcmpt']` based on recommendations
+from the Music Library Association because a :code:`note` element could not accommodate a :code:`@valueURI`.
 
 Justification
 ^^^^^^^^^^^^^
+
+While all of the instruments in Van Vactor are also documented in an instrumentation note, :code:`genre[@authority='lcmpt']`
+is the only place where the :code:`@valueURI` values for each instrument are present. This allows users to single out particular
+instruments in their search, rather than relying on the note string that lists all instruments needed for a piece.
 
 XPath
 ^^^^^
@@ -3158,6 +3193,8 @@ Empty :code:`genre` elements should not be migrated.
 
 Justification
 ^^^^^^^^^^^^^
+
+There is no pertinent information to migrate.
 
 XPath
 ^^^^^
@@ -3212,7 +3249,7 @@ XPath
 Decision
 ^^^^^^^^
 
-https://digital.lib.utk.edu/collections/islandora/object/tatum%3A188/datastream/MODS/view
+`Language in text example record - tatum:188 <https://digital.lib.utk.edu/collections/islandora/object/tatum%3A188/datastream/MODS/view>`_ :
 
 .. code-block:: xml
 
@@ -3220,7 +3257,7 @@ https://digital.lib.utk.edu/collections/islandora/object/tatum%3A188/datastream/
         <languageTerm authority="iso639-2b" type="text">English</languageTerm>
     </language>
 
-https://digital.lib.utk.edu/collections/islandora/object/ekcd:9/datastream/MODS/view
+`Language in code example record - ekcd:9 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:9/datastream/MODS/view>`_:
 
 .. code-block:: xml
 
@@ -3239,7 +3276,7 @@ Turtle would map the same in both cases.
 "No linguistic content" cases can be found across some of our resources. In these cases, a :code:`code` attribute is present with a "zxx"
 value or :code:`type` attribute with a *text* value, and the :code:`languageTerm` element has a value of "No linguistic content". Justifications from the single :code:`language` case above also apply here. These are handled just like other languages in ISO 639-2 Collection of Bibliographic Codes. In this case, the "zxx" code denotes a declared absence of linguistic information.
 
-https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
+`No linguistic content example record - tdh:911 <https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view>`_:
 
 .. code-block:: xml
 
@@ -3247,7 +3284,7 @@ https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS
         <languageTerm authority="iso639-2b" type="text">No linguistic content</languageTerm>
     </language>
 
-https://digital.lib.utk.edu/collections/islandora/object/tdh:911/datastream/MODS/view
+`Zxx example record - heilman:1009 <https://digital.lib.utk.edu/collections/islandora/object/heilman%3A1009/datastream/MODS/view>`_:
 
 .. code-block:: xml
 
@@ -3290,7 +3327,7 @@ XPath
 Decision
 ^^^^^^^^
 
-https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MODS/view
+`Example record - utsmc:725 <https://digital.lib.utk.edu/collections/islandora/object/utsmc:725/datastream/MODS/view>`_:
 
 .. code-block:: xml
 
@@ -3357,7 +3394,7 @@ is addressed in a subsequent category.
 Justification
 ^^^^^^^^^^^^^
 
-Values within :code:`typeOfResource` are used for initial faceting in search for both UTK's local digital collections website
+Values within :code:`typeOfResource` are used for initial faceting in search for both UT's local Digital Collections website
 and for DPLA's interface. As DPLA doesn't display :code:`physicalDescription/form` values, it is important to share this
 less granular indication of the resource type.
 
@@ -3920,12 +3957,12 @@ relatedItem/identifier[@type = 'catalog']
 Use Case
 ^^^^^^^^
 
-:code:`@type='catalog'` is used exclusively in the Van Vactor collection to indicate the identifying number for an alternate version of the score.
+:code:`@type='catalog'` is used exclusively in the Van Vactor collection to indicate the identifying number for an alternate version of the score. All of the :code:`@type='catalog'` are established in the `David Van Vactor Collection Catalog <https://digital.lib.utk.edu/collections/islandora/object/vanvactor%3A15772>`_, which served as the starting point for the digital collection.
 
 Justification
 ^^^^^^^^^^^^^
 
-This XPath provides contextual data for users.
+This XPath provides contextual data for users and makes it easy to compare different versions of the same work. Title information does not always make it possible to see these relationships.
 
 XPath
 ^^^^^
@@ -3982,7 +4019,7 @@ Use Case
 Justification
 ^^^^^^^^^^^^^
 
-We will determine alternate ways of modeling featured item metadata post-migration.
+Because these identifiers are system-specific, they will not be useful on a new platform. We will determine alternate ways of modeling featured item metadata post-migration.
 
 XPath
 ^^^^^
@@ -4014,12 +4051,12 @@ relatedItem/location/url
 Use Case
 ^^^^^^^^
 
-This XPath is used 8516 times, but only has 33 distinct strings.
+This XPath is used 8516 times, but only has 33 distinct strings. This value is used to highlight the archival collection related to the resource being described. Its availability encourages users to further explore the archival collection by giving them a link to the finding aid.
 
 Justification
 ^^^^^^^^^^^^^
 
-This value is used to highlight the archival collection related to the resource being described. Its availability encourages users to further explore the archival collection by giving them a link to the finding aid.
+The URL is kept to encourage users to explore the physical archival collections in addition to the digital collection.
 
 XPath
 ^^^^^
@@ -4112,7 +4149,7 @@ XPaths
 Decision
 ^^^^^^^^
 
-The `dcterms:tableOfContents` property was selected to capture the title information available, the `relators:` namespace was chosen to capture information available in the :code:`roleTerm` elements, and `dbo:collection` property serves to identify the name of the physical archival collection.
+The `dcterms:tableOfContents` property was selected to capture the title information available, the `relators` namespace was chosen to capture information available in the :code:`roleTerm` elements, and `dbo:collection` property serves to identify the name of the physical archival collection.
 
 `Example record - bass:19644 <https://digital.lib.utk.edu/collections/islandora/object/bass:19644/datastream/MODS/view>`_
 
@@ -4385,6 +4422,7 @@ Use Case
 ^^^^^^^^
 
 Many records have :code:`valueURI` attributes set for :code:`physicalLocation`. This is inconsistent, even in our own collections.
+Not all repositories have a :code:`@valueURI established for them.
 
 Justification
 ^^^^^^^^^^^^^
@@ -4529,7 +4567,8 @@ physicalLocation with shelfLocator (UTK)
 Use Case
 ^^^^^^^^
 
-In many cases, some of our collection items will have :code:`shelfLocator` information. This information may not currently be accurate and can found via Special Collections’ finding aids.
+In many cases, some of our collection items will have :code:`shelfLocator` information. This shares where a physical copy
+of the resource is shelved. This information may not currently be accurate and can found via Special Collections’ finding aids.
 
 Justification
 ^^^^^^^^^^^^^
@@ -4899,7 +4938,7 @@ Use Case
 ^^^^^^^^
 
 All of the recently migrated SCOUT to TEI collections (e.g. American Civil War Collection, Tennessee Documentary History, etc.)
-as well as some of UTK's less recent collections (e.g. Sanborn, mpabaker, etc.) contain the element :code:`languageOfCataloging`.
+as well as some of UT's less recent collections (e.g. Sanborn, mpabaker, etc.) contain the element :code:`languageOfCataloging`.
 In total, it is found in approximately 6,000 records. Note that in all cases the language is English, but this information
 is represented as both a code ("eng") and a text value ("English").
 
@@ -4911,7 +4950,7 @@ do have the potential to be used if UTK has materials that might warrant catalog
 this is not the case. An example of a project that includes two records, one catalogued in Spanish and one in English, is
 `UNC's New Roots / Nuevas Raíces <https://newroots.lib.unc.edu/>`_. While UTK may want to pursue a project like this in the
 future, presently it seems unlikely that it will. More importantly, if such a project became a priority, it would not be
-difficult to distinguish via code UTK's existing English records from records in another language. If we did want to create
+difficult to distinguish via code UT's existing English records from records in another language. If we did want to create
 a project like this, information on the language of cataloging could be added across the repository with minimal effort.
 
 XPath
@@ -4941,7 +4980,7 @@ Use Case
 ^^^^^^^^
 
 The :code:`recordOrigin` element includes information about what methods or transformations were used to prepare a record. There
-are six different distinct values in UTK's metadata.
+are six different distinct values in UT's metadata.
 
 Justification
 ^^^^^^^^^^^^^
@@ -4976,7 +5015,7 @@ recordChangeDate
 Use Case
 ^^^^^^^^
 
-This element is used sparingly in UTK's metadata records. Currently there are five distinct values, all indicating that the
+This element is used sparingly in UT's metadata records. Currently there are five distinct values, all indicating that the
 last change to the record was made in 2015, which simply isn't sharing accurate information.
 
 Justification
@@ -5057,7 +5096,7 @@ We do not feel strongly that the added functionality provided by using a URI for
 to process URIs into strings for delivery to DPLA. We recognize that this goes against our general philosophy to use URIs
 when possible.
 
-To better understand UTK's use of this element some background information is helpful. At UTK the information we share in
+To better understand UT's use of this element some background information is helpful. At UTK the information we share in
 this element is not consistent with the definition of :code:`recordContentSource` - "The code or name of the entity (e.g. an
 organization and/or database) that either created or modified the original record." While we work with other partners,
 like the Children's Defense Fund and the McClung Museum, we are still technically the creators of the records in these
@@ -5124,7 +5163,7 @@ XPath
 Decision
 ^^^^^^^^
 
-When the institution listed as providing the information is not UTK, `edm:dataProvider` should be used instead of
+When the institution listed as providing the information is not UT, `edm:dataProvider` should be used instead of
 `edm:provider`. `edm:dataProvider` is defined as "The name or identifier of the organisation who contributes data indirectly
 to an aggregation service."
 
@@ -5167,8 +5206,10 @@ accessCondition - Rights Statements and Creative Commons Licenses
 Use Case
 ^^^^^^^^
 
-When one of the twelve standardized rights statements from `https://righsstatements.org <https://righsstatements.org>`_
-or one of the CC licenses is present, the value should be mapped to `edm:rights` and have a value type of URI.
+This category is defined by the presence of either one of the twelve standardized rights statements from `https://righsstatements.org <https://righsstatements.org>`_
+or one of the CC licenses. These values are used to provide users with standard and clear information on the copyright
+ status of an item and how or if it can be reused. These values are currently displayed in a facet and are recommended for
+sharing with DPLA.
 
 Justification
 ^^^^^^^^^^^^^
