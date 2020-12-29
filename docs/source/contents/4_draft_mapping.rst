@@ -1959,9 +1959,7 @@ Decision
     @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
     <https://example.org/objects/1>
-        skos:note "Local Rights: Permission granted for reproduction for use in research and teaching, provided proper attribution of source.
-        Credit line should read: [description of item, including photographic number], 'Courtesy of McClung Museum of Natural History and Culture, The
-        University of Tennessee.' For all other uses consult https://mcclungmuseum.utk.edu/research/image-services/rights-reproductions/ or call 865-974-2144." .
+        skos:note "Local Rights: Permission granted for reproduction for use in research and teaching, provided proper attribution of source. Credit line should read: [description of item, including photographic number], 'Courtesy of McClung Museum of Natural History and Culture, The University of Tennessee.' For all other uses consult https://mcclungmuseum.utk.edu/research/image-services/rights-reproductions/ or call 865-974-2144." .
 
 note - Instrumentation
 ----------------------
