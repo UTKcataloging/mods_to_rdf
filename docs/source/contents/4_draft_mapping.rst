@@ -4422,7 +4422,7 @@ Use Case
 ^^^^^^^^
 
 Many records have :code:`valueURI` attributes set for :code:`physicalLocation`. This is inconsistent, even in our own collections.
-Not all repositories have a :code:`@valueURI established for them.
+Not all repositories have a :code:`@valueURI` established for them.
 
 Justification
 ^^^^^^^^^^^^^
