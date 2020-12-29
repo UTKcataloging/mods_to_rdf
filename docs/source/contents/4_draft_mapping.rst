@@ -480,7 +480,7 @@ Use Case
 ^^^^^^^^
 
 This category is defined by the presence of multiple :code:`titleInfo` elements and one having a attribute of :code:`supplied="yes"`.
-Multiple :code:`titleInfo/title' values are typically present for materials where a title can be transcribed, but an additional
+Multiple :code:`titleInfo/title` values are typically present for materials where a title can be transcribed, but an additional
 value is desired for display purposes. This is particularly prevalent for serial publications, in which titles often change
 over time.
 
