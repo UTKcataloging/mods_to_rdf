@@ -927,11 +927,9 @@ A lookup table is included as an appendix to help with this.
 If the :code:`name` has a :code:`valueURI` attribute, use it for the object of the triple.  If it does not, use
 the text value of :code:`name/namePart`.
 
-When you have a :code:`name` with a :code:`valueURI` attribute like `tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_:
+When you have a :code:`name` with a :code:`valueURI` attribute like `tdh:8803 <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_:
 
 .. code-block:: xml
-    :caption: Example XML record from `tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
-    :name: Example XML record from `tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
 
     <name valueURI="http://id.loc.gov/authorities/names/n2017180154">
         <namePart>White, Hugh Lawson, 1773-1840</namePart>
@@ -942,22 +940,19 @@ When you have a :code:`name` with a :code:`valueURI` attribute like `tdh:8803 MO
         </role>
     </name>
 
-Leverage the :code:`valueURI` and make it the object of the triple:
+Leverage the :code:`@valueURI` and make it the object of the triple:
 
 .. code-block:: turtle
-    :caption: Resulting RDF `from tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
-    :name: Resulting RDF `from tdh:8803 MODS <https://digital.lib.utk.edu/collections/islandora/object/tdh%3A8803/datastream/MODS/>`_
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
         relators:crp <http://id.loc.gov/authorities/names/n2017180154> .
 
-When there is no :code:`name/@valueURI`, use the string literal from :code:`name/namePart`:
+When there is no :code:`name/@valueURI`, use the string literal from :code:`name/namePart`. `cDanielCartoon:1000 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1000/datastream/MODS/view>`_
+is an example record containing a :code:`name` value missing a :code:`@valueURI`:
 
 .. code-block:: xml
-    :caption: XML with Name missing a valueURI `from cDanielCartoon:1000 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1000/datastream/MODS/view>`_
-    :name: XML with Name missing a valueURI `from cDanielCartoon:1000 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1000/datastream/MODS/view>`_
 
     <name type="personal">
         <namePart>Daniel, Charles R. (Charlie), Jr., 1930-</namePart>
@@ -967,19 +962,16 @@ When there is no :code:`name/@valueURI`, use the string literal from :code:`name
     </name>
 
 .. code-block:: turtle
-    :caption: Resulting turtle for Name missing a valueURI `from cDanielCartoon:1000 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1000/datastream/MODS/view>`_
-    :name: Resulting turtle for Name missing a valueURI `from cDanielCartoon:1000 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1000/datastream/MODS/view>`_
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
         relators:cre "Daniel, Charles R. (Charlie), Jr., 1930-" .
 
-If there is a :code:`name/@valueURI` but it's empty, use the string literal instead:
+If there is a :code:`name/@valueURI` but it's empty, use the string literal instead. '`volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
+is an example of this:
 
 .. code-block:: xml
-    :caption: Example XML from `volvoices:2495 MODS <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
-    :name: Example XML from `volvoices:2495 MODS <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
 
     <name authority="naf" type="corporate" valueURI="">
         <namePart>Bemis Bro. Bag Company</namePart>
@@ -989,8 +981,6 @@ If there is a :code:`name/@valueURI` but it's empty, use the string literal inst
     </name>
 
 .. code-block:: turtle
-    :caption: Resulting turtle from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
-    :name: Resulting turtle from `volvoices:2495 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2495/datastream/MODS>`_
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
@@ -1021,9 +1011,9 @@ XPaths
 Decision
 ^^^^^^^^
 
+`Example record - harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_:
+
 .. code-block:: xml
-    :caption: `Multi-role name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
-    :name: `Multi-role name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
 
     <name authority="naf" valueURI="http://id.loc.gov/authorities/names/no2002022963">
         <namePart>Swan, W. H. (William H.)</namePart>
@@ -1040,8 +1030,6 @@ Decision
     </name>
 
 .. code-block:: turtle
-    :caption:  `Resulting RDF for a name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
-    :name: `Resulting RDF for a name from harp:1 MODS record <https://digital.lib.utk.edu/collections/islandora/object/harp%3A1/datastream/MODS>`_
 
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
@@ -1086,7 +1074,7 @@ XPaths
 Decision
 ^^^^^^^^
 
-Several of these values which will be dropped are illustrated in this example record - archivision:1959 <https://digital.lib.utk.edu/collections/islandora/object/archivision%3A1959/datastream/MODS/view>`_
+Several of these values which will be dropped are illustrated in this `example record - archivision:1959 <https://digital.lib.utk.edu/collections/islandora/object/archivision%3A1959/datastream/MODS/view>`_
 
 .. code-block:: xml
 
