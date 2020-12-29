@@ -4415,7 +4415,7 @@ Decision
 
 The :code:`valueURI` attribute :code:`location/physicalLocation` is set as object.
 
-`Example record from egypt:79 <https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view>`_
+`Example record - egypt:79 <https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -4457,7 +4457,7 @@ Decision
 
 Even when MODS only has a string present, we will map "The University of Tennessee Libraries, Knoxville" and "University of Tennessee, Knoxville. Special Collections" to relative URIs.
 
-`Example record from fbpro:94819 <https://digital.lib.utk.edu/collections/islandora/object/fbpro:94819/datastream/MODS/view>`_
+`Example record - fbpro:94819 <https://digital.lib.utk.edu/collections/islandora/object/fbpro:94819/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -4472,7 +4472,7 @@ Even when MODS only has a string present, we will map "The University of Tenness
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/n80003889> .
 
-`Example record from cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:1177/datastream/MODS/view>`_
+`Example record - cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:1177/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -4560,7 +4560,7 @@ Decision
 
 We will drop :code:`shelfLocator` data when present for UT Knoxville records.
 
-`Example record from scopes:1258 <https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/MODS/view>`_
+`Example record - scopes:1258 <https://digital.lib.utk.edu/collections/islandora/object/scopes:1258/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -4600,7 +4600,7 @@ Decision
 
 We will retain :code:`shelfLocator` data when present for non-UTK records, and transcribe this to a `skos:note`.
 
-`Example record from volvoices:2136 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2136/datastream/MODS/view>`_
+`Example record - volvoices:2136 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2136/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -4806,7 +4806,7 @@ Will be mapped to both `relators:rps` and `edm:dataProvider`. `edm:dataProvider`
 
 Here's an example record -
 
-`Example record from volvoices:2737 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2737/datastream/MODS/view>`_
+`Example record - volvoices:2737 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2737/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -4847,9 +4847,9 @@ XPath
 Decision
 ^^^^^^^^
 
-Drop this.
+Do not migrate.
 
-`Example record from volvoices:9999 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/MODS/view>`_
+`Example record - volvoices:9999 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -4938,7 +4938,7 @@ Decision
 
 Since we are not currently utilizing these values in any way, these should be dropped in the mapping.
 
-Here's an `example record - sanborn:1002 <https://digital.lib.utk.edu/collections/islandora/object/sanborn%3A1002/datastream/MODS/view>`_.
+`Example record - sanborn:1002 <https://digital.lib.utk.edu/collections/islandora/object/sanborn%3A1002/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -4974,9 +4974,9 @@ XPath
 Decision
 ^^^^^^^^
 
-Drop all values.
+Do not migrate.
 
-Here's an `example record - cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1177/datastream/MODS/view>`_
+`Example record - cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1177/datastream/MODS/view>`_
 
 .. code-block:: xml
 
@@ -5009,9 +5009,9 @@ XPath
 Decision
 ^^^^^^^^
 
-This element should be dropped.
+Do not migrate.
 
-Here's an `example record - volvoices:3435 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A3435/datastream/MODS/view>`_.
+`Example record - volvoices:3435 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A3435/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -5049,9 +5049,9 @@ XPath
 Decision
 ^^^^^^^^
 
-These values will be dropped.
+Do not migrate.
 
-Here's an `example record - volvoices:1857 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A1857/datastream/MODS/view>`_.
+`Example record - volvoices:1857 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A1857/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -5142,7 +5142,7 @@ When the institution listed as providing the information is not UTK, `edm:dataPr
 `edm:provider`. `edm:dataProvider` is defined as "The name or identifier of the organisation who contributes data indirectly
 to an aggregation service."
 
-Here's an `example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
+`Example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
 It is also coupled with an "Intermediate Provider" note, as shown below. McClung's Egypt collection is also treated similarly.
 
 .. code-block:: xml
