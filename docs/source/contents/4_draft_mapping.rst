@@ -4964,7 +4964,7 @@ Decision
 
 Do not migrate.
 
-`Example record - cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1177/datastream/MODS/view>`_
+`Example record - cDanielCartoon:1178 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon%3A1178/datastream/MODS/view>`_
 
 .. code-block:: xml
 
