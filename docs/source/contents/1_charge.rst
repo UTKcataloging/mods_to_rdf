@@ -7,8 +7,11 @@ Membership
 ----------
 
 Meredith Hale, Lead
+
 Mark Baggett
+
 Bridger Dyson-Smith
+
 Mat Jordan
 
 Introduction
