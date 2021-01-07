@@ -4892,7 +4892,7 @@ recordInfo
 | edm:dataProvider | URI or Literal | Use the name of the organization who contributes data indirectly                                                |
 |                  |                | to an aggregation service. Note that we have decided to only use literals even though the property allows URIs. |
 +------------------+----------------+-----------------------------------------------------------------------------------------------------------------+
-| edm:provider     | URI or Literal | Use the name of the organization (typically UT) who delivers data directly to an aggregation                   |
+| edm:provider     | URI or Literal | Use the name of the organization (typically UT) who delivers data directly to an aggregation                    |
 |                  |                | service. Note that we have decided to only use literals even though the property allows URIs.                   |
 +------------------+----------------+-----------------------------------------------------------------------------------------------------------------+
 
