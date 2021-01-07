@@ -2568,7 +2568,7 @@ An `example of a record that leaves off the displayLabel, but the string matches
 
 The final :code:`subject/geographic` value actually matches one of the values listed in the "Tennessee Social Studies K-12 Eras
 in American History". While it is placed in a :code:`geographic` :code:`subject` here in the XML, it should be in a :code:`temporal` :code:`subject` (as
-the date range following the text suggests). One value is placed in :code:`subject/topic`.The following values are all
+the date range following the text suggests). One value is placed in :code:`subject/topic`. The following values are all
 of the exceptions:
 
 We will want to remediate before migration, match on and transform these values during migration, or deal with them after migration. The string values
