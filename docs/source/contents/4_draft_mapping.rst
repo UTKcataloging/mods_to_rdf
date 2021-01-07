@@ -6,7 +6,7 @@ UTK MODS to RDF Mapping
 Style Guide
 ***********
 
-This document aims to provide all of the information a member of Digital Initiatives needs to transform UTK’s existing
+This document aims to provide all of the information a member of Digital Initiatives needs to transform UT’s existing
 MODS XML to RDF, regardless of the platform chosen. In order to achieve this goal in a consistent and accessible manner,
 we will compose the mapping document according to the following practices.
 
@@ -115,7 +115,7 @@ Justification
 These values are being kept because they may be helpful to users in finding specific materials. For instance, while :code:`@type="pid"`
 identifiers will no longer be the primary identifiers on UT's next digital collections platform, they could be used to
 identify cited resources that have broken links. Many of the identifiers associated with Special Collections allow users
-to see how the same resource might be referenced within finding aids. Have :code:`@type="opac"` identifiers helps staff at UTK
+to see how the same resource might be referenced within finding aids. Have :code:`@type="opac"` identifiers helps staff at UT
 know immediately whether a resource has a MARC record, which could prove useful if descriptive metadata is needed in this
 form. Overall, little effort needs to be exerted to keep all of these values and they all have the potential to be helpful
 in the future.
@@ -290,13 +290,13 @@ titles through the Library of Congress. These titles include:
 
 More information on assigning an e-ISSN can be found here - https://www.loc.gov/issn/basics/basics-brochure-eserials.html.
 
-UTK currently has a specific Solr field for publication identifiers (ISBNs and ISSNs) so that these identifiers can be
+UT currently has a specific Solr field for publication identifiers (ISBNs and ISSNs) so that these identifiers can be
 displayed and searched for separately: utk_mods_publication_identifier_ms.
 
 Justification
 ^^^^^^^^^^^^^
 
-As these identifiers have meaning outside of the context of UTK and might be used by patrons
+As these identifiers have meaning outside of the context of UT and might be used by patrons
 in a search to find these materials, it is important that we continue to support a unique field for these values rather
 than including them in a generic identifier category with other types of identifier values. In addition,
 having a persistent link for resources with a particular ISSN is essential to the Libraries' HathiTrust submission
@@ -333,7 +333,7 @@ ISBNs
 Use Case
 ^^^^^^^^
 
-International Standard Book Numbers are present as identifier values in the Children's Defense Fund collection. UTK
+International Standard Book Numbers are present as identifier values in the Children's Defense Fund collection. UT
 currently has a specific Solr field for publication identifiers (ISBNs and ISSNs) so that these identifiers can be
 displayed and searched for separately: utk_mods_publication_identifier_ms.
 
@@ -341,7 +341,7 @@ Justification
 ^^^^^^^^^^^^^
 
 As these identifiers have meaning outside of the context of UTK and might be used by patrons in a search to find these materials,
-it is important that we continue to support a unique field for these values.Properties for ISBN values are established
+it is important that we continue to support a unique field for these values. Properties for ISBN values are established
 in DBpedia and the Standard Identifiers Scheme. Because preference is given to core ontologies rather than library specific
 ones, we selected `dbo:issn`.
 
@@ -2465,7 +2465,7 @@ Use Case
 ^^^^^^^^
 
 :code:`subject/temporal` values share information about a time period using text or a date (:code:`edtf`). None of our existing :code:`subject/temporal`
-values include URIs.These values are prominent in Volunteer Voices and the Pi Beta Phi to Arrowmont collections. While not from established controlled
+values include URIs. These values are prominent in Volunteer Voices and the Pi Beta Phi to Arrowmont collections. While not from established controlled
 vocabularies like LCHS, :code:`subject/temporal` values are present in facets as the strings are often constructed consistently.
 
 Justification
@@ -2502,7 +2502,7 @@ which requires that the value is part of the class PeriodOfTime).
 
     <https://example.org/objects/1> schema:temporalCoverage "The Birth of Arrowmont, Gatlinburg, Tennessee, 1965-1979" .
 
-In addition to these textual values, UTK does have :code:`temporal` :code:`subject`\ s that share numeric dates in EDTF format. These are
+In addition to these textual values, UT does have :code:`temporal` :code:`subject`\ s that share numeric dates in EDTF format. These are
 primarily from the Volunteer Voices collection. `Here's an example record - volvoices:2945 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2945/datastream/MODS/view>`_.
 
 .. code-block:: xml
@@ -2624,7 +2624,7 @@ Geographic subjects
 Use Case
 ^^^^^^^^
 
-UTK has :code:`subject/geographic` values associated with and without URIs. Like with other elements, the placement of the URIs is not consistent.
+UT has :code:`subject/geographic` values associated with and without URIs. Like with other elements, the placement of the URIs is not consistent.
 URIs will be used when present, but strings can be used when there is no URI.
 
 Justification
@@ -3365,7 +3365,7 @@ Use case
 Most records currently have a :code:`typeOfResource` value with no attributes. Depending on the item being described, it is possible
 for there to be multiple :code:`typeOfResource` values in a single record. The Islandora Metadata Interest Group has carefully
 created a mapping to translate MODS :code:`typeOfResource` values to `dcterms` resource types. A selection of the mapping is
-included below that addresses all of the values UTK has within its metadata. Note that the final row, collection="yes"
+included below that addresses all of the values UT has within its metadata. Note that the final row, collection="yes"
 is addressed in a subsequent category.
 
 +----------------------------+---------------+--------------------------------------------------+--------------------+
@@ -4454,7 +4454,7 @@ The :code:`valueURI` attribute :code:`location/physicalLocation` is set as objec
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/no2017033007> .
 
-physicalLocation as string (UTK)
+physicalLocation as string (UT)
 --------------------------------
 
 Use Case
@@ -4516,13 +4516,13 @@ Even when MODS only has a string present, we will map "The University of Tenness
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
 
-physicalLocation as string (non-UTK)
+physicalLocation as string (non-UT)
 ------------------------------------
 
 Use Case
 ^^^^^^^^
 
-Across our collections, there are also many cases where non-UTK items do not have URIs and instead use strings.
+Across our collections, there are also many cases where non-UT items do not have URIs and instead use strings.
 
 Justification
 ^^^^^^^^^^^^^
@@ -4537,7 +4537,7 @@ XPath
 Decision
 ^^^^^^^^
 
-In cases that the :code:`physicalLocation` are non-UTK and only a string is provided, we will only use the string literal.
+In cases that the :code:`physicalLocation` are non-UT and only a string is provided, we will only use the string literal.
 
 .. code-block:: xml
 
@@ -4561,7 +4561,7 @@ In cases that the :code:`physicalLocation` are non-UTK and only a string is prov
     <https://example.org/objects/1>
         relators:rps "Blount County Public Library" .
 
-physicalLocation with shelfLocator (UTK)
+physicalLocation with shelfLocator (UT)
 ----------------------------------------
 
 Use Case
@@ -4601,13 +4601,13 @@ We will drop :code:`shelfLocator` data when present for UT Knoxville records.
     <https://example.org/objects/1>
         relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
 
-physicalLocation with shelfLocator (non-UTK)
+physicalLocation with shelfLocator (non-UT)
 --------------------------------------------
 
 Use Case
 ^^^^^^^^
 
-Instances where non-UTK held items have :code:`shelfLocator` information.
+Instances where non-UT held items have :code:`shelfLocator` information.
 
 Justification
 ^^^^^^^^^^^^^
@@ -4623,7 +4623,7 @@ XPath
 Decision
 ^^^^^^^^
 
-We will retain :code:`shelfLocator` data when present for non-UTK records, and transcribe this to a `skos:note`.
+We will retain :code:`shelfLocator` data when present for non-UT records, and transcribe this to a `skos:note`.
 
 `Example record - volvoices:2136 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2136/datastream/MODS/view>`_
 
@@ -4810,7 +4810,7 @@ physicalLocation within volvoices used for provider information
 Use Case
 ^^^^^^^^
 
-There is one collection in which location information needs to be used to correct inaccuracies for other metadata fields. The Volunteer Voices collection lists the University of Tennessee as the :code:`recordContentSource` for all records. While UTK may have created the metadata records, our mapping with DPLA makes it so that we are noted as the source of these records rather than the actual contributing institution. There are instances within volvoices in which the institution in physicalLocation and the one listed in recordContent Source are the same. This action doesn't need to be taken for those records.
+There is one collection in which location information needs to be used to correct inaccuracies for other metadata fields. The Volunteer Voices collection lists the University of Tennessee as the :code:`recordContentSource` for all records. While UT may have created the metadata records, our mapping with DPLA makes it so that we are noted as the source of these records rather than the actual contributing institution. There are instances within volvoices in which the institution in physicalLocation and the one listed in recordContent Source are the same. This action doesn't need to be taken for those records.
 
 Justification
 ^^^^^^^^^^^^^
@@ -4827,7 +4827,7 @@ Note: an easier way to resolve this particular XPath expression might be to star
 Decision
 ^^^^^^^^
 
-Will be mapped to both `relators:rps` and `edm:dataProvider`. `edm:dataProvider` is being used because the value is an "organisation who contributes data indirectly to an aggregation service" (aka to UTK first and then to DPLA).
+Will be mapped to both `relators:rps` and `edm:dataProvider`. `edm:dataProvider` is being used because the value is an "organisation who contributes data indirectly to an aggregation service" (aka to UT first and then to DPLA).
 
 Here's an example record -
 
@@ -4892,7 +4892,7 @@ recordInfo
 | edm:dataProvider | URI or Literal | Use the name of the organization who contributes data indirectly                                                |
 |                  |                | to an aggregation service. Note that we have decided to only use literals even though the property allows URIs. |
 +------------------+----------------+-----------------------------------------------------------------------------------------------------------------+
-| edm:provider     | URI or Literal | Use the name of the organization (typically UTK) who delivers data directly to an aggregation                   |
+| edm:provider     | URI or Literal | Use the name of the organization (typically UT) who delivers data directly to an aggregation                   |
 |                  |                | service. Note that we have decided to only use literals even though the property allows URIs.                   |
 +------------------+----------------+-----------------------------------------------------------------------------------------------------------------+
 
@@ -4946,9 +4946,9 @@ Justification
 ^^^^^^^^^^^^^
 
 Currently :code:`languageOfCataloging` is not publicly displayed anywhere outside of the MODS XML. The values of this element
-do have the potential to be used if UTK has materials that might warrant cataloging in another language, but currently
+do have the potential to be used if UT has materials that might warrant cataloging in another language, but currently
 this is not the case. An example of a project that includes two records, one catalogued in Spanish and one in English, is
-`UNC's New Roots / Nuevas Raíces <https://newroots.lib.unc.edu/>`_. While UTK may want to pursue a project like this in the
+`UNC's New Roots / Nuevas Raíces <https://newroots.lib.unc.edu/>`_. While UT may want to pursue a project like this in the
 future, presently it seems unlikely that it will. More importantly, if such a project became a priority, it would not be
 difficult to distinguish via code UT's existing English records from records in another language. If we did want to create
 a project like this, information on the language of cataloging could be added across the repository with minimal effort.
@@ -5062,7 +5062,7 @@ Justification
 
 Unlike :code:`recordChangeDate`, all of the values within :code:`recordCreationDate` are at least accurate. Currently this information
 is not used or displayed for users. Given this and the fact that this element is present in a very small percentage of
-UTK records, it does not seem useful to keep this information. Again, a repository system should have a way to track
+UT records, it does not seem useful to keep this information. Again, a repository system should have a way to track
 when a metadata datastream for a particular digital object was created. Therefore keeping this information adds unnecessary
 complexity.
 
@@ -5096,19 +5096,19 @@ We do not feel strongly that the added functionality provided by using a URI for
 to process URIs into strings for delivery to DPLA. We recognize that this goes against our general philosophy to use URIs
 when possible.
 
-To better understand UT's use of this element some background information is helpful. At UTK the information we share in
+To better understand UT's use of this element some background information is helpful. At UT the information we share in
 this element is not consistent with the definition of :code:`recordContentSource` - "The code or name of the entity (e.g. an
 organization and/or database) that either created or modified the original record." While we work with other partners,
 like the Children's Defense Fund and the McClung Museum, we are still technically the creators of the records in these
 situations. Despite this, we typically list these institutions as the record creator because we set up :code:`recordContentSource`
-as the element that DPLA should map to for content provider. In actuality, when the content provider is not UTK, this
+as the element that DPLA should map to for content provider. In actuality, when the content provider is not UT, this
 information should be communicated in :code:`physicalLocation` and our DPLA mapping should be updated. Despite these semantic
-issues, UTK has consistently put this information in an incorrect element, so the mapping is not affected.
+issues, UT has consistently put this information in an incorrect element, so the mapping is not affected.
 
 Justification
 ^^^^^^^^^^^^^
 
-A content provider is required in DPLA. This value also provides UTK with the opportunity to attribute collections to
+A content provider is required in DPLA. This value also provides UT with the opportunity to attribute collections to
 the institution that provided them, which is important for maintaining respectful relationships. Because of DPLA's
 limitations, we will provide this information as a string.
 
@@ -5120,11 +5120,11 @@ XPath
 Decision
 ^^^^^^^^
 
-Because UTK acts as a service hub for DPLA and it delivers data directly to this aggregator, it can be considered an
+Because UT acts as a service hub for DPLA and it delivers data directly to this aggregator, it can be considered an
 `edm:provider`. This is defined as "The name or identifier of the organization who delivers data directly to an aggregation
 service (e.g. Europeana)."
 
-When UTK physically holds the material and created the record, the metadata resembles this `example record - acwiley:284 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A284/datastream/MODS/view>`_.
+When UT physically holds the material and created the record, the metadata resembles this `example record - acwiley:284 <https://digital.lib.utk.edu/collections/islandora/object/acwiley%3A284/datastream/MODS/view>`_.
 
 .. code-block:: xml
 
@@ -5144,7 +5144,7 @@ recordContentSource - not University of Tennessee, Knoxville as value
 Use Case
 ^^^^^^^^
 
-When a resource comes from a non-UTK institution, its name is typically placed in :code:`recordContentSource`. An exception to
+When a resource comes from a non-UT institution, its name is typically placed in :code:`recordContentSource`. An exception to
 this is Volunteer Voices, which only includes the contributing institution in :code:`location/physicalLocation`. See
 :code:`location` for more information.
 
