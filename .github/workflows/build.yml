@@ -8,8 +8,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Sphinx
         run: sudo apt-get install python3-sphinx
-      - name: Install Read the Docs theme
-        run: sudo pip install sphinx-rtd-theme
       - name: Install our application with pipenv
         uses: VaultVulp/action-pipenv@v2.0.1
         with:

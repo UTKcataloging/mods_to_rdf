@@ -10,8 +10,8 @@ sphinx = "*"
 sphinxcontrib-napoleon = "*"
 sphinx-markdown-tables = "*"
 recommonmark = "*"
-sphinx-bootstrap-theme = "*"
 rdflib = "*"
+sphinx-rtd-theme = "*"
 
 [requires]
 python_version = "3"
