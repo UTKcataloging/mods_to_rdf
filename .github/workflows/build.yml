@@ -12,6 +12,10 @@ jobs:
         uses: VaultVulp/action-pipenv@v2.0.1
         with:
           command: install -d
+      - name: Use pipenv environment
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: shell
       - name: Make HTML
         run: cd docs && make html
       - name: Test Turtle Code Blocks in Contents and Top Level Elements
