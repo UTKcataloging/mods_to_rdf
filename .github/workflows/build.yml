@@ -13,10 +13,10 @@ jobs:
         with:
           command: install -d
       - name: Run make in our pipenvironment
-          uses: VaultVulp/action-pipenv@v2.0.1
-          with:
-            docs-folder: "docs/"
-            command: run make html
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          docs-folder: "docs/"
+          command: run make html
       - name: Make HTML
         run: cd docs && make html
       - name: Test Turtle Code Blocks in Contents and Top Level Elements
