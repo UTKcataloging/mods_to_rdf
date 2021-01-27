@@ -219,7 +219,7 @@ The property `opaque:accessionNumber` was selected.
 
 .. code-block:: xml
 
-<identifier type="acquisition">1996.10.1</identifier>
+    <identifier type="acquisition">1996.10.1</identifier>
 
 .. code-block:: turtle
 
@@ -3206,10 +3206,12 @@ Decision
 
 Do not migrate.
 
-..code-block:: xml
+.. code-block:: xml
+
     <genre valueURI=""/>
 
-..code-block:: xml
+.. code-block:: xml
+
     <genre authority="lcgft" authorityURI="http://id.loc.gov/authorities/genreForms"/>
 
 language
