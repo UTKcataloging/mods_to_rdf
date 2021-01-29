@@ -76,42 +76,42 @@ Namespaces
 Mapping
 *******
 
-Top Level Elements
-==================
+Contents
+========
 
-:ref:`identifier`
+- :ref:`identifier`
 
-:ref:`titleInfo`
+- :ref:`titleInfo`
 
-:ref:`abstract`
+- :ref:`abstract`
 
-:ref:`tableOfContents`
+- :ref:`tableOfContents`
 
-:ref:`name`
+- :ref:`name`
 
-:ref:`originInfo`
+- :ref:`originInfo`
 
-:ref:`physicalDescription`
+- :ref:`physicalDescription`
 
-:ref:`note`
+- :ref:`note`
 
-:ref:`subject`
+- :ref:`subject`
 
-:ref:`genre`
+- :ref:`genre`
 
-:ref:`typeOfResource`
+- :ref:`typeOfResource`
 
-:ref:`classification`
+- :ref:`classification`
 
-:ref:`part`
+- :ref:`part`
 
-:ref:`relatedItem`
+- :ref:`relatedItem`
 
-:ref:`location`
+- :ref:`location`
 
-:ref:`recordInfo`
+- :ref:`recordInfo`
 
-:ref:`accessCondition`
+- :ref:`accessCondition`
 
 .. _identifier:
 
