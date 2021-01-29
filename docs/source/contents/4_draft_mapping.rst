@@ -72,6 +72,12 @@ Namespaces
 | Standard Identifier Scheme   | identifiers  | http://id.loc.gov/vocabulary/identifiers/  |
 +------------------------------+--------------+--------------------------------------------+
 
+*************************
+Mapping Table of Contents
+*************************
+
+:ref:`identifier`
+
 *******
 Mapping
 *******
