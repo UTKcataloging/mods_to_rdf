@@ -77,10 +77,13 @@ Mapping Table of Contents
 *************************
 
 :ref:`identifier`
+:ref:`titleInfo`
 
 *******
 Mapping
 *******
+
+.. _identifier:
 
 identifier
 ==========
@@ -371,6 +374,8 @@ Decision
 
     <https://example.org/objects/1>
         dbo:issn "0938008501" .
+
+.. _titleInfo:
 
 titleInfo
 =========
