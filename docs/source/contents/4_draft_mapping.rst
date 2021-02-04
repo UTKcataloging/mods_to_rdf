@@ -76,6 +76,45 @@ Namespaces
 Mapping
 *******
 
+Contents
+========
+
+- :ref:`identifier`
+
+- :ref:`titleInfo`
+
+- :ref:`abstract`
+
+- :ref:`tableOfContents`
+
+- :ref:`name`
+
+- :ref:`originInfo`
+
+- :ref:`physicalDescription`
+
+- :ref:`note`
+
+- :ref:`subject`
+
+- :ref:`genre`
+
+- :ref:`typeOfResource`
+
+- :ref:`classification`
+
+- :ref:`part`
+
+- :ref:`relatedItem`
+
+- :ref:`location`
+
+- :ref:`recordInfo`
+
+- :ref:`accessCondition`
+
+.. _identifier:
+
 identifier
 ==========
 
@@ -365,6 +404,8 @@ Decision
 
     <https://example.org/objects/1>
         dbo:issn "0938008501" .
+
+.. _titleInfo:
 
 titleInfo
 =========
@@ -724,6 +765,8 @@ Decision
         dcterms:title "Tennessee Lady Volunteers basketball media guide, 1984-1985"  ;
         dcterms:alternative "Tennessee Lady Vols 1984-85: reaching for the Summitt of women's basketball" .
 
+.. _abstract:
+
 abstract
 ========
 
@@ -821,6 +864,8 @@ Don't map!
 
     </abstract>
 
+.. _tableOfContents:
+
 tableOfContents
 ===============
 
@@ -881,6 +926,8 @@ All values within :code:`tableOfContents` will be mapped to RDF in the same way.
 
     <https://example.org/objects/1>
         dcterms:tableOfContents "Library Fund Honors Marian; Noted Craftsman Lauds Arrowmont; Gatlinburg Residents Enjoy Craft Courses; Tennessee Gammas Honor Prof. Heard" .
+
+.. _name:
 
 name
 ====
@@ -1087,6 +1134,8 @@ Several of these values which will be dropped are illustrated in this `example r
             <roleTerm type="text" authority="marcrelator" valueURI="ttp://id.loc.gov/vocabulary/relators/cre">Creator</roleTerm>
         </role>
     </name>
+
+.. _originInfo:
 
 originInfo
 ==========
@@ -1496,6 +1545,8 @@ We will not be migrating :code:`issuance` values. Here's an example record with 
 
     <issuance>serial</issuance>
 
+.. _physicalDescription:
+
 physicalDescription
 ===================
 
@@ -1855,6 +1906,8 @@ Do not migrate.
 
     <internetMediaType>audio/wav</internetMediaType>
 
+.. _note:
+
 note
 ====
 
@@ -2168,6 +2221,8 @@ Decision
     </note>
 
 **Do not migrate!**
+
+.. _subject:
 
 subject
 =======
@@ -2848,6 +2903,8 @@ ambiguous, but doesn't state anything that is clearly untrue.
 
     <https://example.org/objects/1> dcterms:subject "Whaley, Aunt Lydia" .
 
+.. _genre:
+
 genre
 =====
 +-----------------+--------------------+------------------------------------------------------------------------------------+
@@ -3214,6 +3271,8 @@ Do not migrate.
 
     <genre authority="lcgft" authorityURI="http://id.loc.gov/authorities/genreForms"/>
 
+.. _language:
+
 language
 ========
 
@@ -3346,6 +3405,8 @@ Decision
 
     <https://example.org/objects/1>
         dcterms:language <http://id.loc.gov/vocabulary/iso639-2/fre> , <http://id.loc.gov/vocabulary/iso639-2/ita> .
+
+.. _typeOfResource:
 
 typeOfResource
 ==============
@@ -3514,6 +3575,8 @@ Here's an example record with no :code:`typeOfResource` value - `roth:100 <https
 
     <https://example.org/objects/1> dcterms:type <http://id.loc.gov/vocabulary/resourceTypes/img> .
 
+.. _classification:
+
 classification
 ==============
 
@@ -3565,6 +3628,8 @@ Decision
 
         <https://example.org/objects/1> classSchemes:lcc "S1 .T43" .
 
+.. _part:
+
 part
 ====
 
@@ -3605,6 +3670,7 @@ Drop all values in :code:`part`.
         </detail>
     </part>
 
+.. _relatedItem:
 
 relatedItem
 ===========
@@ -4401,6 +4467,8 @@ The `dcterms:tableOfContents` property was selected to capture the title informa
         relators:cre <http://id.loc.gov/authorities/names/n78078895> ;
         relators:cre <http://id.loc.gov/authorities/names/n50038965> .
 
+.. _location:
+
 location
 ========
 
@@ -4885,6 +4953,8 @@ Do not migrate.
         <url access="preview">https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A9999/datastream/TN/view</url>
     </location>
 
+.. _recordInfo:
+
 recordInfo
 ==========
 
@@ -5190,6 +5260,8 @@ these institutions are not directly contributing to DPLA, they are listed as an 
     @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 
         <https://example.org/objects/1> edm:dataProvider "Langston Hughes Library (Children's Defense Fund Haley Farm)" .
+
+.. _accessCondition:
 
 accessCondition
 ===============
