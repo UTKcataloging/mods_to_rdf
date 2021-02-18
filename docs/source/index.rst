@@ -19,7 +19,7 @@ This section contains materials for our final report.
 
    contents/*
 
-Appendex
+Appendix
 --------
 
 .. toctree::
