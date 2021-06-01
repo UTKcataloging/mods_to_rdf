@@ -2146,41 +2146,6 @@ Decision
         bf:IntendedAudience "Second Grade" .
 
 
-note - Uncontrolled keyword or Tag
-----------------------------------
-
-Use Case
-^^^^^^^^
-
-Some of our :code:`note`\ s actually refer to uncontrolled keywords or tags.
-
-Justification
-^^^^^^^^^^^^^
-
-While not preferred, Samvera treats these as `dcterms:subjects` with a literal rather than an a URI.
-
-XPath
-^^^^^
-
-:code:`note[@displayLabel="Tags"]`
-
-Decision
-^^^^^^^^
-
-.. code-block:: xml
-
-    <note displayLabel="Tags">
-        (1955-1962) Bowden Wyatt
-    </note>
-
-.. code-block:: turtle
-
-    @prefix dce: <http://purl.org/dc/elements/1.1/> .
-
-    <https://example.org/objects/1>
-        dce:subject "(1955 - 1962) Bowden Wyatt" .
-
-
 note - DPN Deposits and Other Things to Ignore
 ----------------------------------------------
 
@@ -2846,62 +2811,6 @@ Given the extent of :code:`coordinates` that cannot be retrieved using a URI (12
     <https://example.org/objects/1> dcterms:spatial <https://sws.geonames.org/4630912> ;
         dcterms:spatial "35.58546, -83.84444" .
 
-Name values with roleTerms represented as subjects
---------------------------------------------------
-
-Use Case
-^^^^^^^^
-
-The Arrowmont Simple Images collection include :code:`subject/name/namePart` values with a :code:`roleTerm`. Something should
-be treated as a :code:`subject` if it is represented within a photograph and treated as a name with a :code:`roleTerm` if the individual
-listed is associated with the creation or provenance of the item depicted. As the :code:`name` values are currently represented
-in the metadata, these two distinct categories are mixed. The only place where the two can overlap is if the name
-is given a role of `"Depicted" - <https://id.loc.gov/vocabulary/relators/dpc>`_.
-
-Justification
-^^^^^^^^^^^^^
-
-As the :code:`name`\ s are currently represented, they share incorrect information.
-
-XPath
-^^^^^
-
-    :code:`mods/subject/name[role]`
-
-Decision
-^^^^^^^^
-
-`Example record - arrsimple:344 <https://digital.lib.utk.edu/collections/islandora/object/arrsimple%3A344/datastream/MODS/view>`_
-This record is particularly problematic because it both suggests that Aunt Lydia Whaley is the photographer and that the
-photographer is unknown. This suggests that she cannot have the role of photographer. She may be depicted within the
-photograph, but this is also unconfirmed. While more vague, the safest way to deal with these records is to drop the
-:code:`roleTerm` and treat the :code:`name` values as general subjects. For this record, the inclusion of this :code:`subject` could mean that
-Aunt Lydia is the woman depicted, but it could also reinforce the title (Aunt Lydia's cave by the creek). It is
-ambiguous, but doesn't state anything that is clearly untrue.
-
-.. code-block:: xml
-
-    <subject authority="local">
-        <name>
-            <namePart>Whaley, Aunt Lydia.</namePart>
-        <role>
-            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/pht">Photographer</roleTerm>
-        </role>
-        </name>
-    </subject>
-    <name>
-        <namePart>Unknown</namePart>
-        <role>
-            <roleTerm authority="marcrelator" valueURI="http://id.loc.gov/vocabulary/relators/pht">Photographer</roleTerm>
-        </role>
-    </name>
-    <title>Aunt Lydia's cave by the creek, Francisa.</title>
-
-.. code-block:: turtle
-
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-
-    <https://example.org/objects/1> dcterms:subject "Whaley, Aunt Lydia" .
 
 .. _genre:
 
