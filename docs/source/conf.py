@@ -21,7 +21,8 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'UT Libraries MODS to RDF'
-copyright = '2020, Mark Baggett, Meredith Hale'
+# The copyright statement here is technically no longer pulled from here but from _static/css/custom.css instead.
+copyright = 'Attribution 4.0 International (CC BY 4.0)'
 author = 'Mark Baggett, Meredith Hale'
 
 # The short X.Y version
@@ -94,6 +95,11 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Add UTK Custom CSS
+html_css_files = [
+    'css/custom.css',
+]
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
