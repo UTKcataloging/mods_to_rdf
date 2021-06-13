@@ -8,6 +8,8 @@ UT Libraries MODS to RDF Working Group
 
 This portal includes documentation about the UTK MODS to RDF Working Group.
 
+All work is made available through an `Attribution 4.0 International (CC BY 4.0) license <https://creativecommons.org/licenses/by/4.0/>`_.
+
 Contents
 --------
 
