@@ -4547,12 +4547,12 @@ Use Case
 ^^^^^^^^
 
 In many cases, some of our collection items will have :code:`shelfLocator` information. This shares where a physical copy
-of the resource is shelved. This information may not currently be accurate and can found via Special Collections’ finding aids.
+of the resource is shelved. This information may not currently be accurate and can be found via Special Collections’ finding aids.
 
 Justification
 ^^^^^^^^^^^^^
 
-Because our records in MODS records may not be accurate and this information is located elsewhere, and perhaps more accurate, we will drop this information when :code:`shelfLocator` is used in conjunction with our repositories.
+Because our MODS records may not be accurate and this information is located elsewhere, and perhaps more accurately, we will drop this information when :code:`shelfLocator` is used in conjunction with our repositories.
 
 XPath
 ^^^^^
