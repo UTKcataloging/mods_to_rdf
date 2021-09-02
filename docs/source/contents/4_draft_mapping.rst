@@ -5194,11 +5194,22 @@ or one of the CC licenses. These values are used to provide users with standard 
 status of an item and how or if it can be reused. These values are currently displayed in a facet and are recommended for
 sharing with DPLA.
 
+All creative commons licenses should be content negotiable and valid.  For this to happen, this pattern must be followed:
+
+:code:`http://creativecommons.org/licenses/*/*/rdf`
+
+This means:
+
+* Use :code:`http` instead of :code:`https` as the protocol (for content negotiation and validity)
+* End in :code:`/rdf` (for content negotiation)
+
 Justification
 ^^^^^^^^^^^^^
 
-DPLA maps both CC licenses and Rights Statements to `edm:rights`. So does Samvera. Presently only the Heilman Collection includes
-a CC license.
+DPLA maps both CC licenses and Rights Statements to `edm:rights`. So does Samvera. Presently only the Heilman Collection
+includes a CC license.
+
+Creative Commons licenses should me content negotiable and valid for JSON-LD and IIIF.
 
 XPath
 ^^^^^
