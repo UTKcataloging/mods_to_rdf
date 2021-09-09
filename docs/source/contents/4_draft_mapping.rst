@@ -5210,7 +5210,7 @@ Justification
 
 DPLA maps both CC licenses and Rights Statements to `edm:rights`. So does Samvera.
 
-Creative Commons licenses should me content negotiable and valid for JSON-LD and IIIF.
+Creative Commons licenses should be content negotiable and valid for JSON-LD and IIIF.
 
 XPath
 ^^^^^
