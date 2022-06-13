@@ -5194,16 +5194,17 @@ or one of the CC licenses. These values are used to provide users with standard 
 status of an item and how or if it can be reused. These values are currently displayed in a facet and are recommended for
 sharing with DPLA.
 
-All creative commons licenses should be content negotiable and valid.  For this to happen, one of these two patterns
-must be followed:
+All creative commons licenses should be valid and follow a pattern that results in valid XML against the
+`CreativeCommons REST Endpoint <http://api.creativecommons.org/rest/1.5/details?license-uri=>`.  For this to happen, one
+of these two patterns must be followed:
 
-* :code:`http://creativecommons.org/licenses/*/*/rdf`
-* :code:`http://creativecommons.org/publicdomain/mark/*/rdf`
+* :code:`http://creativecommons.org/licenses/*/*/`
+* :code:`http://creativecommons.org/publicdomain/mark/*/`
 
 This means:
 
 * Use :code:`http` instead of :code:`https` as the protocol (for content negotiation and validity)
-* End in :code:`/rdf` (for content negotiation)
+* Do not end code in :code:`/rdf`. While this is dereferenceable and content negotiable, it causes problems for developers by forcing them to strip away the :code:`rdf` string for easy license lookup.
 
 Justification
 ^^^^^^^^^^^^^
