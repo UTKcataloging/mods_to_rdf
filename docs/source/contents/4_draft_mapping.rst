@@ -5195,7 +5195,7 @@ status of an item and how or if it can be reused. These values are currently dis
 sharing with DPLA.
 
 All creative commons licenses should be valid and follow a pattern that results in valid XML against the
-`CreativeCommons REST Endpoint <http://api.creativecommons.org/rest/1.5/details?license-uri=>`.  For this to happen, one
+`CreativeCommons REST Endpoint <http://api.creativecommons.org/rest/1.5/details?license-uri=>`_.  For this to happen, one
 of these two patterns must be followed:
 
 * :code:`http://creativecommons.org/licenses/*/*/`
@@ -5209,9 +5209,10 @@ This means:
 Justification
 ^^^^^^^^^^^^^
 
-DPLA maps both CC licenses and Rights Statements to `edm:rights`. So does Samvera.
+DPLA maps both CC licenses and Rights Statements to :code:`edm:rights`. So does Samvera.
 
-Creative Commons licenses should be content negotiable and valid for JSON-LD and IIIF.
+Creative Commons licenses should be content negotiable against the `CreativeCommons REST Endpoint <http://api.creativecommons.org/rest/1.5/details?license-uri=>`_
+for easy lookup by developers.
 
 XPath
 ^^^^^
