@@ -280,7 +280,7 @@ Justification
 ^^^^^^^^^^^^^
 
 OCLC identifiers could be useful if these materials are ever shared with HathiTrust, as this value is a requirement for
-submission. Only one property, `dbo:oclc`, was identified to use and it aligns with our philosophy guidelines.
+submission. Only one property, :code:`dbo:oclc`, was identified to use and it aligns with our philosophy guidelines.
 
 XPath
 ^^^^^
@@ -376,13 +376,15 @@ International Standard Book Numbers are present as identifier values in the Chil
 currently has a specific Solr field for publication identifiers (ISBNs and ISSNs) so that these identifiers can be
 displayed and searched for separately: utk_mods_publication_identifier_ms.
 
+**Note**: WikiData splits this field into 2: :code:`wikidata:P212` and :code:`wikidata:P957`.
+
 Justification
 ^^^^^^^^^^^^^
 
 As these identifiers have meaning outside of the context of UTK and might be used by patrons in a search to find these materials,
 it is important that we continue to support a unique field for these values. Properties for ISBN values are established
 in DBpedia and the Standard Identifiers Scheme. Because preference is given to core ontologies rather than library specific
-ones, we selected `dbo:issn`.
+ones, we selected :code:`dbo:isbn`.
 
 XPath
 ^^^^^
@@ -403,7 +405,7 @@ Decision
     @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
-        dbo:issn "0938008501" .
+        dbo:isbn "0938008501" .
 
 .. _titleInfo:
 
@@ -439,7 +441,7 @@ Titles are required values for DPLA and are used as the main way of identifying 
 Worldcat, so it is essential that these values are kept. This mapping document consistently designates the displayed
 title as the primary title rather than privileging transcribed titles. Currently within Islandora, the fgsLabel is by
 default associated with the value within :code:`titleInfo/title`. Looking to possible future platforms, the equivalent
-property for the title which is given preference by default in display is `dcterms:title`.
+property for the title which is given preference by default in display is :code:`dcterms:title`.
 
 XPath
 ^^^^^
@@ -448,7 +450,7 @@ XPath
 
 Decision
 ^^^^^^^^
-The string within :code:`titleInfo/title` can easily translate to the `dcterms:title` property. In the case below, the single
+The string within :code:`titleInfo/title` can easily translate to the :code:`dcterms:title` property. In the case below, the single
 title value given is a supplied value (since there is no writing on the actual resource to transcribe). This shows the
 inconsistency with which :code:`@supplied="yes"` is used.
 
@@ -482,7 +484,7 @@ Justification
 
 While the title values themselves need to be retained, it was decided that it is not important to keep values within
 :code:`titleInfo[@supplied="yes"]` separate from values within :code:`titleInfo` without the attribute value. Therefore both
-single title values are mapped to the same property - `dcterms:title`. In traditional MARC records and in Samvera's mapping,
+single title values are mapped to the same property - :code:`dcterms:title`. In traditional MARC records and in Samvera's mapping,
 brackets are used to wrap title strings that are supplied as a way to distinguish supplied and transcribed titles within the
 same field. The decision to not use brackets was made because these characters do not have intuitive meeting to users. This
 decision is supported by the Digital Public Library of America's `Aggregation Overview document <https://www.njstatelib.org/wp-content/uploads/2017/01/DPLA-Aggregation-Overview.pdf>`_
@@ -497,7 +499,7 @@ XPath
 Decision
 ^^^^^^^^
 
-Supplied titles will be represented as `dcterms:title`. Supplied titles will not be distinguished from transcribed titles
+Supplied titles will be represented as :code:`dcterms:title`. Supplied titles will not be distinguished from transcribed titles
 by using brackets. It is felt that this convention focuses more on cataloging conventions than on users' needs.
 
 `Example record - hesler:10076 <https://digital.lib.utk.edu/collections/islandora/object/hesler%3A10076/datastream/MODS/view>`_
@@ -530,7 +532,7 @@ Justification
 
 For consistency within collections, the best title to display for users is the supplied title. In current practice, collections
 with supplied titles require that the fgsLabel be updated following ingest so that the value within :code:`titleInfo[@supplied="yes"]/title`
-shows while browsing. It was decided to map these supplied titles to `dcterms:title` rather than `dcterms:alternative` so
+shows while browsing. It was decided to map these supplied titles to :code:`dcterms:title` rather than :code:`dcterms:alternative` so
 that additional actions like fgsLabel updates are not necessary and to make description practices more easily align with
 display practices.
 
@@ -544,7 +546,7 @@ XPath
 Decision
 ^^^^^^^^
 
-In cases where :code:`supplied="yes"` are present for one :code:`titleInfo` element the :code:`titleInfo[@supplied]/title` value will be used as `dcterms:title`.
+In cases where :code:`supplied="yes"` are present for one :code:`titleInfo` element the :code:`titleInfo[@supplied]/title` value will be used as :code:`dcterms:title`.
 
 `Example record - swim:162 <https://digital.lib.utk.edu/collections/islandora/object/swim:162/datastream/MODS/>`_
 
@@ -725,7 +727,7 @@ XPath
 Decision
 ^^^^^^^^
 
-:code:`titleInfo` elements with :code:`@type="alternative"` will defined as `dcterms:alternative`.
+:code:`titleInfo` elements with :code:`@type="alternative"` will defined as :code:`dcterms:alternative`.
 
 `Example record - utsmc:17870 <https://digital.lib.utk.edu/collections/islandora/object/utsmc%3A17870/datastream/MODS/view>`_
 
@@ -782,14 +784,14 @@ Abstracts that are not Blank Nodes
 Use Case
 ^^^^^^^^
 
-If a record has an :code:`abstract` or many :code:`abstract`\ s, they will each be mapped to `dcterms:abstract` as long as the :code:`abstract`
+If a record has an :code:`abstract` or many :code:`abstract`\ s, they will each be mapped to :code:`dcterms:abstract` as long as the :code:`abstract`
 does not have an empty text node.
 
 Justification
 ^^^^^^^^^^^^^
 
 Regardless of the number, the value has the same semantic relationship to the object as it did in MODS. When more than
-one :code:`abstract` value is present, these values will be kept as separate strings associated with `dcterms:abstract`.
+one :code:`abstract` value is present, these values will be kept as separate strings associated with :code:`dcterms:abstract`.
 This separation is desired because often the separate :code:`abstract` values contain information structured differently
 from one another or information that comes from different sources (one abstract may be transcribed from the source while
 another is supplied by the cataloger).
@@ -802,7 +804,7 @@ XPath
 Decision
 ^^^^^^^^
 
-If it has one :code:`abstract` like `gamble:124 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A124/datastream/MODS>`_, map to `dcterms:abstract`.
+If it has one :code:`abstract` like `gamble:124 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A124/datastream/MODS>`_, map to :code:`dcterms:abstract`.
 
 .. code-block:: xml
 
@@ -817,7 +819,7 @@ If it has one :code:`abstract` like `gamble:124 <https://digital.lib.utk.edu/col
     <https://example.org/objects/1> dcterms:abstract "Prosecutor John Keker gives his closing statement to the jury, explaining Col. John North's involvement in the Iran-Contra affair even though the majority of his statement is censored due to classified information." .
 
 If it has more than one :code:`abstract` like `1001:1 <https://digital.lib.utk.edu/collections/islandora/object/1001%3A1/datastream/MODS>`_,
-we will still map to `dcterms:abstract`.
+we will still map to :code:`dcterms:abstract`.
 
 .. code-block:: xml
 
@@ -1249,7 +1251,7 @@ XPath
 Decisions
 ^^^^^^^^^
 
-We will convert `w3cdtf` to `edtf` values as part of our migration process; additionally, we will integrate EDTF Level 2 features where necessary. The `dcterms:created` property was selected.
+We will convert :code:`w3cdtf` to :code:`edtf` values as part of our migration process; additionally, we will integrate EDTF Level 2 features where necessary. The :code:`dcterms:created` property was selected.
 
 `Example record - ekcd:95 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:95/datastream/MODS/view>`_
 
@@ -1340,7 +1342,7 @@ XPaths
 Decision
 ^^^^^^^^
 
-We will integrate EDTF Level 2 features where applicable. The `dcterms:issued` property was selected.
+We will integrate EDTF Level 2 features where applicable. The :code:`dcterms:issued` property was selected.
 
 `Example record - volvoices:2993 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2993>`_
 
@@ -1392,7 +1394,7 @@ XPath
 Decisions
 ^^^^^^^^^
 
-As part of leveraging the EDTF format, some conversion will be necessary; e.g. translating date strings to EDTF values as in the following example. The `dcterms:date` property was selected.
+As part of leveraging the EDTF format, some conversion will be necessary; e.g. translating date strings to EDTF values as in the following example. The :code:`dcterms:date` property was selected.
 
 `playbills:1052 <https://digital.lib.utk.edu/collections/islandora/object/playbills:1052/datastream/MODS/view>`_
 
@@ -1447,7 +1449,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The majority of the applicable values are associated with a :code:`@valueURI`.  The `relators:pup` property was selected.
+The majority of the applicable values are associated with a :code:`@valueURI`.  The :code:`relators:pup` property was selected.
 
 .. code-block:: xml
 
@@ -1486,7 +1488,7 @@ Justification
 ^^^^^^^^^^^^^
 
 :code:`publisher` values share important information about who produced a publication. It will be treated similarly to
-:code:`name/namePart` values mentioned. `relators:pbl` can be used to show that the values share corporations responsible
+:code:`name/namePart` values mentioned. :code:`relators:pbl` can be used to show that the values share corporations responsible
 for the publication of a resource.
 
 XPath
@@ -1497,7 +1499,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The `relators:pbl` property was selected.
+The :code:`relators:pbl` property was selected.
 `Example record - <https://digital.lib.utk.edu/collections/islandora/object/utsmc%3A13759>`_:
 
 .. code-block:: xml
@@ -1627,7 +1629,7 @@ terms, but it was not possible to find anything appropriate for "GEMounts." The 
 (for instance, GEMounts are likely a brand instead of a film type), but without access to the actual materials during the quarantine, it is
 impossible to make an informed judgement on what should be changed. To retain this contextual information that might
 prove useful to researchers interested in photographic processes and techniques, it seems best to simply put these values
-in a generic `note` field. If additional attention can be given to these two collections in the future, we can remediate
+in a generic :code:`note` field. If additional attention can be given to these two collections in the future, we can remediate
 the metadata following migration with the benefit of having access to the physical materials.
 
 XPath
@@ -1676,12 +1678,12 @@ resources in a digital environment. Particularly in the case of photography, the
 the type of film.
 
 The working group's shared philosophies were influential in decided on the best property to use for :code:`extent` values. The
-Islandora Metadata Interest Group's default mapping suggests using `dcterms:extent` and using a blank node with a literal as
+Islandora Metadata Interest Group's default mapping suggests using :code:`dcterms:extent` and using a blank node with a literal as
 a RDF value. This group is against using blank nodes when at all possible because they make it more difficult for the
-user to consume content. The Samvera mapping uses `rdau:P60550`, which is less than ideal because `rdau` does not support
+user to consume content. The Samvera mapping uses :code:`rdau:P60550`, which is less than ideal because :code:`rdau` does not support
 content negotiation. This means that the URI provided for the desired property does not allow a user to directly request
 RDF. No other more suitable properties could be found for :code:`extent` values. Given this predicament, the working group
-decided to use `rdau:P60550` because it is dereferenceable, which a blank node is not. Still, the inability to retrieve
+decided to use :code:`rdau:P60550` because it is dereferenceable, which a blank node is not. Still, the inability to retrieve
 RDF directly will limit users wishing to interact with our data in this way.
 
 XPath
@@ -1723,7 +1725,7 @@ important for us to share this information consistently. In order to retain the 
 the metadata from this collection with the rest of our records, we propose that the :code:`@unit` value is added to the :code:`extent`
 string during migration. This would involve simply taking the existing value in :code:`extent` and then adding ' pages' to the
 string. Note that all of the resources within the Colloquy collection have more than one page, so the plural form of the
-word will always be accurate. See the Decision section of extent above for more explanation of `rdau:P60550`.
+word will always be accurate. See the Decision section of extent above for more explanation of :code:`rdau:P60550`.
 
 XPath
 ^^^^^
@@ -1777,8 +1779,8 @@ XPath
 Decision
 ^^^^^^^^
 
-We will use `edm:hasType` instead of `dcterms:format` in order to accommodate form values without a URI. We need to move all
-of the form values over, so using `edm:hasType` will make sure that we bring every form term regardless of whether it is
+We will use :code:`edm:hasType` instead of :code:`dcterms:format` in order to accommodate form values without a URI. We need to move all
+of the form values over, so using :code:`edm:hasType` will make sure that we bring every form term regardless of whether it is
 defined as a URI or a literal.
 
 Here's an `example record - gamble:1 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A1/datastream/MODS/view>`_
@@ -2503,8 +2505,8 @@ XPath
 Decision
 ^^^^^^^^
 
-:code:`temporal` :code:`subject`\ s without the :code:`displayLabel` attribute will be directly mapped as strings to `schema:temporalCoverage`. This
-property was chosen because it allows a wider range of values than other potential solutions (such as `dcterms:temporalCoverage`
+:code:`temporal` :code:`subject`\ s without the :code:`displayLabel` attribute will be directly mapped as strings to :code:`schema:temporalCoverage`. This
+property was chosen because it allows a wider range of values than other potential solutions (such as :code:`dcterms:temporalCoverage`
 which requires that the value is part of the class PeriodOfTime).
 
 `Example of temporal subject - arrow:268 <https://digital.lib.utk.edu/collections/islandora/object/arrow%3A268>`_.
@@ -2543,7 +2545,7 @@ Temporal subjects from Volunteer Voices (K-12 Eras) with string and XPath incons
 Use Case
 ^^^^^^^^
 
-While two of the subject categories associated with the Volunteer Voices collection can be folded into `dcterms:subject`
+While two of the subject categories associated with the Volunteer Voices collection can be folded into :code:`dcterms:subject`
 directly ("Broad Topics" and "Volunteer Voices Curriculum Topics"), special attention needs to be given to :code:`subject`\ s associated
 with "Tennessee Social Studies K-12 Eras in American History". There are instances in which a value associated with one
 of these topics is used, but the :code:`displayLabel` has been left off and they have incorrectly been categorized as :code:`geographic`
@@ -2553,7 +2555,7 @@ Justification
 ^^^^^^^^^^^^^
 
 It is important to treat these values as a separate category to ensure that the text value is not split across separate
-categories (aka `schema:temporalCoverage` and `dcterms:subject`). In addition, some standardization of the label needs to be
+categories (aka :code:`schema:temporalCoverage` and :code:`dcterms:subject`). In addition, some standardization of the label needs to be
 done for all the records associated with a given concept to be colocated.
 
 XPath
@@ -2839,12 +2841,12 @@ Use Case
 Justification
 ^^^^^^^^^^^^^
 
-The justification for keeping :code:`genre` values that map to `dcterms:type`, is the same as the justification for keeping :code:`typeOfResource` values generally.
+The justification for keeping :code:`genre` values that map to :code:`dcterms:type`, is the same as the justification for keeping :code:`typeOfResource` values generally.
 Values within :code:`typeOfResource` are used for initial faceting in search for both UT's local Digital Collections website
 and for DPLA's interface. As DPLA doesn't display :code:`physicalDescription/form` values, it is important to share this
 less granular indication of the resource type.
 
-For values *outside* of the following table, we selected the `edm:hasType` property as it aligns well with the possible overlap between :code:`genre` and :code:`physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the union of values in :code:`genre[not(@*)]` and :code:`genre[@authority='dct']`.
+For values *outside* of the following table, we selected the :code:`edm:hasType` property as it aligns well with the possible overlap between :code:`genre` and :code:`physicalDescription/form`. To help prevent duplicating string literals and URIs, the following table suggests a mapping for a limited subset of the union of values in :code:`genre[not(@*)]` and :code:`genre[@authority='dct']`.
 
 +-----------------------------------------------+---------------+--------------------------------------------------+--------------------+
 | (//genre[not(@*] | //genre[@authority='dct']) | RDF Predicate | URI                                              | dcterms text value |
@@ -2879,7 +2881,7 @@ Alternately, these XPaths can be notated as:
 Decision
 ^^^^^^^^
 
-The `dcterms:type` property has been selected.
+The :code:`dcterms:type` property has been selected.
 
 `Example record - volvoices:11551 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:11551/datastream/MODS/view>`_
 
@@ -2938,7 +2940,7 @@ XPath
 Decision
 ^^^^^^^^
 
-Use the `edm:hasType` property for these values.
+Use the :code:`edm:hasType` property for these values.
 
 `Example record - volvoices:3827 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:3827/datastream/MODS/content>`_
 
@@ -2968,7 +2970,7 @@ Justification
 
 These values share important information about architectural style that could help users search through Archivision more effectively.
 
-These will be treated as `dcterms:subject`, based on the values from the AAT controlled vocabulary. `edm:hasType`, which is
+These will be treated as :code:`dcterms:subject`, based on the values from the AAT controlled vocabulary. :code:`edm:hasType`, which is
 suggested by Samvera as the best match for :code:`genre` is not used in order to keep values from :code:`genre` and :code:`physicalDescription/form`
 separate following migration.
 
@@ -2980,7 +2982,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The `dcterms:subject` property was selected.
+The :code:`dcterms:subject` property was selected.
 
 `Example record - archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_
 .. code-block:: xml
@@ -3006,7 +3008,7 @@ Justification
 ^^^^^^^^^^^^^
 
 As these values come directly from the Library of Congress Subject Headings (lcsh), they would benefit from being grouped with
-all of the other values from this vocabulary in `dcterms:subject`. They share helpful information about a resource's subject
+all of the other values from this vocabulary in :code:`dcterms:subject`. They share helpful information about a resource's subject
 matter rather than a style.
 
 XPath
@@ -3017,7 +3019,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The `dcterms:subject` property was selected.
+The :code:`dcterms:subject` property was selected.
 
 `Example record - cDanielCartoon:455 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:455/datastream/MODS/view>`_.
 
@@ -3057,7 +3059,7 @@ but it also shares what type of content is present in the resource).
 Justification
 ^^^^^^^^^^^^^
 
-Because most values relate more closely to the resource's formal characteristics, `edm:hasType` was chosen for mapping.
+Because most values relate more closely to the resource's formal characteristics, :code:`edm:hasType` was chosen for mapping.
 This groups them with MODS values from :code:`physicalDescription/form`. These values are helpful to discovery and
 in understanding the type of resource being viewed.
 
@@ -3069,7 +3071,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The `edm:hasType` property was selected.
+The :code:`edm:hasType` property was selected.
 
 `Example record - ekcd:611 <https://digital.lib.utk.edu/collections/islandora/object/ekcd:611/datastream/MODS/view>`_
 
@@ -3120,7 +3122,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The `dcterms:subject` property was selected.
+The :code:`dcterms:subject` property was selected.
 
 `Example record - vanvactor:12350 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:12350/datastream/MODS/view>`_
 
@@ -3336,7 +3338,7 @@ Use case
 
 Most records currently have a :code:`typeOfResource` value with no attributes. Depending on the item being described, it is possible
 for there to be multiple :code:`typeOfResource` values in a single record. The Islandora Metadata Interest Group has carefully
-created a mapping to translate MODS :code:`typeOfResource` values to `dcterms` resource types. A selection of the mapping is
+created a mapping to translate MODS :code:`typeOfResource` values to :code:`dcterms` resource types. A selection of the mapping is
 included below that addresses all of the values UT has within its metadata. Note that the final row, collection="yes"
 is addressed in a subsequent category.
 
@@ -3399,7 +3401,7 @@ Use case
 In MODS, an attribute can be used on :code:`typeOfResource` to indicate that the record refers to an entire collection rather
 than an individual resource. This is useful because it makes it possible to distinguish between object and collection
 records in the catalog so that patrons understand more quickly how much content is associated with the record. The
-Islandora Metadata Interest Group has come up with the solution of using the `dcterms` resource type of "Collection." In
+Islandora Metadata Interest Group has come up with the solution of using the :code:`dcterms` resource type of "Collection." In
 this situation we will need multiple triples to preserve the information currently present - one for indicating the record is
 for a collection and one (or more) for indicating prevalent resource type(s) in the collection. In MODS :code:`typeOfResource` is
 a repeatable field. Note that we will need to make sure that we do not repeat the :code:`collection` resource type in cases
@@ -3444,7 +3446,7 @@ Use case
 ^^^^^^^^
 
 Currently 9,993 records are missing a :code:`typeOfResource` value. The affected collections include Volunteer Voices (not entire
-collection), Roth, the Howard Baker Speeches and Remarks, Great Smoky Mountains Colloquy, and the Great Smoky Mountains Postcard Collection. We can consider if we would like to apply a blanket value to a collection at the time of migration. For monolithic collections like Roth and Baker, this would be easy to achieve (`roth = "still image"` and `baker = "text"` in MODS). For collections with varied formats, like Volunteer Voices, this will not be possible.
+collection), Roth, the Howard Baker Speeches and Remarks, Great Smoky Mountains Colloquy, and the Great Smoky Mountains Postcard Collection. We can consider if we would like to apply a blanket value to a collection at the time of migration. For monolithic collections like Roth and Baker, this would be easy to achieve (:code:`roth = "still image"` and :code:`baker = "text"` in MODS). For collections with varied formats, like Volunteer Voices, this will not be possible.
 
 Justification
 ^^^^^^^^^^^^^
@@ -3663,7 +3665,7 @@ Do not migrate.
       </titleInfo>
     </relatedItem>
 
-`Example record - relatedItem[@displayLabel='Digital Collection'][@type='host'] - cdf:7850 <https://digital.lib.utk.edu/collections/islandora/object/cdf:7850/datastream/MODS/view>`_. Synonymous with `@displayLabel = "Project"`.
+`Example record - relatedItem[@displayLabel='Digital Collection'][@type='host'] - cdf:7850 <https://digital.lib.utk.edu/collections/islandora/object/cdf:7850/datastream/MODS/view>`_. Synonymous with :code:`@displayLabel = "Project"`.
 
 .. code-block:: xml
 
@@ -3729,7 +3731,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The `dbo:collection` property was selected.
+The :code:`dbo:collection` property was selected.
 
 `Example record - heilman:261 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_
 
@@ -3759,7 +3761,7 @@ relatedItem[@type='series'][@displayLabel='Project']
 Use Case
 ^^^^^^^^
 
-The `@type='series'` XPath indicates a resource's archival series.
+The :code:`@type='series'` XPath indicates a resource's archival series.
 
 Justification
 ^^^^^^^^^^^^^
@@ -3816,7 +3818,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The `dcterms:bibliographicCitation` predicate was selected for these values.
+The :code:`dcterms:bibliographicCitation` predicate was selected for these values.
 
 `Example record - arrow:1 <https://digital.lib.utk.edu/collections/islandora/object/arrow:1/datastream/MODS/view>`_
 
@@ -3909,7 +3911,7 @@ XPath
 Decision
 ^^^^^^^^
 
-:code:`@type='local'`\ 's value, if present, maps in to the `dbo:collection` property.
+:code:`@type='local'`\ 's value, if present, maps in to the :code:`dbo:collection` property.
 
 `Example record - heilman:26 <https://digital.lib.utk.edu/collections/islandora/object/heilman:261/datastream/MODS/view>`_
 
@@ -3949,7 +3951,7 @@ XPath
 Decision
 ^^^^^^^^
 
-:code:`@type='catalog'`\ 's value, if present, will be represented by the `opaque:sheetmusic_hostItem` property.
+:code:`@type='catalog'`\ 's value, if present, will be represented by the :code:`opaque:sheetmusic_hostItem` property.
 
 `Example record - vanvactor:10012 <https://digital.lib.utk.edu/collections/islandora/object/vanvactor:10012/datastream/MODS/view>`_
 
@@ -4043,7 +4045,7 @@ XPath
 Decision
 ^^^^^^^^
 
-The `dbo:isPartOf` property was selected.
+The :code:`dbo:isPartOf` property was selected.
 
 `Example record - ruskin:204 <https://digital.lib.utk.edu/collections/islandora/object/ruskin:204/datastream/MODS/view>`_
 
@@ -4126,7 +4128,7 @@ XPaths
 Decision
 ^^^^^^^^
 
-The `dcterms:tableOfContents` property was selected to capture the title information available, the `relators` namespace was chosen to capture information available in the :code:`roleTerm` elements, and `dbo:collection` property serves to identify the name of the physical archival collection.
+The :code:`dcterms:tableOfContents` property was selected to capture the title information available, the :code:`relators` namespace was chosen to capture information available in the :code:`roleTerm` elements, and :code:`dbo:collection` property serves to identify the name of the physical archival collection.
 
 `Example record - bass:19644 <https://digital.lib.utk.edu/collections/islandora/object/bass:19644/datastream/MODS/view>`_
 
@@ -4406,7 +4408,7 @@ Not all repositories have a :code:`@valueURI` established for them.
 Justification
 ^^^^^^^^^^^^^
 
-When available, we will opt to use :code:`valueURI` values as the URI value for `relators:rps`, to better qualify objects of `relators:rps`.
+When available, we will opt to use :code:`valueURI` values as the URI value for :code:`relators:rps`, to better qualify objects of :code:`relators:rps`.
 
 XPath
 ^^^^^
@@ -4591,7 +4593,7 @@ Instances where non-UT held items have :code:`shelfLocator` information.
 Justification
 ^^^^^^^^^^^^^
 
-While, we do not not know if this :code:`shelfLocator` information is accurate, we will opt to retain it going forward as a string and map to `skos:note`. Samvera does note some possible future availability of `opaque:locationShelfLocator`, however this predicate does not exist yet.
+While, we do not not know if this :code:`shelfLocator` information is accurate, we will opt to retain it going forward as a string and map to :code:`skos:note`. Samvera does note some possible future availability of :code:`opaque:locationShelfLocator`, however this predicate does not exist yet.
 
 XPath
 ^^^^^
@@ -4602,7 +4604,7 @@ XPath
 Decision
 ^^^^^^^^
 
-We will retain :code:`shelfLocator` data when present for non-UT records, and transcribe this to a `skos:note`.
+We will retain :code:`shelfLocator` data when present for non-UT records, and transcribe this to a :code:`skos:note`.
 
 `Example record - volvoices:2136 <https://digital.lib.utk.edu/collections/islandora/object/volvoices:2136/datastream/MODS/view>`_
 
@@ -4742,7 +4744,9 @@ In a some collections for Arrowmont, we will find items having a :code:`physical
 Justification
 ^^^^^^^^^^^^^
 
-Because these records do not already have a `dbo:collection` predicate, we will transcribe the string literal to `dbo:collection` for :code:`location/physicalLocation[@displayLabel="Collection"]`. No other data here needs to be retained and will be dropped.
+Because these records do not already have a :code:`dbo:collection` predicate, we will transcribe the string literal to
+:code:`dbo:collection` for :code:`location/physicalLocation[@displayLabel="Collection"]`. No other data here needs to be
+retained and will be dropped.
 
 XPath
 ^^^^^
@@ -4756,9 +4760,11 @@ XPath
 Decision
 ^^^^^^^^
 
-We will keep the string for the :code:`physicalLocation` instance with :code:`displayLabel="Collection"` and transcribe this to literal for `dbo:collection`.
+We will keep the string for the :code:`physicalLocation` instance with :code:`displayLabel="Collection"` and transcribe
+this to literal for :code:`dbo:collection`.
 
-Similar to when :code:`physicalLocation` has no :code:`displayLabel` attribute, :code:`physicalLocation` with an :code:`displayLabel` attribute value of "Repository" is retained as `relators:rps`.
+Similar to when :code:`physicalLocation` has no :code:`displayLabel` attribute, :code:`physicalLocation` with an
+:code:`displayLabel` attribute value of "Repository" is retained as :code:`relators:rps`.
 
 All other :code:`physicalLocation` ("Detailed Location", "City", "State") data is dropped.
 
@@ -4806,7 +4812,7 @@ Note: an easier way to resolve this particular XPath expression might be to star
 Decision
 ^^^^^^^^
 
-Will be mapped to both `relators:rps` and `edm:dataProvider`. `edm:dataProvider` is being used because the value is an "organisation who contributes data indirectly to an aggregation service" (aka to UT first and then to DPLA).
+Will be mapped to both :code:`relators:rps` and :code:`edm:dataProvider`. :code:`edm:dataProvider` is being used because the value is an "organisation who contributes data indirectly to an aggregation service" (aka to UT first and then to DPLA).
 
 Here's an example record -
 
@@ -5144,8 +5150,8 @@ XPath
 Decision
 ^^^^^^^^
 
-When the institution listed as providing the information is not UT, `edm:dataProvider` should be used instead of
-`edm:provider`. `edm:dataProvider` is defined as "The name or identifier of the organisation who contributes data indirectly
+When the institution listed as providing the information is not UT, :code:`edm:dataProvider` should be used instead of
+:code:`edm:provider`. :code:`edm:dataProvider` is defined as "The name or identifier of the organisation who contributes data indirectly
 to an aggregation service."
 
 `Example record - cdf:70 <https://digital.lib.utk.edu/collections/islandora/object/cdf%3A70/datastream/MODS/view>`_.
@@ -5162,7 +5168,8 @@ It is also coupled with an "Intermediate Provider" note, as shown below. McClung
     </location>
 
 For the purposes of DPLA, we only need the :code:`recordContentSource` value and not also the :code:`physicalLocation` value. Because
-these institutions are not directly contributing to DPLA, they are listed as an `edm:dataProvider` instead of an `edm:provider`.
+these institutions are not directly contributing to DPLA, they are listed as an :code:`edm:dataProvider` instead of an
+:code:`edm:provider`.
 
 .. code-block:: turtle
 
