@@ -78,7 +78,7 @@ In the future, this should be stored on a file like this:
     :rfta_8_mp4 a pcdmuse:IntermediateFile, pcdmff:Video ;
         rdfs:label "MP4" ;
         pcdm:fileOf :rfta_8 ;
-        bf:duration "3435" ;
+        bf:duration "00:57:15" ;
         fedora:hasVersions :path-to-the-intermediate-file-for-rftaartists_53 .
 
 
@@ -141,5 +141,105 @@ In the future, this should be stored on a file like this:
 Frame Height
 ============
 
+Use Case
+--------
+
+Video files do not have a standard height across the repository, but height is important for display in certain viewers.
+
+Height is unecessary for images because that should be supplied by the image server.
+
+Justification
+-------------
+
+For video files, it is important that we know its height for displaying the canvas in the viewer.
+
+Hyrax uses :code:`http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#height` for this, but it is not dereferenceable
+or content negotiable.  Regardless, this only contains a literal so there is no reason to use something else
+
+Path to Existing Data
+---------------------
+
+Currently, this data is stored in the Fedora Resource Index and corresponding A/V proxy triples in the :code:`RELS-INT`
+of a work (when it exists).
+
+Decision
+--------
+
+`Example of a record with a duration on its MP4 - rftaart:55 <https://digital.lib.utk.edu/collections/islandora/object/rfta:55/datastream/RELS-INT>`_
+
+.. code-block:: turtle
+
+    @prefix ebu: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+
+    <info:fedora/rfta:8/MP4> ebu:height 1080 .
+
+In the future, this should be stored on a file like this:
+
+.. code-block:: turtle
+
+    @prefix : <https://location-of-future-repository/extra/paths/> .
+    @prefix ebu: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+    @prefix fedora:  <http://fedora.info/definitions/v4/repository#> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix pcdmff: <http://pcdm.org/file-format-types#> .
+    @prefix pcdmuse: <http://pcdm.org/use#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+    :rfta_8_mp4 a pcdmuse:IntermediateFile, pcdmff:Video ;
+        rdfs:label "MP4" ;
+        pcdm:fileOf :rfta_8 ;
+        ebu:height 1080 ;
+        fedora:hasVersions :path-to-the-intermediate-file-for-rftaartists_53 .
+
 Frame Width
 ===========
+
+Use Case
+--------
+
+Video files do not have a standard width across the repository, but width is important for display in certain viewers.
+
+Width is unecessary for images because that should be supplied by the image server.
+
+Justification
+-------------
+
+For video files, it is important that we know its width for displaying the canvas in the viewer.
+
+Hyrax uses :code:`http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#width` for this, but it is not dereferenceable
+or content negotiable.  Regardless, this only contains a literal so there is no reason to use something else
+
+Path to Existing Data
+---------------------
+
+Currently, this data is stored in the Fedora Resource Index and corresponding A/V proxy triples in the :code:`RELS-INT`
+of a work (when it exists).
+
+Decision
+--------
+
+`Example of a record with a duration on its MP4 - rftaart:55 <https://digital.lib.utk.edu/collections/islandora/object/rfta:55/datastream/RELS-INT>`_
+
+.. code-block:: turtle
+
+    @prefix ebu: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+
+    <info:fedora/rfta:8/MP4> ebu:width 1920 .
+
+In the future, this should be stored on a file like this:
+
+.. code-block:: turtle
+
+    @prefix : <https://location-of-future-repository/extra/paths/> .
+    @prefix ebu: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+    @prefix fedora:  <http://fedora.info/definitions/v4/repository#> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix pcdmff: <http://pcdm.org/file-format-types#> .
+    @prefix pcdmuse: <http://pcdm.org/use#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+    :rfta_8_mp4 a pcdmuse:IntermediateFile, pcdmff:Video ;
+        rdfs:label "MP4" ;
+        pcdm:fileOf :rfta_8 ;
+        ebu:width 1920 ;
+        fedora:hasVersions :path-to-the-intermediate-file-for-rftaartists_53 .
