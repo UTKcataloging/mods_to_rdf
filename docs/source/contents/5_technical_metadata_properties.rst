@@ -52,7 +52,6 @@ of a work (when it exists).
 
 Note, the data is currently in a bad property, :code:`http://id.loc.gov/ontologies/bibframe/#`.
 
-
 Decision
 --------
 
@@ -79,12 +78,65 @@ In the future, this should be stored on a file like this:
     :rfta_8_mp4 a pcdmuse:IntermediateFile, pcdmff:Video ;
         rdfs:label "MP4" ;
         pcdm:fileOf :rfta_8 ;
-        bf:duration 3435 ;
+        bf:duration "3435" ;
         fedora:hasVersions :path-to-the-intermediate-file-for-rftaartists_53 .
 
 
 File Language
 =============
+
+Use Case
+--------
+
+A work may be in one language but have related files in multiple other languages.
+
+Justification
+-------------
+
+For certain files, it is important that we understand what language they are in.  An example of this are closed-captioning
+and subtitle files.  By having the language, when necessary we can map the language to the body of an annotation on the IIIF
+manifest.  This is especially important when we have files in multiple languages on a single canvas.
+
+Because this needs to be in the IIIF manifest, this should be formatted as :code:`BCP-47`.
+
+Path to Existing Data
+---------------------
+
+Currently, this data only relates to the :code:`DSID`.
+
+Examples:
+
+* TRANSCRIPT (ENGLISH)
+* TRANSCRIPT-ES (SPANISH)
+
+Decision
+--------
+
+`Example of a record with a TRANSCRIPT and TRANSCRIPT-ES - rfta:165 <https://digital.lib.utk.edu/collections/islandora/object/rfta:165/manage>`_
+
+
+In the future, this should be stored on a file like this:
+
+.. code-block:: turtle
+
+    @prefix : <https://location-of-future-repository/extra/paths/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix fedora:  <http://fedora.info/definitions/v4/repository#> .
+    @prefix pcdm: <http://pcdm.org/models#> .
+    @prefix pcdmuse: <http://pcdm.org/use#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+    :rfta_165_english_transcript a pcdmuse:Transcript ;
+        rdfs:label "English Subtitles" ;
+        pcdm:fileOf :rfta_165_mp4_fileset ;
+        dcterms:language "en" ;
+        fedora:hasVersions :path-to-the-engilsh .
+
+    :rfta_165_spanish_transcript a pcdmuse:Transcript ;
+        rdfs:label "Spanish Subtitles" ;
+        pcdm:fileOf :rfta_165_mp4_fileset ;
+        dcterms:language "es" ;
+        fedora:hasVersions :path-to-the-spanish .
 
 Frame Height
 ============
