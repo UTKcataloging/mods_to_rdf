@@ -7,8 +7,8 @@ About
 *****
 
 While our MODS to RDF mapping aims to address how descriptive properties should be mapped in our next system, this
-section aims to explain how to map existing technical metadata properties our metadata properties that we need going
-forward.  When a technical metadata property may exist, its current mapping is described.
+section aims to explain how to map existing technical metadata properties that we need going forward.  When a technical
+metadata property exists, its current mapping is described.
 
 **********
 Namespaces
@@ -34,7 +34,7 @@ Duration
 Use Case
 --------
 
-For audio / visual files, it is essential that we are able to measure the length of a the file that is associated with a
+For audio / visual files, it is essential that we are able to measure the length of the file that is associated with a
 IIIF canvas.  This is particularly important when you have multiple a/v files on a single canvas.
 
 Justification
@@ -146,7 +146,7 @@ Use Case
 
 Video files do not have a standard height across the repository, but height is important for display in certain viewers.
 
-Height is unecessary for images because that should be supplied by the image server.
+Height is unnecessary for images because that should be supplied by the image server.
 
 Justification
 -------------
@@ -199,7 +199,7 @@ Use Case
 
 Video files do not have a standard width across the repository, but width is important for display in certain viewers.
 
-Width is unecessary for images because that should be supplied by the image server.
+Width is unnecessary for images because that should be supplied by the image server.
 
 Justification
 -------------
