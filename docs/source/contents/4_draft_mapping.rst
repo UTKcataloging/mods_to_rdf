@@ -2525,7 +2525,7 @@ the class :code:`dcterms:PeriodOfTime` (that have both start and end dates).
     <https://example.org/objects/1> dcterms:temporal "The Birth of Arrowmont, Gatlinburg, Tennessee, 1965-1979" .
 
 In addition to these textual values, UT does have :code:`temporal` :code:`subject`\ s that share numeric dates in EDTF format. When a single
-date is shared, these values should be dropped as they only duplicate information already found in :code:`originInfo`These are primarily from
+date is shared, these values should be dropped as they only duplicate information already found in :code:`originInfo`. These are primarily from
 the Volunteer Voices collection.
 `Here's an example record - volvoices:2945 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2945/datastream/MODS/view>`_.
 
