@@ -2505,9 +2505,10 @@ XPath
 Decision
 ^^^^^^^^
 
-:code:`temporal` :code:`subject`\ s without the :code:`displayLabel` attribute will be directly mapped as strings to :code:`dcterms:temporal`. :code:`schema:temporalCoverage`
+:code:`subject/temporal` values without the :code:`displayLabel` attribute will be directly mapped as strings to :code:`dcterms:temporal`. :code:`schema:temporalCoverage`
 was considered because of how flexible it is, but ultimately it was decided that we can disregard the recommendation in `dcterms:temporal` to enter values appropriate for
-the class :code:`dcterms:PeriodOfTime` (that have both start and end dates).
+the class :code:`dcterms:PeriodOfTime` (that have both start and end dates). We are ignoring http://purl.org/dc/dcam/rangeIncludes in this
+case as it is only a suggestion.
 
 `Example of temporal subject - arrow:268 <https://digital.lib.utk.edu/collections/islandora/object/arrow%3A268>`_.
 
@@ -2524,7 +2525,7 @@ the class :code:`dcterms:PeriodOfTime` (that have both start and end dates).
 
     <https://example.org/objects/1> dcterms:temporal "The Birth of Arrowmont, Gatlinburg, Tennessee, 1965-1979" .
 
-In addition to these textual values, UT does have :code:`temporal` :code:`subject`\ s that share numeric dates in EDTF format. When a single
+In addition to these textual values, UT does have :code:`subject/temporal` values that share numeric dates in EDTF format. When a single
 date is shared, these values should be dropped as they only duplicate information already found in :code:`originInfo`. These are primarily from
 the Volunteer Voices collection.
 `Here's an example record - volvoices:2945 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2945/datastream/MODS/view>`_.
@@ -2548,15 +2549,18 @@ Use Case
 While two of the subject categories associated with the Volunteer Voices collection can be folded into :code:`dcterms:subject`
 directly ("Broad Topics" and "Volunteer Voices Curriculum Topics"), special attention needs to be given to :code:`subject`\ s associated
 with "Tennessee Social Studies K-12 Eras in American History". There are instances in which a value associated with one
-of these topics is used, but the :code:`displayLabel` has been left off and they have incorrectly been categorized as :code:`geographic`
-:code:`subject`\ s.
+of these topics is used, but the :code:`displayLabel` has been left off and they have incorrectly been categorized as :code:`subject/geographic`\ s.
 
 Justification
 ^^^^^^^^^^^^^
 
 It is important to treat these values as a separate category to ensure that the text value is not split across separate
-categories (aka :code:`dcterms:temporal` and :code:`dcterms:subject`). In addition, some standardization of the label needs to be
-done for all the records associated with a given concept to be colocated.
+categories (aka `dcterms:temporal` and `dcterms:subject`). In addition, some standardization of the label needs to be
+done for all the records associated with a given concept to be colocated. As mentioned earlier, :code:`subject/temporal` values
+will be directly mapped as strings to `dcterms:temporal. `schema:temporalCoverage` was considered because of how flexible it is,
+but ultimately it was decided that we can disregard the recommendation in `dcterms:temporal` to enter values appropriate
+for the class PeriodOfTime (that have both start and end dates). We are ignoring http://purl.org/dc/dcam/rangeIncludes in this
+case as it is only a suggestion.
 
 XPath
 ^^^^^
@@ -2632,7 +2636,7 @@ table of the values that need to be edited along with their appropriate match.
         <temporal>Era 9 - Postwar United States (1945-1970's)</temporal>
     </subject>
 
-These will simply be treated as other :code:`temporal` :code:`subject`\ s are. Note that we only have strings for :code:`temporal` :code:`subject`\ s.
+These will simply be treated as other :code:`subject/temporal` values are. Note that we only have strings for :code:`subject/temporal` values.
 
 .. code-block:: turtle
 
