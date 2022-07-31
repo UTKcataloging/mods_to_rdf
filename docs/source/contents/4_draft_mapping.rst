@@ -1418,7 +1418,7 @@ As part of leveraging the EDTF format, some conversion will be necessary; e.g. t
     <https://example.org/objects/1> dcterms:issued "Jun 30, 1965", "1965-06-30" ;
         dcterms:date "1964/1965" ;
         relators:pbl "University of Tennessee Theatre Department" ;
-        relators:pub <http://id.loc.gov/authorities/names/n80003889> .
+        relators:pup <http://id.loc.gov/authorities/names/n80003889> .
 
 originInfo/place/placeTerm
 ---------------------------
