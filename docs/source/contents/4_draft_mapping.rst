@@ -1825,7 +1825,7 @@ Here's an `example record - ruskin:108 <https://digital.lib.utk.edu/collections/
 
 .. code-block:: xml
 
-    <form authority="http://vocab.getty.edu/aat/300046300">photographs</form>
+    <form authority="aat" valueURI="http://vocab.getty.edu/aat/300046300">photographs</form>
 
 .. code-block:: turtle
 
@@ -2403,7 +2403,7 @@ XPath
 
     :code:`mods/subject[not(@valueURI)]/topic[not(@valueURI)]` OR
 
-    :code:`mods/subject[not(@valueURI)]/name[not(valueURI)]/namePart[not(valueURI)]`
+    :code:`mods/subject[not(@valueURI)]/name[not(@valueURI)]/namePart[not(@valueURI)]`
 
 Decision
 ^^^^^^^^
@@ -2988,7 +2988,8 @@ Decision
 
 The :code:`dcterms:subject` property was selected.
 
-`Example record - archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_
+`Example record - archivision:404 <https://digital.lib.utk.edu/collections/islandora/object/archivision:404/datastream/MODS/view>`_ .
+
 .. code-block:: xml
 
     <genre authority="aat" valueURI="http://vocab.getty.edu/aat/300021140">Renaissance</genre>
@@ -3033,9 +3034,9 @@ The :code:`dcterms:subject` property was selected.
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+    <https://example.org/object/1> dcterms:subject <http://id.loc.gov/authorities/subjects/sh85040974> .
 
 and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/archivision:1754/datastream/MODS/view>`_.
 
@@ -3045,9 +3046,9 @@ and `archivision:1754 <https://digital.lib.utk.edu/collections/islandora/object/
 
 .. code-block:: turtle
 
-    @prefix edm: <http://www.europeana.eu/schemas/edm/> .
+    @prefix dcterms: <http://purl.org/dc/terms/> .
 
-    <https://example.org/object/1> edm:hasType <http://id.loc.gov/authorities/subjects/sh85040974> .
+    <https://example.org/object/1> dcterms:subject <http://id.loc.gov/authorities/subjects/sh85040974> .
 
 genre[@authority='lcgft']
 -------------------------
