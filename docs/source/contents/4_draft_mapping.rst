@@ -127,6 +127,8 @@ identifier
 +------------------------+------------+---------------------------------------------------------------------------------------+
 | dbo:oclc               | Literal    | Use for identifiers with type="oclc"                                                  |
 +------------------------+------------+---------------------------------------------------------------------------------------+
+| identifiers:ark        | Literal    | Use for arks.                                                                         |
++------------------------+------------+---------------------------------------------------------------------------------------+
 | identifiers:local      | Literal    | Use for the majority of identifiers (all those that do not fit into other categories) |
 +------------------------+------------+---------------------------------------------------------------------------------------+
 | opaque:accessionNumber | Literal    | Use for identifiers with type="acquisition"                                           |
@@ -406,6 +408,43 @@ Decision
 
     <https://example.org/objects/1>
         dbo:isbn "0938008501" .
+
+ARKs
+-----
+
+
+Use Case
+^^^^^^^^
+
+Some works have a minted ARK in its MODS at :code:`identifer[@type="ark"]`.
+
+Justification
+^^^^^^^^^^^^^
+
+The ARK represents a persistent identifier and is leveraged by HathiTrust for referring to our works rather than the
+current URL. These need to be migrated to a special field in our next system separate from other local identifiers in
+order to continue the similar practice.
+
+XPath
+^^^^^
+
+:code:`identifier[@type="ark"]`
+
+Decision
+^^^^^^^^
+
+`Example record - agrtfhs:1001 <https://digital.lib.utk.edu/collections/islandora/object/agrtfhs:1001/datastream/MODS>`_
+
+.. code-block:: xml
+
+    <identifier type="ark">ark:/87290/v8pv6hjx</identifier>
+
+.. code-block:: turtle
+
+    @prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
+
+    <https://example.org/objects/1>
+        identifiers:ark "ark:/87290/v8pv6hjx" .
 
 .. _titleInfo:
 
