@@ -2519,7 +2519,7 @@ Here's an `example of @displayLabel="Volunteer Voices Curriculum Topics" - volvo
 
 .. code-block:: turtle
 
-    @prefix dcterms: <https://w3id.org/idsa/core/> .
+    @prefix iim: <https://w3id.org/idsa/core/> .
 
     <https://example.org/objects/1> iim:keyword "Civil Rights movement in Tennessee" .
 
