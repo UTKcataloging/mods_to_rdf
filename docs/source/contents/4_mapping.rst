@@ -60,6 +60,8 @@ Namespaces
 +------------------------------+--------------+--------------------------------------------+
 | Europeana Data Model         | edm          | http://www.europeana.eu/schemas/edm/       |
 +------------------------------+--------------+--------------------------------------------+
+| IDS Information Model        | iim          | https://w3id.org/idsa/core/                |
++------------------------------+--------------+--------------------------------------------+
 | MARC Code List for Relators  | relators     | http://id.loc.gov/vocabulary/relators/     |
 +------------------------------+--------------+--------------------------------------------+
 | Opaque Namespace             | opaque       | http://opaquenamespace.org/ns/             |
@@ -2238,10 +2240,12 @@ subject
 +=========================+================+======================================================+
 | dcterms:spatial         | URI or Literal | Use for geographic subjects and coordinates.         |
 +-------------------------+----------------+------------------------------------------------------+
-| dcterms:subject         | URI or Literal | Use for topic and name subjects. URIs are preferred. |
+| dcterms:subject         | URI            | Use for topic and name subjects.                     |
 +-------------------------+----------------+------------------------------------------------------+
 | dcterms:temporal        | Literal        | Use for temporal subjects. Numeric values should     |
 |                         |                |      be formatted using EDTF.                        |
++-------------------------+----------------+------------------------------------------------------+
+| iim:keyword             | Literal        | Use for topic and name subjects without a URI.       |
 +-------------------------+----------------+------------------------------------------------------+
 
 None type
@@ -2468,12 +2472,12 @@ Here's an `example record where only string values are available for topical sub
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix iim: <https://w3id.org/idsa/core/> .
 
-    <https://example.org/objects/1> dcterms:subject "Environmentalism" ;
-        dcterms:subject "Factory and trade waste--Environmental aspects" ;
-        dcterms:subject "Pollution" ;
-        dcterms:subject "Knight" .
+    <https://example.org/objects/1> iim:keyword "Environmentalism" ;
+        iim:keyword "Factory and trade waste--Environmental aspects" ;
+        iim:keyword "Pollution" ;
+        iim:keyword "Knight" .
 
 Here's an `example where only a string value is available for a name - gamble:144 <https://digital.lib.utk.edu/collections/islandora/object/gamble%3A144/datastream/MODS/view>`_.
 
@@ -2487,9 +2491,9 @@ Here's an `example where only a string value is available for a name - gamble:14
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix iim: <https://w3id.org/idsa/core/> .
 
-    <https://example.org/objects/1> dcterms:subject "Xerox Corporation" .
+    <https://example.org/objects/1> iim:keyword "Xerox Corporation" .
 
 Here's an `example from Volunteer Voices of a "Broad Topics" subject - volvoices:4058 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A4058/datastream/MODS/view>`_.
 
@@ -2501,9 +2505,9 @@ Here's an `example from Volunteer Voices of a "Broad Topics" subject - volvoices
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix iim: <https://w3id.org/idsa/core/> .
 
-    <https://example.org/objects/1> dcterms:subject "Frontier Settlement and Migration" .
+    <https://example.org/objects/1> iim:keyword "Frontier Settlement and Migration" .
 
 Here's an `example of @displayLabel="Volunteer Voices Curriculum Topics" - volvoices:2141 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A2141/datastream/MODS/view>`_.
 
@@ -2515,9 +2519,9 @@ Here's an `example of @displayLabel="Volunteer Voices Curriculum Topics" - volvo
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix dcterms: <https://w3id.org/idsa/core/> .
 
-    <https://example.org/objects/1> dcterms:subject "Civil Rights movement in Tennessee" .
+    <https://example.org/objects/1> iim:keyword "Civil Rights movement in Tennessee" .
 
 Temporal subjects
 -----------------
