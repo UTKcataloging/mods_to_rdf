@@ -73,6 +73,8 @@ Namespaces
 +------------------------------+--------------+--------------------------------------------+
 | Standard Identifier Scheme   | identifiers  | http://id.loc.gov/vocabulary/identifiers/  |
 +------------------------------+--------------+--------------------------------------------+
+| WGS84 Geo Positioning        | wgs          | https://www.w3.org/2003/01/geo/wgs84_pos#  |
++------------------------------+--------------+--------------------------------------------+
 
 *******
 Mapping
@@ -2238,7 +2240,7 @@ subject
 +-------------------------+----------------+------------------------------------------------------+
 | Properties              | Value Type     | Usage Notes                                          |
 +=========================+================+======================================================+
-| dcterms:spatial         | URI or Literal | Use for geographic subjects and coordinates.         |
+| dcterms:spatial         | URI or Literal | Use for geographic subjects.         |
 +-------------------------+----------------+------------------------------------------------------+
 | dcterms:subject         | URI            | Use for topic and name subjects.                     |
 +-------------------------+----------------+------------------------------------------------------+
@@ -2246,6 +2248,9 @@ subject
 |                         |                |      be formatted using EDTF.                        |
 +-------------------------+----------------+------------------------------------------------------+
 | iim:keyword             | Literal        | Use for topic and name subjects without a URI.       |
++-------------------------+----------------+------------------------------------------------------+
+| wgs:lat_long            | Literal        | Use for comma-separated representations of latitude  |
+|                         |                |      and longitude coordinates.                      |
 +-------------------------+----------------+------------------------------------------------------+
 
 None type
@@ -2759,9 +2764,7 @@ Decision
         <geographic authority="geonames" valueURI="http://sws.geonames.org/4178924/about.rdf">Yulee Sugar Mill Ruins Historic State Park</geographic>
     </subject>
 
-Regardless of URI placement, we will map the values the same. Note that if the :code:`geographic` term includes coordinates and
-a :code:`geonames` URI, we will drop the coordinates. More information on this is given in the Coordinates section following this
-section. Below is the decision for webster:1127.
+Regardless of URI placement, we will map the values the same.
 
 .. code-block:: turtle
 
@@ -2805,8 +2808,6 @@ National Park (N.C. And Tenn.)", "Knoxville (Tenn.)", "Sevier County (Tenn.)", "
 "Fort George Site", "Fort Manuel Site", "Fowler (Kan.)", "Gatlinburg (Tenn.)", "Greenbrier Pinnacle (Tenn.)", "Gregory Bald (Tenn.)",
 "Guyot, Mount (Tenn.)", "Harrison, Mount (Tenn.)", "Headrick Chapel (Tenn.)", and many more.
 
-For those :code:`geographic` names associated with :code:`geonames` through a URI, there is arguably no need to migrate the coordinates
-as a string value as these can be retrieved using the URI at any time.
 
 Justification
 ^^^^^^^^^^^^^
@@ -2837,9 +2838,9 @@ All that is needed in this case is to bring over the URI.
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#> .
 
-    <https://example.org/objects/1> dcterms:spatial <https://sws.geonames.org/4630912> .
+    <https://example.org/objects/1> wgs:lat_long <https://sws.geonames.org/4630912> .
 
 Given the extent of :code:`coordinates` that cannot be retrieved using a URI (120), a separate solution is needed to preserve these values.
 `Here's an example record - derris:610 <https://digital.lib.utk.edu/collections/islandora/object/derris%3A610/datastream/MODS/view>`_.
@@ -2856,9 +2857,10 @@ Given the extent of :code:`coordinates` that cannot be retrieved using a URI (12
 .. code-block:: turtle
 
     @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#> .
 
     <https://example.org/objects/1> dcterms:spatial <https://sws.geonames.org/4630912> ;
-        dcterms:spatial "35.58546, -83.84444" .
+        wgs:lat_long "35.58546, -83.84444" .
 
 
 .. _genre:
