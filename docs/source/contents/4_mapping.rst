@@ -2240,9 +2240,9 @@ subject
 +-------------------------+----------------+------------------------------------------------------+
 | Properties              | Value Type     | Usage Notes                                          |
 +=========================+================+======================================================+
-| bf:geographicCoverage   | Literal        | Use for uncontrolled geographic place namess.            |
+| bf:geographicCoverage   | Literal        | Use for uncontrolled geographic place namess.        |
 +-------------------------+----------------+------------------------------------------------------+
-| dcterms:spatial         | URI            | Use for controlled geographic place names.                         |
+| dcterms:spatial         | URI            | Use for controlled geographic place names.           |
 +-------------------------+----------------+------------------------------------------------------+
 | dcterms:subject         | URI            | Use for topic and name subjects.                     |
 +-------------------------+----------------+------------------------------------------------------+
