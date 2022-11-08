@@ -2240,7 +2240,9 @@ subject
 +-------------------------+----------------+------------------------------------------------------+
 | Properties              | Value Type     | Usage Notes                                          |
 +=========================+================+======================================================+
-| dcterms:spatial         | URI or Literal | Use for geographic subjects.                         |
+| bf:geographicCoverage   | Literal        | Use for uncontrolled geographic place namess.            |
++-------------------------+----------------+------------------------------------------------------+
+| dcterms:spatial         | URI            | Use for controlled geographic place names.                         |
 +-------------------------+----------------+------------------------------------------------------+
 | dcterms:subject         | URI            | Use for topic and name subjects.                     |
 +-------------------------+----------------+------------------------------------------------------+
@@ -2774,7 +2776,8 @@ Regardless of URI placement, we will map the values the same.
         dcterms:spatial <http://sws.geonames.org/4609260> ;
         dcterms:spatial <http://id.loc.gov/authorities/subjects/sh85057008> .
 
-If only strings are present, like with `volvoices:14173 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A14173/datastream/MODS/view>`_, then the string value will be kept.
+If only strings are present, like with `volvoices:14173 <https://digital.lib.utk.edu/collections/islandora/object/volvoices%3A14173/datastream/MODS/view>`_,
+then the string value will be kept but in another property ( :code:`bf:geographicCoverage` ).
 
 .. code-block:: xml
 
@@ -2784,9 +2787,9 @@ If only strings are present, like with `volvoices:14173 <https://digital.lib.utk
 
 .. code-block:: turtle
 
-    @prefix dcterms: <http://purl.org/dc/terms/> .
+    @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 
-    <https://example.org/objects/1> dcterms:spatial "Covington (Tenn.)" .
+    <https://example.org/objects/1> bf:geographicCoverage "Covington (Tenn.)" .
 
 Coordinates
 -----------
