@@ -4468,7 +4468,12 @@ to a relative URIs would require significant effort, and the value added may be 
 XPath
 ^^^^^
 
-:code:`location/physicalLocation[not(text()="University of Tennessee Knoxville. Libraries")]`
+:code:`location/physicalLocation[not(text()="University of Tennessee Knoxville. Libraries")]` OR
+:code:`location/physicalLocation[not(@displayLabel="Collection")]` OR
+:code:`location/physicalLocation[not(@displayLabel="Address")]` OR
+:code:`location/physicalLocation[not(@displayLabel="City")]` OR
+:code:`location/physicalLocation[not(@displayLabel="Detailed Location")]` OR
+:code:`location/physicalLocation[not(@displayLabel="State")]`
 
 Decision
 ^^^^^^^^
@@ -4782,7 +4787,7 @@ All other :code:`physicalLocation` ("Detailed Location", "City", "State") data i
     @prefix dbo: <http://dbpedia.org/ontology/> .
 
     <https://example.org/objects/1>
-        relators:rps <http://id.loc.gov/authorities/names/no2001080757> ;
+        relators:rps "Arrowmont School of Arts and Crafts" ;
         dbo:collection "Archives Collection" .
 
 physicalLocation within volvoices used for provider information
