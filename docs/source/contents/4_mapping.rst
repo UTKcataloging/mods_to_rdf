@@ -4439,9 +4439,7 @@ location
 +-----------------------------------+----------------+-------------------------------------------------------------------------+
 | Predicate                         | Value Type     | Usage Notes                                                             |
 +===================================+================+=========================================================================+
-| relators:rps                      | Literal or URI | Use for :code:`mods:physicalLocation` values, preferably using          |
-|                                   |                | a URI for the organization from a controlled vocabulary                 |
-|                                   |                | such as VIAF of Library of Congress Real World Objects.                 |
+| relators:rps                      | Literal        | Use for :code:`mods:physicalLocation` values                            |
 +-----------------------------------+----------------+-------------------------------------------------------------------------+
 | skos:note                         | Literal        | Use to note :code:`mods:shelfLocator` strings.                          |
 +-----------------------------------+----------------+-------------------------------------------------------------------------+
@@ -4449,129 +4447,33 @@ location
 |                                   |                | strings.                                                                |
 +-----------------------------------+----------------+-------------------------------------------------------------------------+
 
-physicalLocation as URI
------------------------
+physicalLocation - minus UT variation
+-------------------------
 
 Use Case
 ^^^^^^^^
 
-Many records have :code:`valueURI` attributes set for :code:`physicalLocation`. This is inconsistent, even in our own collections.
-Not all repositories have a :code:`@valueURI` established for them.
+Across our collections, there is a great deal of variation in how the name of the holding repository is represented. Particularly,
+there is a mix of URI values and strings without URIs. At the time of analysis, 76 out of the 99 distinct values in this field
+were strings. If possible, it would be beneficial to streamline string values for UT Libraries during remediation via the migration
+spreadsheets. A separate use case is described below.
 
 Justification
 ^^^^^^^^^^^^^
 
-When available, we will opt to use :code:`valueURI` values as the URI value for :code:`relators:rps`, to better qualify objects of :code:`relators:rps`.
+Given the prominence of string values, the time remediation would require, and limited use of the URI beyond having controlled
+string values, we will use string values. This way a separate property for URI values in the MAP is not needed. Translating these
+to a relative URIs would require significant effort, and the value added may be trivial at this point.
 
 XPath
 ^^^^^
 
-:code:`location/physicalLocation[@valueURI]`
+:code:`location/physicalLocation[not(text()="University of Tennessee Knoxville. Libraries")]`
 
 Decision
 ^^^^^^^^
 
-The :code:`valueURI` attribute :code:`location/physicalLocation` is set as object.
-
-`Example record - egypt:79 <https://digital.lib.utk.edu/collections/islandora/object/egypt:79/datastream/MODS/view>`_
-
-.. code-block:: xml
-
-    <location>
-        <physicalLocation valueURI="http://id.loc.gov/authorities/names/no2017033007">Frank H. McClung Museum of Natural History and Culture</physicalLocation>
-    </location>
-
-.. code-block:: turtle
-
-    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
-
-    <https://example.org/objects/1>
-        relators:rps <http://id.loc.gov/authorities/names/no2017033007> .
-
-physicalLocation as string (UT)
---------------------------------
-
-Use Case
-^^^^^^^^
-
-In many of our own collections, we use strings to describe :code:`physicalLocation`. We are inconsistent in the structuring of these strings, leading to many different variations for both our Libraries and Special Collections, some of these include misspellings or just different formatting:
-
-- "The University of Tennessee Libraries, Knoxville"
-- "University of Tennesse Knoxville. Libraries"
-- "University of Tennessee Knoxville. Libraries"
-
-Justification
-^^^^^^^^^^^^^
-
-To create better consistency and cleanliness going forward, we will isolate all instances of these strings and transcribe them to appropriate URIs for UT Libraries and Special collections.
-
-XPath
-^^^^^
-
-:code:`location/physicalLocation[not(@valueURI)][text()="The University of Tennessee Libraries, Knoxville" or text()="University of Tennesse Knoxville. Libraries" or text()="University of Tennessee Knoxville. Libraries"]`
-
-Decision
-^^^^^^^^
-
-Even when MODS only has a string present, we will map "The University of Tennessee Libraries, Knoxville" and "University of Tennessee, Knoxville. Special Collections" to relative URIs.
-
-`Example record - fbpro:94819 <https://digital.lib.utk.edu/collections/islandora/object/fbpro:94819/datastream/MODS/view>`_
-
-.. code-block:: xml
-
-    <location>
-        <physicalLocation>The University of Tennessee Libraries, Knoxville</physicalLocation>
-    </location>
-
-.. code-block:: turtle
-
-    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
-
-    <https://example.org/objects/1>
-        relators:rps <http://id.loc.gov/authorities/names/n80003889> .
-
-`Example record - cDanielCartoon:1177 <https://digital.lib.utk.edu/collections/islandora/object/cDanielCartoon:1177/datastream/MODS/view>`_
-
-.. code-block:: xml
-
-    <location>
-        <physicalLocation>University of Tennessee, Knoxville. Special Collections</physicalLocation>
-        <holdingSimple>
-            <copyInformation>
-                <shelfLocator>Taxes and Economy</shelfLocator>
-            </copyInformation>
-        </holdingSimple>
-    </location>
-
-.. code-block:: turtle
-
-    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
-
-    <https://example.org/objects/1>
-        relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
-
-physicalLocation as string (non-UT)
-------------------------------------
-
-Use Case
-^^^^^^^^
-
-Across our collections, there are also many cases where non-UT items do not have URIs and instead use strings.
-
-Justification
-^^^^^^^^^^^^^
-
-Translating these to a relative URIs would require significant effort, and the value added may be trivial at this point.
-
-XPath
-^^^^^
-
-:code:`location/physicalLocation[not(@valueURI)][not(text()="The University of Tennessee Libraries, Knoxville" or text()="University of Tennesse Knoxville. Libraries" or text()="University of Tennessee Knoxville. Libraries")]`
-
-Decision
-^^^^^^^^
-
-In cases that the :code:`physicalLocation` are non-UT and only a string is provided, we will only use the string literal.
+We will use string values for :code:`physicalLocation`.
 
 .. code-block:: xml
 
@@ -4594,6 +4496,47 @@ In cases that the :code:`physicalLocation` are non-UT and only a string is provi
 
     <https://example.org/objects/1>
         relators:rps "Blount County Public Library" .
+
+physicalLocation - UT variation
+--------------------------------
+
+Use Case
+^^^^^^^^
+
+In many of our own collections, we use strings to describe :code:`physicalLocation`. There are 665 instances (primarily across the TEI migration collections) in which we use the main library
+heading rather than that of Special Collections as the location. That string is as follows:
+
+- "University of Tennessee Knoxville. Libraries"
+
+Justification
+^^^^^^^^^^^^^
+
+To create better consistency and cleanliness going forward, we will isolate all instances of these strings and update them to the controlled value for UT Libraries Special Collections.
+
+XPath
+^^^^^
+
+:code:`location/physicalLocation[text()="University of Tennessee Knoxville. Libraries"]`
+
+Decision
+^^^^^^^^
+
+We will map variations of "The University of Tennessee Libraries, Knoxville" to the string "University of Tennessee, Knoxville. Special Collections."
+
+`Example record - civilwar:1438 <https://digital.lib.utk.edu/collections/islandora/object/civilwar%3A1438/datastream/MODS/view>`_
+
+.. code-block:: xml
+
+    <location>
+        <physicalLocation>University of Tennessee Knoxville. Libraries</physicalLocation>
+    </location>
+
+.. code-block:: turtle
+
+    @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
+
+    <https://example.org/objects/1>
+        relators:rps "University of Tennessee, Knoxville. Special Collections" .
 
 physicalLocation with shelfLocator (UT)
 ----------------------------------------
