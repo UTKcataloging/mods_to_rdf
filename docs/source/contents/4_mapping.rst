@@ -4448,7 +4448,7 @@ location
 +-----------------------------------+----------------+-------------------------------------------------------------------------+
 
 physicalLocation - minus UT variation
--------------------------
+-------------------------------------
 
 Use Case
 ^^^^^^^^
@@ -4498,7 +4498,7 @@ We will use string values for :code:`physicalLocation`.
         relators:rps "Blount County Public Library" .
 
 physicalLocation - UT variation
---------------------------------
+-------------------------------
 
 Use Case
 ^^^^^^^^
@@ -4539,7 +4539,7 @@ We will map variations of "The University of Tennessee Libraries, Knoxville" to 
         relators:rps "University of Tennessee, Knoxville. Special Collections" .
 
 physicalLocation with shelfLocator (UT)
-----------------------------------------
+---------------------------------------
 
 Use Case
 ^^^^^^^^
@@ -4579,7 +4579,7 @@ We will drop :code:`shelfLocator` data when present for UT Knoxville records.
         relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
 
 physicalLocation with shelfLocator (non-UT)
---------------------------------------------
+-------------------------------------------
 
 Use Case
 ^^^^^^^^
