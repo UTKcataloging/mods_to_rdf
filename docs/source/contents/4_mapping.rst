@@ -4576,7 +4576,7 @@ We will drop :code:`shelfLocator` data when present for UT Knoxville records.
     @prefix relators: <http://id.loc.gov/vocabulary/relators/> .
 
     <https://example.org/objects/1>
-        relators:rps <http://id.loc.gov/authorities/names/no2014027633> .
+        relators:rps "University of Tennessee, Knoxville. Special Collections" .
 
 physicalLocation with shelfLocator (non-UT)
 -------------------------------------------
